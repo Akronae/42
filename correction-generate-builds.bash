@@ -1,5 +1,6 @@
 TEMPLATE='
 #include <stdio.h>
+#define p(x) printf(_Generic(x, unsigned: "%u", signed: "%d", double: "%g"), x)
 #include "{{dir}}/{{file_name}}"
 
 int	main()
