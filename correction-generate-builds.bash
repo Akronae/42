@@ -1,7 +1,22 @@
 TEMPLATE='
 #include <stdio.h>
-#define p(x) printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", char *: "%s\n"), x)
 #include "{{dir}}/{{file_name}}"
+
+#define p(x) {\
+printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", char *: "%s\n"), x);\
+}
+#define p_nonl(x) {\
+printf(_Generic(x, unsigned: "%u", signed: "%d", double: "%g", char *: "%s"), x);\
+}
+#define parr(my_array) {\
+int index;\
+p_nonl("[");\
+for( index = 0; index < (sizeof( my_array ) / sizeof( my_array[0] )); index++){\
+        p_nonl(my_array[index]);\
+p_nonl(", ");\
+}\
+p_nonl("]");\
+}
 
 int	main()
 {
