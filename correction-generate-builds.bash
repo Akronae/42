@@ -22,8 +22,8 @@ for ex_dir in ex*; do
                 FILE_CONTENT=$(echo "$FILE_CONTENT"  | sed "s/{{file_name}}/$FILE_NAME/g")
                 FILE_CONTENT=$(echo "$FILE_CONTENT"  | sed "s/{{dir}}/$ex_dir/g")
 
-                echo "$FILE_CONTENT" > $FILE_NAME
-                gcc -Wall -Werror -Wextra $FILE_NAME -o "$FUNCTION_NAME.out"
+                echo "$FILE_CONTENT" > "$ex_dir.c"
+                gcc -Wall -Werror -Wextra "$ex_dir.c" -o "$ex_dir.out"
             fi
         done
     fi
