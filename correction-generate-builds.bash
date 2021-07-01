@@ -1,6 +1,6 @@
 TEMPLATE='
 #include <stdio.h>
-#define p(x) printf(_Generic(x, unsigned: "%u", signed: "%d", double: "%g"), x)
+#define p(x) printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", char *: "%s\n"), x)
 #include "{{dir}}/{{file_name}}"
 
 int	main()
