@@ -10,6 +10,8 @@ int	main()
 }
 '
 
+norminette
+
 for ex_dir in ex*; do
     if [ -d "$ex_dir" ]; then
         for code_file in $ex_dir/*; do
