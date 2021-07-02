@@ -3,10 +3,10 @@ TEMPLATE='
 #include "{{dir}}/{{file_name}}"
 
 #define p(x) {\
-printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", char *: "%s\n"), x);\
+printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", char: "%c\n", char *: "%s\n"), x);\
 }
 #define p_nonl(x) {\
-printf(_Generic(x, unsigned: "%u", signed: "%d", double: "%g", char *: "%s"), x);\
+printf(_Generic(x, unsigned: "%u", signed: "%d", double: "%g", char: "%c\n", char *: "%s"), x);\
 }
 #define parr(my_array) {\
 int index;\
