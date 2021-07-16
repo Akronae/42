@@ -1,0 +1,5 @@
+Credentials cache: API:D575F4EA-4999-4EC5-8A68-9D2BDFD814C2
+        Principal: adaubric@42.FR
+
+  Issued                Expires               Principal
+Jun 28 16:37:21 2021  Jul  5 16:37:21 2021  krbtgt/42.FR@42.FR
