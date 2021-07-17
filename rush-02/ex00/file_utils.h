@@ -2,7 +2,10 @@
 // Created by Alexandre DAUBRICOURT on 7/17/21.
 //
 
-#ifndef RUSH_02_FILE_UTILS_H
-#define RUSH_02_FILE_UTILS_H
+#ifndef FILE_UTILS_H
+# define FILE_UTILS_H
 
-#endif //RUSH_02_FILE_UTILS_H
+int		get_file_size(char *path);
+char	*read_file(char *path);
+
+#endif //FILE_UTILS_H

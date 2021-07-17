@@ -6,7 +6,7 @@
 # define IO_UTILS_H
 
 void	putstr(char *str);
-void	putchar(char c);
+void	io_putchar(char c);
 void	putnbr(int nbr);
 void	nl(void);
 void	putarraystr(char **arr);

@@ -24,11 +24,10 @@ void	putarrayint(int *arr)
 void	putarray_2_int(int **arr)
 {
 	int	i;
-	int	j;
 
 	putstr("[");
 	i = -1;
-	while (arr[++i] != UNDEFINED)
+	while (*arr[++i] != UNDEFINED)
 	{
 		putarrayint(arr[i]);
 		nl();

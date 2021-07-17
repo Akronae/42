@@ -7,6 +7,7 @@
 #include "string_utils.h"
 #include "math_utils.h"
 #include "array_utils.h"
+#include <stdio.h>
 
 int	str_len(char *str)
 {
@@ -48,7 +49,9 @@ char	*substr(char *str, int from, int to)
 
 	from = val_max(from, 0);
 	to = val_min(to, str_len(str));
-	rtrn = malloc(sizeof(char) * (to - from));
+	rtrn = malloc(sizeof(char) * (to - from) + sizeof(0));
+	if (rtrn == 0)
+		return EMPTY_STRING;
 	i = -1;
 	while (from + ++i < to)
 	{
@@ -78,4 +81,40 @@ char	**str_split(char *str, char *separator)
 	}
 	arr[++arr_i] = str;
 	return (arr);
+}
+
+char	*str_trim(char *str)
+{
+	char	*new_str;
+	int		i;
+
+	new_str = malloc(str_len(str) + sizeof(0));
+	i = -1;
+	while (*str)
+	{
+		if (*str != ' ' && *str != '\t' && *str != '\n')
+			new_str[++i] = *str;
+		str++;
+	}
+	new_str[++i] = 0;
+	return (new_str);
+}
+
+int	str_compare(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (1)
+	{
+		if (s1[i] == s2[i])
+		{
+			if (s1[i] == '\0')
+				break ;
+		}
+		else
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

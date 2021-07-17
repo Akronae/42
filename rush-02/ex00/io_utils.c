@@ -3,11 +3,7 @@
 //
 
 // If we're compiling for Windows, unistd.h isn't available.
-#ifdef __unix__
 # include <unistd.h>
-#elif defined(_WIN32) || defined(WIN32)
-# include <io.h>
-#endif
 #include "io_utils.h"
 #include "string_utils.h"
 #include "constants.h"
@@ -21,7 +17,7 @@ void	putnbr(int nbr)
 {
 	if (nbr < 0)
 	{
-		putchar('-');
+		io_putchar('-');
 		putnbr(-nbr);
 		return ;
 	}
@@ -29,17 +25,17 @@ void	putnbr(int nbr)
 	{
 		putnbr(nbr / 10);
 	}
-	putchar(nbr % 10 + '0');
+	io_putchar(nbr % 10 + '0');
 }
 
-void	putchar(char c)
+void	io_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
 void	nl(void)
 {
-	putchar('\n');
+	io_putchar('\n');
 }
 
 void	putarraystr(char **arr)
@@ -48,10 +44,10 @@ void	putarraystr(char **arr)
 
 	putstr("[");
 	i = -1;
-	while (arr[++i] != UNDEFINED)
+	while (*arr[++i] != UNDEFINED)
 	{
 		putstr(arr[i]);
-		if (arr[i + 1] != UNDEFINED)
+		if (*arr[i + 1] != UNDEFINED)
 			putstr(", ");
 	}
 	putstr("]");

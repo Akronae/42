@@ -15,14 +15,14 @@ void	*new_array(int element_size, int element_count)
 	i = -1;
 	while (++i <= element_count + 1)
 	{
-		addr[i] = UNDEFINED;
+		addr[i] = (void *) UNDEFINED;
 	}
 	return (addr);
 }
 
 void	**new_array_2(int element_size, int dim_1_size, int dim_2_size)
 {
-	void	***addr;
+	void	**addr;
 	int		i;
 
 	addr = new_array(sizeof(int), dim_1_size);
@@ -31,7 +31,7 @@ void	**new_array_2(int element_size, int dim_1_size, int dim_2_size)
 	{
 		addr[i] = new_array(element_size, dim_2_size);
 	}
-	addr[++i] = UNDEFINED;
+	addr[++i] = ((void *) UNDEFINED);
 	return (addr);
 }
 
@@ -45,7 +45,7 @@ int	get_array_size(void **arr)
 	int	i;
 
 	i = -1;
-	while (arr[++i] != UNDEFINED)
+	while ((int) arr[++i] != UNDEFINED)
 		;
 	return (i);
 }
