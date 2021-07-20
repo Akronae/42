@@ -25,11 +25,20 @@ p_nonl(", ");\
 p_nonl("]");\
 }
 
-#include "ex05/ft_split.c"
+#include "ex03/ft_strjoin.c"
 
 int main()
 {
-	ft_split("bonjour le monde", "");
+	char **a= malloc(100);
+	a[0] = malloc(100);
+	a[0][0] = 'a';
+	a[0][1] = 'c';
+	a[0][2] = 'a';
+	a[1] = malloc(100);
+	a[1][0] = 'a';
+	a[1][1] = 'c';
+	a[1][2] = 'a';
+	p(ft_strjoin(2, a, " "));
 	p(23)
 	return 0;
 }

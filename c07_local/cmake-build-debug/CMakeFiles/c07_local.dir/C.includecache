@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/adaubric/proj/c07_local/ex03/ft_strjoin.c
+stdlib.h
+-
+
+/Users/adaubric/proj/c07_local/main.c
+stdio.h
+-
+ex03/ft_strjoin.c
+/Users/adaubric/proj/c07_local/ex03/ft_strjoin.c
+
