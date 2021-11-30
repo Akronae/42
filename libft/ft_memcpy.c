@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:14:17 by adaubric          #+#    #+#             */
-/*   Updated: 2021/11/28 16:47:53 by adaubric         ###   ########.fr       */
+/*   Created: 2021/11/28 17:10:29 by adaubric          #+#    #+#             */
+/*   Updated: 2021/11/28 17:10:30 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_lower(int c)
-{
-	return (c >= 97 && c <= 122);
-}
+#include "libft.h"
 
-int	is_upper(int c)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	return (c >= 65 && c <= 90);
-}
+	size_t	i;
+	char	*d;
+	char	*s;
 
-int	ft_isalpha(int c)
-{
-	return (is_lower(c) || is_upper(c));
+	i = 0;
+	d = (char *)dst;
+	s = (char *)src;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
 }

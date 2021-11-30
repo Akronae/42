@@ -1,31 +1,39 @@
-FLAG = -Wall -Wextra -Werror
+# ************************************************************************** #
+#                                                                            #
+#                                                        :::      ::::::::   #
+#   Makefile                                           :+:      :+:    :+:   #
+#                                                    +:+ +:+         +:+     #
+#   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
+#                                                +#+#+#+#+#+   +#+           #
+#   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
+#   Updated: 2021/11/28 15:39:56 by adaubric         ###   ########.fr       #
+#                                                                            #
+# ************************************************************************** #
 
-NAME = libft.a
+SRCS			=	main.c ft_isalpha.c
 
-SRC = ft_isalpha.c \
+OBJS			= $(SRCS:.c=.o)
 
+CC				= gcc
+RM				= rm -f
+CFLAGS			= -Wall -Wextra -Werror -I.
 
-OBJ = $(SRC:.c=.o)
+NAME			= libft.a
 
-all: $(NAME)
+all:			$(NAME)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
-	@echo "$(NAME) created"
-	@ranlib $(NAME)
-	@echo "$(NAME) indexed"
-
-%.o: %.c
-	@gcc $(FLAG) -c $< -o $@
+$(NAME):		$(OBJS)
+				ar rcs $(NAME) $(OBJS)
 
 clean:
-	@rm -f $(OBJ)
-	@echo "OBJ deleted"
+				$(RM) $(OBJS)
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "$(NAME) deleted"
+fclean:			clean
+				$(RM) $(NAME)
 
-re: fclean all
+re:				fclean $(NAME)
 
-.PHONY: all, clean, fclean, re
+bonus:			$(OBJS)
+				ar rcs $(NAME) $(OBJS)
+
+.PHONY:			all clean fclean re bonus

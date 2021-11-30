@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "./libft.h"
 
 #define p(x) {\
 printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", long int: "%ld\n", long long int: "%lld\n", unsigned long: "%lu\n", unsigned long long int: "%llu\n", char: "%c\n", char *: "%s\n"), x);\
@@ -17,6 +18,6 @@ p_nonl("]");\
 }
 
 int main() {
-    p(ft_isalpha('c'))
+    p(ft_isalpha('0'))
     return 0;
 }
