@@ -1,4 +1,4 @@
 make
 gcc libft.a
-./a.exe
-rm ./a.exe
+./a.out
+rm ./a.out
