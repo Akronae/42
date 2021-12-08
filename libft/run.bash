@@ -1,4 +1,7 @@
 make
-gcc libft.a
-./a.out
-rm ./a.out
+gcc libft.a -o libft_output
+echo ===========================
+./libft_output
+echo ===========================
+make fclean
+rm ./libft_output*

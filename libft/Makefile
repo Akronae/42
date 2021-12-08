@@ -6,8 +6,7 @@
 #   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
-#   Updated: 2021/11/28 15:39:56 by adaubric         ###   ########.fr       #
-#                                                                            #
+#   Updated: 202#   Updated: 2021/12/08 14:24:10 by adaubric         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 SRCS			=	main.c ft_isalpha.c ft_bzero.c ft_isalnum.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memcpy.c \
