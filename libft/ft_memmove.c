@@ -6,13 +6,13 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:18:08 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 18:16:52 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/08 18:41:58 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	copy_at_index (void *dst, void *src, int index)
+void	copy_at_index (void *dst, const void *src, int index)
 {
 	*(char *)(dst + index) = *(char *)(src + index);
 }
