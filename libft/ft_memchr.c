@@ -16,8 +16,6 @@ void	*ft_memchr(const void *s, int c, int n)
 {
 	int	i;
 
-	if (!s)
-		return (NULL);
 	i = -1;
 	while (++i < n)
 	{
