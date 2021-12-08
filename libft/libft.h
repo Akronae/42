@@ -6,12 +6,14 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2021/11/30 14:26:52 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/08 15:37:41 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <unistd.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
