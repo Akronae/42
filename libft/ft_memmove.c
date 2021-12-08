@@ -12,21 +12,31 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, int len)
+void	copy_at_index (void *dst, void *src, int index)
+{
+	*(char *)(dst + index) = *(char *)(src + index);
+}
+
+void	*ft_memmove(void *dst, void *src, int len)
 {
 	int	i;
-	int offset;
 
-
-	i = -1;
 	if (dst > src)
 	{
-		offset = 1;
+		i = (int) len - 1;
+		while (i >= 0)
+		{
+			copy_at_index(dst, src, i);
+			i--;
+		}
 	}
-	else offset = 0;
-	while (++i < len)
+	else
 	{
-		*(char *)(dst + i + (offset * (len - 1 - i))) = *(char *)(src + i);
+		i = -1;
+		while (i < len)
+		{
+			copy_at_index(dst, src, i);
+		}
 	}
 	return (dst);
 }
