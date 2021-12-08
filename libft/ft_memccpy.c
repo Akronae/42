@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 15:07:55 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 15:32:37 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:16:41 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, int n)
 {
 	int	i;
 
-	if (!dst && !src)
+	if (!dst || !src)
 		return (NULL);
 	i = -1;
 	while (++i < n)
