@@ -17,7 +17,7 @@ void	copy_at_index (void *dst, void *src, int index)
 	*(char *)(dst + index) = *(char *)(src + index);
 }
 
-void	*ft_memmove(void *dst, void *src, int len)
+void	*ft_memmove(void *dst, const void *src, int len)
 {
 	int	i;
 
