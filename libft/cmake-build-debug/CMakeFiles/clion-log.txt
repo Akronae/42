@@ -1,1 +1,0 @@
-CMakeLists.txt not found in C:\Users\alexr\prog\42\libft Select CMakeLists.txt

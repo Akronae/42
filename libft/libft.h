@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 15:37:41 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/08 19:02:09 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void	*ft_memset(void *dst, int copied_char, int len);
 void	ft_bzero(void *dst, int n);
 void	*ft_memcpy(void *dst, const void *src, int n);
 int		ft_isprint(int c);
+void	*ft_memchr(const void *s, int c, int n);
+int		ft_memcmp(const void *s1, const void *s2, int n);
 
 #endif //LIBFT_H
