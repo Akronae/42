@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 19:02:09 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/13 12:45:28 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+int		ft_strlcat(char *dst, const char *src, int size);
+int		ft_strlcpy(char *dst, const char *src, int size);
 
 #endif //LIBFT_H
