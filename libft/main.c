@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "./libft.h"
 
 #define p(x) {\
@@ -18,8 +19,6 @@ p_nonl("]");\
 }
 
 int main() {
-	char* src = "lalala";
-	char* dst = "oohhoho";
-	ft_strlcat(dst, src, 4);
+	p(atoi("+++++999999999999999999999999999999999999"))
     return 0;
 }
