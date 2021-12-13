@@ -6,11 +6,10 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:29:33 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 13:29:33 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/13 13:40:16 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 int	ft_strlcat(char *dst, const char *src, int size)

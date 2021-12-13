@@ -18,6 +18,8 @@ p_nonl("]");\
 }
 
 int main() {
-    p(ft_isalpha('0'))
+	char* src = "lalala";
+	char* dst = "oohhoho";
+	ft_strlcat(dst, src, 4);
     return 0;
 }
