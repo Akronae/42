@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 12:45:28 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/13 13:44:45 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_strlcat(char *dst, const char *src, int size);
 int		ft_strlcpy(char *dst, const char *src, int size);
+char	*ft_strnstr(const char *haystack, const char *needle, int len);
 
 #endif //LIBFT_H
