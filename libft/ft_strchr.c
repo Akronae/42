@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 19:02:47 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 19:02:47 by adaubric         ###   ########.fr       */
+/*   Created: 2021/12/13 12:22:01 by adaubric          #+#    #+#             */
+/*   Updated: 2021/12/13 12:32:55 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, int n)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
+	if (!s)
+		return (NULL);
 	i = -1;
-	while (++i < n)
+	while (s[++i])
 	{
-		if (*(unsigned char *)(s1 + i) != *(unsigned char *)(s2 + i))
-			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
 	}
-	return (0);
+	return (NULL);
 }
