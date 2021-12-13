@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 12:23:05 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 12:58:56 by adaubric         ###   ########.fr       */
+/*   Created: 2021/12/13 13:29:33 by adaubric          #+#    #+#             */
+/*   Updated: 2021/12/13 13:29:33 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strlcat(char *dst, const char *src, int size)
 {
 	int	i;
+	int	dst_len;
+	int	src_len;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	i = 0;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dst_len < size - 1 && size > 0)
 	{
-		if (s[i] == (char) c)
-			return ((char *)(s + i));
-		i--;
+		while (src[i] && dst_len + i < size - 1)
+		{
+			dst[dst_len + i] = src[i];
+			i++;
+		}
+		dst[dst_len + i] = 0;
 	}
-	return (NULL);
+	if (dst_len >= size)
+		dst_len = size;
+	return (dst_len + src_len);
 }
