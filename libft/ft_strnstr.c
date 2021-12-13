@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:07:52 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 14:08:34 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/13 14:14:37 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, int len)
 	int	i;
 	int	j;
 
-	if (!haystack && !needle && len)
-		return (NULL);
 	if (!needle || !needle[0])
 		return ((char *) haystack);
 	i = 0;
