@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:50:17 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 15:43:30 by adaubric         ###   ########.fr       */
+/*   Updated: 2021/12/13 16:07:59 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	int		i;
-	int		sign;
-	int	res;
+	int				i;
+	int				sign;
+	unsigned int	res;
 
 	i = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' ||
