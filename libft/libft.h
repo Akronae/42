@@ -36,5 +36,8 @@ int		ft_strlcat(char *dst, const char *src, int size);
 int		ft_strlcpy(char *dst, const char *src, int size);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
 int		ft_atoi(const char *str);
+void	*ft_calloc(int count, int size);
+char	*ft_strdup(const char *s1);
+
 
 #endif //LIBFT_H

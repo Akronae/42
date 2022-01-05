@@ -19,8 +19,8 @@ void	*ft_memchr(const void *s, int c, int n)
 	i = -1;
 	while (++i < n)
 	{
-		if (*(unsigned char *)(s + i) == (unsigned char)c)
-			return ((void *)(s + i));
+		if (*(unsigned char *)((unsigned char *)s + i) == (unsigned char)c)
+			return ((void *)((unsigned char *)s + i));
 	}
 	return (NULL);
 }

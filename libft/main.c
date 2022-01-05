@@ -19,6 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	p(atoi("+2147483649"))
+	int *d1 = ft_calloc(10, sizeof(int));
+	int *d2 = calloc(10, sizeof(int));
     return 0;
 }

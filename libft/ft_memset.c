@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:01:54 by adaubric          #+#    #+#             */
-/*   Updated: 2021/11/28 17:05:38 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/05 15:05:30 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void	*ft_memset(void *dst, int copied_char, int len)
 {
 	char	*p;
+	int		i;
 
 	p = (char *)dst;
-	while (len > 0)
+	i = -1;
+	while (++i < len)
 	{
-		p[len - 1] = copied_char;
-		len--;
+		p[i] = copied_char;
 	}
 	return (dst);
 }
