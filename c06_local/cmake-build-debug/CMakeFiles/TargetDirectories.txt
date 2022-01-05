@@ -1,0 +1,3 @@
+/Users/adaubric/proj/c06_local/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/adaubric/proj/c06_local/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/adaubric/proj/c06_local/cmake-build-debug/CMakeFiles/c06_local.dir

@@ -1,0 +1,4 @@
+/Users/adaubric/Documents/Apps/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/adaubric/proj/rush-02
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/adaubric/proj/rush-02/cmake-build-debug
