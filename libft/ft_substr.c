@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/08 15:07:55 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/06 12:35:40 by adaubric         ###   ########.fr       */
+/*   Created: 2022/01/06 12:27:10 by adaubric          #+#    #+#             */
+/*   Updated: 2022/01/06 12:29:45 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memccpy(void *dst, const void *src, int c, int n)
+char	*ft_substr(char const *s, unsigned int start, int len)
 {
-	int	i;
+	int		i;
+	char	*str;
 
-	if (!dst && !src && n)
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!str)
 		return (NULL);
-	i = -1;
-	while (++i < n)
+	i = start;
+	while (s[i] && i < len)
 	{
-		*((unsigned char *)dst + i) = *((unsigned char *)src + i);
-		if (*((unsigned char *)src + i) == (unsigned char) c)
-			return ((unsigned char *)dst + i + 1);
+		str[i - start] = s[i];
+		i++;
 	}
-	return (NULL);
+	str[i - start] = 0;
+	return (str);
 }
