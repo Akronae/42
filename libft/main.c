@@ -19,7 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	char **res = ft_split("hey olaollala! alala   ", ' ');
+	char **res = ft_split("       hey olaollala! alala", ' ');
 	//p(res[0])
     return 0;
 }

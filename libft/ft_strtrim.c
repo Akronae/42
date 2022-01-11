@@ -6,12 +6,11 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:03:12 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 12:03:12 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:17:46 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static int	str_include(char c, char const *str)
 {

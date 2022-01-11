@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 13:04:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:53:19 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,18 @@ char	**ft_split(char const *s, char c)
 	while (TRUE)
 	{
 		index_of_separator = str_index_of(s, charset);
+		if (index_of_separator == 0)
+		{
+			s++;
+			continue;
+		}
 		if (index_of_separator == INDEX_NOT_FOUND)
 			break ;
 		arr[++arr_i] = substr(s, 0, index_of_separator);
-		s += index_of_separator + 1;
+		s += index_of_separator;
 	}
-	arr[++arr_i] = (char *)s;
+	if (s[0])
+		arr[++arr_i] = (char *)s;
 	arr[++arr_i] = NULL;
 	return (arr);
 }
