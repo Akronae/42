@@ -77,7 +77,7 @@ char	**ft_split(char const *s, char c)
 		arr[++arr_i] = substr(s, 0, index_of_separator);
 		s += index_of_separator + 1;
 	}
-	arr[++arr_i] = s;
+	arr[++arr_i] = (char *)s;
 	arr[++arr_i] = NULL;
 	return (arr);
 }
