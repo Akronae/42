@@ -28,5 +28,5 @@ int	ft_strlcpy(char *dst, const char *src, int size)
 	}
 	while (src[i])
 		i++;
-	return (i);
+	return ft_strlen(src);
 }
