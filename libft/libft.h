@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/06 12:37:44 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/11 12:28:09 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, int len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
-char	**ft_split(char *str, char *charset);
-
+char	**ft_split(char const *s, char c);
 
 #endif //LIBFT_H

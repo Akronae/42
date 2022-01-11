@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./libft.h"
+#include "libft.h"
 
 #define p(x) {\
 printf(_Generic(x, unsigned: "%u\n", signed: "%d\n", double: "%g\n", long int: "%ld\n", long long int: "%lld\n", unsigned long: "%lu\n", unsigned long long int: "%llu\n", char: "%c\n", char *: "%s\n"), x);\
@@ -19,7 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	int *d1 = ft_calloc(10, sizeof(int));
-	int *d2 = calloc(10, sizeof(int));
+	char **res = ft_split("hey olaollala! alala   ", ' ');
+	//p(res[0])
     return 0;
 }

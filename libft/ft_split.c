@@ -6,14 +6,14 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 12:18:46 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:04:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int	str_index_of(char *str, char *substr)
+int	str_index_of(char const *str, char const *substr)
 {
 	int	i;
 	int	substr_i;
@@ -36,7 +36,7 @@ int	str_index_of(char *str, char *substr)
 	return (INDEX_NOT_FOUND);
 }
 
-char	*substr(char *str, int from, int to)
+char	*substr(char const *str, int from, int to)
 {
 	int		i;
 	char	*rtrn;
@@ -55,27 +55,29 @@ char	*substr(char *str, int from, int to)
 	return (rtrn);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char const *s, char c)
 {
 	int		max_arr_size;
 	char	**arr;
 	int		arr_i;
 	int		index_of_separator;
+	char	*charset;
 
+	charset = ft_strdup(&c);
 	if (ft_strlen(charset) < 1)
 		return (malloc(sizeof(0)));
-	max_arr_size = ft_strlen(str) / ft_strlen(charset);
+	max_arr_size = ft_strlen(s) / ft_strlen(charset);
 	arr = malloc(sizeof(int) * max_arr_size + sizeof(0));
 	arr_i = -1;
 	while (TRUE)
 	{
-		index_of_separator = str_index_of(str, charset);
+		index_of_separator = str_index_of(s, charset);
 		if (index_of_separator == INDEX_NOT_FOUND)
 			break ;
-		arr[++arr_i] = substr(str, 0, index_of_separator);
-		str += index_of_separator + 1;
+		arr[++arr_i] = substr(s, 0, index_of_separator);
+		s += index_of_separator + 1;
 	}
-	arr[++arr_i] = str;
-	arr[++arr_i] = 0;
+	arr[++arr_i] = s;
+	arr[++arr_i] = NULL;
 	return (arr);
 }
