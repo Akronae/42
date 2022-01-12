@@ -16,7 +16,7 @@
 static size_t	ft_abs(int n)
 {
 	if (n < 0)
-		return (-n);
+		return (n * -1L);
 	return (n);
 }
 
@@ -56,11 +56,14 @@ char	*ft_itoa(int n)
 {
 	size_t	num;
 	int	digits_count;
-	char	*str = malloc(12);
+	char	*str;
 	int 	str_i;
 
 	num = ft_abs(n);
 	digits_count = ft_count_digits(num);
+	str = malloc(sizeof(char) * (digits_count + (ft_abs(n) != (unsigned long)n) + 1));
+	if (!str)
+		return (NULL);
 	str_i = -1;
 	if (n < 0)
 		str[++str_i] = '-';
@@ -69,6 +72,7 @@ char	*ft_itoa(int n)
 		str[++str_i] = (num / (ft_pow(10, --digits_count))) % 10 + '0';
 	}
 	str[++str_i] = '\0';
+
 
 	return (str);
 }

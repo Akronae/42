@@ -19,7 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	ft_itoa(-2147483648);
+	ft_itoa(0);
 
     return 0;
 }
