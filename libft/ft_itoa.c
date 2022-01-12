@@ -6,14 +6,14 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:00:30 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/12 13:05:53 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:40:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	ft_abs(int n)
+static size_t	ft_abs(int n)
 {
 	if (n < 0)
 		return (-n);
@@ -37,15 +37,16 @@ static int ft_pow(int base, int exp)
 
 static int	ft_count_digits(int n)
 {
+	size_t num;
 	int count;
 
+	num = ft_abs(n);
 	count = 0;
-	n = ft_abs(n);
 	if (n == 0)
 		return (1);
-	while (n > 0)
+	while (num > 0)
 	{
-		n /= 10;
+		num /= 10;
 		count += 1;
 	}
 	return (count);
@@ -53,18 +54,19 @@ static int	ft_count_digits(int n)
 
 char	*ft_itoa(int n)
 {
+	size_t	num;
 	int	digits_count;
 	char	*str = malloc(12);
 	int 	str_i;
 
-	digits_count = ft_count_digits(n);
+	num = ft_abs(n);
+	digits_count = ft_count_digits(num);
 	str_i = -1;
 	if (n < 0)
 		str[++str_i] = '-';
-	n = ft_abs(n);
 	while (digits_count > 0)
 	{
-		str[++str_i] = (n / (ft_pow(10, --digits_count))) % 10 + '0';
+		str[++str_i] = (num / (ft_pow(10, --digits_count))) % 10 + '0';
 	}
 	str[++str_i] = '\0';
 
