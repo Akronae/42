@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 13:27:32 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 13:27:32 by adaubric         ###   ########.fr       */
+/*   Created: 2022/01/12 11:37:01 by adaubric          #+#    #+#             */
+/*   Updated: 2022/01/12 11:37:01 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, const char *src, int size)
+char	*ft_char_to_str(char c)
 {
-	int	i;
+	char	*str;
 
-	i = 0;
-	if (size > 0)
-	{
-		while (src[i] && i < (size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = 0;
-	}
-	while (src[i])
-		i++;
-	return (i);
+	str = (char *)malloc(sizeof(c) * 1 + sizeof('\0'));
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }

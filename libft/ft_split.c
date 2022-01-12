@@ -6,14 +6,14 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 13:53:19 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:55:42 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-int	str_index_of(char const *str, char const *substr)
+static int	str_index_of(char const *str, char const *substr)
 {
 	int	i;
 	int	substr_i;
@@ -36,7 +36,7 @@ int	str_index_of(char const *str, char const *substr)
 	return (INDEX_NOT_FOUND);
 }
 
-char	*substr(char const *str, int from, int to)
+static char	*substr(char const *str, int from, int to)
 {
 	int		i;
 	char	*rtrn;
@@ -63,7 +63,7 @@ char	**ft_split(char const *s, char c)
 	int		index_of_separator;
 	char	*charset;
 
-	charset = ft_strdup(&c);
+	charset = ft_char_to_str(c);
 	if (ft_strlen(charset) < 1)
 		return (malloc(sizeof(0)));
 	max_arr_size = ft_strlen(s) / ft_strlen(charset);
