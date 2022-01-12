@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:07:53 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 12:38:34 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/12 12:46:13 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int		ft_strlcpy(char *dst, const char *src, int size);
 char	*ft_strnstr(const char *haystack, const char *needle, int len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(int count, int size);
-char	*ft_char_to_str(char c);
 char	*ft_strdup(const char *s1);
-char	*ft_substr(char const *s, unsigned int start, int len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	*ft_itoa(int n);
 
 #endif //LIBFT_H

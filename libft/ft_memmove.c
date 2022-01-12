@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	copy_at_index(void *dst, const void *src, int index)
+static void	copy_at_index(void *dst, const void *src, int index)
 {
 	*((char *)dst + index) = *((char *)src + index);
 }

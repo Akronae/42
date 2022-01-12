@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/11 13:55:42 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/12 11:38:18 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static char	*substr(char const *str, int from, int to)
 	}
 	rtrn[i] = 0;
 	return (rtrn);
+}
+
+static char	*ft_char_to_str(char c)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(c) * 1 + sizeof('\0'));
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
 }
 
 char	**ft_split(char const *s, char c)

@@ -19,8 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	char src[] = "hey";
-	char dst[10];
+	ft_itoa(-12343);
 
     return 0;
 }

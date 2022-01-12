@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_substr(char const *s, unsigned int start, int len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	char		*str;
@@ -27,7 +27,7 @@ char	*ft_substr(char const *s, unsigned int start, int len)
         return (str);
     }
 	i = 0;
-	while (s[i + start] && i < (unsigned int)len)
+	while (s[i + start] && i < len)
 	{
 		str[i] = s[i + start];
 		i++;
