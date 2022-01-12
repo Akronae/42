@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:00:30 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/12 12:57:07 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:05:53 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		str[++str_i] = '-';
 	n = ft_abs(n);
-	while (digits_count >= 0)
+	while (digits_count > 0)
 	{
 		str[++str_i] = (n / (ft_pow(10, --digits_count))) % 10 + '0';
 	}
