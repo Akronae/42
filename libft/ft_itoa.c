@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:00:30 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/12 12:55:54 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/12 12:57:07 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,6 @@ char	*ft_itoa(int n)
 		str[++str_i] = (n / (ft_pow(10, --digits_count))) % 10 + '0';
 	}
 	str[++str_i] = '\0';
+
+	return (str);
 }
