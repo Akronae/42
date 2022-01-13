@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/12 11:38:18 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/13 10:57:53 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,6 @@ char	**ft_split(char const *s, char c)
 	int		index_of_separator;
 	char	*charset;
 
-	if (!s)
-		return (NULL);
 	charset = ft_char_to_str(c);
 	if (ft_strlen(charset) < 1)
 		return (malloc(sizeof(0)));
