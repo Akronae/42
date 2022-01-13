@@ -72,7 +72,5 @@ char	*ft_itoa(int n)
 		str[++str_i] = (num / (ft_pow(10, --digits_count))) % 10 + '0';
 	}
 	str[++str_i] = '\0';
-
-
 	return (str);
 }
