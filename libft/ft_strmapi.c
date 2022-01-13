@@ -11,13 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;
 	size_t	i;
 
-	if (!(str = ft_strdup(s)))
+	if (!s)
+		return (NULL);
+	str = ft_strdup(s);
+	if (!str)
 		return (NULL);
 	i = -1;
 	while (str[++i])
