@@ -6,11 +6,25 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 14:50:17 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/13 11:56:18 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/13 12:05:11 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_is_blank(char c)
+{
+	return (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ');
+}
+
+static int	ft_get_extreme_return(int sign)
+{
+	if (sign == 1)
+		return (-1);
+	else
+		return (0);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -19,8 +33,7 @@ int	ft_atoi(const char *str)
 	unsigned int	res;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		   || str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (ft_is_blank(str[i]))
 		i++;
 	sign = 1;
 	while (str[i] == '-' || str[i] == '+' || str[i] == ' ')
@@ -36,12 +49,7 @@ int	ft_atoi(const char *str)
 	{
 		res = (res * 10) + (str[i++] - '0');
 		if ((sign == 1 && res > 2147483647) || (sign == -1 && res > 2147483648))
-		{
-			if (sign == 1)
-				return (-1);
-			else
-				return (0);
-		}
+			return (ft_get_extreme_return(sign));
 	}
 	return (res * sign);
 }

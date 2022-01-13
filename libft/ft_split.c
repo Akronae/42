@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:18:15 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/13 10:57:53 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/13 12:18:22 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,28 +65,30 @@ static char	*ft_char_to_str(char c)
 	return (str);
 }
 
+static void	ft_initialize_vars(char ***arr, int *arr_i, int max_arr_size)
+{
+	*arr = malloc(sizeof(int) * max_arr_size + sizeof(0));
+	*arr_i = -1;
+}
+
 char	**ft_split(char const *s, char c)
 {
-	int		max_arr_size;
 	char	**arr;
 	int		arr_i;
 	int		index_of_separator;
 	char	*charset;
 
+	if (!s)
+		return (NULL);
 	charset = ft_char_to_str(c);
 	if (ft_strlen(charset) < 1)
 		return (malloc(sizeof(0)));
-	max_arr_size = ft_strlen(s) / ft_strlen(charset);
-	arr = malloc(sizeof(int) * max_arr_size + sizeof(0));
-	arr_i = -1;
+	ft_initialize_vars(&arr, &arr_i, ft_strlen(s) / ft_strlen(charset));
 	while (TRUE)
 	{
 		index_of_separator = str_index_of(s, charset);
-		if (index_of_separator == 0)
-		{
-			s++;
-			continue;
-		}
+		if (index_of_separator == 0 && s++)
+			continue ;
 		if (index_of_separator == INDEX_NOT_FOUND)
 			break ;
 		arr[++arr_i] = substr(s, 0, index_of_separator);

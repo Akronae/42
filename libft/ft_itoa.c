@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 12:00:30 by adaubric          #+#    #+#             */
-/*   Updated: 2022/01/12 13:40:10 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/01/13 12:07:26 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static size_t	ft_abs(int n)
 	return (n);
 }
 
-static int ft_pow(int base, int exp)
+static int	ft_pow(int base, int exp)
 {
-	int n;
+	int	n;
 
 	n = base;
 	if (exp == 0)
@@ -37,8 +37,8 @@ static int ft_pow(int base, int exp)
 
 static int	ft_count_digits(int n)
 {
-	size_t num;
-	int count;
+	size_t	num;
+	int		count;
 
 	num = ft_abs(n);
 	count = 0;
@@ -55,13 +55,14 @@ static int	ft_count_digits(int n)
 char	*ft_itoa(int n)
 {
 	size_t	num;
-	int	digits_count;
+	int		digits_count;
 	char	*str;
-	int 	str_i;
+	int		str_i;
 
 	num = ft_abs(n);
 	digits_count = ft_count_digits(num);
-	str = malloc(sizeof(char) * (digits_count + (ft_abs(n) != (unsigned long)n) + 1));
+	str = malloc(sizeof(char)
+			* (digits_count + (ft_abs(n) != (unsigned long)n) + 1));
 	if (!str)
 		return (NULL);
 	str_i = -1;
