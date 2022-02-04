@@ -19,7 +19,7 @@ p_nonl("]");\
 }
 
 int main() {
-	ft_itoa(0);
+	ft_split("\0aa\0bbb", '\0');
 
     return 0;
 }
