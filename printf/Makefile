@@ -1,66 +1,40 @@
-LIBFT = ./libft/libft.a
+# ************************************************************************** #
+#                                                                            #
+#                                                        :::      ::::::::   #
+#   Makefile                                           :+:      :+:    :+:   #
+#                                                    +:+ +:+         +:+     #
+#   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
+#                                                +#+#+#+#+#+   +#+           #
+#   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
+#   Updated: 202#   Updated: 2022/02/04 14:14:34 by adaubric         ###   ########.fr       #                                                              #
+# ************************************************************************** #
 
-N_TEMP = temp.a
+SRCS			=	src/ft_printf.c
 
-NAME = libftprintf.a
+HEADERS			=	src/ft_printf.h
 
-SRCS =  ft_printf.c \
-		sources/ft_treatment.c \
-		sources/ft_treat_width.c \
-		sources/ft_u_itoa.c \
-		sources/ft_ull_base.c \
-		sources/ft_putchar.c \
-		sources/ft_str_tolower.c \
-		sources/ft_putstrprec.c \
-		sources/ft_treat_string.c \
-		sources/ft_treat_char.c \
-		sources/ft_treat_pointer.c \
-		sources/ft_treat_int.c \
-		sources/ft_treat_uint.c \
-		sources/ft_treat_percent.c \
-		sources/ft_treat_hexa.c \
-		sources/ft_treat_flags.c
+OBJS			= $(SRCS:.c=.o)
 
-SURPL_O = 	ft_treat_width.o \
-			ft_treatment.o \
-			ft_treat_width.o \
-			ft_u_itoa.o \
-			ft_ull_base.o \
-			ft_putchar.o \
-			ft_str_tolower.o \
-			ft_putstrprec.o \
-			ft_treat_string.o \
-			ft_treat_char.o \
-			ft_treat_pointer.o \
-			ft_treat_int.o \
-			ft_treat_uint.o \
-			ft_treat_percent.o \
-			ft_treat_hexa.o \
-			ft_treat_flags.o
+CC				= gcc
+RM				= rm -r -f
+CFLAGS			= -Wall -Wextra -Werror
 
-CC = gcc
+NAME			= libftprintf.a
 
-FLAGS = -c -Wall -Wextra -Werror
+all:			$(NAME)
 
-INCLUDES = -I./includes
+$(NAME):		$(OBJS) $(HEADERS)
+				ar rcs $(NAME) $(OBJS)
 
-OBJS = $(SRCS:.c=.o)
+clean:
+				$(RM) $(OBJS)
 
-$(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
-	ar -rcs $(NAME) $(OBJS)
+fclean:			clean
+				$(RM) $(NAME)
 
-all : $(NAME)
+re:				fclean $(NAME)
 
-clean :
-	$(MAKE) clean -C ./libft
-	rm -rf $(SURPL_O)
-	rm -rf $(OBJS)
+bonus:			$(OBJS)
+				ar rcs $(NAME) $(OBJS)
 
-fclean : clean
-	$(MAKE) fclean -C ./libft
-	rm -rf $(NAME)
-
-re : fclean all
+.PHONY:			all clean fclean re bonus
