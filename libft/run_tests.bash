@@ -1,0 +1,1 @@
+make re && clang -g3 -fsanitize=address tests.c libft.a && ./a.out
