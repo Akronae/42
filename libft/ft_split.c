@@ -69,15 +69,6 @@ static char	*ft_char_to_str(char c)
 	return (str);
 }
 
-//static void	ft_initialize_vars(char ***arr, int *arr_i, int max_arr_size)
-//{
-//	*arr = malloc(sizeof(int) * max_arr_size + sizeof(0));
-//	if (!*arr)
-//		return ;
-//	*arr_i = -1;
-//ft_initialize_vars(&arr, &arr_i, ft_strlen(s) / ft_strlen(charset));
-//}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
@@ -87,9 +78,9 @@ char	**ft_split(char const *s, char c)
 
 	charset = ft_char_to_str(c);
 	arr = malloc(sizeof(int) * (ft_strlen(s) / ft_strlen(charset)) + sizeof(0));
-	arr_i = -1;
 	if (!s || !arr || ft_strlen(charset) < 1)
 		return (ft_calloc(sizeof(char *), 2));
+	arr_i = -1;
 	while (TRUE)
 	{
 		index_of_separator = str_index_of(s, charset);
