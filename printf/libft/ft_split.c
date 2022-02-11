@@ -45,7 +45,9 @@ static char	*substr(char const *str, int from, int to)
 		from = 0;
 	if (to > ft_strlen(str))
 		to = ft_strlen(str);
-	rtrn = malloc(sizeof(char) * (to - from));
+	rtrn = malloc(sizeof(char) * (to - from) + sizeof('\0'));
+	if (!rtrn)
+		return (NULL);
 	i = -1;
 	while (from + ++i < to)
 	{
@@ -60,15 +62,11 @@ static char	*ft_char_to_str(char c)
 	char	*str;
 
 	str = (char *)malloc(sizeof(c) * 1 + sizeof('\0'));
+	if (!str)
+		return (NULL);
 	str[0] = c;
 	str[1] = '\0';
 	return (str);
-}
-
-static void	ft_initialize_vars(char ***arr, int *arr_i, int max_arr_size)
-{
-	*arr = malloc(sizeof(int) * max_arr_size + sizeof(0));
-	*arr_i = -1;
 }
 
 char	**ft_split(char const *s, char c)
@@ -78,12 +76,11 @@ char	**ft_split(char const *s, char c)
 	int		index_of_separator;
 	char	*charset;
 
-	if (!s)
-		return (NULL);
 	charset = ft_char_to_str(c);
-	if (ft_strlen(charset) < 1)
-		return (malloc(sizeof(0)));
-	ft_initialize_vars(&arr, &arr_i, ft_strlen(s) / ft_strlen(charset));
+	arr = malloc(sizeof(int) * (ft_strlen(s) / ft_strlen(charset)) + sizeof(0));
+	if (!s || !arr || ft_strlen(charset) < 1)
+		return (ft_calloc(sizeof(char *), 2));
+	arr_i = -1;
 	while (TRUE)
 	{
 		index_of_separator = str_index_of(s, charset);
@@ -95,7 +92,8 @@ char	**ft_split(char const *s, char c)
 		s += index_of_separator;
 	}
 	if (s[0])
-		arr[++arr_i] = (char *)s;
+		arr[++arr_i] = ft_strdup((char *)s);
 	arr[++arr_i] = NULL;
+	free(charset);
 	return (arr);
 }

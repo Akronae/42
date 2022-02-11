@@ -3,6 +3,6 @@
 
 int main() {
     printf("Hello, World!\n");
-	ft_printf(" %c laaa %s f %o", "jaaaaaa", "lalalalala");
+	ft_printf("%cassd\n", 'd', "lalalalala");
     return 0;
 }

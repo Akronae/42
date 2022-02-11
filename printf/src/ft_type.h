@@ -13,11 +13,16 @@
 #ifndef FT_TYPE_H
 # define FT_TYPE_H
 
-typedef enun	t_type {
+typedef enum	t_type {
 	CHAR,
+	STRING,
+	POINTER,
+	DECIMAL,
 	INT,
+	U_DECIMAL,
+	HEXADECIMAL,
 	FLOAT,
 	DOUBLE
-}
+} t_type;
 
 #endif

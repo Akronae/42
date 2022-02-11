@@ -63,5 +63,17 @@ int main() {
 	printfree(s7)
 	printfree(s8)
 
+	int i0 = ft_atoi("86876878");
+	int i1 = ft_atoi("-86876878");
+	int i2 = ft_atoi("");
+	printf("%i\n", i0);
+	printf("%i\n", i1);
+	printf("%i\n", i2);
+
+	int* ptr0 = ft_calloc(3, sizeof(int));
+	ft_bzero(ptr0, 3);
+	free(ptr0);
+
+
 	return 0;
 }
