@@ -6,8 +6,8 @@ PUBLISH_DIR="../$(basename "$PWD")_final"
 if [ ! -z "$1" ]; then
   PUBLISH_DIR=$1;
 fi;
-#rm -rf $PUBLISH_DIR
-#mkdir $PUBLISH_DIR
+rm -rf $PUBLISH_DIR
+mkdir $PUBLISH_DIR
 
 cp -r Makefile $PUBLISH_DIR/
 cp -r libft.h $PUBLISH_DIR/
