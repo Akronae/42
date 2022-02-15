@@ -6,39 +6,36 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 17:18:08 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/08 18:57:00 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/15 08:46:36 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	copy_at_index(void *dst, const void *src, int index)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	*((char *)dst + index) = *((char *)src + index);
-}
+	unsigned char		*dp;
+	const unsigned char	*sp;
 
-void	*ft_memmove(void *dst, const void *src, int len)
-{
-	int	i;
-
-	if (!dst && !src)
-		return (NULL);
-	if (dst > src)
+	if (!dest && !src)
+		return (0);
+	if (dest > src)
 	{
-		i = (int) len - 1;
-		while (i >= 0)
+		dp = dest + n;
+		sp = src + n;
+		while (n-- > 0)
 		{
-			copy_at_index(dst, src, i);
-			i--;
+			*--dp = *--sp;
 		}
 	}
 	else
 	{
-		i = -1;
-		while (++i < len)
+		dp = dest;
+		sp = src;
+		while (n-- > 0)
 		{
-			copy_at_index(dst, src, i);
+			*dp++ = *sp++;
 		}
 	}
-	return (dst);
+	return (dest);
 }

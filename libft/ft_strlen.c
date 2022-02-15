@@ -6,15 +6,15 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 16:56:41 by adaubric          #+#    #+#             */
-/*   Updated: 2021/11/28 16:56:42 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/11 14:48:57 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-	int	i;
+	size_t	i;
 
 	if (!s)
 		return (0);

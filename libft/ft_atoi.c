@@ -18,38 +18,22 @@ static int	ft_is_blank(char c)
 		|| c == '\f' || c == '\r' || c == ' ');
 }
 
-static int	ft_get_extreme_return(int sign)
-{
-	if (sign == 1)
-		return (-1);
-	else
-		return (0);
-}
-
 int	ft_atoi(const char *str)
 {
-	int				i;
-	int				sign;
-	unsigned int	res;
+	int			sign;
+	long long	nb;
 
-	i = 0;
-	while (ft_is_blank(str[i]))
-		i++;
 	sign = 1;
-	while (str[i] == '-' || str[i] == '+' || str[i] == ' ')
+	while (ft_is_blank(*str))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
+		if (*str == '-')
 			sign = -1;
-		else if (str[i] == '+')
-			sign = 1;
-		i++;
+		str++;
 	}
-	res = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i++] - '0');
-		if ((sign == 1 && res > 2147483647) || (sign == -1 && res > 2147483648))
-			return (ft_get_extreme_return(sign));
-	}
-	return (res * sign);
+	nb = 0;
+	while (ft_isdigit(*str))
+		nb = nb * 10 + (*str++ - '0');
+	return ((int)(nb * sign));
 }

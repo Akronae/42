@@ -34,6 +34,7 @@ int main() {
 	free(s1);
 
 	char **s2 = ft_split("je suis un test", ' ');
+	char **s9 = ft_split("", 'w');
 	printf("0: %s\n", s2[0]);
 	printf("1: %s\n", s2[1]);
 	printf("2: %s\n", s2[2]);
@@ -43,6 +44,7 @@ int main() {
 	free(s2[2]);
 	free(s2[3]);
 	free(s2);
+	free(s9);
 
 	char *s3 = ft_strtrim("   test    ", " ");
 	printf("%s\n", s3);
