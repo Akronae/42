@@ -6,15 +6,15 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 13:27:32 by adaubric          #+#    #+#             */
-/*   Updated: 2021/12/13 13:27:32 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/17 15:14:18 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, const char *src, int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	if (size > 0)

@@ -19,16 +19,16 @@ HEADERS			=	libft.h
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= clang
+CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
 NAME			= libft.a
 
-all:			$(NAME)
-
 $(NAME):		$(OBJS) $(HEADERS)
 				ar rcs $(NAME) $(OBJS)
+
+all:			$(NAME)
 
 clean:
 				$(RM) $(OBJS)

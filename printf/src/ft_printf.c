@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/04 15:13:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/17 14:51:51 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,61 +18,10 @@
 #include <stdio.h>
 #include "ft_boolean.h"
 #include "ft_link.h"
-
-t_link *ft_get_first_element(t_link *list)
-{
-	while (list->prev)
-	{
-		list = list->prev;
-	}
-	return list;
-}
-
-void ft_list_push(t_link **list)
-{
-	t_link *new_elem = malloc(sizeof(t_link));
-	new_elem->prev = NULL;
-	new_elem->next = NULL;
-	new_elem->data = NULL;
-	if (!*list)
-	{
-		*list = new_elem;
-		return;
-	}
-	(*list)->next = new_elem;
-	new_elem->prev = *list;
-	*list = new_elem;
-
-}
-
-void ft_free_list(t_link *list)
-{
-	t_link *temp;
-	list = ft_get_first_element(list);
-	while (list)
-	{
-		temp = list;
-		list = list->next;
-		free(temp->data);
-		free(temp);
-	}
-}
-
-size_t ft_list_len(t_link *list)
-{
-	list = ft_get_first_element(list);
-	size_t len;
-
-	len = 0;
-	while (TRUE)
-	{
-		len++;
-		if (!list->next)
-			break;
-		list = list->next;
-	}
-	return (len);
-}
+#include "ft_list.h"
+#include "ft_iterator.h"
+#include "ft_char.h"
+#include "ft_hex.h"
 
 enum t_type ft_type_from_char(const char c)
 {
@@ -93,40 +42,27 @@ enum t_type ft_type_from_char(const char c)
 	return (-1);
 }
 
-char *ft_char_to_str(char c)
-{
-	char *str;
-
-	str = ft_calloc(2, sizeof(char));
-	if (!str)
-		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
-}
-
 char *ulonglong_to_str(unsigned long long nb)
 {
-	t_link *list = NULL;
+	t_list *list = new_list();
 	while (nb)
 	{
-		ft_list_push(&list);
-		list->data = malloc(sizeof(int));
-		*((char *) (list->data)) = nb % 10 + '0';
+		list->push_char(list, nb % 10 + '0');
 		nb /= 10;
 	}
-	char *str = malloc(sizeof(char) * (ft_list_len(list) + 1));
+	char *str = malloc(sizeof(char) * (list->length + 1));
 	size_t i = 0;
+	t_link *elem = list->last_element;
 	while (TRUE)
 	{
-		str[i] = *((char *) list->data);
+		str[i] = *((char *) elem->data);
 		i++;
-		if (!list->prev)
+		if (!elem->prev)
 			break;
-		list = list->prev;
+		elem = elem->prev;
 	}
 	str[i] = '\0';
-	ft_free_list(list);
+	list->free(list);
 	return str;
 }
 
@@ -142,49 +78,38 @@ char *ft_arg_to_str(va_list args, enum t_type type)
 	if (type == STRING)
 		str = ft_strdup(va_arg(args, char *));
 	if (type == POINTER)
-		str = ulonglong_to_str(va_arg(args, unsigned long long));
+		str = ft_hex_str_from_ull(va_arg(args, unsigned long long));
 	return (str);
-}
-
-char *char_to_str (char c)
-{
-	char *str = malloc(2);
-	str[0] = c;
-	str[1] = '\0';
-	return str;
 }
 
 int	ft_printf(const char *input, ...)
 {
 	va_list		args;
 	int i = -1;
-	t_link *a;
+	t_list *a = new_list();
 
 	va_start(args, input);
 	while (input[++i])
 	{
-		ft_list_push(&a);
-
 		if (input[i] == '%')
 		{
-			int type = ft_type_from_char(input[i + 1]);
-			char *str = ft_arg_to_str(args, type);
-			a->data = str;
 			i += 1;
+			t_type type = ft_type_from_char(input[i]);
+			char *str = ft_arg_to_str(args, type);
+			a->push_str(a, str);
 		}
 		else
-			a->data = char_to_str(input[i]);
+			a->push_str(a, ft_char_to_str(input[i]));
 	}
 	va_end(args);
 
-	a = ft_get_first_element(a);
-	while (TRUE)
+	t_iterator *iterator = a->get_iterator(a);
+	while (iterator->current)
 	{
-		ft_putstr_fd(a->data, 0);
-		if (!a->next) break;
-		a = a->next;
+		ft_putstr_fd(iterator->next(iterator), 0);
 	}
-	ft_free_list(a);
+	a->free(a);
+	iterator->free(iterator);
 
 	return (0);
 }

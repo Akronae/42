@@ -1,5 +1,5 @@
 make re
-clang -g3 -fsanitize=address main.c libftprintf.a -o libftprintf_output
+gcc -Wall -Wextra -Werror -g3 -fsanitize=address main.c libftprintf.a -o libftprintf_output
 make fclean
 echo "\n"
 echo "\n"

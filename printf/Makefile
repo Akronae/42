@@ -6,15 +6,17 @@
 #   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
-#   Updated: 202#   Updated: 2022/02/04 14:14:34 by adaubric         ###   ########.fr       #                                                              #
+#   Updated: 202#   Updated: 2022/02/17 14:57:31 by adaubric         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 LIBFT_DIR		= ./src/libft
 LIBFT_NAME		= libft.a
 
-SRCS			=	src/ft_printf.c
+SRCS			=	src/ft_char.c src/ft_hex.c src/ft_link.c src/ft_list.c src/ft_iterator.c src/ft_printf.c \
+					src/ft_str.c
 
-HEADERS			=	src/ft_printf.h
+HEADERS			=	src/ft_boolean.h src/ft_char.h src/ft_hex.h src/ft_link.h src/ft_link.h src/ft_list.h \
+					src/ft_iterator.h src/ft_printf.h src/ft_str.c src/ft_type.h
 
 OBJS			= $(SRCS:.c=.o)
 
