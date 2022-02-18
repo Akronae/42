@@ -12,11 +12,11 @@
 LIBFT_DIR		= ./src/libft
 LIBFT_NAME		= libft.a
 
-SRCS			=	src/ft_char.c src/ft_hex.c src/ft_link.c src/ft_list.c src/ft_iterator.c src/ft_printf.c \
-					src/ft_str.c
+SRCS			=	src/math/ft_math_abs.c src/ft_char.c src/ft_hex.c src/ft_link.c src/ft_list.c src/ft_long.c \
+					src/ft_iterator.c src/ft_printf.c src/ft_str.c
 
-HEADERS			=	src/ft_boolean.h src/ft_char.h src/ft_hex.h src/ft_link.h src/ft_link.h src/ft_list.h \
-					src/ft_iterator.h src/ft_printf.h src/ft_str.c src/ft_type.h
+HEADERS			=	src/math/ft_math.h src/ft_boolean.h src/ft_char.h src/ft_hex.h src/ft_link.h src/ft_link.h \
+					src/ft_list.h src/ft_long.h src/ft_iterator.h src/ft_printf.h src/ft_str.c src/ft_type.h
 
 OBJS			= $(SRCS:.c=.o)
 

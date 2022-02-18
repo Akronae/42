@@ -7,16 +7,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char *ft_hex_str_from_ull(unsigned long long ull)
+char *ft_hex_str_from_nbr(unsigned long long ull)
 {
 	char *base = "0123456789abcdef";
 	t_list *list = new_list();
-	while (ull)
+	while (TRUE)
 	{
 		list->push_str(list, ft_char_to_str(base[ull % 16]));
 		ull /= 16;
+		if (!ull) break;
 	}
-	list->push_str(list, ft_strdup("0x"));
 	list->reverse(list);
 	char *str = list->join(list, "");
 	list->free(list);

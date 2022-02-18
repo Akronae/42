@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/17 14:51:51 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:23:47 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 #include "ft_iterator.h"
 #include "ft_char.h"
 #include "ft_hex.h"
+#include "ft_long.h"
+#include "ft_str.h"
 
-enum t_type ft_type_from_char(const char c)
+enum t_type ft_type_from_char(char c)
 {
 	if (c == 'c')
 		return (CHAR);
@@ -39,31 +41,11 @@ enum t_type ft_type_from_char(const char c)
 		return (U_DECIMAL);
 	if (c == 'x')
 		return (HEXADECIMAL);
+	if (c == 'X')
+		return (UPPER_HEXADECIMAL);
+	if (c == '%')
+		return (PERCENT);
 	return (-1);
-}
-
-char *ulonglong_to_str(unsigned long long nb)
-{
-	t_list *list = new_list();
-	while (nb)
-	{
-		list->push_char(list, nb % 10 + '0');
-		nb /= 10;
-	}
-	char *str = malloc(sizeof(char) * (list->length + 1));
-	size_t i = 0;
-	t_link *elem = list->last_element;
-	while (TRUE)
-	{
-		str[i] = *((char *) elem->data);
-		i++;
-		if (!elem->prev)
-			break;
-		elem = elem->prev;
-	}
-	str[i] = '\0';
-	list->free(list);
-	return str;
 }
 
 char *ft_arg_to_str(va_list args, enum t_type type)
@@ -73,12 +55,26 @@ char *ft_arg_to_str(va_list args, enum t_type type)
 	str = NULL;
 	if (type == CHAR)
 		str = ft_char_to_str(va_arg(args, int));
-	if (type == INT)
-		str = ft_itoa(va_arg(args, int));
+	if (type == INT || type == DECIMAL)
+		str = ft_nbr_to_str(va_arg(args, int));
 	if (type == STRING)
 		str = ft_strdup(va_arg(args, char *));
 	if (type == POINTER)
-		str = ft_hex_str_from_ull(va_arg(args, unsigned long long));
+	{
+		char *hex = ft_hex_str_from_nbr(va_arg(args, unsigned long long));
+		str = ft_strjoin("0x", hex);
+		free(hex);
+	}
+	if (type == U_DECIMAL)
+		str = ft_nbr_to_str(va_arg(args, unsigned int));
+	if (type == HEXADECIMAL || type == UPPER_HEXADECIMAL)
+	{
+		str = ft_hex_str_from_nbr(va_arg(args, unsigned int));
+		if (type == UPPER_HEXADECIMAL)
+			ft_str_to_upper(str);
+	}
+	if (type == PERCENT)
+		str = ft_strdup("%");
 	return (str);
 }
 

@@ -21,8 +21,8 @@ typedef enum	t_type {
 	INT,
 	U_DECIMAL,
 	HEXADECIMAL,
-	FLOAT,
-	DOUBLE
+	UPPER_HEXADECIMAL,
+	PERCENT
 } t_type;
 
 #endif

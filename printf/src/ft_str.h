@@ -14,5 +14,6 @@
 # define FT_STR_H
 
 void		ft_str_append(char *dst,char *src);
+void ft_str_to_upper(char *str);
 
 #endif

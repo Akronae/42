@@ -14,5 +14,7 @@
 # define FT_CHAR_H
 
 char		*ft_char_to_str(char c);
+char	ft_char_to_upper(char c);
+char	ft_char_to_lower(char c);
 
 #endif
