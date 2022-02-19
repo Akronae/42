@@ -25,7 +25,7 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					string/ft_string_to_upper.c
 
 HEADERS			=	libft.h boolean/ft_boolean.h char/ft_char.h hex/ft_hex.h iterator/ft_iterator.h link/ft_link.h \
- 					list/ft_list.h math/ft_math.h number/ft_number.h string/ft_string.h
+ 					list/ft_list.h math/ft_math.h memory/ft_memory.h number/ft_number.h string/ft_string.h
 
 OBJS			= $(SRCS:.c=.o)
 

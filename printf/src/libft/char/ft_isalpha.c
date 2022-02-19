@@ -10,17 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_lower(int c)
-{
-	return (c >= 97 && c <= 122);
-}
+#include "ft_char.h"
 
-int	is_upper(int c)
+int	ft_isalpha(char c)
 {
-	return (c >= 65 && c <= 90);
-}
-
-int	ft_isalpha(int c)
-{
-	return (is_lower(c) || is_upper(c));
+	return (ft_char_is_lower(c) || ft_char_is_upper(c));
 }

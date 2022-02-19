@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char.h                                          :+:      :+:    :+:   */
+/*   ft_io.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 14:50:16 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/17 14:50:16 by adaubric         ###   ########.fr       */
+/*   Created: 2022/01/13 11:26:11 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/17 15:14:19 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CHAR_H
-# define FT_CHAR_H
+#ifndef FT_IO_H
+#define FT_IO_H
 
-char		*ft_char_to_str(char c);
-char	ft_char_to_upper(char c);
-char	ft_char_to_lower(char c);
-int		ft_isalpha(char c);
-int		ft_isdigit(char c);
-int		ft_isalnum(char c);
-int		ft_isascii(char c);
-int		ft_isprint(char c);
-int	ft_char_is_upper(char c);
-int	ft_char_is_lower(char c);
-
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

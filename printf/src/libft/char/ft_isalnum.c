@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_char.h"
 
-int	ft_isalnum(int c)
+int	ft_isalnum(char c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
 }

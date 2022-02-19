@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../string/ft_string.h"
+#include <unistd.h>
 #include <stdlib.h>
 
 static int	str_include(char c, char const *str)

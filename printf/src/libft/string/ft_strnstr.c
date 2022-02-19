@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../string/ft_string.h"
+#include <unistd.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t blen)
 {

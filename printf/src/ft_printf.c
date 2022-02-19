@@ -24,6 +24,7 @@
 #include "libft/hex/ft_hex.h"
 #include "libft/number/ft_number.h"
 #include "libft/string/ft_string.h"
+#include "libft/io/ft_io.h"
 
 enum t_type ft_type_from_char(char c)
 {

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_memory.h"
+#include <unistd.h>
 
 void	ft_bzero(void *dst, size_t n)
 {

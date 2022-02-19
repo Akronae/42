@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../string/ft_string.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

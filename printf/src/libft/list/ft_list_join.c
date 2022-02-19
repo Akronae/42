@@ -1,6 +1,7 @@
 #include "ft_list.h"
 #include "../libft.h"
 #include "../string/ft_string.h"
+#include "../memory//ft_memory.h"
 
 char *ft_list_join(t_list *self, char *delimiter)
 {
@@ -11,7 +12,7 @@ char *ft_list_join(t_list *self, char *delimiter)
 		total_length += ft_strlen(iterator->next_str(iterator)) + ft_strlen(delimiter);
 	}
 	total_length -= ft_strlen(delimiter);
-	char *str = ft_calloc(total_length, sizeof (char));
+	char *str = ft_calloc(sizeof (char) * total_length);
 	iterator->reset(iterator);
 	while (iterator->current)
 	{

@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_memory.h"
+#include <unistd.h>
 
 void	*ft_memset(void *dst, int copied_char, size_t len)
 {
