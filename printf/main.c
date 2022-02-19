@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "src/ft_printf.h"
-#include "src/ft_link.h"
-#include "src/ft_iterator.h"
-#include "src/ft_hex.h"
-#include "src/ft_long.h"
+#include "src/libft/link/ft_link.h"
+#include "src/libft/iterator/ft_iterator.h"
+#include "src/libft/hex/ft_hex.h"
+#include "src/libft/number/ft_number.h"
 
 int main() {
     printf("Hello, World!\n");

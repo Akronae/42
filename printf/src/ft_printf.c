@@ -16,14 +16,14 @@
 #include "libft/libft.h"
 #include <stdarg.h>
 #include <stdio.h>
-#include "ft_boolean.h"
-#include "ft_link.h"
-#include "ft_list.h"
-#include "ft_iterator.h"
-#include "ft_char.h"
-#include "ft_hex.h"
-#include "ft_long.h"
-#include "ft_str.h"
+#include "libft/boolean/ft_boolean.h"
+#include "libft/link/ft_link.h"
+#include "libft/list/ft_list.h"
+#include "libft/iterator/ft_iterator.h"
+#include "libft/char/ft_char.h"
+#include "libft/hex/ft_hex.h"
+#include "libft/number/ft_number.h"
+#include "libft/string/ft_string.h"
 
 enum t_type ft_type_from_char(char c)
 {
@@ -56,7 +56,7 @@ char *ft_arg_to_str(va_list args, enum t_type type)
 	if (type == CHAR)
 		str = ft_char_to_str(va_arg(args, int));
 	if (type == INT || type == DECIMAL)
-		str = ft_nbr_to_str(va_arg(args, int));
+		str = ft_number_to_str(va_arg(args, int));
 	if (type == STRING)
 		str = ft_strdup(va_arg(args, char *));
 	if (type == POINTER)
@@ -66,12 +66,12 @@ char *ft_arg_to_str(va_list args, enum t_type type)
 		free(hex);
 	}
 	if (type == U_DECIMAL)
-		str = ft_nbr_to_str(va_arg(args, unsigned int));
+		str = ft_number_to_str(va_arg(args, unsigned int));
 	if (type == HEXADECIMAL || type == UPPER_HEXADECIMAL)
 	{
 		str = ft_hex_str_from_nbr(va_arg(args, unsigned int));
 		if (type == UPPER_HEXADECIMAL)
-			ft_str_to_upper(str);
+			ft_string_to_upper(str);
 	}
 	if (type == PERCENT)
 		str = ft_strdup("%");
