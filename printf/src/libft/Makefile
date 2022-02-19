@@ -19,7 +19,7 @@ HEADERS			=	libft.h
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= gcc
+CC				= clang
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 

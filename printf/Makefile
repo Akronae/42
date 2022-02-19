@@ -20,7 +20,7 @@ HEADERS			=	src/math/ft_math.h src/ft_boolean.h src/ft_char.h src/ft_hex.h src/f
 
 OBJS			= $(SRCS:.c=.o)
 
-CC				= gcc
+CC				= clang
 RM				= rm -r -f
 CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
 
