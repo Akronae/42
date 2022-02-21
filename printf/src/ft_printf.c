@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/21 15:06:20 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:32:38 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 
 	char *output_str = a->join(a, "");
-	int output_str_len = ft_strlen(output_str);
-	ft_putstr_fd(output_str, 0);
+	sizeof output_str_len = ft_strlen(output_str);
+	ft_putstr_fd(output_str, 1);
 	a->free(a);
 	free(output_str);
 

@@ -7,4 +7,3 @@ echo ===========================
 ./libftprintf_output
 echo ===========================
 rm ./libftprintf_output*
-rm ./libftprintf_output.dSYM
