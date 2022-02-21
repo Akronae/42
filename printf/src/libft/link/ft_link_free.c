@@ -9,7 +9,8 @@ void ft_link_free(t_link *self)
 	{
 		temp = elem;
 		elem = elem->next;
-		free(temp->data);
+		if (temp->data)
+			free(temp->data);
 		free(temp);
 	}
 }
