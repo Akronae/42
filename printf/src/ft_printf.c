@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/21 15:32:38 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/21 20:02:57 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "ft_template_type.h"
 #include "libft/libft.h"
 #include <stdarg.h>
-#include <stdio.h>
 #include "libft/boolean/ft_boolean.h"
 #include "libft/link/ft_link.h"
 #include "libft/list/ft_list.h"
@@ -61,6 +60,7 @@ int	ft_printf(const char *input, ...)
 	va_list		args;
 	int i = -1;
 	t_list *a = new_list();
+	int void_count = 0;
 
 	va_start(args, input);
 	while (input[++i])
@@ -71,6 +71,8 @@ int	ft_printf(const char *input, ...)
 			t_template_type type = ft_template_type_from_char(input[i]);
 			char *str = ft_arg_to_str(args, type);
 			a->push_str(a, str);
+			if (!*str)
+				void_count++;
 		}
 		else
 			a->push_char(a, input[i]);
@@ -78,7 +80,7 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 
 	char *output_str = a->join(a, "");
-	size_t output_str_len = ft_strlen(output_str);
+	size_t output_str_len = ft_strlen(output_str) + void_count;
 	ft_putstr_fd(output_str, 1);
 	a->free(a);
 	free(output_str);
