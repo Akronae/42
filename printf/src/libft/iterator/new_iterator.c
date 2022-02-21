@@ -8,6 +8,7 @@ t_iterator 	*new_iterator(t_link *link)
 	iterator->current = link;
 	iterator->next = &ft_iterator_next;
 	iterator->next_str = &ft_iterator_next_str;
+	iterator->next_char = &ft_iterator_next_char;
 	iterator->reset = &ft_iterator_reset;
 	iterator->free = &ft_iterator_free;
 	return iterator;

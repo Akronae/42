@@ -6,16 +6,19 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/17 11:14:22 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:17:26 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LINK_H
 # define FT_LINK_H
 
+# include "../type/ft_type.h"
+
 typedef struct t_link
 {
 	void			*data;
+	enum t_type		data_type;
 	struct t_link	*prev;
 	struct t_link	*next;
 	void 	(*free)(struct t_link *self);

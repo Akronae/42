@@ -6,13 +6,13 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/17 17:23:47 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:06:20 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_printf.h"
-#include "ft_type.h"
+#include "ft_template_type.h"
 #include "libft/libft.h"
 #include <stdarg.h>
 #include <stdio.h>
@@ -26,30 +26,7 @@
 #include "libft/string/ft_string.h"
 #include "libft/io/ft_io.h"
 
-enum t_type ft_type_from_char(char c)
-{
-	if (c == 'c')
-		return (CHAR);
-	if (c == 's')
-		return (STRING);
-	if (c == 'p')
-		return (POINTER);
-	if (c == 'd')
-		return (DECIMAL);
-	if (c == 'i')
-		return (INT);
-	if (c == 'u')
-		return (U_DECIMAL);
-	if (c == 'x')
-		return (HEXADECIMAL);
-	if (c == 'X')
-		return (UPPER_HEXADECIMAL);
-	if (c == '%')
-		return (PERCENT);
-	return (-1);
-}
-
-char *ft_arg_to_str(va_list args, enum t_type type)
+char *ft_arg_to_str(va_list args, enum t_template_type type)
 {
 	char *str;
 
@@ -91,22 +68,20 @@ int	ft_printf(const char *input, ...)
 		if (input[i] == '%')
 		{
 			i += 1;
-			t_type type = ft_type_from_char(input[i]);
+			t_template_type type = ft_template_type_from_char(input[i]);
 			char *str = ft_arg_to_str(args, type);
 			a->push_str(a, str);
 		}
 		else
-			a->push_str(a, ft_char_to_str(input[i]));
+			a->push_char(a, input[i]);
 	}
 	va_end(args);
 
-	t_iterator *iterator = a->get_iterator(a);
-	while (iterator->current)
-	{
-		ft_putstr_fd(iterator->next(iterator), 0);
-	}
+	char *output_str = a->join(a, "");
+	int output_str_len = ft_strlen(output_str);
+	ft_putstr_fd(output_str, 0);
 	a->free(a);
-	iterator->free(iterator);
+	free(output_str);
 
-	return (0);
+	return (output_str_len);
 }

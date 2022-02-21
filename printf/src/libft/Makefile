@@ -6,7 +6,7 @@
 #   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
-#   Updated: 202#   Updated: 2022/02/04 14:42:30 by adaubric         ###   ########.fr       #                                                              #
+#   Updated: 202#   Updated: 2022/02/21 15:29:03 by adaubric         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c char/ft_isprint.c \
@@ -17,21 +17,23 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					io/ft_putstr_fd.c io/ft_putendl_fd.c string/ft_striteri.c char/ft_char_to_lower.c \
 					char/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
-					iterator/ft_iterator_reset.c iterator/new_iterator.c link/ft_link_free.c link/ft_link_get_first.c \
+					iterator/ft_iterator_next_char.c iterator/ft_iterator_reset.c iterator/new_iterator.c \
+					link/ft_link_free.c link/ft_link_get_first.c \
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c link/new_link.c \
 					list/ft_list_free.c list/ft_list_get_iterator.c list/ft_list_join.c list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_malloc.c list/ft_list_push_str.c list/ft_list_reverse.c \
 					list/new_list.c math/ft_math_abs.c number/ft_number_to_str.c string/ft_string_append.c \
-					string/ft_string_to_upper.c
+					string/ft_string_append_char.c string/ft_string_to_upper.c
 
 HEADERS			=	libft.h boolean/ft_boolean.h char/ft_char.h hex/ft_hex.h iterator/ft_iterator.h link/ft_link.h \
- 					list/ft_list.h math/ft_math.h memory/ft_memory.h number/ft_number.h string/ft_string.h
+ 					list/ft_list.h math/ft_math.h memory/ft_memory.h number/ft_number.h string/ft_string.h \
+ 					type/ft_type.h
 
 OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
 
 NAME			= libft.a
 

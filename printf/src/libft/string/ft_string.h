@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 14:38:25 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/17 14:38:25 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/21 14:47:15 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <unistd.h>
 
 void		ft_string_append(char *dst,char *src);
+void ft_string_append_char(char *dst, char src);
 void ft_string_to_upper(char *str);
 char	**ft_split(char const *s, char c);
-
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
