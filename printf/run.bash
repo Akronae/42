@@ -6,4 +6,4 @@ echo "\n"
 echo ===========================
 ./libftprintf_output
 echo ===========================
-rm ./libftprintf_output*
+rm -rf ./libftprintf_output*

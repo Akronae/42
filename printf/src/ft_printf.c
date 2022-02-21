@@ -78,7 +78,7 @@ int	ft_printf(const char *input, ...)
 	va_end(args);
 
 	char *output_str = a->join(a, "");
-	sizeof output_str_len = ft_strlen(output_str);
+	size_t output_str_len = ft_strlen(output_str);
 	ft_putstr_fd(output_str, 1);
 	a->free(a);
 	free(output_str);
