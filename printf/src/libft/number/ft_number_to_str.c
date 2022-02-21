@@ -2,8 +2,9 @@
 #include "../char/ft_char.h"
 #include "../boolean/ft_boolean.h"
 #include "../list/ft_list.h"
-#include "../libft.h"
 #include "../math/ft_math.h"
+#include "../string/ft_string.h"
+#include <stdio.h>
 
 char *ft_number_to_str (long long ll)
 {
@@ -17,7 +18,7 @@ char *ft_number_to_str (long long ll)
 		if (!ll) break;
 	}
 	if (is_neg)
-		list->push_str(list, "-");
+		list->push_str(list, ft_strdup("-"));
 	list->reverse(list);
 	char *str = list->join(list, "");
 	list->free(list);
