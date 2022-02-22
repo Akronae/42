@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_list.c                                         :+:      :+:    :+:   */
+/*   ft_formatted_element.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,29 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
+#ifndef FT_FORMATTED_ELEMENT_H
+# define FT_FORMATTED_ELEMENT_H
 
-t_list	*new_list(void)
-{
-	t_list	*list;
+# include <unistd.h>
+# include <stdarg.h>
+# include "libft/link/ft_link.h"
+# include "ft_template_type.h"
 
-	list = malloc(sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->first_element = NULL;
-	list->last_element = NULL;
-	list->length = 0;
-	list->free = &ft_list_free;
-	list->on_elem_free = NULL;
-	list->push = &ft_list_push;
-	list->push_malloc = &ft_list_push_malloc;
-	list->push_char = &ft_list_push_char;
-	list->push_str = &ft_list_push_str;
-	list->get_elem = &ft_list_get_elem;
-	list->reverse = &ft_list_reverse;
-	list->get_iterator = &ft_list_get_iterator;
-	list->join = &ft_list_join;
-	list->for_each = &ft_list_for_each;
-	return (list);
-}
+typedef struct t_formatted_element {
+	size_t	length;
+	char	*value;
+}	t_formatted_element;
+
+struct t_formatted_element	*new_formatted_element(void);
+void						ft_formatted_list_free_elem(t_link *elem);
+struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
+								enum t_template_type type);
+struct t_formatted_element	*ft_char_to_formatted_elem(char c);
+#endif

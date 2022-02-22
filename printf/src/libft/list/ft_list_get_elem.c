@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_list.c                                         :+:      :+:    :+:   */
+/*   ft_list_get_elem.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,28 +11,18 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
 
-t_list	*new_list(void)
+t_link	*ft_list_get_elem(t_list *self, size_t at_index)
 {
-	t_list	*list;
+	size_t	i;
+	t_link	*elem;
 
-	list = malloc(sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->first_element = NULL;
-	list->last_element = NULL;
-	list->length = 0;
-	list->free = &ft_list_free;
-	list->on_elem_free = NULL;
-	list->push = &ft_list_push;
-	list->push_malloc = &ft_list_push_malloc;
-	list->push_char = &ft_list_push_char;
-	list->push_str = &ft_list_push_str;
-	list->get_elem = &ft_list_get_elem;
-	list->reverse = &ft_list_reverse;
-	list->get_iterator = &ft_list_get_iterator;
-	list->join = &ft_list_join;
-	list->for_each = &ft_list_for_each;
-	return (list);
+	i = 0;
+	elem = self->first_element;
+	while (i < at_index)
+	{
+		elem = elem->next;
+		i++;
+	}
+	return (elem);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_list.c                                         :+:      :+:    :+:   */
+/*   ft_formatted_element.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,29 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
+#ifndef FT_ARG_CONVERSION_H
+# define FT_ARG_CONVERSION_H
 
-t_list	*new_list(void)
-{
-	t_list	*list;
+# include <unistd.h>
+# include "ft_template_type.h"
 
-	list = malloc(sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->first_element = NULL;
-	list->last_element = NULL;
-	list->length = 0;
-	list->free = &ft_list_free;
-	list->on_elem_free = NULL;
-	list->push = &ft_list_push;
-	list->push_malloc = &ft_list_push_malloc;
-	list->push_char = &ft_list_push_char;
-	list->push_str = &ft_list_push_str;
-	list->get_elem = &ft_list_get_elem;
-	list->reverse = &ft_list_reverse;
-	list->get_iterator = &ft_list_get_iterator;
-	list->join = &ft_list_join;
-	list->for_each = &ft_list_for_each;
-	return (list);
-}
+char	*ft_arg_str_to_str(char *str);
+char	*ft_arg_ptr_to_str(unsigned long long ptr);
+char	*ft_arg_hex_to_str(unsigned int val, t_template_type type);
+
+#endif

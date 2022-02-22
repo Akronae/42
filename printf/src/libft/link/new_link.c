@@ -18,6 +18,8 @@ t_link	*new_link(void)
 	t_link	*link;
 
 	link = malloc(sizeof(t_link));
+	if (!link)
+		return (NULL);
 	link->data = NULL;
 	link->data_type = T_TYPE_NULL;
 	link->next = NULL;
@@ -27,5 +29,6 @@ t_link	*new_link(void)
 	link->get_last = &ft_link_get_last;
 	link->insert = &ft_link_insert;
 	link->reverse = &ft_link_reverse;
+	link->for_each = &ft_link_for_each;
 	return (link);
 }

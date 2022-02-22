@@ -40,6 +40,8 @@ char	*ft_list_join(t_list *self, char *delimiter)
 	iterator = self->get_iterator(self);
 	str = ft_calloc(sizeof (char)
 			* ft_compute_join_length(iterator, delimiter));
+	if (!str)
+		return (NULL);
 	iterator->reset(iterator);
 	while (iterator->current)
 	{

@@ -13,6 +13,8 @@
 #ifndef FT_TEMPLATE_TYPE_H
 # define FT_TEMPLATE_TYPE_H
 
+# include <unistd.h>
+
 typedef enum t_template_type {
 	CHAR,
 	STRING,

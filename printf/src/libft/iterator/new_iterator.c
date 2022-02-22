@@ -18,6 +18,8 @@ t_iterator	*new_iterator(t_link *link)
 	t_iterator	*iterator;
 
 	iterator = malloc(sizeof(t_iterator));
+	if (!iterator)
+		return (NULL);
 	iterator->first = link;
 	iterator->current = link;
 	iterator->next = &ft_iterator_next;

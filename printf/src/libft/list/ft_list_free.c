@@ -15,6 +15,8 @@
 
 void	ft_list_free(t_list *self)
 {
+	if (self->on_elem_free)
+		self->for_each(self, self->on_elem_free);
 	self->first_element->free(self->first_element);
 	free(self);
 }

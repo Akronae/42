@@ -18,9 +18,11 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					char/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_reset.c iterator/new_iterator.c \
-					link/ft_link_free.c link/ft_link_get_first.c \
+					link/ft_link_for_each.c link/ft_link_free.c link/ft_link_get_first.c \
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c link/new_link.c \
-					list/ft_list_free.c list/ft_list_get_iterator.c list/ft_list_join.c list/ft_list_push.c \
+					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_get_elem.c list/ft_list_get_iterator.c \
+					list/ft_list_join.c \
+					list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_malloc.c list/ft_list_push_str.c list/ft_list_reverse.c \
 					list/new_list.c math/ft_math_abs.c number/ft_number_to_str.c string/ft_string_append.c \
 					string/ft_string_append_char.c string/ft_string_to_upper.c

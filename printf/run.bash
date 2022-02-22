@@ -4,6 +4,6 @@ make fclean
 printf "\n"
 printf "\n"
 echo ===========================
-./libftprintf_output
+./libftprintf_output | cat -ve
 echo ===========================
 rm -rf ./libftprintf_output*

@@ -12,9 +12,9 @@
 LIBFT_DIR		= ./src/libft
 LIBFT_NAME		= libft.a
 
-SRCS			=	src/ft_printf.c src/ft_template_type.c
+SRCS			=	src/ft_arg_conversion.c src/ft_formatted_element.c src/ft_printf.c src/ft_template_type.c
 
-HEADERS			=	src/ft_printf.h src/ft_template_type.h
+HEADERS			=	src/ft_arg_conversion.h src/ft_formatted_element.h src/ft_printf.h src/ft_template_type.h
 
 OBJS			= $(SRCS:.c=.o)
 
