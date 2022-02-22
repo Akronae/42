@@ -11,13 +11,11 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "ft_printf.h"
 #include "ft_template_type.h"
 #include "ft_formatted_element.h"
 #include <stdarg.h>
 #include "libft/list/ft_list.h"
-#include "libft/string/ft_string.h"
 
 struct t_list	*ft_parse_args(va_list args, const char *input)
 {
