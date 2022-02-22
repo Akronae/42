@@ -12,7 +12,7 @@
 #include "src/libft/hex/ft_hex.h"
 #include "src/libft/number/ft_number.h"
 
-#define TEST_ARGS " NULL %p NULL \n", NULL
+#define TEST_ARGS " %c %c %c \n", '0', 0, '1'
 
 int main() {
     printf("Hello, World!\n");
