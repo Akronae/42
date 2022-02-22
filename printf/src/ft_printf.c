@@ -17,7 +17,6 @@
 #include "ft_formatted_element.h"
 #include <stdarg.h>
 #include "libft/list/ft_list.h"
-#include "libft/hex/ft_hex.h"
 #include "libft/string/ft_string.h"
 
 struct t_list	*ft_parse_args(va_list args, const char *input)

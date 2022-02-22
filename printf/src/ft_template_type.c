@@ -9,6 +9,7 @@
 /*   Updated: 2022/02/21 14:58:44 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_template_type.h"
 
 enum t_template_type	ft_template_type_from_char(char c)
