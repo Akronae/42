@@ -25,9 +25,29 @@
 #include "libft/string/ft_string.h"
 #include "libft/io/ft_io.h"
 
-char *ft_arg_to_str(va_list args, enum t_template_type type)
+static char	*ft_arg_str_to_str(char *str)
 {
-	char *str;
+	if (!str)
+		str = "(null)";
+	return (ft_strdup(str));
+}
+
+static char	*ft_arg_ptr_to_str(unsigned long long ptr)
+{
+	char	*hex;
+	char	*str;
+
+	if (!ptr)
+		return (ft_strdup("(nil)"));
+	hex = ft_hex_str_from_nbr(ptr);
+	str = ft_strjoin("0x", hex);
+	free(hex);
+	return (str);
+}
+
+static char	*ft_arg_to_str(va_list args, enum t_template_type type)
+{
+	char	*str;
 
 	str = NULL;
 	if (type == CHAR)
@@ -35,13 +55,9 @@ char *ft_arg_to_str(va_list args, enum t_template_type type)
 	if (type == INT || type == DECIMAL)
 		str = ft_number_to_str(va_arg(args, int));
 	if (type == STRING)
-		str = ft_strdup(va_arg(args, char *));
+		str = ft_arg_str_to_str(va_arg(args, char *));
 	if (type == POINTER)
-	{
-		char *hex = ft_hex_str_from_nbr(va_arg(args, unsigned long long));
-		str = ft_strjoin("0x", hex);
-		free(hex);
-	}
+		str = ft_arg_ptr_to_str(va_arg(args, unsigned long long));
 	if (type == U_DECIMAL)
 		str = ft_number_to_str(va_arg(args, unsigned int));
 	if (type == HEXADECIMAL || type == UPPER_HEXADECIMAL)
@@ -55,35 +71,47 @@ char *ft_arg_to_str(va_list args, enum t_template_type type)
 	return (str);
 }
 
-int	ft_printf(const char *input, ...)
+static t_list	*ft_parse_args(va_list args, const char *input, size_t *a)
 {
-	va_list		args;
-	int i = -1;
-	t_list *a = new_list();
-	int void_count = 0;
+	t_list	*list;
+	size_t	i;
+	char	*str;
 
-	va_start(args, input);
-	while (input[++i])
+	list = new_list();
+	i = 0;
+	while (input[i])
 	{
 		if (input[i] == '%')
 		{
 			i += 1;
-			t_template_type type = ft_template_type_from_char(input[i]);
-			char *str = ft_arg_to_str(args, type);
-			a->push_str(a, str);
+			str = ft_arg_to_str(args, ft_template_type_from_char(input[i]));
+			list->push_str(list, str);
 			if (!*str)
-				void_count++;
+				*a += 1;
 		}
 		else
-			a->push_char(a, input[i]);
+			list->push_char(list, input[i]);
+		i++;
 	}
+	return (list);
+}
+
+int	ft_printf(const char *input, ...)
+{
+	va_list	args;
+	t_list	*list;
+	size_t	empty_count;
+	char	*output_str;
+	size_t	output_str_len;
+
+	empty_count = 0;
+	va_start(args, input);
+	list = ft_parse_args(args, input, &empty_count);
 	va_end(args);
-
-	char *output_str = a->join(a, "");
-	size_t output_str_len = ft_strlen(output_str) + void_count;
+	output_str = list->join(list, "");
+	output_str_len = ft_strlen(output_str) + empty_count;
 	ft_putstr_fd(output_str, 1);
-	a->free(a);
+	list->free(list);
 	free(output_str);
-
 	return (output_str_len);
 }

@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_STR_H
-# define FT_STR_H
+#ifndef FT_STRING_H
+# define FT_STRING_H
 
 # include <unistd.h>
 
-void		ft_string_append(char *dst,char *src);
-void ft_string_append_char(char *dst, char src);
-void ft_string_to_upper(char *str);
+void	ft_string_append(char *dst, char *src);
+void	ft_string_append_char(char *dst, char src);
+void	ft_string_to_upper(char *str);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);

@@ -21,19 +21,18 @@ typedef struct t_link
 	enum t_type		data_type;
 	struct t_link	*prev;
 	struct t_link	*next;
-	void 	(*free)(struct t_link *self);
-	struct t_link 	*(*get_first)(struct t_link *self);
-	struct t_link 	*(*get_last)(struct t_link *self);
-	struct t_link 	*(*insert)(struct t_link *self);
-	struct t_link 	*(*reverse)(struct t_link *self);
+	void			(*free)(struct t_link *self);
+	struct t_link	*(*get_first)(struct t_link *self);
+	struct t_link	*(*get_last)(struct t_link *self);
+	struct t_link	*(*insert)(struct t_link *self);
+	struct t_link	*(*reverse)(struct t_link *self);
 }	t_link;
 
-void 	ft_link_free(struct t_link *self);
-struct t_link 	*ft_link_get_first(struct t_link *self);
-struct t_link 	*ft_link_get_last(struct t_link *self);
-struct t_link 	*ft_link_insert(struct t_link *self);
-struct t_link 	*ft_link_reverse(struct t_link *self);
-
-t_link	*new_link();
+void			ft_link_free(struct t_link *self);
+struct t_link	*ft_link_get_first(struct t_link *self);
+struct t_link	*ft_link_get_last(struct t_link *self);
+struct t_link	*ft_link_insert(struct t_link *self);
+struct t_link	*ft_link_reverse(struct t_link *self);
+struct t_link	*new_link(void);
 
 #endif

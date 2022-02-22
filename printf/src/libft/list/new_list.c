@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   new_list.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/04 15:09:59 by adaubric          #+#    #+#       	  */
+/*   Updated: 2022/02/21 14:58:44 by adaubric         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_list.h"
 #include <stdlib.h>
 
-t_list	*new_list()
+t_list	*new_list(void)
 {
-	t_list *list = malloc(sizeof(t_list));
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
 	list->first_element = NULL;
 	list->last_element = NULL;
 	list->length = 0;
@@ -15,5 +29,5 @@ t_list	*new_list()
 	list->reverse = &ft_list_reverse;
 	list->get_iterator = &ft_list_get_iterator;
 	list->join = &ft_list_join;
-	return list;
+	return (list);
 }

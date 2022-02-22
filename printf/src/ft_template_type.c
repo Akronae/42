@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_template_type_from_char.c                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/04 15:09:59 by adaubric          #+#    #+#       	  */
+/*   Updated: 2022/02/21 14:58:44 by adaubric         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "ft_template_type.h"
 
-enum t_template_type ft_template_type_from_char(char c)
+enum t_template_type	ft_template_type_from_char(char c)
 {
 	if (c == 'c')
 		return (CHAR);

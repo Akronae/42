@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math_abs.h                                      :+:      :+:    :+:   */
+/*   ft_math.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATH_ABS_H
-# define FT_MATH_ABS_H
+#ifndef FT_MATH_H
+# define FT_MATH_H
 
-long		long ft_math_abs(long long nb);
+long long	ft_math_abs(long long nb);
 
 #endif

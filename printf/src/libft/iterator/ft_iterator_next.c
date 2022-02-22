@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_iterator.c                                 :+:      :+:    :+:   */
+/*   ft_iterator_next.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,13 @@
 #include "ft_iterator.h"
 #include <stdlib.h>
 
-void *ft_iterator_next(t_iterator *self)
+void	*ft_iterator_next(t_iterator *self)
 {
-	t_link *curr = self->current;
+	t_link	*curr;
+
+	curr = self->current;
 	if (!curr)
-		return NULL;
+		return (NULL);
 	self->current = self->current->next;
-	return curr->data;
+	return (curr->data);
 }
