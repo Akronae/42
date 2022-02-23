@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:09:59 by adaubric          #+#    #+#       	  */
-/*   Updated: 2022/02/21 14:58:44 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:59:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	ft_formatted_list_free_elem(t_link *elem)
 	t_formatted_element	*data;
 
 	data = elem->data;
-	free(data->value);
+	if (data && data->value)
+		free(data->value);
 }
 
 struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,

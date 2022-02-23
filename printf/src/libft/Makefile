@@ -6,7 +6,8 @@
 #   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
-#   Updated: 202#   Updated: 2022/02/21 15:29:03 by adaubric         ###   ########.fr       #                                                              #
+#   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       #
+#                                                                            #
 # ************************************************************************** #
 
 SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c char/ft_isprint.c \
@@ -35,7 +36,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
 
 NAME			= libft.a
 
