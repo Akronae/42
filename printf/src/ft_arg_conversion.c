@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "ft_printf.h"
 #include "ft_template_type.h"
 #include "libft/hex/ft_hex.h"
 #include "libft/string/ft_string.h"
@@ -28,7 +29,7 @@ char	*ft_arg_ptr_to_str(unsigned long long ptr)
 	char	*str;
 
 	if (!ptr)
-		return (ft_strdup("(nil)"));
+		return (ft_strdup(NULL_PTR_DISPLAY));
 	hex = ft_hex_str_from_nbr(ptr);
 	str = ft_strjoin("0x", hex);
 	free(hex);

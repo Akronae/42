@@ -19,6 +19,8 @@ int main() {
 	TEST("")
 	TEST("%c%c", 0, '\a')
 	TEST("%X", -42)
+	TEST("%p", NULL)
+	TEST("%s", ((char *)NULL))
 
     return 0;
 }

@@ -13,6 +13,12 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# ifdef __APPLE__
+#  define NULL_PTR_DISPLAY "0x0"
+# else
+#  define NULL_PTR_DISPLAY "(nil)"
+# endif
+
 int	ft_printf(const char *input, ...);
 
 #endif
