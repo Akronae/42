@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/21 20:02:57 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/03/23 14:29:31 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int read_to_env(t_env *env, int fd)
 	char *buffer = ft_calloc((BUFFER_SIZE + 1) * sizeof(char));
 	int bytes_read = read(fd, buffer, BUFFER_SIZE);
 	char *joined = str_join(env->text_read, buffer, TRUE, TRUE);
+	((char *)malloc(10))[0] = 1;
 	env->text_read = joined;
 	return (bytes_read);
 }

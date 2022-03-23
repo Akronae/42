@@ -6,8 +6,7 @@
 #   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        #
 #                                                +#+#+#+#+#+   +#+           #
 #   Created: 2021/11/28 15:39:56 by adaubric          #+#    #+#             #
-#   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       #
-#                                                                            #
+#   Updated: 202#   Updated: 2022/03/23 13:52:15 by adaubric         ###   ########.fr       #                                                              #
 # ************************************************************************** #
 
 SRCS			=	src/get_next_line.c src/get_next_line_utils.c

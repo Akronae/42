@@ -22,6 +22,7 @@ int main() {
 	TEST("tests/test1.txt");
 	TEST("tests/test2.txt");
 	TEST("tests/test3.txt");
+	get_next_line(1000);
 
     return 0;
 }
