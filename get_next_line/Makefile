@@ -18,25 +18,20 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
 
 NAME			= get_next_line.a
 
 $(NAME):		$(OBJS) $(HEADERS)
-				make all -C $(LIBFT_DIR)/
-				cp $(LIBFT_DIR)/$(LIBFT_NAME) $(NAME)
 				ar rcs $(NAME) $(OBJS)
 
 all:			$(NAME)
 
 clean:
 				$(RM) $(OBJS)
-				make clean -C $(LIBFT_DIR)
 
 fclean:			clean
 				$(RM) $(NAME)
-				$(RM) $(LIBFT_DIR)/$(LIBFT_NAME)
-				make clean -C $(LIBFT_DIR)
 
 re:				fclean $(NAME)
 
