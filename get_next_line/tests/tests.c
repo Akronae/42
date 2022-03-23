@@ -10,7 +10,7 @@
 	for (int i = 0; i < line_count; i++) \
     {               \
 		char *line = get_next_line(fd);   \
-		printf("Line %d: %s", i, line);  \
+		if (line) printf("Line %d: %s", i, line);  \
     	if (line) free(line);                \
 	}                \
 }
@@ -20,6 +20,8 @@ int main() {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	printf("=== TESTS | BUFFER_SIZE=%d ===\n", BUFFER_SIZE);
 	TEST("tests/test1.txt");
+	TEST("tests/test2.txt");
+	TEST("tests/test3.txt");
 
     return 0;
 }
