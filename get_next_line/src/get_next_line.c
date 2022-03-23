@@ -39,15 +39,15 @@ char *get_last_line(t_env *env)
 char *get_line (t_env *env, int fd)
 {
 	int bytes_read = read_to_env(env, fd);
-	int eol_index = str_index_of("\n", env->text_read + env->last_byte);
+	int next_eol_index = str_index_of("\n", env->text_read + env->last_byte);
 	size_t previous_last_byte = env->last_byte;
-	if (eol_index == INDEX_NOT_FOUND)
+	if (next_eol_index == INDEX_NOT_FOUND)
 	{
 		if (bytes_read <= 0)
 			return (get_last_line(env));
 		return get_line(env, fd);
 	}
-	else env->last_byte += eol_index + 1;
+	else env->last_byte += next_eol_index + 1;
 	return (sub_str(env->text_read, previous_last_byte, env->last_byte));
 }
 
