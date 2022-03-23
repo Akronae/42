@@ -6,7 +6,7 @@
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/03/23 14:56:02 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/03/23 15:15:11 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-size_t	read_to_env(t_env *env, int fd)
+long	read_to_env(t_env *env, int fd)
 {
 	char	*buffer;
-	size_t	bytes_read;
+	long	bytes_read;
 	char	*joined;
 
 	buffer = ft_calloc((BUFFER_SIZE + 1) * sizeof(char));
@@ -47,7 +47,7 @@ char	*get_last_line(t_env *env)
 
 char	*get_line(t_env *env, int fd)
 {
-	size_t	bytes_read;
+	long	bytes_read;
 	int		next_eol_index;
 	size_t	previous_last_byte;
 
