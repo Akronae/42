@@ -27,7 +27,7 @@ typedef struct t_list
 	void				*(*push)(struct t_list *self);
 	void				(*push_malloc)(struct t_list *self, int malloc_size);
 	void				(*push_char)(struct t_list *self, char c);
-	void				(*push_long)(struct t_list *self, long l);
+	void				(*push_long)(struct t_list *self, long long l);
 	void				(*push_str)(struct t_list *self, char *str);
 	struct t_link		*(*get_elem)(struct t_list *self, size_t at_index);
 	void				(*reverse)(struct t_list *self);
@@ -41,7 +41,7 @@ void				ft_list_free(struct t_list *self);
 void				*ft_list_push(struct t_list *self);
 void				ft_list_push_malloc(struct t_list *self, int malloc_size);
 void				ft_list_push_char(struct t_list *self, char c);
-void				ft_list_push_long(struct t_list *self, long l);
+void				ft_list_push_long(struct t_list *self, long long l);
 void				ft_list_push_str(struct t_list *self, char *str);
 struct t_link		*ft_list_get_elem(t_list *self, size_t at_index);
 void				ft_list_reverse(struct t_list *self);

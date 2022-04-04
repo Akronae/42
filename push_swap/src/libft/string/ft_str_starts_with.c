@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_of.c                                  :+:      :+:    :+:   */
+/*   ft_str_starts_with.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,29 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include <unistd.h>
+#include "ft_string.h"
 
-int	ft_str_index_of(char *to_find, char *in_str)
+int	ft_str_starts_with(char *str, char *with)
 {
-	size_t	in_str_i;
-	size_t	to_find_i;
-
-	in_str_i = 0;
-	if (in_str == NULL)
-		return (INDEX_NOT_FOUND);
-	while (in_str[in_str_i] || to_find[0] == '\0')
-	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
-		{
-			to_find_i++;
-			if (!to_find[to_find_i])
-				return (in_str_i);
-		}
-		in_str_i++;
-	}
-	return (INDEX_NOT_FOUND);
+	return (ft_str_index_of(with, str) == 0);
 }

@@ -16,9 +16,11 @@
 
 int	ft_str_index_of_char(char to_find, char *in_str)
 {
-	char	*to_str = ft_char_to_str(to_find);
-	int		index = ft_str_index_of(to_str, in_str);
+	char	*to_str;
+	int		index;
+
+	to_str = ft_char_to_str(to_find);
+	index = ft_str_index_of(to_str, in_str);
 	free(to_str);
 	return (index);
 }
-

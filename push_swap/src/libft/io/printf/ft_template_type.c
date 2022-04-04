@@ -11,26 +11,46 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "../../string/ft_string.h"
 
-enum t_template_type	ft_template_type_from_char(char c)
+enum t_template_type	ft_template_type_from_char(char *s)
 {
-	if (c == 'c')
+	if (ft_str_equal(s, "lld"))
+		return (LONGLONG);
+	if (ft_str_equal(s, "c"))
 		return (CHAR);
-	if (c == 's')
+	if (ft_str_equal(s, "s"))
 		return (STRING);
-	if (c == 'p')
+	if (ft_str_equal(s, "p"))
 		return (POINTER);
-	if (c == 'd')
+	if (ft_str_equal(s, "d"))
 		return (DECIMAL);
-	if (c == 'i')
+	if (ft_str_equal(s, "i"))
 		return (INT);
-	if (c == 'u')
+	if (ft_str_equal(s, "u"))
 		return (U_DECIMAL);
-	if (c == 'x')
+	if (ft_str_equal(s, "x"))
 		return (HEXADECIMAL);
-	if (c == 'X')
+	if (ft_str_equal(s, "X"))
 		return (UPPER_HEXADECIMAL);
-	if (c == '%')
+	if (ft_str_equal(s, "%"))
 		return (PERCENT);
 	return (-1);
+}
+
+enum t_template_type	ft_template_type_from_str(char *s, int *i)
+{
+	t_template_type	type;
+	int 			a;
+
+	*i += 1;
+	a = ft_strlen(input + *i) - 1;
+	while (a--)
+	{
+		type = ft_template_type_from_char(ft_substr(input, *i, a));
+		if ((int) type != -1)
+			break ;
+	}
+	*i += a - 1;
+	return (type);
 }

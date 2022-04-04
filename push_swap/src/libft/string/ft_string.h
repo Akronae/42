@@ -22,6 +22,8 @@ char	**ft_split(char const *s, char c);
 int		ft_str_index_of(char *to_find, char *in_str);
 int		ft_str_index_of_char(char to_find, char *in_str);
 int		ft_str_is_numeric(const char *s);
+int		ft_str_starts_with(char *str, char *with);
+int		ft_str_equal(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);

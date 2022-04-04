@@ -51,18 +51,18 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 		elem->value = ft_char_to_str(va_arg(args, int));
 		elem->length = 1;
 	}
-	if (type == INT || type == DECIMAL)
+	else if (type == INT || type == DECIMAL)
 		elem->value = ft_number_to_str(va_arg(args, int));
-	if (type == STRING)
+	else if (type == LONGLONG)
+		elem->value = ft_number_to_str(va_arg(args, long long));
+	else if (type == STRING)
 		elem->value = ft_arg_str_to_str(va_arg(args, char *));
-	if (type == POINTER)
+	else if (type == POINTER)
 		elem->value = ft_arg_ptr_to_str(va_arg(args, unsigned long long));
-	if (type == U_DECIMAL)
+	else if (type == U_DECIMAL)
 		elem->value = ft_number_to_str(va_arg(args, unsigned int));
-	if (type == HEXADECIMAL || type == UPPER_HEXADECIMAL)
-		elem->value = ft_arg_hex_to_str(va_arg(args, unsigned int), type);
-	if (type == PERCENT)
-		elem->value = ft_strdup("%");
+	else
+		ft_arg_to_formatted_elem2(args, type, elem);
 	if (!elem->length)
 		elem->length = ft_strlen(elem->value);
 	return (elem);

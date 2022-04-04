@@ -14,10 +14,11 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c string/ft_strlen.c memory/ft_memchr.c \
 					memory/ft_memcmp.c string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
-					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c \
+					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c string/ft_str_equal.c \
 					string/ft_str_index_of.c string/ft_str_index_of_char.c \
-					string/ft_str_is_numeric.c \
-					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_printf.c \
+					string/ft_str_is_numeric.c string/ft_str_starts_with.c \
+					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_formatted_element2.c \
+					io/printf/ft_printf.c \
 					io/printf/ft_template_type.c io/ft_putchar_fd.c \
 					io/ft_putstr_fd.c io/ft_putendl_fd.c string/ft_striteri.c char/ft_char_to_lower.c \
 					char/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \

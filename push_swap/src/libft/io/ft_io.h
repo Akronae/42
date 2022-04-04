@@ -13,7 +13,7 @@
 #ifndef FT_IO_H
 # define FT_IO_H
 
-#include "printf/ft_printf.h"
+# include "printf/ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);

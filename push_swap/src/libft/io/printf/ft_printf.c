@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <stdarg.h>
 #include "ft_printf.h"
 #include "../../list/ft_list.h"
 #include "../../string/ft_string.h"
 
-struct t_list	*ft_parse_args(va_list args, const char *input)
+struct t_list	*ft_parse_args(va_list args, char *input)
 {
 	t_list			*list;
 	size_t			i;
+	size_t			a;
 	t_template_type	type;
 
 	list = new_list();
@@ -32,7 +34,14 @@ struct t_list	*ft_parse_args(va_list args, const char *input)
 		if (input[i] == '%')
 		{
 			i += 1;
-			type = ft_template_type_from_char(input[i]);
+			a = ft_strlen(input + i) - 1;
+			while (a--)
+			{
+				type = ft_template_type_from_char(ft_substr(input, i, a));
+				if ((int) type != -1)
+					break ;
+			}
+			i += a - 1;
 			list->last_element->data = ft_arg_to_formatted_elem(args, type);
 		}
 		else
@@ -42,14 +51,14 @@ struct t_list	*ft_parse_args(va_list args, const char *input)
 	return (list);
 }
 
-int ft_print(const char *input, va_list args)
+int	ft_print(const char *input, va_list args)
 {
 	t_list				*list;
 	size_t				output_str_len;
 	size_t				i;
 	t_formatted_element	*f;
 
-	list = ft_parse_args(args, input);
+	list = ft_parse_args(args, (char *) input);
 	list->on_elem_free = ft_formatted_list_free_elem;
 	output_str_len = 0;
 	i = 0;
