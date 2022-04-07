@@ -17,7 +17,8 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
+#CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3 -D BUFFER_SIZE=3
+CFLAGS			= -Wall -Wextra -Werror -ggdb3 -D BUFFER_SIZE=3
 
 NAME			= get_next_line.a
 

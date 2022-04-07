@@ -21,16 +21,14 @@ int	str_index_of(char *to_find, char *in_str)
 	size_t	to_find_i;
 
 	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
+	if (in_str == NULL)
 		return (INDEX_NOT_FOUND);
-	while (TRUE)
+	while (in_str[in_str_i] || to_find[0] == '\0')
 	{
 		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
 			return (in_str_i);
-		if (!in_str[in_str_i])
-			break ;
 		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
+		while (in_str[in_str_i] == to_find[to_find_i])
 		{
 			to_find_i++;
 			if (!to_find[to_find_i])
@@ -53,12 +51,6 @@ void	*ft_calloc(size_t size)
 	return (alloc);
 }
 
-void	safe_free(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-}
-
 char	*str_join(char *s1, char *s2, int free_s1, int free_s2)
 {
 	size_t	i;
@@ -79,28 +71,22 @@ char	*str_join(char *s1, char *s2, int free_s1, int free_s2)
 	while (s2 != NULL && *s2)
 		final[i++] = *s2++;
 	if (free_s1)
-		safe_free(s1 - s1_len);
+		free(s1 - s1_len);
 	if (free_s2)
-		safe_free(s2 - s2_len);
+		free(s2 - s2_len);
 	return (final);
 }
 
-char	*sub_str(char *s, long from, long to)
+char	*sub_str(char *s, size_t from, size_t to)
 {
 	char	*new;
-	long	i;
+	size_t	i;
 
-	if (to < 0)
-		to = str_index_of("\0", s) + to;
-	if (to < 0)
-		to = 0;
-	if (to > str_index_of("\0", s) - 1)
-		to = str_index_of("\0", s) - 1;
-	new = ft_calloc(to - from + 2);
+	new = ft_calloc(to - from + 1);
 	i = 0;
 	if (!new)
 		return (NULL);
-	while (s[i] && i <= (to - from))
+	while (s[i] && i < (to - from))
 	{
 		new[i] = s[from + i];
 		i++;

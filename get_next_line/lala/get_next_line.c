@@ -15,50 +15,67 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-long	read_line_to_env(char **env, int fd)
+long	read_to_env(t_env *env, int fd)
 {
 	char	*buffer;
 	long	bytes_read;
+	char	*joined;
 
 	buffer = ft_calloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (-1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	env[fd] = str_join(env[fd], buffer, TRUE, TRUE);
-
-	if (str_index_of("\n", env[fd]) != INDEX_NOT_FOUND || bytes_read <= 0)
-		return (bytes_read);
-	return (bytes_read + read_line_to_env(env, fd));
+	joined = str_join(env->text_read, buffer, TRUE, TRUE);
+	env->text_read = joined;
+	return (bytes_read);
 }
 
-char	*get_line(char **env, int fd)
+char	*get_last_line(t_env *env)
 {
-	if (read_line_to_env(env, fd) <= 0 && !env[fd])
-		return (NULL);
-	int index_of_nl = str_index_of("\n", env[fd]);
-	char *str;
-	char *remaining;
-	str = (sub_str(env[fd], 0, index_of_nl));
-	if (str_index_of("\0", str) == 0)
-	{
-		safe_free(str);
-		str = NULL;
-	}
-	if (index_of_nl == INDEX_NOT_FOUND)
-		remaining = NULL;
-	else
-		remaining = sub_str(env[fd], index_of_nl + 1, -1);
-	safe_free(env[fd]);
-	env[fd] = remaining;
+	int		text_read_len;
+	char	*s;
 
-	return str;
+	text_read_len = str_index_of("\0", env->text_read);
+	if ((int) env->last_byte < text_read_len)
+	{
+		s = (sub_str(env->text_read, env->last_byte, text_read_len));
+		env->last_byte = text_read_len;
+		return (s);
+	}
+	return (NULL);
+}
+
+char	*get_line(t_env *env, int fd)
+{
+	long	bytes_read;
+	int		next_eol_index;
+	size_t	previous_last_byte;
+
+	bytes_read = read_to_env(env, fd);
+	next_eol_index = str_index_of("\n", env->text_read + env->last_byte);
+	previous_last_byte = env->last_byte;
+	if (next_eol_index == INDEX_NOT_FOUND)
+	{
+		if (bytes_read <= 0)
+			return (get_last_line(env));
+		return (get_line(env, fd));
+	}
+	else
+		env->last_byte += next_eol_index + 1;
+	return (sub_str(env->text_read, previous_last_byte, env->last_byte));
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*env[1024];
+	static t_env	*env;
 
-	if (fd < 0 || fd >= 1024)
-		return (NULL);
+	if (env == NULL)
+	{
+		env = ft_calloc(sizeof(t_env));
+		if (!env)
+			return (NULL);
+		env->last_byte = 0;
+		env->text_read = NULL;
+	}
 	return (get_line(env, fd));
 }
