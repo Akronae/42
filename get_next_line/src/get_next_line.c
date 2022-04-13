@@ -25,7 +25,6 @@ long	read_line_to_env(char **env, int fd)
 		return (-1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	env[fd] = str_join(env[fd], buffer, TRUE, TRUE);
-
 	if (str_index_of("\n", env[fd]) != INDEX_NOT_FOUND || bytes_read <= 0)
 		return (bytes_read);
 	return (bytes_read + read_line_to_env(env, fd));
@@ -33,25 +32,23 @@ long	read_line_to_env(char **env, int fd)
 
 char	*get_line(char **env, int fd)
 {
+	int		index_of_nl;
+	char	*str;
+	char	*remaining;
+
 	if (read_line_to_env(env, fd) <= 0 && !env[fd])
 		return (NULL);
-	int index_of_nl = str_index_of("\n", env[fd]);
-	char *str;
-	char *remaining;
+	index_of_nl = str_index_of("\n", env[fd]);
 	str = (sub_str(env[fd], 0, index_of_nl));
 	if (str_index_of("\0", str) == 0)
-	{
 		safe_free(str);
-		str = NULL;
-	}
 	if (index_of_nl == INDEX_NOT_FOUND)
 		remaining = NULL;
 	else
 		remaining = sub_str(env[fd], index_of_nl + 1, -1);
 	safe_free(env[fd]);
 	env[fd] = remaining;
-
-	return str;
+	return (str);
 }
 
 char	*get_next_line(int fd)

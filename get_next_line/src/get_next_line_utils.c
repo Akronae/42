@@ -55,6 +55,8 @@ void	*ft_calloc(size_t size)
 
 void	safe_free(void *ptr)
 {
+	if (!ptr)
+		return ;
 	free(ptr);
 	ptr = NULL;
 }
@@ -96,6 +98,8 @@ char	*sub_str(char *s, long from, long to)
 		to = 0;
 	if (to > str_index_of("\0", s) - 1)
 		to = str_index_of("\0", s) - 1;
+	if (from > to)
+		return (NULL);
 	new = ft_calloc(to - from + 2);
 	i = 0;
 	if (!new)
