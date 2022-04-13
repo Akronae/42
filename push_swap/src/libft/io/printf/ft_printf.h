@@ -56,5 +56,6 @@ void						ft_arg_to_formatted_elem2(
 								t_formatted_element *elem);
 struct t_formatted_element	*ft_char_to_formatted_elem(char c);
 enum t_template_type		ft_template_type_from_char(char *s);
+enum t_template_type		ft_template_type_from_str(char *s, size_t *i);
 
 #endif

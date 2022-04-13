@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #include "../boolean/ft_boolean.h"
+#include <stdlib.h>
 
 int	ft_str_equal(char *s1, char *s2)
 {
+	if (s1 == NULL)
+		return (s2 == NULL);
 	while (TRUE)
 	{
 		if (*s1 != *s2)

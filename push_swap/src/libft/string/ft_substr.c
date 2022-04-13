@@ -15,16 +15,28 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, long from, long to)
 {
-	char	*result;
+	char	*new;
+	long	i;
 
-	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (!result)
-		return (0);
-	ft_memcpy(result, s + start, len);
-	result[len] = '\0';
-	return (result);
+	if (to < 0)
+		to = ft_str_index_of("\0", s) + to;
+	if (to < 0)
+		to = 0;
+	if (to > ft_str_index_of("\0", s) - 1)
+		to = ft_str_index_of("\0", s) - 1;
+	if (from > to)
+		return (NULL);
+	new = ft_calloc(to - from + 2);
+	i = 0;
+	if (!new)
+		return (NULL);
+	while (s[i] && i <= (to - from))
+	{
+		new[i] = s[from + i];
+		i++;
+	}
+	new[i] = 0;
+	return (new);
 }

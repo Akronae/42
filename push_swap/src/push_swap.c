@@ -31,7 +31,7 @@ int main (/*int argc, char **argv*/)
 //	if (argc <= 1)
 //		ft_error("No arguments supplied");
 
-	ft_printfl("|%lld|\n", -9223372036854775807);
+	ft_printfl("|%d|", 12);
 	return 0;
 //	int i = 1;
 //	while (i < argc)

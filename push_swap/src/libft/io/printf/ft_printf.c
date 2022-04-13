@@ -21,7 +21,6 @@ struct t_list	*ft_parse_args(va_list args, char *input)
 {
 	t_list			*list;
 	size_t			i;
-	size_t			a;
 	t_template_type	type;
 
 	list = new_list();
@@ -33,15 +32,7 @@ struct t_list	*ft_parse_args(va_list args, char *input)
 		list->push(list);
 		if (input[i] == '%')
 		{
-			i += 1;
-			a = ft_strlen(input + i) - 1;
-			while (a--)
-			{
-				type = ft_template_type_from_char(ft_substr(input, i, a));
-				if ((int) type != -1)
-					break ;
-			}
-			i += a - 1;
+			type = ft_template_type_from_str(input, &i);
 			list->last_element->data = ft_arg_to_formatted_elem(args, type);
 		}
 		else

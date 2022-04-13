@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "../boolean/ft_boolean.h"
 #include <unistd.h>
 
 int	ft_str_index_of(char *to_find, char *in_str)
@@ -19,12 +20,14 @@ int	ft_str_index_of(char *to_find, char *in_str)
 	size_t	to_find_i;
 
 	in_str_i = 0;
-	if (in_str == NULL)
+	if (in_str == NULL || to_find == NULL)
 		return (INDEX_NOT_FOUND);
-	while (in_str[in_str_i] || to_find[0] == '\0')
+	while (TRUE)
 	{
 		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
 			return (in_str_i);
+		if (!in_str[in_str_i])
+			break ;
 		to_find_i = 0;
 		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
 		{
