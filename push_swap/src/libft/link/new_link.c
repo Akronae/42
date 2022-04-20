@@ -21,7 +21,7 @@ t_link	*new_link(void)
 	if (!link)
 		return (NULL);
 	link->data = NULL;
-	link->data_type = T_TYPE_NULL;
+	link->data_type = T_TYPE_UNKNOWN;
 	link->next = NULL;
 	link->prev = NULL;
 	link->free = &ft_link_free;

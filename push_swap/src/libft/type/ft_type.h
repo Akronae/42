@@ -13,9 +13,11 @@
 #ifndef FT_TYPE_H
 # define FT_TYPE_H
 
+# define T_TYPE_UNKNOWN_STR "(type_unknown)"
+
 typedef enum t_type
 {
-	T_TYPE_NULL,
+	T_TYPE_UNKNOWN,
 	T_TYPE_CHAR,
 	T_TYPE_STRING,
 	T_TYPE_POINTER,
