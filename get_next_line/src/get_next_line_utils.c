@@ -98,7 +98,7 @@ char	*sub_str(char *s, long from, long to)
 		to = 0;
 	if (to > str_index_of("\0", s) - 1)
 		to = str_index_of("\0", s) - 1;
-	if (from > to)
+	if (from > to || !s)
 		return (NULL);
 	new = ft_calloc(to - from + 2);
 	i = 0;

@@ -6,7 +6,7 @@
 
 #define TEST(path) {\
    	int fd = open(path, O_RDONLY); \
-    int line_count = 1;            \
+    int line_count = 10;            \
 	for (int i = 0; i < line_count; i++) \
     {               \
 		char *line = get_next_line(fd);   \
@@ -23,8 +23,9 @@ int main() {
 //	TEST("tests/test2.txt");
 //	TEST("tests/test3.txt");
 //	TEST("tests/41_no_nl");
-	TEST("tests/simple.txt");
+//	TEST("tests/simple.txt");
 //	TEST("tests/41_with_nl");
+	TEST("tests/nl");
 //	get_next_line(1000);
 //	get_next_line(0);
 
