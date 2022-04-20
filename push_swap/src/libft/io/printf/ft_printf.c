@@ -42,6 +42,25 @@ struct t_list	*ft_parse_args(va_list args, char *input)
 	return (list);
 }
 
+char	*ft_str_format(const char *input, ...)
+{
+	va_list				args;
+	t_list				*list;
+	char				*str;
+
+	ft_printfl("1");
+	va_start(args, input);
+	ft_printfl("2");
+	list = ft_parse_args(args, (char *) input);
+	list->on_elem_free = ft_formatted_list_free_elem;
+	ft_printfl("3");
+	str = list->join(list, "");
+	ft_printfl("4");
+	list->free(list);
+	va_end(args);
+	return (str);
+}
+
 int	ft_print(const char *input, va_list args)
 {
 	t_list				*list;

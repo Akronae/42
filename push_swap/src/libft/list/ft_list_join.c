@@ -13,6 +13,8 @@
 #include "ft_list.h"
 #include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include <stdio.h>
 
 static size_t	ft_compute_join_length(t_iterator *iterator, char *delimiter)
 {
@@ -49,6 +51,7 @@ char	*ft_list_join(t_list *self, char *delimiter)
 			ft_string_append(str, iterator->next_str(iterator));
 		else if (iterator->current->data_type == T_TYPE_CHAR)
 			ft_string_append_char(str, iterator->next_char(iterator));
+		ft_exit_err(foro);
 		ft_string_append(str, delimiter);
 	}
 	iterator->free(iterator);

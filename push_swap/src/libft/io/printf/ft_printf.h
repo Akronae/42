@@ -43,6 +43,7 @@ typedef enum t_template_type {
 
 int							ft_printf(const char *input, ...);
 int							ft_printfl(const char *input, ...);
+char						*ft_str_format(const char *input, ...);
 char						*ft_arg_str_to_str(char *str);
 char						*ft_arg_ptr_to_str(unsigned long long ptr);
 char						*ft_arg_hex_to_str(unsigned int val,

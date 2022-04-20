@@ -24,28 +24,29 @@ void	ft_error(char *msg)
 	exit(1);
 }
 
-int main (/*int argc, char **argv*/)
+int main (int argc, char **argv)
 {
-//	t_list *list = new_list();
-//
-//	if (argc <= 1)
-//		ft_error("No arguments supplied");
+	t_list *list = new_list();
 
-	ft_printfl("|%d|", 12);
-	return 0;
-//	int i = 1;
-//	while (i < argc)
-//	{
-//		if (!ft_str_is_numeric(argv[i]))
-//			ft_error("Not a number");
-//		list->push_long(list, ft_str_to_number(argv[i]));
-//		i++;
-//	}
-//	struct t_iterator *iterator = list->get_iterator(list);
-//	while (iterator->current)
-//	{
-//		ft_printfl("%lld", iterator->next_long(iterator));
-//	}
-//	iterator->free(iterator);
-//	list->free(list);
+	if (argc <= 1)
+		ft_error("No arguments supplied");
+
+	int i = 1;
+	while (i < argc)
+	{
+		if (!ft_str_is_numeric(argv[i]))
+			ft_error("Not a number");
+		long nbr = ft_str_to_number(argv[i]);
+		if (nbr < INT_MIN || nbr > INT_MAX)
+			ft_error(ft_str_format("Element %d is out of [INT_MIN, INT_MAX] boundaries (%lld)", i, nbr));
+		list->push_long(list, nbr);
+		i++;
+	}
+	struct t_iterator *iterator = list->get_iterator(list);
+	while (iterator->current)
+	{
+		ft_printfl("%lld", iterator->next_long(iterator));
+	}
+	iterator->free(iterator);
+	list->free(list);
 }

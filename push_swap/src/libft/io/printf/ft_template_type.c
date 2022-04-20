@@ -12,6 +12,7 @@
 
 #include "ft_printf.h"
 #include "../../string/ft_string.h"
+#include "../../memory/ft_memory.h"
 #include <stdio.h>
 
 enum t_template_type	ft_template_type_from_char(char *s)
@@ -42,20 +43,20 @@ enum t_template_type	ft_template_type_from_char(char *s)
 enum t_template_type	ft_template_type_from_str(char *s, size_t *i)
 {
 	t_template_type	type;
-	int 			a;
+	int				a;
+	char			*sub;
 
 	*i += 1;
 	a = ft_strlen(s + *i) - 1;
-	printf("a: %d\n", a);
 	while (a-- && a >= 0)
 	{
-		//printf("'%s'\n", ft_substr("12345", 0, 0));
-		printf("--- a: %d, s: %s, i: %zu, sub: %s\n", a, s, *i, ft_substr(s, *i, a));
-		type = ft_template_type_from_char(ft_substr(s, *i, *i + a));
+		sub = ft_substr(s, *i, *i + a);
+		type = ft_template_type_from_char(sub);
+		ft_safe_free(sub);
 		if ((int) type != -1)
 			break ;
 	}
 	if ((int) type != -1)
-		*i += a - 2;
+		*i += a;
 	return (type);
 }
