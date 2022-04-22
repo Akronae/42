@@ -13,6 +13,8 @@
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
+# define STRING_EMPTY ""
+
 # include <unistd.h>
 
 void	ft_string_append(char *dst, char *src);

@@ -35,10 +35,10 @@ int main (int argc, char **argv)
 	while (i < argc)
 	{
 		if (!ft_str_is_numeric(argv[i]))
-			ft_error("Not a number");
+			ft_error(ft_str_format("element %d is not a number (%s)", i, argv[i]));
 		long nbr = ft_str_to_number(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			ft_error(ft_str_format("Element %d is out of [INT_MIN, INT_MAX] boundaries (%lld)", i, nbr));
+			ft_error(ft_str_format("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i, argv[i]));
 		list->push_long(list, nbr);
 		i++;
 	}

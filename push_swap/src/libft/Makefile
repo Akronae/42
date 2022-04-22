@@ -19,7 +19,7 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					string/ft_str_index_of.c string/ft_str_index_of_char.c \
 					string/ft_str_is_numeric.c string/ft_str_starts_with.c \
 					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_formatted_element2.c \
-					io/printf/ft_printf.c \
+					io/printf/ft_printf.c io/printf/ft_str_format.c \
 					io/printf/ft_template_type.c io/ft_exit_err.c io/ft_putchar_fd.c \
 					io/ft_putstr_fd.c io/ft_putendl_fd.c string/ft_striteri.c char/ft_char_to_lower.c \
 					char/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \
@@ -27,9 +27,10 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
 					iterator/new_iterator.c \
 					link/ft_link_for_each.c link/ft_link_free.c link/ft_link_get_first.c \
-					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c link/new_link.c \
+					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c \
+					link/new_link.c \
 					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_get_elem.c list/ft_list_get_iterator.c \
-					list/ft_list_join.c \
+					list/ft_list_join.c list/ft_list_map.c \
 					list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_long.c list/ft_list_push_malloc.c \
 					list/ft_list_push_str.c list/ft_list_reverse.c \

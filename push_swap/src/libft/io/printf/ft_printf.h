@@ -41,6 +41,7 @@ typedef enum t_template_type {
 	PERCENT
 }	t_template_type;
 
+struct t_list				*ft_printf_parse_args(va_list args, char *input);
 int							ft_printf(const char *input, ...);
 int							ft_printfl(const char *input, ...);
 char						*ft_str_format(const char *input, ...);

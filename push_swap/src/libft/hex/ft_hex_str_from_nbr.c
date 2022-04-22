@@ -14,6 +14,7 @@
 #include "../char/ft_char.h"
 #include "../boolean/ft_boolean.h"
 #include "../number/ft_number.h"
+#include "../string/ft_string.h"
 
 char	*ft_hex_str_from_nbr(unsigned long long ull)
 {
@@ -29,7 +30,7 @@ char	*ft_hex_str_from_nbr(unsigned long long ull)
 			break ;
 	}
 	list->reverse(list);
-	str = list->join(list, "");
+	str = list->join(list, STRING_EMPTY);
 	list->free(list);
 	return (str);
 }

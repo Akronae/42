@@ -24,19 +24,18 @@ typedef struct t_link
 	void			(*free)(struct t_link *self);
 	struct t_link	*(*get_first)(struct t_link *self);
 	struct t_link	*(*get_last)(struct t_link *self);
-	struct t_link	*(*insert)(struct t_link *self);
+	struct t_link	*(*insert)(struct t_link *self, struct t_link *to_insert);
 	struct t_link	*(*reverse)(struct t_link *self);
 	void			(*for_each)(struct t_link *self,
-			void (*action)(struct t_link *elem));
+			void (action)(struct t_link *elem));
 }	t_link;
 
-void			ft_link_free(struct t_link *self);
-struct t_link	*ft_link_get_first(struct t_link *self);
-struct t_link	*ft_link_get_last(struct t_link *self);
-struct t_link	*ft_link_insert(struct t_link *self);
-struct t_link	*ft_link_reverse(struct t_link *self);
-void			ft_link_for_each(struct t_link *self,
-					void (*action)(struct t_link *elem));
-struct t_link	*new_link(void);
+void	ft_link_free(t_link *self);
+t_link	*ft_link_get_first(t_link *self);
+t_link	*ft_link_get_last(t_link *self);
+t_link	*ft_link_insert(t_link *self, t_link *to_insert);
+t_link	*ft_link_reverse(t_link *self);
+void	ft_link_for_each(t_link *self, void (*action)(t_link *elem));
+t_link	*new_link(void);
 
 #endif

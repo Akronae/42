@@ -34,6 +34,7 @@ t_list	*new_list(void)
 	list->reverse = &ft_list_reverse;
 	list->get_iterator = &ft_list_get_iterator;
 	list->join = &ft_list_join;
+	list->map = &ft_list_map;
 	list->for_each = &ft_list_for_each;
 	return (list);
 }

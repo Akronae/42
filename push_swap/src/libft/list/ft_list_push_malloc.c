@@ -15,6 +15,6 @@
 
 void	ft_list_push_malloc(t_list *self, int malloc_size)
 {
-	self->push(self);
+	self->push(self, new_link());
 	self->last_element->data = malloc(malloc_size);
 }

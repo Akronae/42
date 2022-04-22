@@ -23,32 +23,33 @@ typedef struct t_list
 	t_link				*last_element;
 	size_t				length;
 	void				(*free)(struct t_list *self);
-	void				(*on_elem_free)(struct t_link *elem);
-	void				*(*push)(struct t_list *self);
+	void				(*on_elem_free)(t_link *elem);
+	t_link				*(*push)(struct t_list *self, t_link *link);
 	void				(*push_malloc)(struct t_list *self, int malloc_size);
 	void				(*push_char)(struct t_list *self, char c);
 	void				(*push_long)(struct t_list *self, long long l);
 	void				(*push_str)(struct t_list *self, char *str);
-	struct t_link		*(*get_elem)(struct t_list *self, size_t at_index);
+	t_link				*(*get_elem)(struct t_list *self, size_t at_index);
 	void				(*reverse)(struct t_list *self);
 	struct t_iterator	*(*get_iterator)(struct t_list *self);
 	char				*(*join)(struct t_list *self, char *delimiter);
+	struct t_list		*(*map)(struct t_list *self, t_link *(*action)(t_link *));
 	void				(*for_each)(struct t_list *self, void (*action)
-			(struct t_link *elem));
+			(t_link *elem));
 }	t_list;
 
-void				ft_list_free(struct t_list *self);
-void				*ft_list_push(struct t_list *self);
-void				ft_list_push_malloc(struct t_list *self, int malloc_size);
-void				ft_list_push_char(struct t_list *self, char c);
-void				ft_list_push_long(struct t_list *self, long long l);
-void				ft_list_push_str(struct t_list *self, char *str);
-struct t_link		*ft_list_get_elem(t_list *self, size_t at_index);
-void				ft_list_reverse(struct t_list *self);
-struct t_iterator	*ft_list_get_iterator(struct t_list *self);
-char				*ft_list_join(struct t_list *self, char *delimiter);
-void				ft_list_for_each(struct t_list *self,
-						void (*action)(struct t_link *elem));
-struct t_list		*new_list(void);
+void		ft_list_free(t_list *self);
+t_link		*ft_list_push(t_list *self, t_link *link);
+void		ft_list_push_malloc(t_list *self, int malloc_size);
+void		ft_list_push_char(t_list *self, char c);
+void		ft_list_push_long(t_list *self, long long l);
+void		ft_list_push_str(t_list *self, char *str);
+t_link		*ft_list_get_elem(t_list *self, size_t at_index);
+void		ft_list_reverse(t_list *self);
+struct t_iterator	*ft_list_get_iterator(t_list *self);
+char		*ft_list_join(t_list *self, char *delimiter);
+t_list		*ft_list_map(t_list *self, t_link *(*action)(t_link *));
+void		ft_list_for_each(t_list *self, void (*action)(t_link *elem));
+t_list		*new_list(void);
 
 #endif

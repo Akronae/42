@@ -13,8 +13,9 @@
 #include "./ft_io.h"
 #include <stdlib.h>
 
-void	ft_exit_err(char *msg)
+void	*ft_exit_err(char *msg)
 {
 	ft_printfl("Error\n%s", msg);
 	exit(1);
+	return (NULL);
 }

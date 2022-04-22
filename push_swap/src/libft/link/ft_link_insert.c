@@ -13,19 +13,16 @@
 #include "ft_link.h"
 #include <unistd.h>
 
-t_link	*ft_link_insert(t_link *self)
+t_link	*ft_link_insert(t_link *self, t_link *to_insert)
 {
-	t_link	*new_elem;
-
-	new_elem = new_link();
-	if (!new_elem)
+	if (!to_insert)
 		return (NULL);
-	new_elem->prev = self;
+	to_insert->prev = self;
 	if (self->next)
 	{
-		new_elem->next = self->next;
-		self->next->prev = new_elem;
+		to_insert->next = self->next;
+		self->next->prev = to_insert;
 	}
-	self->next = new_elem;
-	return (new_elem);
+	self->next = to_insert;
+	return (to_insert);
 }
