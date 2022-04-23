@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_malloc.c                              :+:      :+:    :+:   */
+/*   ft_list_push_data.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,10 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-void	ft_list_push_malloc(t_list *self, int malloc_size)
+void	ft_list_push_data(t_list *self, t_type data_type, void *data)
 {
-	self->push_data(self, T_TYPE_UNKNOWN, ft_safe_malloc(malloc_size));
+	self->push(self, new_link());
+	self->last_element->set_data(self->last_element, data_type, data);
 }

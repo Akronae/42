@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include "../memory/ft_memory.h"
 
 void	ft_list_push_long(t_list *self, long long l)
 {
-	self->push_malloc(self, sizeof(long long));
-	*((long long *)self->last_element->data) = l;
-	self->last_element->data_type = T_TYPE_LONG;
+	long long *alloc = ft_safe_malloc(sizeof(long long));
+	*alloc = l;
+	self->push_data(self, T_TYPE_LONG, alloc);
 }

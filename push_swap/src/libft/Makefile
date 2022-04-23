@@ -11,7 +11,8 @@
 # ************************************************************************** #
 
 SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c char/ft_isprint.c \
-					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_safe_free.c string/ft_strlen.c \
+					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_safe_free.c \
+					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
 					memory/ft_memcmp.c string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
@@ -27,12 +28,14 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
 					iterator/new_iterator.c \
 					link/ft_link_for_each.c link/ft_link_free.c link/ft_link_get_first.c \
-					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c \
+					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_reverse.c link/ft_link_set_data.c \
 					link/new_link.c \
-					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_get_elem.c list/ft_list_get_iterator.c \
+					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_from_str_arr.c list/ft_list_get_elem.c \
+					list/ft_list_get_iterator.c \
 					list/ft_list_join.c list/ft_list_map.c \
 					list/ft_list_push.c \
-					list/ft_list_push_char.c list/ft_list_push_long.c list/ft_list_push_malloc.c \
+					list/ft_list_push_char.c list/ft_list_push_data.c list/ft_list_push_long.c \
+					list/ft_list_push_malloc.c \
 					list/ft_list_push_str.c list/ft_list_reverse.c \
 					list/new_list.c math/ft_math_abs.c number/ft_number_to_str.c number/ft_str_to_number_base.c \
 					number/ft_str_to_number.c string/ft_string_append.c \

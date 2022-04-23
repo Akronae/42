@@ -25,8 +25,7 @@ t_list	*ft_list_map(t_list *self, t_link *(*action)(t_link *))
 	iterator = self->get_iterator(self);
 	while (iterator->current)
 	{
-		mapped->push(mapped, action(iterator->current));
-		iterator->next(iterator);
+		mapped->push(mapped, action(iterator->next(iterator)));
 	}
 	iterator->free(iterator);
 	self->free(self);

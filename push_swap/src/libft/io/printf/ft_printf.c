@@ -30,14 +30,13 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 	i = 0;
 	while (input[i])
 	{
-		list->push(list, new_link());
 		if (input[i] == '%')
 		{
 			type = ft_template_type_from_str(input, &i);
-			list->last_element->data = ft_arg_to_formatted_elem(args, type);
+			list->push_data(list, T_TYPE_UNKNOWN, ft_arg_to_formatted_elem(args, type));
 		}
 		else
-			list->last_element->data = ft_char_to_formatted_elem(input[i]);
+			list->push_data(list, T_TYPE_UNKNOWN, ft_char_to_formatted_elem(input[i]));
 		i++;
 	}
 	return (list);

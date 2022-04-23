@@ -23,8 +23,7 @@ t_link	*ft_map_formatted_to_str(t_link *elem)
 		return (NULL);
 	t_formatted_element *curr = elem->data;
 	t_link *new = new_link();
-	new->data_type = T_TYPE_STRING;
-	new->data = ft_strdup(curr->value);
+	new->set_data(new, T_TYPE_STRING, ft_strdup(curr->value));
 	return (new);
 }
 

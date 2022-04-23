@@ -18,6 +18,8 @@
 typedef struct t_link
 {
 	void			*data;
+	long long		*data_long;
+	char		*data_str;
 	enum t_type		data_type;
 	struct t_link	*prev;
 	struct t_link	*next;
@@ -26,6 +28,7 @@ typedef struct t_link
 	struct t_link	*(*get_last)(struct t_link *self);
 	struct t_link	*(*insert)(struct t_link *self, struct t_link *to_insert);
 	struct t_link	*(*reverse)(struct t_link *self);
+	struct t_link	*(*set_data)(struct t_link *self, t_type data_type, void *data);
 	void			(*for_each)(struct t_link *self,
 			void (action)(struct t_link *elem));
 }	t_link;
@@ -35,6 +38,7 @@ t_link	*ft_link_get_first(t_link *self);
 t_link	*ft_link_get_last(t_link *self);
 t_link	*ft_link_insert(t_link *self, t_link *to_insert);
 t_link	*ft_link_reverse(t_link *self);
+t_link	*ft_link_set_data(t_link *self, t_type data_type, void *data);
 void	ft_link_for_each(t_link *self, void (*action)(t_link *elem));
 t_link	*new_link(void);
 

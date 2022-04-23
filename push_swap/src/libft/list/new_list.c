@@ -24,10 +24,11 @@ t_list	*new_list(void)
 	list->last_element = NULL;
 	list->length = 0;
 	list->free = &ft_list_free;
+	list->from_str_arr = &ft_list_from_str_arr;
 	list->on_elem_free = NULL;
 	list->push = &ft_list_push;
-	list->push_malloc = &ft_list_push_malloc;
 	list->push_char = &ft_list_push_char;
+	list->push_data = &ft_list_push_data;
 	list->push_long = &ft_list_push_long;
 	list->push_str = &ft_list_push_str;
 	list->get_elem = &ft_list_get_elem;

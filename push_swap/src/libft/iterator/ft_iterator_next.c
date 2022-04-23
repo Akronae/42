@@ -12,7 +12,7 @@
 
 #include "ft_iterator.h"
 
-void	*ft_iterator_next(t_iterator *self)
+t_link	*ft_iterator_next(t_iterator *self)
 {
 	t_link	*curr;
 
@@ -20,5 +20,6 @@ void	*ft_iterator_next(t_iterator *self)
 	if (!curr)
 		return (NULL);
 	self->current = self->current->next;
-	return (curr->data);
+	self->index++;
+	return (curr);
 }

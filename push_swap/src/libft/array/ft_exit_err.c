@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_malloc.c                              :+:      :+:    :+:   */
+/*   ft_exit_err.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Created: 2022/01/13 11:23:58 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include "../memory/ft_memory.h"
+#include "./ft_array.h"
 #include <stdlib.h>
 
-void	ft_list_push_malloc(t_list *self, int malloc_size)
+void	*ft_exit_err(char *msg)
 {
-	self->push_data(self, T_TYPE_UNKNOWN, ft_safe_malloc(malloc_size));
+	ft_printfl("Error\n%s", msg);
+	exit(1);
+	return (NULL);
 }

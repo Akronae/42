@@ -11,17 +11,17 @@
 /* ************************************************************************** */
 
 #include "ft_iterator.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
 t_iterator	*new_iterator(t_link *link)
 {
 	t_iterator	*iterator;
 
-	iterator = malloc(sizeof(t_iterator));
-	if (!iterator)
-		return (NULL);
+	iterator = ft_safe_malloc(sizeof(t_iterator));
 	iterator->first = link;
 	iterator->current = link;
+	iterator->index = 0;
 	iterator->next = &ft_iterator_next;
 	iterator->next_str = &ft_iterator_next_str;
 	iterator->next_char = &ft_iterator_next_char;

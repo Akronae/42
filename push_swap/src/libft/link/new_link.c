@@ -21,6 +21,8 @@ t_link	*new_link(void)
 	if (!link)
 		return (NULL);
 	link->data = NULL;
+	link->data_long = NULL;
+	link->data_str = NULL;
 	link->data_type = T_TYPE_UNKNOWN;
 	link->next = NULL;
 	link->prev = NULL;
@@ -28,6 +30,7 @@ t_link	*new_link(void)
 	link->get_first = &ft_link_get_first;
 	link->get_last = &ft_link_get_last;
 	link->insert = &ft_link_insert;
+	link->set_data = &ft_link_set_data;
 	link->reverse = &ft_link_reverse;
 	link->for_each = &ft_link_for_each;
 	return (link);

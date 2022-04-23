@@ -26,7 +26,7 @@ static size_t	ft_compute_join_length(t_iterator *iterator, char *delimiter)
 		if (iterator->current->data_type == T_TYPE_UNKNOWN)
 			total_length += ft_strlen(T_TYPE_UNKNOWN_STR);
 		else if (iterator->current->data_type == T_TYPE_STRING)
-			total_length += ft_strlen(iterator->current->data);
+			total_length += ft_strlen(iterator->current->data_str);
 		else if (iterator->current->data_type == T_TYPE_CHAR)
 			total_length += 1;
 		else
@@ -45,23 +45,22 @@ char	*ft_list_join(t_list *self, char *delimiter)
 	char		*str;
 
 	iterator = self->get_iterator(self);
-	str = ft_calloc(sizeof (char)
+	str = ft_safe_malloc(sizeof (char)
 			* ft_compute_join_length(iterator, delimiter));
-	if (!str)
-		return (NULL);
 	iterator->reset(iterator);
 	while (iterator->current)
 	{
-		if (iterator->current->data_type == T_TYPE_UNKNOWN && iterator->next(iterator))
+		if (iterator->current->data_type == T_TYPE_UNKNOWN)
 			ft_string_append(str, T_TYPE_UNKNOWN_STR);
 		else if (iterator->current->data_type == T_TYPE_STRING)
-			ft_string_append(str, iterator->next_str(iterator));
+			ft_string_append(str, iterator->current->data_str);
 		else if (iterator->current->data_type == T_TYPE_CHAR)
-			ft_string_append_char(str, iterator->next_char(iterator));
+			ft_string_append_char(str, *iterator->current->data_str);
 		else
 			ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
 								   ft_number_to_str(iterator->current->data_type)));
 		ft_string_append(str, delimiter);
+		iterator->next(iterator);
 	}
 	iterator->free(iterator);
 	return (str);

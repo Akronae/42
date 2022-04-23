@@ -18,35 +18,40 @@
 #include "libft/string/ft_string.h"
 #include "libft/number/ft_number.h"
 
-void	ft_error(char *msg)
+t_list *ft_get_stack_from_input(t_list *input)
 {
-	ft_printfl("Error\n%s", msg);
-	exit(1);
+	if (input->length <= 1)
+		ft_exit_err("no arguments supplied");
+
+	t_list *stack = new_list();
+	t_iterator *i = input->get_iterator(input);
+	i->next(i);
+	while (i->current)
+	{
+		if (!ft_str_is_numeric(i->current->data_str))
+			ft_exit_err(ft_str_format("element %d is not a number (%s)", i->index, i->current->data_str));
+		long nbr = ft_str_to_number(i->current->data_str);
+		if (nbr < INT_MIN || nbr > INT_MAX)
+			ft_exit_err(ft_str_format("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i->index, i->current->data_str));
+		stack->push_long(stack, nbr);
+		i->next(i);
+	}
+	i->free(i);
+	return (stack);
 }
 
 int main (int argc, char **argv)
 {
-	t_list *list = new_list();
+	t_list *input = new_list();
+	input->from_str_arr(input, argv, 0, argc);
+	t_list *stack_a = ft_get_stack_from_input(input);
 
-	if (argc <= 1)
-		ft_error("No arguments supplied");
-
-	int i = 1;
-	while (i < argc)
+	t_iterator *i = stack_a->get_iterator(stack_a);
+	while (i->current)
 	{
-		if (!ft_str_is_numeric(argv[i]))
-			ft_error(ft_str_format("element %d is not a number (%s)", i, argv[i]));
-		long nbr = ft_str_to_number(argv[i]);
-		if (nbr < INT_MIN || nbr > INT_MAX)
-			ft_error(ft_str_format("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i, argv[i]));
-		list->push_long(list, nbr);
-		i++;
+		ft_printfl("%lld", *i->next(i)->data_long);
 	}
-	struct t_iterator *iterator = list->get_iterator(list);
-	while (iterator->current)
-	{
-		ft_printfl("%lld", iterator->next_long(iterator));
-	}
-	iterator->free(iterator);
-	list->free(list);
+	i->free(i);
+	input->free(input);
+	stack_a->free(stack_a);
 }
