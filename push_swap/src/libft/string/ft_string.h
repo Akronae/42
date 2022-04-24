@@ -17,8 +17,8 @@
 
 # include <unistd.h>
 
-void	ft_string_append(char *dst, char *src);
-void	ft_string_append_char(char *dst, char src);
+void	ft_str_append(char *dst, char *src);
+void	ft_str_append_char(char *dst, char src);
 void	ft_string_to_upper(char *str);
 char	**ft_split(char const *s, char c);
 int		ft_str_index_of(char *to_find, char *in_str);

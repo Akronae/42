@@ -15,13 +15,13 @@
 
 t_link	*ft_list_push(t_list *self, t_link *to_push)
 {
-	if (!self->first_element)
+	if (!self->first)
 	{
-		self->first_element = to_push;
-		self->last_element = self->first_element;
+		self->first = to_push;
+		self->last = self->first;
 	}
 	else
-		self->last_element = self->last_element->insert(self->last_element, to_push);
+		self->last = self->last->insert(self->last, to_push);
 	self->length += 1;
 	return (to_push);
 }

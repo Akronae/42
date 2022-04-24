@@ -19,8 +19,9 @@
 
 typedef struct t_list
 {
-	t_link				*first_element;
-	t_link				*last_element;
+	t_link				*first;
+	t_link				*last;
+	struct t_iterator	*i;
 	size_t				length;
 	void				(*free)(struct t_list *self);
 	struct t_list		*(*from_str_arr)(struct t_list *self, char **arr, size_t from, size_t to);

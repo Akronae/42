@@ -14,5 +14,6 @@
 
 void	ft_iterator_reset(t_iterator *self)
 {
-	self->current = self->first;
+	self->curr = NULL;
+	self->index = 0;
 }

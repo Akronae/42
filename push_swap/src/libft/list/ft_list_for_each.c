@@ -16,7 +16,7 @@
 void	ft_list_for_each(struct t_list *self,
 		void (*action)(struct t_link *elem))
 {
-	if (!self->first_element)
+	if (!self->first)
 		return ;
-	self->first_element->for_each(self->first_element, action);
+	self->first->for_each(self->first, action);
 }

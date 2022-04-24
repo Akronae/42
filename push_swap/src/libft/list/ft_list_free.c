@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <stdlib.h>
+#include "../memory/ft_memory.h"
 
 void	ft_list_free(t_list *self)
 {
 	if (self->on_elem_free)
 		self->for_each(self, self->on_elem_free);
-	if (self->first_element)
-		self->first_element->free(self->first_element);
-	free(self);
+	if (self->first)
+		self->first->free(self->first);
+	self->i->free(self->i);
+	ft_safe_free(self);
 }

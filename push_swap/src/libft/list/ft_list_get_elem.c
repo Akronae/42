@@ -18,7 +18,7 @@ t_link	*ft_list_get_elem(t_list *self, size_t at_index)
 	t_link	*elem;
 
 	i = 0;
-	elem = self->first_element;
+	elem = self->first;
 	while (i < at_index)
 	{
 		elem = elem->next;

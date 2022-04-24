@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_append_char.c                            :+:      :+:    :+:   */
+/*   ft_iterator_skip.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/16 18:34:59 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
-#include <unistd.h>
+#include "ft_iterator.h"
 
-void	ft_string_append_char(char *dst, char src)
+void	ft_iterator_skip(t_iterator *self, size_t skip_count)
 {
-	size_t	dst_i;
+	size_t	i;
 
-	dst_i = ft_strlen(dst);
-	dst[dst_i] = src;
-	dst[dst_i + 1] = '\0';
+	i = 0;
+	while (i < skip_count)
+	{
+		i++;
+		self->next(self);
+		if (!self->curr)
+			return ;
+	}
 }

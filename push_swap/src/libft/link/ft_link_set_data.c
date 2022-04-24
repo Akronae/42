@@ -17,7 +17,7 @@ t_link	*ft_link_set_data(t_link *self, t_type data_type, void *data)
 {
 	self->data_type = data_type;
 	self->data = data;
-	self->data_long = (long long *) data;
-	self->data_str = (char *) data;
+	self->as_long = (long long *) data;
+	self->as_str = (char *) data;
 	return (self);
 }
