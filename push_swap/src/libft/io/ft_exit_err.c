@@ -11,11 +11,20 @@
 /* ************************************************************************** */
 
 #include "./ft_io.h"
+#include "../string/ft_string.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-void	*ft_exit_err(char *msg)
+void	*ft_exit_err(char *msg, ...)
 {
-	ft_printfl("Error\n%s", msg);
+	va_list				args;
+	char				*str;
+
+	str = ft_strjoin("Error\n%s", msg);
+	va_start(args, msg);
+	ft_print(str, args);
+	va_end(args);
+	ft_safe_free(str);
 	exit(1);
 	return (NULL);
 }

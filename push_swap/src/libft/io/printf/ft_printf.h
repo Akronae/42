@@ -42,9 +42,11 @@ typedef enum t_template_type {
 }	t_template_type;
 
 struct t_list				*ft_printf_parse_args(va_list args, char *input);
+int							ft_print(const char *input, va_list args);
 int							ft_printf(const char *input, ...);
 int							ft_printfl(const char *input, ...);
 char						*ft_str_format(const char *input, ...);
+char						*ft_str_format_handle_args(const char *input, va_list args);
 char						*ft_arg_str_to_str(char *str);
 char						*ft_arg_ptr_to_str(unsigned long long ptr);
 char						*ft_arg_hex_to_str(unsigned int val,

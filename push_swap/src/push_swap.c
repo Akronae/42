@@ -29,10 +29,10 @@ t_list *ft_get_stack_from_input(t_list *input)
 	while (i->current)
 	{
 		if (!ft_str_is_numeric(i->current->data_str))
-			ft_exit_err(ft_str_format("element %d is not a number (%s)", i->index, i->current->data_str));
+			ft_exit_err("element %d is not a number (%s)", i->index, i->current->data_str);
 		long nbr = ft_str_to_number(i->current->data_str);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			ft_exit_err(ft_str_format("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i->index, i->current->data_str));
+			ft_exit_err("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i->index, i->current->data_str);
 		stack->push_long(stack, nbr);
 		i->next(i);
 	}

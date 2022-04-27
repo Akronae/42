@@ -19,6 +19,6 @@ void	*ft_safe_malloc(size_t malloc_size)
 {
 	void *alloc = ft_calloc(malloc_size);
 	if (!alloc)
-		ft_exit_err(ft_str_format("ft_safe_malloc: could not allocate %zu of memory", malloc_size));
+		ft_exit_err("ft_safe_malloc: could not allocate %zu bytes of memory", malloc_size);
 	return (alloc);
 }

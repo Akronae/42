@@ -27,17 +27,25 @@ t_link	*ft_map_formatted_to_str(t_link *elem)
 	return (new);
 }
 
-char	*ft_str_format(const char *input, ...)
+char	*ft_str_format_handle_args(const char *input, va_list args)
 {
-	va_list				args;
 	t_list				*list;
 	char				*str;
 
-	va_start(args, input);
 	list = ft_printf_parse_args(args, (char *) input);
 	list = list->map(list, &ft_map_formatted_to_str);
 	str = list->join(list, STRING_EMPTY);
 	list->free(list);
+	return (str);
+}
+
+char	*ft_str_format(const char *input, ...)
+{
+	va_list				args;
+	char				*str;
+
+	va_start(args, input);
+	str = ft_str_format_handle_args(input, args);
 	va_end(args);
 	return (str);
 }
