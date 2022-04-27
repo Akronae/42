@@ -18,8 +18,8 @@
 typedef struct t_link
 {
 	void			*data;
-	long long		*data_long;
-	char		*data_str;
+	long long		*as_long;
+	char			*as_str;
 	enum t_type		data_type;
 	struct t_link	*prev;
 	struct t_link	*next;

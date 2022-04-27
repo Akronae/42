@@ -12,56 +12,45 @@
 
 #include "ft_list.h"
 #include "../string/ft_string.h"
+#include "../char/ft_char.h"
 #include "../number/ft_number.h"
 #include "../memory/ft_memory.h"
 #include "../io/ft_io.h"
 
-static size_t	ft_compute_join_length(t_iterator *iterator, char *delimiter)
+static size_t	ft_compute_join_length(t_list *str_list)
 {
 	size_t	total_length;
 
 	total_length = 1;
-	while (iterator->current)
-	{
-		if (iterator->current->data_type == T_TYPE_UNKNOWN)
-			total_length += ft_strlen(T_TYPE_UNKNOWN_STR);
-		else if (iterator->current->data_type == T_TYPE_STRING)
-			total_length += ft_strlen(iterator->current->data_str);
-		else if (iterator->current->data_type == T_TYPE_CHAR)
-			total_length += 1;
-		else
-			ft_exit_err(ft_strjoin("ft_compute_join_length: cannot parse type ",
-								   ft_number_to_str(iterator->current->data_type)));
-		total_length += ft_strlen(delimiter);
-		iterator->next(iterator);
-	}
-	total_length -= ft_strlen(delimiter);
+	while (str_list->i->next(str_list->i))
+		total_length += ft_strlen(str_list->i->curr->as_str);
 	return (total_length);
 }
 
 char	*ft_list_join(t_list *self, char *delimiter)
 {
-	t_iterator	*iterator;
 	char		*str;
+	t_list		*str_list;
 
-	iterator = self->get_iterator(self);
-	str = ft_safe_malloc(sizeof (char)
-			* ft_compute_join_length(iterator, delimiter));
-	iterator->reset(iterator);
-	while (iterator->current)
+	str_list = new_list();
+	while (self->i->next(self->i))
 	{
-		if (iterator->current->data_type == T_TYPE_UNKNOWN)
-			ft_string_append(str, T_TYPE_UNKNOWN_STR);
-		else if (iterator->current->data_type == T_TYPE_STRING)
-			ft_string_append(str, iterator->current->data_str);
-		else if (iterator->current->data_type == T_TYPE_CHAR)
-			ft_string_append_char(str, *iterator->current->data_str);
+		if (self->i->curr->data_type == T_TYPE_UNKNOWN)
+			str_list->push_str(str_list, T_TYPE_UNKNOWN_STR);
+		else if (self->i->curr->data_type == T_TYPE_STRING)
+			str_list->push_str(str_list, self->i->curr->as_str);
+		else if (self->i->curr->data_type == T_TYPE_CHAR)
+			str_list->push_str(str_list, ft_char_to_str(*self->i->curr->as_str));
+		else if (self->i->curr->data_type == T_TYPE_LONG)
+			str_list->push_str(str_list, ft_number_to_str(*self->i->curr->as_long));
 		else
 			ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
-								   ft_number_to_str(iterator->current->data_type)));
-		ft_string_append(str, delimiter);
-		iterator->next(iterator);
+								   ft_number_to_str(self->i->curr->data_type)));
+		if (self->i->curr->next)
+			str_list->push_str(str_list, delimiter);
 	}
-	iterator->free(iterator);
+	str = ft_safe_malloc(sizeof (char) * ft_compute_join_length(str_list));
+	while (str_list->i->next(str_list->i))
+		ft_str_append(str, str_list->i->curr->as_str);
 	return (str);
 }

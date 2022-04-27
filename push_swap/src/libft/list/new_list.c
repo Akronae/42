@@ -20,8 +20,9 @@ t_list	*new_list(void)
 	list = malloc(sizeof(t_list));
 	if (!list)
 		return (NULL);
-	list->first_element = NULL;
-	list->last_element = NULL;
+	list->first = NULL;
+	list->last = NULL;
+	list->i = new_iterator(list);
 	list->length = 0;
 	list->free = &ft_list_free;
 	list->from_str_arr = &ft_list_from_str_arr;

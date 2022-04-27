@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string_append.c                                 :+:      :+:    :+:   */
+/*   ft_str_append.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "ft_string.h"
 #include <unistd.h>
 
-void	ft_string_append(char *dst, char *src)
+void	ft_str_append(char *dst, char *src)
 {
 	size_t	dst_i;
 	size_t	src_i;
