@@ -36,9 +36,9 @@ char	*ft_list_join(t_list *self, char *delimiter)
 	while (self->i->next(self->i))
 	{
 		if (self->i->curr->data_type == T_TYPE_UNKNOWN)
-			str_list->push_str(str_list, T_TYPE_UNKNOWN_STR);
+			str_list->push_str(str_list, ft_strdup(T_TYPE_UNKNOWN_STR));
 		else if (self->i->curr->data_type == T_TYPE_STRING)
-			str_list->push_str(str_list, self->i->curr->as_str);
+			str_list->push_str(str_list, ft_strdup(self->i->curr->as_str));
 		else if (self->i->curr->data_type == T_TYPE_CHAR)
 			str_list->push_str(str_list, ft_char_to_str(*self->i->curr->as_str));
 		else if (self->i->curr->data_type == T_TYPE_LONG)
@@ -47,10 +47,11 @@ char	*ft_list_join(t_list *self, char *delimiter)
 			ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
 								   ft_number_to_str(self->i->curr->data_type)));
 		if (self->i->curr->next)
-			str_list->push_str(str_list, delimiter);
+			str_list->push_str(str_list, ft_strdup(delimiter));
 	}
 	str = ft_safe_malloc(sizeof (char) * ft_compute_join_length(str_list));
 	while (str_list->i->next(str_list->i))
 		ft_str_append(str, str_list->i->curr->as_str);
+	str_list->free(str_list);
 	return (str);
 }

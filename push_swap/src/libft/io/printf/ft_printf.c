@@ -16,16 +16,17 @@
 #include "ft_printf.h"
 #include "../../list/ft_list.h"
 #include "../../string/ft_string.h"
+#include "../../memory/ft_memory.h"
+#include "../../number/ft_number.h"
 
 struct t_list	*ft_printf_parse_args(va_list args, char *input)
 {
 	t_list			*list;
 	size_t			i;
 	t_template_type	type;
+	int 			should_free_arg;
 
 	list = new_list();
-	if (!list)
-		return (NULL);
 	list->on_elem_free = &ft_formatted_list_free_elem;
 	i = 0;
 	while (input[i])
@@ -33,7 +34,10 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 		if (input[i] == '%')
 		{
 			type = ft_template_type_from_str(input, &i);
-			list->push_data(list, T_TYPE_UNKNOWN, ft_arg_to_formatted_elem(args, type));
+			should_free_arg = ft_str_index_of(FLAG_FREE, input + i) == 1;
+			list->push_data(list, T_TYPE_UNKNOWN, ft_arg_to_formatted_elem(args, type, should_free_arg));
+			if (should_free_arg)
+				i += ft_strlen(FLAG_FREE);
 		}
 		else
 			list->push_data(list, T_TYPE_UNKNOWN, ft_char_to_formatted_elem(input[i]));
@@ -83,7 +87,7 @@ int	ft_printfl(const char *input, ...)
 	va_start(args, input);
 	final_str = ft_strjoin(input, "\n");
 	output_str_len = ft_print(final_str, args);
-	free(final_str);
+	ft_safe_free(final_str);
 	va_end(args);
 	return (output_str_len);
 }

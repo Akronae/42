@@ -19,6 +19,8 @@
 #  define NULL_PTR_DISPLAY "(nil)"
 # endif
 
+# define FLAG_FREE "{.free}"
+
 # include <unistd.h>
 # include <stdarg.h>
 # include "../../link/ft_link.h"
@@ -26,6 +28,7 @@
 typedef struct t_formatted_element {
 	size_t	length;
 	char	*value;
+	int		should_be_freed;
 }	t_formatted_element;
 
 typedef enum t_template_type {
@@ -54,7 +57,7 @@ char						*ft_arg_hex_to_str(unsigned int val,
 struct t_formatted_element	*new_formatted_element(void);
 void						ft_formatted_list_free_elem(t_link *elem);
 struct t_formatted_element	*ft_arg_to_formatted_elem(
-								va_list args, enum t_template_type type);
+								va_list args, enum t_template_type type, int free_arg);
 void						ft_arg_to_formatted_elem2(
 								va_list args, enum t_template_type type,
 								t_formatted_element *elem);

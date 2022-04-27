@@ -11,7 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_link.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 void	ft_link_free(t_link *self)
 {
@@ -24,7 +26,7 @@ void	ft_link_free(t_link *self)
 		temp = elem;
 		elem = elem->next;
 		if (temp->data)
-			free(temp->data);
-		free(temp);
+			ft_safe_free(temp->data);
+		ft_safe_free(temp);
 	}
 }

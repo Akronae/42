@@ -14,6 +14,7 @@
 #include "../../string/ft_string.h"
 #include "../../char/ft_char.h"
 #include "../../number/ft_number.h"
+#include "../../memory/ft_memory.h"
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -39,11 +40,13 @@ void	ft_formatted_list_free_elem(t_link *elem)
 }
 
 struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
-		enum t_template_type type)
+		enum t_template_type type, int free_arg)
 {
 	t_formatted_element	*elem;
+	void 				*ptr;
 
 	elem = new_formatted_element();
+	ptr = NULL;
 	if (!elem)
 		return (NULL);
 	if (type == CHAR)
@@ -56,15 +59,16 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 	else if (type == LONGLONG)
 		elem->value = ft_number_to_str(va_arg(args, long long));
 	else if (type == STRING)
-		elem->value = ft_arg_str_to_str(va_arg(args, char *));
-	else if (type == POINTER)
-		elem->value = ft_arg_ptr_to_str(va_arg(args, unsigned long long));
-	else if (type == U_DECIMAL)
-		elem->value = ft_number_to_str(va_arg(args, unsigned int));
+	{
+		ptr = va_arg(args, char *);
+		elem->value = ft_arg_str_to_str(ptr);
+	}
 	else
 		ft_arg_to_formatted_elem2(args, type, elem);
 	if (!elem->length)
 		elem->length = ft_strlen(elem->value);
+	if (free_arg)
+		ft_safe_free(ptr);
 	return (elem);
 }
 

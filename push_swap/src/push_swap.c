@@ -17,6 +17,7 @@
 #include "libft/list/ft_list.h"
 #include "libft/string/ft_string.h"
 #include "libft/number/ft_number.h"
+#include "libft/memory/ft_memory.h"
 
 t_list *ft_stack_from_input(t_list *input)
 {
@@ -27,11 +28,11 @@ t_list *ft_stack_from_input(t_list *input)
 	input->i->skip(input->i, 1);
 	while (input->i->next(input->i))
 	{
-		if (!ft_str_is_numeric(i->current->data_str))
-			ft_exit_err("element %d is not a number (%s)", i->index, i->current->data_str);
-		long nbr = ft_str_to_number(i->current->data_str);
+		if (!ft_str_is_numeric(input->i->curr->as_str))
+			ft_exit_err("element %d is not a number (%s)", input->i->index, input->i->curr->as_str);
+		long nbr = ft_str_to_number(input->i->curr->as_str);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			ft_exit_err("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", i->index, i->current->data_str);
+			ft_exit_err("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", input->i->index, input->i->curr->as_str);
 		stack->push_long(stack, nbr);
 	}
 	return (stack);
@@ -44,7 +45,8 @@ int main (int argc, char **argv)
 	t_list *stack_a = ft_stack_from_input(input);
 	t_list *stack_b = new_list();
 
-	ft_printfl("stack_a\n-----------\n%s", stack_a->join(stack_a, "\n"));
+	ft_printfl("stack_a\n-----------\n%s{.free}lala", stack_a->join(stack_a, "\n"));
+
 	input->free(input);
 	stack_a->free(stack_a);
 	stack_b->free(stack_b);

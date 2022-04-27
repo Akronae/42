@@ -18,7 +18,11 @@
 void	ft_arg_to_formatted_elem2(va_list args,
 		enum t_template_type type, t_formatted_element *elem)
 {
-	if (type == PERCENT)
+	if (type == POINTER)
+		elem->value = ft_arg_ptr_to_str(va_arg(args, unsigned long long));
+	else if (type == U_DECIMAL)
+		elem->value = ft_number_to_str(va_arg(args, unsigned int));
+	else if (type == PERCENT)
 		elem->value = ft_strdup("%");
 	else if (type == LONGLONG)
 		elem->value = ft_number_to_str(va_arg(args, long long));
