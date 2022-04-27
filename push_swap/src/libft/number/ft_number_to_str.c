@@ -12,7 +12,7 @@
 
 #include "ft_number.h"
 #include "../char/ft_char.h"
-#include "../boolean/ft_boolean.h"
+#include "../logic/ft_logic.h"
 #include "../list/ft_list.h"
 #include "../math/ft_math.h"
 #include "../string/ft_string.h"

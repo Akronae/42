@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_of.c                                  :+:      :+:    :+:   */
+/*   ft_list_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "ft_list.h"
+#include "../memory/ft_memory.h"
+#include "../math/ft_math.h"
 #include "../logic/ft_logic.h"
-#include <unistd.h>
 
-int	ft_str_index_of(char *to_find, char *in_str)
+void	ft_list_swap(t_list *self, size_t from_index, size_t to_index)
 {
-	size_t	in_str_i;
-	size_t	to_find_i;
+	t_link *a;
+	t_link *b;
 
-	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
-		return (INDEX_NOT_FOUND);
-	while (TRUE)
-	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		if (!in_str[in_str_i])
-			break ;
-		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
-		{
-			to_find_i++;
-			if (!to_find[to_find_i])
-				return (in_str_i);
-		}
-		in_str_i++;
-	}
-	return (INDEX_NOT_FOUND);
+	from_index = ft_math_clamp(from_index, 0, self->length - 1);
+	to_index = ft_math_clamp(to_index, 0, self->length - 1);
+	if (from_index == to_index)
+		return ;
+	a = self->remove_at(self, from_index);
+	self->insert_at(self, to_index - ft_if_int(from_index < to_index, 1, 0), a);
+	b = self->remove_at(self, to_index + ft_if_int(to_index < from_index, 1, 0));
+	self->insert_at(self, from_index - ft_if_int(to_index < from_index, 1, 0), b);
 }

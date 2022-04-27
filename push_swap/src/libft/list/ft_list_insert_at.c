@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_of.c                                  :+:      :+:    :+:   */
+/*   ft_list_insert_at.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include "../logic/ft_logic.h"
-#include <unistd.h>
+#include "ft_list.h"
+#include "../math/ft_math.h"
 
-int	ft_str_index_of(char *to_find, char *in_str)
+t_link	*ft_list_insert_at(t_list *self, size_t insert_index, t_link *insert_elem)
 {
-	size_t	in_str_i;
-	size_t	to_find_i;
+	t_link	*elem;
 
-	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
-		return (INDEX_NOT_FOUND);
-	while (TRUE)
+	insert_index = ft_math_clamp(insert_index, 0, self->length);
+	if (insert_index == 0)
 	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		if (!in_str[in_str_i])
-			break ;
-		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
-		{
-			to_find_i++;
-			if (!to_find[to_find_i])
-				return (in_str_i);
-		}
-		in_str_i++;
+		self->first->prev = insert_elem;
+		insert_elem->next = self->first;
+		self->first = insert_elem;
 	}
-	return (INDEX_NOT_FOUND);
+	else
+	{
+		elem = self->get_elem(self, insert_index - 1);
+		elem->insert(elem, insert_elem);
+		if (insert_index == self->length)
+			self->last = insert_elem;
+	}
+	self->length++;
+	return (insert_elem);
 }

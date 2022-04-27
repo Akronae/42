@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../boolean/ft_boolean.h"
+#include "../logic/ft_logic.h"
 #include <stdlib.h>
 
 int	ft_str_equal(char *s1, char *s2)

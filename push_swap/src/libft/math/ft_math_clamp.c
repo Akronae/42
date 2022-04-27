@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_of.c                                  :+:      :+:    :+:   */
+/*   ft_math_clamp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include "../logic/ft_logic.h"
-#include <unistd.h>
+#include "ft_math.h"
 
-int	ft_str_index_of(char *to_find, char *in_str)
+long long	ft_math_clamp(long long nb, long long min, long long max)
 {
-	size_t	in_str_i;
-	size_t	to_find_i;
-
-	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
-		return (INDEX_NOT_FOUND);
-	while (TRUE)
-	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		if (!in_str[in_str_i])
-			break ;
-		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
-		{
-			to_find_i++;
-			if (!to_find[to_find_i])
-				return (in_str_i);
-		}
-		in_str_i++;
-	}
-	return (INDEX_NOT_FOUND);
+	if (nb < min)
+		return (min);
+	if (nb > max)
+		return (max);
+	return (nb);
 }

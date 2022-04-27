@@ -45,7 +45,8 @@ int main (int argc, char **argv)
 	t_list *stack_a = ft_stack_from_input(input);
 	t_list *stack_b = new_list();
 
-	ft_printfl("stack_a\n-----------\n%s{.free}lala", stack_a->join(stack_a, "\n"));
+	stack_a->swap(stack_a, 2, 3);
+	ft_printfl("stack_a\n-----------\n%s{.free}%s", stack_a->join(stack_a, "\n"));
 
 	input->free(input);
 	stack_a->free(stack_a);

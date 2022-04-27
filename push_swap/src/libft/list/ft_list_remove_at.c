@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_of.c                                  :+:      :+:    :+:   */
+/*   ft_list_remove_at.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-#include "../logic/ft_logic.h"
-#include <unistd.h>
+#include "ft_list.h"
+#include "../math/ft_math.h"
 
-int	ft_str_index_of(char *to_find, char *in_str)
+t_link	*ft_list_remove_at(t_list *self, size_t remove_index)
 {
-	size_t	in_str_i;
-	size_t	to_find_i;
+	t_link	*elem;
 
-	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
-		return (INDEX_NOT_FOUND);
-	while (TRUE)
-	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		if (!in_str[in_str_i])
-			break ;
-		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
-		{
-			to_find_i++;
-			if (!to_find[to_find_i])
-				return (in_str_i);
-		}
-		in_str_i++;
-	}
-	return (INDEX_NOT_FOUND);
+	remove_index = ft_math_clamp(remove_index, 0, self->length - 1);
+	elem = self->get_elem(self, remove_index);
+	if (remove_index == 0)
+		self->first = elem->next;
+	if (remove_index == self->length - 1)
+		self->last = elem->prev;
+	elem->remove(elem);
+	self->length--;
+	return (elem);
 }

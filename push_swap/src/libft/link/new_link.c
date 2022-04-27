@@ -30,6 +30,7 @@ t_link	*new_link(void)
 	link->get_first = &ft_link_get_first;
 	link->get_last = &ft_link_get_last;
 	link->insert = &ft_link_insert;
+	link->remove = &ft_link_remove;
 	link->set_data = &ft_link_set_data;
 	link->reverse = &ft_link_reverse;
 	link->for_each = &ft_link_for_each;

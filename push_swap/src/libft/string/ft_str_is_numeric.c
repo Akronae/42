@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include "../char/ft_char.h"
-#include "../boolean/ft_boolean.h"
+#include "../logic/ft_logic.h"
 
 int	ft_str_is_numeric(const char *s)
 {
