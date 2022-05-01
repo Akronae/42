@@ -42,74 +42,32 @@ void sa (t_list *a)
 {
 	a->swap(a, -1, -2);
 }
-const size_t HERE = 1234321;
-const size_t GO_BACK = 77577777;
 
-void *laloc_init(void *data_ptr)
+void *lol (int write, void *ptr)
 {
-	void **ptr = malloc(sizeof(void*));
-	ft_printfl("static ptr: %p", ptr);
-	*ptr = data_ptr;
-	size_t *a = malloc(sizeof (size_t));
-	*a = HERE;
-	return (a);
-}
-
-void *find_static_ptr (size_t size_of_data)
-{
-	size_t *a = malloc(sizeof(size_t));
-	*a = GO_BACK;
-	while (*a != HERE)
+	void *a[1];
+	if (write)
 	{
-		a -= sizeof (size_t) / 4;
+		a[0] = ptr;
 	}
-	return a - size_of_data / 4;
+	return a[0];
 }
 
-
-void clear_static_ptr (size_t size_of_data)
-{
-	size_t *a = malloc(sizeof(size_t));
-	*a = GO_BACK;
-	while (*a != HERE)
-	{
-		*a = 0;
-		ft_safe_free(a);
-		a -= sizeof (size_t) / 4;
-	}
-	*a = 0;
-	ft_safe_free(a);
-	a = a - size_of_data / 4;
-	*a = 0;
-	ft_safe_free(a);
-}
-
-typedef struct env
-{
-	int a;
-	char *b;
-} env;
-void print_my_data ()
-{
-	env **here_flag_ptr = find_static_ptr(sizeof(env*));
-	ft_printfl("found ptr:  %p", here_flag_ptr);
-	ft_printfl("%d", (*here_flag_ptr)->a);
-	ft_printfl("%s", (*here_flag_ptr)->b);
-}
+int a () {int a = 1;int b = 1;int c = 1;int d = 1;int e = 3;int f = 3;int g = 3;return 1;}
+int b () {return 1;}
 
 int main (int argc, char **argv)
 {
-	env *ptr_i = malloc(sizeof(env));
-	ptr_i->a = 32;
-	ptr_i->b = ft_strdup("lolahah");
-	void* init_addr = laloc_init(ptr_i);
-	//malloc(12);
-	free(malloc(512));
-	free(malloc(512));
-	//free(malloc(12));
-	print_my_data();
-	clear_static_ptr(sizeof (int*));
-	ft_printfl("cleared");
+	ft_printfl("%p", &a);
+	ft_printfl("%p", &b);
+	int a = 233;
+	lol(0, "");
+	lol(0, "");
+	lol(1, &a);
+	lol(0, "");
+	lol(0, "");
+	int *ptr = lol(0, NULL);
+	ft_printfl("%d", *ptr);
 	return 0;
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
