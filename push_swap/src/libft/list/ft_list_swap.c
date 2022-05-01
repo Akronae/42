@@ -15,17 +15,23 @@
 #include "../math/ft_math.h"
 #include "../logic/ft_logic.h"
 
-void	ft_list_swap(t_list *self, size_t from_index, size_t to_index)
+void	ft_list_swap(t_list *self, long from_index, long to_index)
 {
 	t_link *a;
 	t_link *b;
+	long 	max_index;
 
-	from_index = ft_math_clamp(from_index, 0, self->length - 1);
-	to_index = ft_math_clamp(to_index, 0, self->length - 1);
+	max_index = self->length - 1;
+	from_index = ft_math_clamp(from_index, -max_index, max_index);
+	to_index = ft_math_clamp(to_index, -max_index, max_index);
+	if (from_index < 0)
+		from_index = self->length + from_index;
+	if (to_index < 0)
+		to_index = self->length + to_index;
 	if (from_index == to_index)
 		return ;
 	a = self->remove_at(self, from_index);
-	self->insert_at(self, to_index - ft_if_int(from_index < to_index, 1, 0), a);
+	self->insert_at(self, to_index - ft_if_int(to_index > from_index, 1, 0), a);
 	b = self->remove_at(self, to_index + ft_if_int(to_index < from_index, 1, 0));
 	self->insert_at(self, from_index - ft_if_int(to_index < from_index, 1, 0), b);
 }

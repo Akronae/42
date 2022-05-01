@@ -35,7 +35,7 @@ typedef struct t_list
 	t_link				*(*remove_at)(struct t_list *self, size_t remove_index);
 	t_link				*(*get_elem)(struct t_list *self, size_t at_index);
 	void				(*reverse)(struct t_list *self);
-	void				(*swap)(struct t_list *self, size_t from_index, size_t to_index);
+	void				(*swap)(struct t_list *self, long from_index, long to_index);
 	struct t_iterator	*(*get_iterator)(struct t_list *self);
 	t_link				*(*insert_at)(struct t_list *self, size_t insert_index, t_link *insert_elem);
 	char				*(*join)(struct t_list *self, char *delimiter);
@@ -55,7 +55,7 @@ void		ft_list_push_str(t_list *self, char *str);
 t_link		*ft_list_remove_at(t_list *self, size_t remove_index);
 t_link		*ft_list_get_elem(t_list *self, size_t at_index);
 void		ft_list_reverse(t_list *self);
-void		ft_list_swap(t_list *self, size_t from_index, size_t to_index);
+void		ft_list_swap(t_list *self, long from_index, long to_index);
 struct t_iterator	*ft_list_get_iterator(t_list *self);
 t_link	*ft_list_insert_at(t_list *self, size_t insert_index, t_link *insert_elem);
 char		*ft_list_join(t_list *self, char *delimiter);
