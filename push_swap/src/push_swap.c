@@ -53,21 +53,20 @@ void *lol (int write, void *ptr)
 	return a[0];
 }
 
-int a () {int a = 1;int b = 1;int c = 1;int d = 1;int e = 3;int f = 3;int g = 3;return 1;}
-int b () {return 1;}
+void a (int b, int c )
+{
+	ft_printfl("%p: %d\n%p: %d", &b, b, &c, c);
+}
 
 int main (int argc, char **argv)
 {
-	ft_printfl("%p", &a);
-	ft_printfl("%p", &b);
-	int a = 233;
-	lol(0, "");
-	lol(0, "");
-	lol(1, &a);
-	lol(0, "");
-	lol(0, "");
-	int *ptr = lol(0, NULL);
-	ft_printfl("%d", *ptr);
+	typedef void (function)(int a);
+	function *aa = (function *) (&a);
+	int*nb = ((int *)0x7ffeef316688);
+	//*nb = 12;
+	aa(2);
+	aa(2);
+	ft_printfl("lol");
 	return 0;
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
