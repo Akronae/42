@@ -14,6 +14,7 @@
 #include "../memory/ft_memory.h"
 #include "../math/ft_math.h"
 #include "../logic/ft_logic.h"
+#include "../io/ft_io.h"
 
 void	ft_list_swap(t_list *self, long from_index, long to_index)
 {
@@ -30,6 +31,7 @@ void	ft_list_swap(t_list *self, long from_index, long to_index)
 		to_index = self->length + to_index;
 	if (from_index == to_index)
 		return ;
+	ft_printfl("to: %d, from: %d", to_index, from_index);
 	a = self->remove_at(self, from_index);
 	self->insert_at(self, to_index - ft_if_int(to_index > from_index, 1, 0), a);
 	b = self->remove_at(self, to_index + ft_if_int(to_index < from_index, 1, 0));

@@ -20,11 +20,11 @@ void	*ft_exit_err(char *msg, ...)
 	va_list				args;
 	char				*str;
 
-	str = ft_strjoin("Error\n%s", msg);
+	str = ft_strjoin("Error\n", msg);
 	va_start(args, msg);
 	ft_print(str, args);
 	va_end(args);
-	ft_safe_free(str);
+	ft_putstr_fd("\n", 1);
 	exit(1);
 	return (NULL);
 }

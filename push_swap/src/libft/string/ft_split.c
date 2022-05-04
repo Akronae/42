@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_string.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
 char	*ft_strndup(const char *s, size_t n)
@@ -18,7 +19,7 @@ char	*ft_strndup(const char *s, size_t n)
 	size_t	i;
 	char	*result;
 
-	result = (char *)malloc(sizeof(char) * (n + 1));
+	result = (char *) ft_safe_malloc(sizeof(char) * (n + 1));
 	if (!result)
 		return (0);
 	i = 0;
@@ -75,7 +76,7 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 
 	count = ft_count_word(s, c);
-	result = (char **)malloc(sizeof(char *) * (count + 1));
+	result = (char **)ft_safe_malloc(sizeof(char *) * (count + 1));
 	if (!result)
 		return (0);
 	i = 0;

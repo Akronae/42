@@ -11,15 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_link.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
 t_link	*new_link(void)
 {
 	t_link	*link;
 
-	link = malloc(sizeof(t_link));
-	if (!link)
-		return (NULL);
+	link = ft_safe_malloc(sizeof(t_link));
 	link->data = NULL;
 	link->as_long = NULL;
 	link->as_str = NULL;

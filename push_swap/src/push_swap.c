@@ -43,38 +43,15 @@ void sa (t_list *a)
 	a->swap(a, -1, -2);
 }
 
-void *lol (int write, void *ptr)
-{
-	void *a[1];
-	if (write)
-	{
-		a[0] = ptr;
-	}
-	return a[0];
-}
-
-void a (int b, int c )
-{
-	ft_printfl("%p: %d\n%p: %d", &b, b, &c, c);
-}
-
 int main (int argc, char **argv)
 {
-	typedef void (function)(int a);
-	function *aa = (function *) (&a);
-	int*nb = ((int *)0x7ffeef316688);
-	//*nb = 12;
-	aa(2);
-	aa(2);
-	ft_printfl("lol");
-	return 0;
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
 	t_list *stack_a = ft_stack_from_input(input);
 	t_list *stack_b = new_list();
 
-	stack_a->swap(stack_a, -1, -2);
-	ft_printfl("stack_a\n-----------\n%s{free()}dsds", stack_a->join(stack_a, "\n"));
+	stack_a->swap(stack_a, 4, 3);
+	ft_printfl("stack_a\n-----------\n%s{.free()}dsds", stack_a->join(stack_a, "\n"));
 
 	input->free(input);
 	stack_a->free(stack_a);

@@ -28,7 +28,7 @@ char	*ft_substr(char *s, long from, long to)
 		to = ft_str_index_of("\0", s) - 1;
 	if (from > to)
 		return (NULL);
-	new = ft_calloc(to - from + 2);
+	new = ft_safe_malloc(to - from + 2);
 	i = 0;
 	if (!new)
 		return (NULL);

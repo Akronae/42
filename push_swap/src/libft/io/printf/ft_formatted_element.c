@@ -22,9 +22,7 @@ struct t_formatted_element	*new_formatted_element(void)
 {
 	t_formatted_element	*elem;
 
-	elem = malloc(sizeof(t_formatted_element));
-	if (!elem)
-		return (NULL);
+	elem = ft_safe_malloc(sizeof(t_formatted_element));
 	elem->value = NULL;
 	elem->length = 0;
 	return (elem);

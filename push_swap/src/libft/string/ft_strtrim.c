@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../string/ft_string.h"
+#include "../memory/ft_memory.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -42,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > start && str_include(s1[end - 1], set))
 		end--;
-	str = (char *)malloc(sizeof(*s1) * (end - start + 1));
+	str = (char *) ft_safe_malloc(sizeof(*s1) * (end - start + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

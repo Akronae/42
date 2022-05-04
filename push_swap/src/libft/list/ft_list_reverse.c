@@ -12,8 +12,9 @@
 
 #include "ft_list.h"
 
-void	ft_list_reverse(t_list *self)
+t_list	*ft_list_reverse(t_list *self)
 {
 	self->first = self->first->reverse(self->first);
 	self->last = self->first->get_last(self->first);
+	return (self);
 }

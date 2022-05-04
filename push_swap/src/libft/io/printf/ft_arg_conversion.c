@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "ft_printf.h"
 #include "../../hex/ft_hex.h"
 #include "../../string/ft_string.h"

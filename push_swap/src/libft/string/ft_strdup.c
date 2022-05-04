@@ -11,8 +11,10 @@
 /* ************************************************************************** */
 
 #include "../string/ft_string.h"
+#include "../memory/ft_memory.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*ft_strdup(const char *s1)
 {
@@ -21,7 +23,7 @@ char	*ft_strdup(const char *s1)
 
 	if (!s1)
 		return (NULL);
-	str = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	str = (char *) ft_safe_malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

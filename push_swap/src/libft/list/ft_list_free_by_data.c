@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
+/*   ft_list_free_by_data.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_char.h"
+#include "ft_list.h"
 #include "../memory/ft_memory.h"
 
-char	*ft_char_to_str(char c)
+void	ft_list_free_by_data(t_list *self, void *data)
 {
-	char	*str;
+	t_link	*elem;
 
-	str = ft_safe_malloc(sizeof(char) * 2);
-	if (!str)
-		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
+	elem = self->remove_by_data(self, data);
+	elem->free(elem);
 }

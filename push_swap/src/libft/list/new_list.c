@@ -24,6 +24,7 @@ t_list	*new_list(void)
 	list->i = new_iterator(list);
 	list->length = 0;
 	list->free = &ft_list_free;
+	list->free_by_data = &ft_list_free_by_data;
 	list->from_str_arr = &ft_list_from_str_arr;
 	list->on_elem_free = NULL;
 	list->push = &ft_list_push;
@@ -32,6 +33,7 @@ t_list	*new_list(void)
 	list->push_long = &ft_list_push_long;
 	list->push_str = &ft_list_push_str;
 	list->remove_at = &ft_list_remove_at;
+	list->remove_by_data = &ft_list_remove_by_data;
 	list->get_elem = &ft_list_get_elem;
 	list->reverse = &ft_list_reverse;
 	list->swap = &ft_list_swap;

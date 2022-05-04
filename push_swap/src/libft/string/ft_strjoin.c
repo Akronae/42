@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../string/ft_string.h"
+#include "../memory/ft_memory.h"
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -22,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)malloc(
+	str = (char *)ft_safe_malloc(
 			sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);

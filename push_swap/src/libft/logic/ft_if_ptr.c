@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
+/*   ft_if_ptr.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_char.h"
-#include "../memory/ft_memory.h"
-
-char	*ft_char_to_str(char c)
+void	*ft_if_ptr (int condition, void *if_true, void *if_false)
 {
-	char	*str;
-
-	str = ft_safe_malloc(sizeof(char) * 2);
-	if (!str)
-		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
+	if (condition)
+		return (if_true);
+	return (if_false);
 }
