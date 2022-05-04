@@ -19,7 +19,7 @@
 #  define NULL_PTR_DISPLAY "(nil)"
 # endif
 
-# define FLAG_FREE "{.free}"
+# define FLAG_FREE "{.free()}"
 
 # include <unistd.h>
 # include <stdarg.h>

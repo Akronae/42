@@ -14,7 +14,8 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_safe_free.c \
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
-					memory/ft_memcmp.c string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
+					memory/ft_memcmp.c memory/ft_swap_long.c \
+					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
 					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c string/ft_str_equal.c \
 					string/ft_str_index_of.c string/ft_str_index_of_char.c \
@@ -33,7 +34,7 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					link/new_link.c \
 					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_from_str_arr.c list/ft_list_get_elem.c \
 					list/ft_list_get_iterator.c list/ft_list_insert_at.c \
-					list/ft_list_join.c list/ft_list_map.c list/ft_list_swap.c \
+					list/ft_list_join.c list/ft_list_map.c list/ft_list_pop.c list/ft_list_swap.c \
 					list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_data.c list/ft_list_push_long.c \
 					list/ft_list_push_malloc.c \
@@ -52,7 +53,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -f
-CFLAGS			= #-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -g
 
 NAME			= libft.a
 

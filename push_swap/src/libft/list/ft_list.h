@@ -40,6 +40,7 @@ typedef struct t_list
 	t_link				*(*insert_at)(struct t_list *self, size_t insert_index, t_link *insert_elem);
 	char				*(*join)(struct t_list *self, char *delimiter);
 	struct t_list		*(*map)(struct t_list *self, t_link *(*action)(t_link *));
+	t_link				*(*pop)(struct t_list *self);
 	void				(*for_each)(struct t_list *self, void (*action)
 			(t_link *elem));
 }	t_list;
@@ -60,6 +61,7 @@ struct t_iterator	*ft_list_get_iterator(t_list *self);
 t_link	*ft_list_insert_at(t_list *self, size_t insert_index, t_link *insert_elem);
 char		*ft_list_join(t_list *self, char *delimiter);
 t_list		*ft_list_map(t_list *self, t_link *(*action)(t_link *));
+t_link		*ft_list_pop(t_list *self);
 void		ft_list_for_each(t_list *self, void (*action)(t_link *elem));
 t_list		*new_list(void);
 
