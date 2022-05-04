@@ -31,9 +31,13 @@ void	ft_list_swap(t_list *self, long from_index, long to_index)
 		to_index = self->length + to_index;
 	if (from_index == to_index)
 		return ;
-	ft_printfl("to: %d, from: %d", to_index, from_index);
+	ft_printfl("from: %d, to: %d", from_index, to_index);
 	a = self->remove_at(self, from_index);
+	ft_printfl("remove a=%d at from_index=%d => %s{.free()}", a->as_long, from_index, self->join(self, ", "));
 	self->insert_at(self, to_index - ft_if_int(to_index > from_index, 1, 0), a);
+	ft_printfl("insert a=%d at to_index=%d-%d => %s{.free()}", a->as_long, to_index,  ft_if_int(to_index > from_index, 1, 0), self->join(self, ", "));
 	b = self->remove_at(self, to_index + ft_if_int(to_index < from_index, 1, 0));
+	ft_printfl("remove b=%d at to_index=%d+%d => %s{.free()}", b->as_long, to_index, ft_if_int(to_index < from_index, 1, 0), self->join(self, ", "));
 	self->insert_at(self, from_index - ft_if_int(to_index < from_index, 1, 0), b);
+	ft_printfl("insert b=%d at from_index=%d-%d => %s{.free()}", b->as_long, from_index, ft_if_int(to_index < from_index, 1, 0), self->join(self, ", "));
 }
