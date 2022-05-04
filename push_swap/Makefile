@@ -13,8 +13,8 @@
 LIBFT_DIR		= ./src/libft
 LIBFT_NAME		= libft.a
 
-SRCS			=	src/stack/ft_stacks_op_free.c src/stack/ft_stack_push.c src/stack/ft_stack_reverse_rotate.c \
-					src/stack/ft_stack_rotate.c src/stack/ft_stack_swap.c src/stack/new_stacks_op.c src/push_swap.c
+SRCS			=	src/stacks_op/ft_stacks_op_free.c src/stacks_op/ft_stack_push.c src/stacks_op/ft_stack_reverse_rotate.c \
+					src/stacks_op/ft_stack_rotate.c src/stacks_op/ft_stack_swap.c src/stacks_op/new_stacks_op.c src/push_swap.c
 
 HEADERS			=	src/push_swap.h
 

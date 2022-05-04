@@ -18,7 +18,7 @@
 #include "libft/string/ft_string.h"
 #include "libft/number/ft_number.h"
 #include "libft/memory/ft_memory.h"
-#include "stack/ft_stacks_op.h"
+#include "stacks_op/ft_stacks_op.h"
 
 t_list *ft_stack_from_input(t_list *input)
 {
@@ -39,32 +39,29 @@ t_list *ft_stack_from_input(t_list *input)
 	return (stack);
 }
 
-t_list ft_stack_sort_len_2 (t_stacks_op *op)
+t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
 {
 	op->sa(op);
+	return (op);
 }
 
-t_list *ft_sort_stack(t_list *stack)
+t_stacks_op *ft_sort_stack(t_list *stack)
 {
-	t_stacks_op *op = new_stacks_ops_op();
+	t_stacks_op *op = new_stacks_op();
 	op->stack_a->free(op->stack_a);
 	op->stack_a = stack;
 	if (op->stack_a->length <= 2)
 		ft_stack_sort_len_2(op);
-	return (op.);
+	return (op);
 }
 
 int main (int argc, char **argv)
 {
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
-	t_stacks_op *sorted = ft_sort_stack(input);
-	t_stack *stack_a = ft_stack_from_input(input);
-	ft_printfl("stack_a\n-----------\n%s{.free()}", stack_a->join(stack_a->base, "\n"));
-	ft_printfl("commands\n-----------\n%s{.free()} (%d)", sort_commands->join(sort_commands, ", "), sort_commands->length);
+	t_stacks_op *op = ft_sort_stack(input);
+	ft_printfl("stack_a\n-----------\n%s{.free()}", op->stack_a->join(op->stack_a, "\n"));
+	ft_printfl("commands\n-----------\n%s{.free()} (%d)", op->operations->join(op->operations, ", "), op->operations->length);
 
-	input->free(input);
-	stack_a->free(stack_a);
-	stack_b->free(stack_b);
-	sort_commands->free(sort_commands);
+	op->free(op);
 }

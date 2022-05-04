@@ -18,5 +18,6 @@ void ft_stacks_op_free(t_stacks_op *self)
 {
 	self->stack_a->free(self->stack_a);
 	self->stack_b->free(self->stack_b);
+	self->operations->free(self->operations);
     ft_safe_free(self);
 }
