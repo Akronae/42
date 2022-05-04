@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_reverse_rotate.c                          :+:      :+:    :+:   */
+/*   new_stacks_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "ft_stacks_op.h"
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_stack *ft_stack_reverse_rotate(t_stack *self)
+t_stacks_op *new_stacks_op(void)
 {
-    if (self->base->length <= 1)
-        return (self);
-    self->base->insert_at(self->base, 0, self->base->pop(self->base));
-    return (self);
+	t_stacks_op *stack_op;
+
+	stack_op = ft_safe_malloc(sizeof(t_stacks_op));
+	stack_op->operations = new_list();
+	stack_op->stack_a = new_list();
+	stack_op->stack_b = new_list();
+    stack_op->free = &ft_stacks_op_free;
+	stack_op->sa = &ft_stacks_op_sa;
+	stack_op->sb = &ft_stacks_op_sb;
+	stack_op->ra = &ft_stacks_op_ra;
+	stack_op->rb = &ft_stacks_op_rb;
+	stack_op->rra = &ft_stacks_op_rra;
+	stack_op->rrb = &ft_stacks_op_rrb;
+	stack_op->pa = &ft_stacks_op_pa;
+	stack_op->sb = &ft_stacks_op_sb;
+	return (stack_op);
 }

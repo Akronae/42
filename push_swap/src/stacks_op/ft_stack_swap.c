@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_push.c                                    :+:      :+:    :+:   */
+/*   ft_stack_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "ft_stacks_op.h"
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_stack *ft_stack_push(t_stack *self, t_stack *src)
+t_list *ft_stack_swap(t_list *self)
 {
-    if (src->base->length == 0)
-        return (self);
-    self->base->push(self->base, src->base->pop(src->base));
+    self->swap(self, -1, -2);
     return (self);
+}
+
+t_stacks_op *ft_stacks_op_sa(t_stacks_op *self)
+{
+	ft_stack_swap(self->stack_a);
+	self->operations->push_long(self->operations, SA);
+	return (self);
+}
+
+t_stacks_op *ft_stacks_op_sb(t_stacks_op *self)
+{
+	ft_stack_swap(self->stack_b);
+	self->operations->push_long(self->operations, SB);
+	return (self);
 }

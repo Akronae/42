@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stack.c                                        :+:      :+:    :+:   */
+/*   ft_stacks_op_free.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,19 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#include "ft_stacks_op.h"
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_stack *new_stack(void)
+void ft_stacks_op_free(t_stacks_op *self)
 {
-	t_stack *stack;
-
-	stack = ft_safe_malloc(sizeof(t_list));
-    stack->base = new_list();
-    stack->free = &ft_stack_free;
-    stack->push = &ft_stack_push;
-    stack->reverse_rotate = &ft_stack_reverse_rotate;
-    stack->rotate = &ft_stack_rotate;
-	return (stack);
+	self->stack_a->free(self->stack_a);
+	self->stack_b->free(self->stack_b);
+    ft_safe_free(self);
 }

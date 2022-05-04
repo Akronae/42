@@ -18,14 +18,14 @@
 #include "libft/string/ft_string.h"
 #include "libft/number/ft_number.h"
 #include "libft/memory/ft_memory.h"
-#include "stack/ft_stack.h"
+#include "stack/ft_stacks_op.h"
 
-t_stack *ft_stack_from_input(t_list *input)
+t_list *ft_stack_from_input(t_list *input)
 {
 	if (input->length <= 1)
 		ft_exit_err("no arguments supplied");
 
-	t_stack *stack = new_stack();
+	t_list *stack = new_list();
 	input->i->skip(input->i, 1);
 	while (input->i->next(input->i))
 	{
@@ -34,26 +34,37 @@ t_stack *ft_stack_from_input(t_list *input)
 		long nbr = ft_str_to_number(input->i->curr->as_str);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			ft_exit_err("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", input->i->index, input->i->curr->as_str);
-		stack->base->push_long(stack->base, nbr);
+		stack->push_long(stack, nbr);
 	}
 	return (stack);
 }
 
-t_list  *ft_sort_stacks(t_stack *a, t_stack *b)
+t_list ft_stack_sort_len_2 (t_stacks_op *op)
 {
+	op->sa(op);
+}
+
+t_list *ft_sort_stack(t_list *stack)
+{
+	t_stacks_op *op = new_stacks_ops_op();
+	op->stack_a->free(op->stack_a);
+	op->stack_a = stack;
+	if (op->stack_a->length <= 2)
+		ft_stack_sort_len_2(op);
+	return (op.);
 }
 
 int main (int argc, char **argv)
 {
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
+	t_stacks_op *sorted = ft_sort_stack(input);
 	t_stack *stack_a = ft_stack_from_input(input);
-	t_stack *stack_b = new_stack();
-
-    stack_a->rotate(stack_a);
-	ft_printfl("stack_a\n-----------\n%s{.free()}", stack_a->base->join(stack_a->base, "\n"));
+	ft_printfl("stack_a\n-----------\n%s{.free()}", stack_a->join(stack_a->base, "\n"));
+	ft_printfl("commands\n-----------\n%s{.free()} (%d)", sort_commands->join(sort_commands, ", "), sort_commands->length);
 
 	input->free(input);
 	stack_a->free(stack_a);
 	stack_b->free(stack_b);
+	sort_commands->free(sort_commands);
 }
