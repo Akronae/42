@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_stacks_op_free.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_stacks_op.h"
+#include "../libft/memory/ft_memory.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+void ft_stacks_op_free(t_stacks_op *self)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	self->stack_a->free(self->stack_a);
+	self->stack_b->free(self->stack_b);
+	self->operations->free(self->operations);
+    ft_safe_free(self);
 }

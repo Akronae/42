@@ -9,5 +9,9 @@
 
 make
 echo ===========================
-./push_swap $@| cat -ve
+valgrind --leak-check=full \
+         --show-leak-kinds=all \
+         --track-origins=yes \
+         --quiet \
+          ./push_swap $@| cat -ve
 echo ===========================

@@ -11,12 +11,16 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include "../io/ft_io.h"
 
-t_link	*ft_list_get_elem(t_list *self, size_t at_index)
+t_link	*ft_list_get_elem(t_list *self, long at_index)
 {
-	size_t	i;
+	long	i;
 	t_link	*elem;
 
+	if (at_index < 0)
+		at_index += self->length;
+	ft_check_index_out_of_range_error("ft_list_get_elem", at_index, self->length);
 	i = 0;
 	elem = self->first;
 	while (i < at_index)

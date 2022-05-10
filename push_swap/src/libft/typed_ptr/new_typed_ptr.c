@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   new_typed_ptr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_typed_ptr.h"
+#include "../memory/ft_memory.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_typed_ptr	*new_typed_ptr(t_type type, void *value)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	t_typed_ptr	*ptr;
+
+	ptr = ft_safe_malloc(sizeof(t_typed_ptr));
+	ptr->type = type;
+	ptr->clone = ft_typed_ptr_clone;
+	ptr->free = ft_typed_ptr_free;
+	ptr->set_value = ft_typed_ptr_set_value;
+	ptr->set_value(ptr, value);
+	return (ptr);
 }

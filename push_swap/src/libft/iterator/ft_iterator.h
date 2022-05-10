@@ -21,7 +21,7 @@ typedef struct t_iterator
 {
 	struct t_list	*list;
 	t_link	*curr;
-	size_t	index;
+	long	index;
 	t_link	*(*next)(struct t_iterator *self);
 	char	*(*next_str)(struct t_iterator *self);
 	char	(*next_char)(struct t_iterator *self);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_map_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_map.h"
+#include "../memory/ft_memory.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+void ft_map_free_entry(t_link *entry)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	t_key_value_pair	*pair;
+
+	pair = entry->data;
+	pair->free(pair);
+	entry->data = NULL;
+}
+
+void ft_map_free(t_map *self)
+{
+	self->entries->on_elem_free = ft_map_free_entry;
+	self->entries->free(self->entries);
+	ft_safe_free(self);
 }

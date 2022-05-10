@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_list_find_max.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,19 +11,25 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <unistd.h>
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_link	*ft_list_find_max(t_list *self, t_type of_type)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
+	t_link	*max_elem;
+	t_iterator	*i;
+
+	max_elem = NULL;
+	if (self->length == 0)
+		return (NULL);
+	i = self->get_iterator(self);
+	while (i->next(i))
 	{
-		self->first = to_push;
-		self->last = self->first;
+		if (i->curr->data_type != of_type)
+			continue;
+		if (!max_elem || (of_type == T_TYPE_LONG && *max_elem->as_long < *i->curr->as_long))
+			max_elem = i->curr;
 	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	i->free(i);
+    return (max_elem);
 }

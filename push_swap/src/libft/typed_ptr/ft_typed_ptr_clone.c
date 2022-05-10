@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_typed_ptr_clone.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_typed_ptr.h"
+#include "../memory/ft_memory.h"
+#include "../string/ft_string.h"
+#include "../io/ft_io.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_typed_ptr *ft_typed_ptr_clone(t_typed_ptr *self)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
+
+	if (self->type == T_TYPE_STRING)
+		return (new_typed_ptr_str(self->value));
+	if (self->type == T_TYPE_LONG)
+		return (new_typed_ptr_decimal(*self->as_long));
 	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+		return ft_exit_err("ft_typed_ptr_clone: could not clone data type '%d'.", self->type);
 }

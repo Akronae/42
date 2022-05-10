@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_map_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_map.h"
+#include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_key_value_pair *ft_map_add(t_map *self, t_typed_ptr *key, t_typed_ptr *value)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	if (self->get(self, key->clone(key)))
+		return ft_exit_err("ft_map_add: key '%s' already exists in the map.", key->value);
+	self->entries->push_data(self->entries, T_TYPE_UNKNOWN, new_key_value_pair(key, value));
+	return (self->entries->last->data);
 }

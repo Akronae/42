@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterator_reset.c                                :+:      :+:    :+:   */
+/*   ft_swap_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Created: 2021/11/28 17:08:36 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_iterator.h"
+#include "ft_memory.h"
+#include <unistd.h>
 
-void	ft_iterator_reset(t_iterator *self)
+void    ft_swap_long(long *ptr1, long *ptr2)
 {
-	self->curr = NULL;
-	self->index = -1;
+    long tmp;
+
+    tmp = *ptr1;
+    *ptr1 = *ptr2;
+    *ptr2 = tmp;
 }

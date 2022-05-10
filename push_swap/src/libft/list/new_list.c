@@ -23,6 +23,9 @@ t_list	*new_list(void)
 	list->last = NULL;
 	list->i = new_iterator(list);
 	list->length = 0;
+	list->clone = ft_list_clone;
+	list->find_max = ft_list_find_max;
+	list->find_min = ft_list_find_min;
 	list->free = &ft_list_free;
 	list->free_by_data = &ft_list_free_by_data;
 	list->from_str_arr = &ft_list_from_str_arr;
@@ -31,16 +34,20 @@ t_list	*new_list(void)
 	list->push_char = &ft_list_push_char;
 	list->push_data = &ft_list_push_data;
 	list->push_long = &ft_list_push_long;
+	list->push_malloc = &ft_list_push_malloc;
+	list->push_range = &ft_list_push_range;
 	list->push_str = &ft_list_push_str;
 	list->remove_at = &ft_list_remove_at;
 	list->remove_by_data = &ft_list_remove_by_data;
 	list->get_elem = &ft_list_get_elem;
 	list->reverse = &ft_list_reverse;
+	list->sort = &ft_list_sort;
 	list->swap = &ft_list_swap;
 	list->get_iterator = &ft_list_get_iterator;
 	list->insert_at = &ft_list_insert_at;
 	list->join = &ft_list_join;
-	list->map = &ft_list_map;
+    list->map = &ft_list_map;
+    list->pop = &ft_list_pop;
 	list->for_each = &ft_list_for_each;
 	return (list);
 }

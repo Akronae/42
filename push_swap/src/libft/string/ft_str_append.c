@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_string.h"
+#include "../io/ft_io.h"
+#include "../memory/ft_memory.h"
 #include <unistd.h>
 
 void	ft_str_append(char *dst, char *src)

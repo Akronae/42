@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_list_pop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,19 +11,11 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
-#include <unistd.h>
+#include "../math/ft_math.h"
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_link	*ft_list_pop(t_list *self)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+    if (self->length == 0)
+        return (NULL);
+    return (self->remove_at(self, self->length - 1));
 }

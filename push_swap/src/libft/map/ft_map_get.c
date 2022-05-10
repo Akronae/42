@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_swap.c                                     :+:      :+:    :+:   */
+/*   ft_map_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,32 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_map.h"
 #include "../memory/ft_memory.h"
-#include "../math/ft_math.h"
 #include "../string/ft_string.h"
 #include "../io/ft_io.h"
-#include <stdio.h>
+#include "../logic/ft_logic.h"
+#include <stdlib.h>
 
-void	ft_list_swap(t_list *self, long from_index, long to_index)
+t_typed_ptr *ft_map_get(t_map *self, t_typed_ptr *key)
 {
-	t_link *a;
-	t_link *b;
-	long 	max_index;
+	t_iterator			*i;
+	t_key_value_pair	*pair;
+	void 				*value;
+	int					match;
 
-	max_index = self->length - 1;
-	from_index = ft_math_clamp(from_index, -max_index - 1, max_index);
-	to_index = ft_math_clamp(to_index, -max_index - 1, max_index);
-	if (from_index < 0)
-		from_index = self->length + from_index;
-	if (to_index < 0)
-		to_index = self->length + to_index;
-	if (from_index == to_index)
-		return ;
-    if (from_index > to_index)
-        ft_swap_long(&from_index, &to_index);
-    a = self->remove_at(self, from_index);
-	self->insert_at(self, to_index - 1, a);
-    b = self->remove_at(self, to_index);
-    self->insert_at(self, from_index, b);
+	match = FALSE;
+	value = NULL;
+	i = self->entries->get_iterator(self->entries);
+	while (i->next(i))
+	{
+		pair = i->curr->data;
+		if (pair->key->type == key->type)
+		{
+			if (key->type == T_TYPE_STRING)
+				match = ft_str_equal(pair->key->value, key->value);
+			else if (key->type == T_TYPE_LONG)
+				match = *pair->key->as_long == *key->as_long;
+			else
+				return ft_exit_err("ft_map_get: cannot handle key of type '%d'.", key->type);
+
+			if (match)
+			{
+				value = pair->value;
+				break;
+			}
+		}
+	}
+	i->free(i);
+	key->free(key);
+	return (value);
 }

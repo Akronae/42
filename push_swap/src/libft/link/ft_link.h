@@ -23,6 +23,7 @@ typedef struct t_link
 	enum t_type		data_type;
 	struct t_link	*prev;
 	struct t_link	*next;
+	struct t_link	*(*clone)(struct t_link *self);
 	void			(*free)(struct t_link *self);
 	struct t_link	*(*get_first)(struct t_link *self);
 	struct t_link	*(*get_last)(struct t_link *self);
@@ -34,6 +35,7 @@ typedef struct t_link
 			void (action)(struct t_link *elem));
 }	t_link;
 
+t_link	*ft_link_clone(t_link *self);
 void	ft_link_free(t_link *self);
 t_link	*ft_link_get_first(t_link *self);
 t_link	*ft_link_get_last(t_link *self);

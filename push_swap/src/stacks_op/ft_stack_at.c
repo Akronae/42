@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_stack_at.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_stacks_op.h"
+#include "../libft/memory/ft_memory.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+long ft_stack_at(t_list *self, long index)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+    return (*self->get_elem(self, index)->as_long);
+}
+
+long ft_stacks_op_a_at(t_stacks_op *self, long index)
+{
+	return (ft_stack_at(self->stack_a, index));
+}
+
+long ft_stacks_op_b_at(t_stacks_op *self, long index)
+{
+	return (ft_stack_at(self->stack_a, index));
 }

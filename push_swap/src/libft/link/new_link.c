@@ -25,6 +25,7 @@ t_link	*new_link(void)
 	link->data_type = T_TYPE_UNKNOWN;
 	link->next = NULL;
 	link->prev = NULL;
+	link->clone = &ft_link_clone;
 	link->free = &ft_link_free;
 	link->get_first = &ft_link_get_first;
 	link->get_last = &ft_link_get_last;

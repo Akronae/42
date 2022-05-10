@@ -18,6 +18,8 @@
 #include "libft/string/ft_string.h"
 #include "libft/number/ft_number.h"
 #include "libft/memory/ft_memory.h"
+#include "libft/map/ft_map.h"
+#include "stacks_op/ft_stacks_op.h"
 
 t_list *ft_stack_from_input(t_list *input)
 {
@@ -38,22 +40,116 @@ t_list *ft_stack_from_input(t_list *input)
 	return (stack);
 }
 
-void sa (t_list *a)
+t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
 {
-	a->swap(a, -1, -2);
+	if (op->a_at(op, 0) > op->a_at(op, 1))
+		op->sa(op);
+	return (op);
+}
+
+t_stacks_op *ft_stack_sort_len_3 (t_stacks_op *op)
+{
+	if (op->a_at(op, -1) == op->max)
+		op->ra(op);
+	if (op->a_at(op, -2) == op->max)
+		op->rra(op);
+	if (op->a_at(op, -1) > op->a_at(op, -2))
+		op->sa(op);
+	return (op);
+}
+
+t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
+{
+	while (op->stack_b->length < 2)
+	{
+		if (op->a_at(op, -1) == op->min || op->a_at(op, -1) == op->max)
+			op->pb(op);
+		else
+			op->ra(op);
+	}
+	ft_stack_sort_len_3(op);
+	op->pa(op);
+	op->pa(op);
+	if (op->a_at(op, -1) != op->max)
+		op->sa(op);
+	op->ra(op);
+	return (op);
+}
+
+t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
+{
+	while (op->stack_a->length > 2)
+	{
+		if (op->a_at(op, -1) != op->min && op->a_at(op, -1) != op->max)
+		{
+			op->pb(op);
+			if (op->b_at(op, -1) > op->med)
+				op->rb(op);
+		}
+		else
+			op->ra(op);
+	}
+	if (op->a_at(op, -1) < op->a_at(op, -2))
+		op->sa(op);
+	op->pa(op);
+	return (op);
+}
+
+t_stacks_op *ft_sort_stack(t_list *stack)
+{
+	t_stacks_op *op = new_stacks_op();
+	op->set_stack_a(op, stack);
+
+	if (op->stack_a->length <= 1)
+		return (op);
+	else if (op->stack_a->length <= 2)
+		return ft_stack_sort_len_2(op);
+	else if (op->stack_a->length <= 3)
+		return (ft_stack_sort_len_3(op));
+	else if (op->stack_a->length <= 5)
+		return (ft_stack_sort_len_5(op));
+	else
+		return (ft_stack_sort_len_any(op));
+	return (op);
+}
+
+char *ft_commands_to_str(t_list *commands)
+{
+	t_list	*to_str = new_list();
+	t_iterator *i = commands->get_iterator(commands);
+	char		*str;
+	t_map	*map = new_map();
+
+	map->add(map, ft_d(SA), ft_s("sa"));
+	map->add(map, ft_d(SB), ft_s("sb"));
+	map->add(map, ft_d(SS), ft_s("ss"));
+	map->add(map, ft_d(PA), ft_s("pa"));
+	map->add(map, ft_d(PB), ft_s("pb"));
+	map->add(map, ft_d(PP), ft_s("pp"));
+	map->add(map, ft_d(RA), ft_s("ra"));
+	map->add(map, ft_d(RB), ft_s("rb"));
+	map->add(map, ft_d(RR), ft_s("rr"));
+	map->add(map, ft_d(RRA), ft_s("rra"));
+	map->add(map, ft_d(RRB), ft_s("rrb"));
+	map->add(map, ft_d(RRR), ft_s("rrr"));
+	while (i->next(i))
+		to_str->push_str(to_str, ft_strdup(map->get(map, ft_d(*i->curr->as_long))->value));
+	i->free(i);
+	str = to_str->join(to_str, "\n");
+	to_str->free(to_str);
+	map->free(map);
+	return (str);
 }
 
 int main (int argc, char **argv)
 {
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
-	t_list *stack_a = ft_stack_from_input(input);
-	t_list *stack_b = new_list();
-
-	stack_a->swap(stack_a, 4, 3);
-	ft_printfl("stack_a\n-----------\n%s{.free()}dsds", stack_a->join(stack_a, "\n"));
+	t_stacks_op *op = ft_sort_stack(ft_stack_from_input(input));
+	t_list *stack_a_rev = op->stack_a->reverse(op->stack_a);
+	ft_printfl("%s{.free()}\n-----------\nstack_a", stack_a_rev->join(stack_a_rev, "\n"));
+	ft_printfl("commands\n-----------\n%s{.free()} (%d)", ft_commands_to_str(op->operations), op->operations->length);
+	op->free(op);
 
 	input->free(input);
-	stack_a->free(stack_a);
-	stack_b->free(stack_b);
 }

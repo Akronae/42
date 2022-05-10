@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   new_typed_ptr_decimal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "ft_typed_ptr.h"
+#include "../memory/ft_memory.h"
+#include "../string/ft_string.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_typed_ptr	*new_typed_ptr_decimal(long long decimal)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	long long *ptr;
+
+	ptr = ft_safe_malloc(sizeof(long long));
+	*ptr = decimal;
+	return (new_typed_ptr(T_TYPE_LONG, ptr));
+}
+
+t_typed_ptr	*ft_d(long long decimal)
+{
+	return (new_typed_ptr_decimal(decimal));
 }

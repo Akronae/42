@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_type_clone_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <unistd.h>
+#include "../memory/ft_memory.h"
+#include "../string/ft_string.h"
+#include "../io/ft_io.h"
+#include <stdlib.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+long long	*ft_clone_long_ptr(long long *data)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
+	long long *alloc;
+
+	alloc = ft_safe_malloc(sizeof(long long *));
+	*alloc = *data;
+	return (alloc);
+}
+
+
+void *ft_type_clone_data(t_type data_type, void *data)
+{
+
+	if (data_type == T_TYPE_STRING)
+		return (ft_strdup(data));
+	if (data_type == T_TYPE_LONG)
+		return (ft_clone_long_ptr((long long*)data));
 	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+		return ft_exit_err("ft_type_clone_data: could not clone data type '%d'.", data_type);
 }

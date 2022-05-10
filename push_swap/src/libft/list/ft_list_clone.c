@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_list_clone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,19 +11,14 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 #include <unistd.h>
 
-t_link	*ft_list_push(t_list *self, t_link *to_push)
+t_list 	*ft_list_clone(t_list *self)
 {
-	to_push->prev = NULL;
-	to_push->next = NULL;
-	if (!self->first)
-	{
-		self->first = to_push;
-		self->last = self->first;
-	}
-	else
-		self->last = self->last->insert(self->last, to_push);
-	self->length += 1;
-	return (to_push);
+	t_list	*cloned;
+
+	cloned = new_list();
+	return (cloned->push_range(cloned, self, 0, -1));
 }

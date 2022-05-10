@@ -15,9 +15,9 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					memory/ft_safe_free.c \
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
-					memory/ft_memcmp.c string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
-					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c \
-					string/ft_strdup.c \
+					memory/ft_memcmp.c memory/ft_swap_long.c \
+					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
+					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
 					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c string/ft_str_equal.c \
 					string/ft_str_index_of.c string/ft_str_index_of_char.c \
 					string/ft_str_is_numeric.c string/ft_str_starts_with.c \
@@ -29,37 +29,47 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isascii.c char/ft_isdigit.c
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
 					iterator/ft_iterator_skip.c iterator/new_iterator.c \
-					link/ft_link_for_each.c link/ft_link_free.c link/ft_link_get_first.c \
+					key_value_pair/ft_key_value_pair_free.c key_value_pair/new_key_value_pair.c \
+					link/ft_link_for_each.c link/ft_link_clone.c link/ft_link_free.c link/ft_link_get_first.c \
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_remove.c link/ft_link_reverse.c \
 					link/ft_link_set_data.c \
 					link/new_link.c \
-					list/ft_list_for_each.c list/ft_list_free.c list/ft_list_free_by_data.c \
+					list/ft_list_clone.c \
+					list/ft_list_find_max.c list/ft_list_find_min.c list/ft_list_for_each.c list/ft_list_free.c \
+					list/ft_list_free_by_data.c \
 					list/ft_list_free_by_data.c list/ft_list_from_str_arr.c \
 					list/ft_list_get_elem.c \
 					list/ft_list_get_iterator.c list/ft_list_insert_at.c \
-					list/ft_list_join.c list/ft_list_map.c list/ft_list_swap.c \
+					list/ft_list_join.c list/ft_list_map.c list/ft_list_find_max.c list/ft_list_pop.c \
+					list/ft_list_swap.c \
 					list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_data.c list/ft_list_push_long.c \
-					list/ft_list_push_malloc.c \
+					list/ft_list_push_malloc.c list/ft_list_push_range.c \
 					list/ft_list_push_str.c list/ft_list_remove_at.c list/ft_list_remove_by_data.c \
-					list/ft_list_reverse.c \
-					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c math/ft_math_abs.c \
-					math/ft_math_clamp.c \
+					list/ft_list_reverse.c list/ft_list_sort.c \
+					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c \
+					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/new_map.c \
+					math/ft_math_abs.c math/ft_math_clamp.c \
 					number/ft_number_to_str.c \
 					number/ft_str_to_number_base.c \
 					number/ft_str_to_number.c string/ft_str_append.c \
-					string/ft_str_append_char.c string/ft_string_to_upper.c
+					string/ft_str_append_char.c string/ft_string_to_upper.c \
+					type/ft_type_clone_data.c \
+					typed_ptr/ft_typed_ptr_clone.c typed_ptr/ft_typed_ptr_free.c typed_ptr/ft_typed_ptr_set_value.c \
+					typed_ptr/new_typed_ptr.c \
+					typed_ptr/new_typed_ptr_decimal.c typed_ptr/new_typed_ptr_str.c
 
-HEADERS			=	libft.h logic/ft_logic.h char/ft_char.h hex/ft_hex.h io/ft_io.h io/printf/ft_printf.h \
-					iterator/ft_iterator.h link/ft_link.h \
- 					list/ft_list.h math/ft_math.h memory/ft_memory.h number/ft_number.h string/ft_string.h \
- 					type/ft_type.h
+HEADERS			=	libft.h char/ft_char.h hex/ft_hex.h io/ft_io.h io/printf/ft_printf.h \
+					iterator/ft_iterator.h key_value_pair/ft_key_value_pair.h link/ft_link.h \
+ 					list/ft_list.h logic/ft_logic.h map/ft_map.h key_value_pair/ft_key_value_pair.h math/ft_math.h \
+ 					memory/ft_memory.h number/ft_number.h string/ft_string.h \
+ 					type/ft_type.h typed_ptr/ft_typed_ptr.h
 
 OBJS			= $(SRCS:.c=.o)
 
 CC				= clang
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -g
 
 NAME			= libft.a
 

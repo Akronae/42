@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_index_out_of_range_error.c                      :+:      :+:    :+:   */
+/*   ft_key_value_pair.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 11:23:58 by adaubric          #+#    #+#             */
+/*   Created: 2022/02/16 18:34:59 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_io.h"
-#include <stdlib.h>
+#ifndef FT_KEY_VALUE_PAIR_H
+# define FT_KEY_VALUE_PAIR_H
 
-void	*ft_index_out_of_range_error(char *callee, size_t index, size_t arr_size)
-{
-	return ft_exit_err("%s: index %d is outside the bounds of the array [0, %d].", callee, index, arr_size - 1);
-}
+# include "unistd.h"
+# include "../type/ft_type.h"
+# include "../typed_ptr/ft_typed_ptr.h"
 
-void	*ft_check_index_out_of_range_error(char *callee, size_t index, size_t arr_size)
+typedef struct t_key_value_pair
 {
-	if (index > arr_size - 1)
-		return ft_index_out_of_range_error(callee, index, arr_size);
-	return (NULL);
-}
+	t_typed_ptr	*key;
+	t_typed_ptr	*value;
+	void 	(*free)(struct t_key_value_pair *self);
+}	t_key_value_pair;
+
+void				ft_key_value_pair_free(t_key_value_pair *self);
+t_key_value_pair	*new_key_value_pair(t_typed_ptr *key, t_typed_ptr *value);
+
+#endif
