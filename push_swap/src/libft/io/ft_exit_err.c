@@ -13,6 +13,7 @@
 #include "./ft_io.h"
 #include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 void	*ft_exit_err(char *msg, ...)
@@ -25,6 +26,9 @@ void	*ft_exit_err(char *msg, ...)
 	ft_print(str, args);
 	va_end(args);
 	ft_putstr_fd("\n", 1);
+#ifdef ENV_DEV
+	*((int *)0) = 0; // used to get the stack trace, dirty!
+#endif
 	exit(1);
 	return (NULL);
 }

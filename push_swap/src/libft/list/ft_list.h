@@ -17,6 +17,7 @@
 # include "../type/ft_type.h"
 # include "../link/ft_link.h"
 # include "../iterator/ft_iterator.h"
+# include "../typed_ptr/ft_typed_ptr.h"
 
 typedef struct t_list
 {
@@ -25,6 +26,7 @@ typedef struct t_list
 	struct t_iterator	*i;
 	size_t				length;
 	struct t_list		*(*clone)(struct t_list *self);
+	t_link 				*(*find)(struct t_list *self, t_typed_ptr *data);
 	t_link				*(*find_max)(struct t_list *self, t_type of_type);
 	t_link				*(*find_min)(struct t_list *self, t_type of_type);
 	void				(*free)(struct t_list *self);
@@ -45,6 +47,7 @@ typedef struct t_list
 	struct t_list		*(*sort)(struct t_list *self, t_type of_type);
 	void				(*swap)(struct t_list *self, long from_index, long to_index);
 	struct t_iterator	*(*get_iterator)(struct t_list *self);
+	long	(*index_of)(struct t_list *self, t_link *elem);
 	t_link				*(*insert_at)(struct t_list *self, size_t insert_index, t_link *insert_elem);
 	char				*(*join)(struct t_list *self, char *delimiter);
 	struct t_list		*(*map)(struct t_list *self, t_link *(*action)(t_link *));
@@ -54,6 +57,7 @@ typedef struct t_list
 }	t_list;
 
 t_list 		*ft_list_clone(t_list *self);
+t_link	*ft_list_find(t_list *self, t_typed_ptr *find_data);
 t_link		*ft_list_find_max(t_list *self, t_type of_type);
 t_link		*ft_list_find_min(t_list *self, t_type of_type);
 void		ft_list_free(t_list *self);
@@ -73,6 +77,7 @@ t_list		*ft_list_reverse(t_list *self);
 t_list	*ft_list_sort(t_list *self, t_type of_type);
 void		ft_list_swap(t_list *self, long from_index, long to_index);
 struct t_iterator	*ft_list_get_iterator(t_list *self);
+long	ft_list_index_of(t_list *self, t_link *elem);
 t_link	*ft_list_insert_at(t_list *self, size_t insert_index, t_link *insert_elem);
 char		*ft_list_join(t_list *self, char *delimiter);
 t_list		*ft_list_map(t_list *self, t_link *(*action)(t_link *));

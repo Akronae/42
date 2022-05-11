@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_at.c                                    :+:      :+:    :+:   */
+/*   ft_list_index_of.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stacks_op.h"
-#include "../libft/memory/ft_memory.h"
-#include <stdlib.h>
+#include "../libft.h"
+#include "ft_list.h"
 
-long ft_stack_at(t_list *self, long index)
+long	ft_list_index_of(t_list *self, t_link *elem)
 {
-    return (*self->get_elem(self, index)->as_long);
-}
+	t_iterator	*i;
+	long 		index;
 
-long ft_stacks_op_a_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_a, index));
-}
-
-long ft_stacks_op_b_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_b, index));
+	index = INDEX_NOT_FOUND;
+	i = self->get_iterator(self);
+	while (i->next(i))
+	{
+		if (i->curr == elem)
+		{
+			index = (i->index);
+			break ;
+		}
+	}
+	i->free(i);
+    return (index);
 }

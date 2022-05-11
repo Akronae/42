@@ -22,12 +22,10 @@ t_stacks_op *new_stacks_op(void)
 	stack_op->operations = new_list();
 	stack_op->stack_a = new_list();
 	stack_op->stack_b = new_list();
-	stack_op->min = 0;
-	stack_op->max = 0;
-	stack_op->med = 0;
 	stack_op->a_at = &ft_stacks_op_a_at;
 	stack_op->b_at = &ft_stacks_op_b_at;
 	stack_op->free = &ft_stacks_op_free;
+	stack_op->compute_stats = &ft_stacks_op_compute_stats;
 	stack_op->set_stack_a = &ft_stacks_op_set_stack_a;
 	stack_op->set_stack_b = &ft_stacks_op_set_stack_b;
 	stack_op->sa = &ft_stacks_op_sa;
@@ -38,5 +36,6 @@ t_stacks_op *new_stacks_op(void)
 	stack_op->rrb = &ft_stacks_op_rrb;
 	stack_op->pa = &ft_stacks_op_pa;
 	stack_op->pb = &ft_stacks_op_pb;
+	stack_op->compute_stats(stack_op);
 	return (stack_op);
 }

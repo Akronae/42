@@ -49,9 +49,9 @@ t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
 
 t_stacks_op *ft_stack_sort_len_3 (t_stacks_op *op)
 {
-	if (op->a_at(op, -1) == op->max)
+	if (op->a_at(op, -1) == op->max_a)
 		op->ra(op);
-	if (op->a_at(op, -2) == op->max)
+	if (op->a_at(op, -2) == op->max_a)
 		op->rra(op);
 	if (op->a_at(op, -1) > op->a_at(op, -2))
 		op->sa(op);
@@ -76,22 +76,62 @@ t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
 	return (op);
 }
 
+void move_a_elem_to_top (t_stacks_op *op, size_t elem_index)
+{
+	int move_up = elem_index > op->stack_a->length / 2;
+	long elem_val = op->a_at(op, elem_index);
+
+	while (op->a_at(op, -1) != elem_val)
+	{
+		if (move_up)
+			op->ra(op);
+		else
+			op->rra(op);
+	}
+}
+
+void move_elem_to_b (t_stacks_op *op, size_t elem_index)
+{
+	move_a_elem_to_top(op, elem_index);
+	op->pb(op);
+}
+
+void move_unordered_to_b(t_stacks_op *op)
+{
+	t_iterator	*i;
+
+	i = op->stack_a->get_iterator(op->stack_a);
+	while (i->next(i))
+	{
+		if (i->index > 0 && op->a_at(op, i->index - 1) > op->a_at(op, i->index))
+		{
+			move_elem_to_b(op, i->index);
+			i->reset(i);
+		}
+	}
+	i->free(i);
+}
+
+void move_b_to_a_ordered(t_stacks_op *op)
+{
+	while (op->stack_b->length > 0)
+	{
+		move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
+
+		//ft_printfl("%d > %d = %d", op->a_at(op, -1), op->b_at(op, -1), op->a_at(op, -1) > op->b_at(op, -1));
+		while (op->a_at(op, 0) > op->b_at(op, -1) && op->a_at(op, 0) != op->min_a)
+			op->rra(op);
+		op->pa(op);
+		ft_printfl("=> %s{.free()} (%d)", op->stack_a->join(op->stack_a, ", "), op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
+		move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
+		ft_printfl("=> %s{.free()}", op->stack_a->join(op->stack_a, ", "));
+	}
+}
+
 t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
 {
-	while (op->stack_a->length > 2)
-	{
-		if (op->a_at(op, -1) != op->min && op->a_at(op, -1) != op->max)
-		{
-			op->pb(op);
-			if (op->b_at(op, -1) > op->med)
-				op->rb(op);
-		}
-		else
-			op->ra(op);
-	}
-	if (op->a_at(op, -1) < op->a_at(op, -2))
-		op->sa(op);
-	op->pa(op);
+	move_unordered_to_b(op);
+	move_b_to_a_ordered(op);
 	return (op);
 }
 
@@ -147,8 +187,12 @@ int main (int argc, char **argv)
 	input->from_str_arr(input, argv, 0, argc);
 	t_stacks_op *op = ft_sort_stack(ft_stack_from_input(input));
 	t_list *stack_a_rev = op->stack_a->reverse(op->stack_a);
-	ft_printfl("%s{.free()}\n-----------\nstack_a", stack_a_rev->join(stack_a_rev, "\n"));
+	t_list *stack_b_rev = op->stack_b->reverse(op->stack_b);
+	ft_printfl("%s{.free()}\n-----------\nstack_a\n", stack_a_rev->join(stack_a_rev, "\n"));
+	ft_printfl("%s{.free()}\n-----------\nstack_b\n", stack_b_rev->join(stack_b_rev, "\n"));
 	ft_printfl("commands\n-----------\n%s{.free()} (%d)", ft_commands_to_str(op->operations), op->operations->length);
+	if (op->stack_b->length > 0)
+		ft_printfl("stack b is not empty!!!!");
 	op->free(op);
 
 	input->free(input);

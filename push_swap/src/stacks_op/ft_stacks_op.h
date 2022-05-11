@@ -38,10 +38,15 @@ typedef struct t_stacks_op
 	struct t_list       *stack_a;
 	struct t_list       *stack_b;
 	long long 			min;
+	long long 			min_a;
+	long long 			min_b;
 	long long 			max;
+	long long 			max_a;
+	long long 			max_b;
 	long long 			med;
 	long		        (*a_at)(struct t_stacks_op *self, long index);
 	long		        (*b_at)(struct t_stacks_op *self, long index);
+	struct t_stacks_op		        *(*compute_stats)(struct t_stacks_op *self);
 	void		        (*free)(struct t_stacks_op *self);
 	struct t_stacks_op	*(*set_stack_a)(struct t_stacks_op *self, t_list *new_stack);
 	struct t_stacks_op	*(*set_stack_b)(struct t_stacks_op *self, t_list *new_stack);
@@ -69,6 +74,7 @@ t_stacks_op *ft_stacks_op_ra(t_stacks_op *self);
 t_stacks_op *ft_stacks_op_rb(t_stacks_op *self);
 t_stacks_op *ft_stacks_op_sa(t_stacks_op *self);
 t_stacks_op *ft_stacks_op_sb(t_stacks_op *self);
+t_stacks_op *ft_stacks_op_compute_stats(t_stacks_op *self);
 t_stacks_op		*new_stacks_op(void);
 
 #endif

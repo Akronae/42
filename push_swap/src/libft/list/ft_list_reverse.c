@@ -14,6 +14,8 @@
 
 t_list	*ft_list_reverse(t_list *self)
 {
+	if (self->length == 0)
+		return (self);
 	self->first = self->first->reverse(self->first);
 	self->last = self->first->get_last(self->first);
 	return (self);

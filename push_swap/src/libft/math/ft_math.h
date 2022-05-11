@@ -15,5 +15,6 @@
 
 long long	ft_math_abs(long long nb);
 long long	ft_math_clamp(long long nb, long long min, long long max);
+long long	ft_math_max(long long a, long long b);
 
 #endif

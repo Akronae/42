@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_at.c                                    :+:      :+:    :+:   */
+/*   ft_typed_ptr_value_equals.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stacks_op.h"
-#include "../libft/memory/ft_memory.h"
+#include "ft_typed_ptr.h"
+#include "../memory/ft_memory.h"
+#include "../string/ft_string.h"
+#include "../io/ft_io.h"
+#include "../logic/ft_logic.h"
+#include "../ptr/ft_ptr.h"
 #include <stdlib.h>
 
-long ft_stack_at(t_list *self, long index)
+int ft_typed_ptr_value_equals(t_typed_ptr *self, t_typed_ptr *to)
 {
-    return (*self->get_elem(self, index)->as_long);
-}
-
-long ft_stacks_op_a_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_a, index));
-}
-
-long ft_stacks_op_b_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_b, index));
+	if (self->type != to->type)
+		return (FALSE);
+	if (self->type == T_TYPE_STRING)
+		return (ft_str_equal((char *) self->value, (char *) to->value));
+	if (self->type == T_TYPE_LONG)
+		return *ft_ptr_cast_ll(self->value) == *ft_ptr_cast_ll(to->value);
+	else
+		ft_exit_err("ft_typed_ptr_value_equals: could not compare data type '%d'.", self->type);
+	return (FALSE);
 }

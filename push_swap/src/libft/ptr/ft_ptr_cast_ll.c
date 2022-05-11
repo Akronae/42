@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_ptr_cast_ll.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 16:54:49 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-int	ft_isascii(char c)
+long long *ft_ptr_cast_ll(void *ptr)
 {
-	return (c >= 0 && c <= 127);
+	return (long long *) ptr;
 }

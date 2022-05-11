@@ -24,6 +24,7 @@ t_list	*new_list(void)
 	list->i = new_iterator(list);
 	list->length = 0;
 	list->clone = ft_list_clone;
+	list->find = ft_list_find;
 	list->find_max = ft_list_find_max;
 	list->find_min = ft_list_find_min;
 	list->free = &ft_list_free;
@@ -44,6 +45,7 @@ t_list	*new_list(void)
 	list->sort = &ft_list_sort;
 	list->swap = &ft_list_swap;
 	list->get_iterator = &ft_list_get_iterator;
+	list->index_of = &ft_list_index_of;
 	list->insert_at = &ft_list_insert_at;
 	list->join = &ft_list_join;
     list->map = &ft_list_map;

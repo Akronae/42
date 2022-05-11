@@ -20,7 +20,6 @@ int		ft_char_to_number(char c);
 int		ft_isalpha(char c);
 int		ft_isdigit(char c);
 int		ft_isalnum(char c);
-int		ft_isascii(char c);
 int		ft_isprint(char c);
 int		ft_char_is_upper(char c);
 int		ft_char_is_lower(char c);

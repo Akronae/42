@@ -14,11 +14,14 @@
 
 t_link	*ft_list_remove_by_data(t_list *self, void *data)
 {
-	while (self->i->next)
+	t_iterator	*i;
+
+	i = self->get_iterator(self);
+	while (i->next)
 	{
-		if (self->i->curr->data == data)
-			return self->remove_at(self, self->i->index);
+		if (i->curr->data == data)
+			return self->remove_at(self, i->index);
 	}
-	self->i->reset(self->i);
+	i->free(i);
 	return (NULL);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_at.c                                    :+:      :+:    :+:   */
+/*   new_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stacks_op.h"
-#include "../libft/memory/ft_memory.h"
+#include "ft_map.h"
+#include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
 #include <stdlib.h>
 
-long ft_stack_at(t_list *self, long index)
+t_map *new_map(void)
 {
-    return (*self->get_elem(self, index)->as_long);
-}
+	t_map	*map;
 
-long ft_stacks_op_a_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_a, index));
-}
-
-long ft_stacks_op_b_at(t_stacks_op *self, long index)
-{
-	return (ft_stack_at(self->stack_b, index));
+	map = ft_safe_malloc(sizeof(t_map));
+	map->entries = new_list();
+	map->add = ft_map_add;
+	map->free = ft_map_free;
+	map->get = ft_map_get;
+	return (map);
 }
