@@ -11,17 +11,23 @@
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include "../io/ft_io.h"
 
 t_link	*ft_list_remove_by_data(t_list *self, void *data)
 {
+	t_link	*removed;
 	t_iterator	*i;
 
+	removed = NULL;
 	i = self->get_iterator(self);
-	while (i->next)
+	while (i->next(i))
 	{
 		if (i->curr->data == data)
-			return self->remove_at(self, i->index);
+		{
+			removed = self->remove_at(self, i->index);
+			break;
+		}
 	}
 	i->free(i);
-	return (NULL);
+	return (removed);
 }

@@ -34,23 +34,24 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_remove.c link/ft_link_reverse.c \
 					link/ft_link_set_data.c \
 					link/new_link.c \
-					list/ft_list_clone.c list/ft_list_contains.c list/ft_list_find.c \
+					list/ft_list_clone.c list/ft_list_contains.c list/ft_list_find.c list/ft_list_find_index.c \
 					list/ft_list_find_max.c list/ft_list_find_min.c list/ft_list_find_mins.c list/ft_list_for_each.c \
 					list/ft_list_free.c \
 					list/ft_list_free_by_data.c \
 					list/ft_list_free_by_data.c list/ft_list_from_str_arr.c \
 					list/ft_list_get_elem.c \
 					list/ft_list_get_iterator.c list/ft_list_index_of.c list/ft_list_insert_at.c \
-					list/ft_list_join.c list/ft_list_map.c list/ft_list_find_max.c list/ft_list_pop.c \
+					list/ft_list_join.c list/ft_list_map.c list/ft_list_find_max.c list/ft_list_find_maxes.c \
+					list/ft_list_pop.c \
 					list/ft_list_swap.c \
 					list/ft_list_push.c \
 					list/ft_list_push_char.c list/ft_list_push_data.c list/ft_list_push_long.c \
 					list/ft_list_push_malloc.c list/ft_list_push_range.c \
 					list/ft_list_push_str.c list/ft_list_remove_at.c list/ft_list_remove_by_data.c \
-					list/ft_list_reverse.c list/ft_list_sort.c \
+					list/ft_list_reverse.c list/ft_list_sort.c list/ft_list_sub.c \
 					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c \
 					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/new_map.c \
-					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c \
+					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c math/ft_math_min.c \
 					number/ft_number_to_str.c \
 					number/ft_str_to_number_base.c \
 					number/ft_str_to_number.c string/ft_str_append.c \

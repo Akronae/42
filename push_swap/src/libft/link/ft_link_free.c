@@ -12,6 +12,7 @@
 
 #include "ft_link.h"
 #include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -25,8 +26,8 @@ void	ft_link_free(t_link *self)
 	{
 		temp = elem;
 		elem = elem->next;
-		if (temp->data)
-			ft_safe_free(temp->data);
+		if (temp->typed_ptr)
+			temp->typed_ptr->free(temp->typed_ptr);
 		ft_safe_free(temp);
 	}
 }

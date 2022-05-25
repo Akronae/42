@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_typed_ptr_free.c                                :+:      :+:    :+:   */
+/*   ft_math_min.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_typed_ptr.h"
-#include "../memory/ft_memory.h"
-#include "../io/ft_io.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "ft_math.h"
 
-void ft_typed_ptr_free(t_typed_ptr *self)
+long long	ft_math_min(long long a, long long b)
 {
-	ft_safe_free(self->value);
-	ft_safe_free(self);
+	if (a < b)
+		return (a);
+	return (b);
 }

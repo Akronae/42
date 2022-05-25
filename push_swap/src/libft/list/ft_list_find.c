@@ -17,14 +17,19 @@
 
 t_link	*ft_list_find(t_list *self, t_typed_ptr *find_data)
 {
+	t_link		*found;
 	t_iterator	*i;
 
+	found = NULL;
 	i = self->get_iterator(self);
-	while (i->next)
+	while (i->next(i))
 	{
 		if (find_data->value_equals(find_data, i->curr->typed_ptr))
-			return (i->curr);
+		{
+			found =  (i->curr);
+			break ;
+		}
 	}
 	i->free(i);
-	return (NULL);
+	return (found);
 }

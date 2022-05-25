@@ -33,8 +33,8 @@ void	ft_formatted_list_free_elem(t_link *elem)
 	t_formatted_element	*data;
 
 	data = elem->data;
-	if (data && data->value)
-		free(data->value);
+	if (data)
+		ft_safe_free(data->value);
 }
 
 struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,

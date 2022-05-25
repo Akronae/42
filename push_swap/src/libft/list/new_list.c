@@ -26,7 +26,9 @@ t_list	*new_list(void)
 	list->clone = ft_list_clone;
 	list->contains = ft_list_contains;
 	list->find = ft_list_find;
+	list->find_index = ft_list_find_index;
 	list->find_max = ft_list_find_max;
+	list->find_maxes = ft_list_find_maxes;
 	list->find_min = ft_list_find_min;
 	list->find_mins = ft_list_find_mins;
 	list->free = &ft_list_free;
@@ -45,6 +47,7 @@ t_list	*new_list(void)
 	list->get_elem = &ft_list_get_elem;
 	list->reverse = &ft_list_reverse;
 	list->sort = &ft_list_sort;
+	list->sub = &ft_list_sub;
 	list->swap = &ft_list_swap;
 	list->get_iterator = &ft_list_get_iterator;
 	list->index_of = &ft_list_index_of;

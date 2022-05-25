@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_typed_ptr_free.c                                :+:      :+:    :+:   */
+/*   ft_list_sub.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_typed_ptr.h"
-#include "../memory/ft_memory.h"
+#include "ft_list.h"
+#include "../math/ft_math.h"
 #include "../io/ft_io.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
-void ft_typed_ptr_free(t_typed_ptr *self)
+t_list 	*ft_list_sub(t_list *self, long long from, long long to)
 {
-	ft_safe_free(self->value);
-	ft_safe_free(self);
+	t_list	*sub;
+
+	sub = new_list();
+	return (sub->push_range(sub, self, from, to));
 }

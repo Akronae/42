@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_typed_ptr_free.c                                :+:      :+:    :+:   */
+/*   ft_list_find_index.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_typed_ptr.h"
-#include "../memory/ft_memory.h"
+#include "ft_list.h"
+#include "../math/ft_math.h"
 #include "../io/ft_io.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include <unistd.h>
 
-void ft_typed_ptr_free(t_typed_ptr *self)
+long 	ft_list_find_index(t_list *self, t_typed_ptr *data)
 {
-	ft_safe_free(self->value);
-	ft_safe_free(self);
+	return (self->index_of(self, self->find(self, data)));
 }

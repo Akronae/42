@@ -19,3 +19,9 @@ void	ft_safe_free(void *ptr)
 		return ;
 	free(ptr);
 }
+
+void	ft_safe_free_null(void **ptr)
+{
+	ft_safe_free(*ptr);
+	*ptr = NULL;
+}

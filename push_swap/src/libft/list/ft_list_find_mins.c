@@ -27,7 +27,6 @@ t_list	*ft_list_find_mins(t_list *self, t_type of_type, size_t count)
 	i = 0;
 	while (i < count && self_cloned->length > 0)
 	{
-		ft_printfl("find_min: %p", self_cloned->find_min(self_cloned, of_type));
 		mins->push(mins, self_cloned->remove_by_data(self_cloned, self_cloned->find_min(self_cloned, of_type)->data));
 		i++;
 	}
