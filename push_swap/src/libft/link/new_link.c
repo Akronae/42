@@ -23,6 +23,7 @@ t_link	*new_link(void)
 	link->as_long = NULL;
 	link->as_str = NULL;
 	link->data_type = T_TYPE_UNKNOWN;
+	link->typed_ptr = new_typed_ptr(T_TYPE_UNKNOWN, NULL);
 	link->next = NULL;
 	link->prev = NULL;
 	link->clone = &ft_link_clone;

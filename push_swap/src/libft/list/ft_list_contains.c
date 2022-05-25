@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_link_set_data.c                                 :+:      :+:    :+:   */
+/*   ft_list_contains.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_link.h"
-#include <stdlib.h>
+#include "ft_list.h"
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 
-t_link	*ft_link_set_data(t_link *self, t_type data_type, void *data)
+int	ft_list_contains(t_list *self, t_typed_ptr *data)
 {
-	self->data_type = data_type;
-	self->data = data;
-	self->as_long = (long long *) data;
-	self->as_str = (char *) data;
-	self->typed_ptr = new_typed_ptr(data_type, data);
-	return (self);
+	return (self->find(self, data) != NULL);
 }

@@ -14,6 +14,7 @@
 # define FT_LINK_H
 
 # include "../type/ft_type.h"
+# include "../typed_ptr/ft_typed_ptr.h"
 
 typedef struct t_link
 {
@@ -21,6 +22,7 @@ typedef struct t_link
 	long long		*as_long;
 	char			*as_str;
 	enum t_type		data_type;
+	t_typed_ptr		*typed_ptr;
 	struct t_link	*prev;
 	struct t_link	*next;
 	struct t_link	*(*clone)(struct t_link *self);

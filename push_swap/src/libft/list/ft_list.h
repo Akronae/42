@@ -26,9 +26,11 @@ typedef struct t_list
 	struct t_iterator	*i;
 	size_t				length;
 	struct t_list		*(*clone)(struct t_list *self);
+	int					(*contains)(struct t_list *self, t_typed_ptr *data);
 	t_link 				*(*find)(struct t_list *self, t_typed_ptr *data);
 	t_link				*(*find_max)(struct t_list *self, t_type of_type);
 	t_link				*(*find_min)(struct t_list *self, t_type of_type);
+	struct t_list		*(*find_mins)(struct t_list *self, t_type of_type, size_t count);
 	void				(*free)(struct t_list *self);
 	void				(*free_by_data)(struct t_list *self, void *data);
 	struct t_list		*(*from_str_arr)(struct t_list *self, char **arr, size_t from, size_t to);
@@ -57,9 +59,11 @@ typedef struct t_list
 }	t_list;
 
 t_list 		*ft_list_clone(t_list *self);
-t_link	*ft_list_find(t_list *self, t_typed_ptr *find_data);
+int			ft_list_contains(t_list *self, t_typed_ptr *data);
+t_link		*ft_list_find(t_list *self, t_typed_ptr *find_data);
 t_link		*ft_list_find_max(t_list *self, t_type of_type);
 t_link		*ft_list_find_min(t_list *self, t_type of_type);
+t_list		*ft_list_find_mins(t_list *self, t_type of_type, size_t count);
 void		ft_list_free(t_list *self);
 void		ft_list_free_by_data(t_list *self, void *data);
 t_list		*ft_list_from_str_arr(struct t_list *self, char **arr, size_t from, size_t to);

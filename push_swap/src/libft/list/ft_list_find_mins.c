@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_link_set_data.c                                 :+:      :+:    :+:   */
+/*   ft_list_find_mins.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_link.h"
-#include <stdlib.h>
+#include "ft_list.h"
+#include "../math/ft_math.h"
+#include "../io/ft_io.h"
 
-t_link	*ft_link_set_data(t_link *self, t_type data_type, void *data)
+t_list	*ft_list_find_mins(t_list *self, t_type of_type, size_t count)
 {
-	self->data_type = data_type;
-	self->data = data;
-	self->as_long = (long long *) data;
-	self->as_str = (char *) data;
-	self->typed_ptr = new_typed_ptr(data_type, data);
-	return (self);
+	t_list	*self_cloned;
+	t_list	*mins;
+	size_t	i;
+
+	mins = new_list();
+	if (self->length == 0)
+		return (mins);
+	self_cloned = self->clone(self);
+	i = 0;
+	while (i < count && self_cloned->length > 0)
+	{
+		ft_printfl("find_min: %p", self_cloned->find_min(self_cloned, of_type));
+		mins->push(mins, self_cloned->remove_by_data(self_cloned, self_cloned->find_min(self_cloned, of_type)->data));
+		i++;
+	}
+	self_cloned->free(self_cloned);
+    return (mins);
 }

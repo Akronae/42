@@ -90,6 +90,19 @@ void move_a_elem_to_top (t_stacks_op *op, size_t elem_index)
 			op->rra(op);
 	}
 }
+void move_b_elem_to_top (t_stacks_op *op, size_t elem_index)
+{
+	int move_up = elem_index > op->stack_b->length / 2;
+	long elem_val = op->b_at(op, elem_index);
+
+	while (op->b_at(op, -1) != elem_val)
+	{
+		if (move_up)
+			op->rb(op);
+		else
+			op->rrb(op);
+	}
+}
 
 void move_elem_to_b (t_stacks_op *op, size_t elem_index)
 {
@@ -113,42 +126,52 @@ void move_unordered_to_b(t_stacks_op *op)
 	i->free(i);
 }
 
-long index_of_biggest_limit(t_list *list, long limit)
+void move_smallest_to_b(t_stacks_op *op, int count)
 {
-	t_iterator *i = list->get_iterator(list);
-	long index = -1;
-	while (i->next(i))
+	t_list	*smallest;
+	t_link *small;
+
+	smallest = op->stack_a->find_mins(op->stack_a, T_TYPE_LONG, count);
+	while (smallest->length > 0)
 	{
-		if (*i->curr->as_long <= limit && *i->curr->as_long > *list->get_elem(list, index)->as_long)
-			index = i->index;
+		small = smallest->find(smallest, new_typed_ptr_decimal(op->a_at(op, -1)));
+		if (small)
+		{
+			op->pb(op);
+			smallest->free_by_data(smallest, small->data);
+		}
+		else
+			op->ra(op);
 	}
-	i->free(i);
-	return (index);
+	smallest->free(smallest);
 }
 
 void move_b_to_a_ordered(t_stacks_op *op)
 {
 	while (op->stack_b->length > 0)
 	{
-		move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
-		ft_printfl("== %s{.free()}", op->stack_a->join(op->stack_a, ", "));
-		while (op->a_at(op, -1) < op->b_at(op, -1) && op->a_at(op, -1)!= op->max_a)
-		{
-			op->ra(op);
-		}
-		if (op->a_at(op, -1) == op->max_a)
-			op->ra(op);
-		
+		move_b_elem_to_top(op, op->stack_b->index_of(op->stack_b, op->stack_b->find_max(op->stack_b, T_TYPE_LONG)));
 		op->pa(op);
-		ft_printfl("=> %s{.free()}", op->stack_a->join(op->stack_a, ", "));
+//		move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
+//		ft_printfl("== %s{.free()}", op->stack_a->join(op->stack_a, ", "));
+//		while (op->a_at(op, -1) < op->b_at(op, -1) && op->a_at(op, -1)!= op->max_a)
+//		{
+//			op->ra(op);
+//		}
+//		if (op->a_at(op, -1) == op->max_a)
+//			op->ra(op);
+//
+//		op->pa(op);
+//		ft_printfl("=> %s{.free()}", op->stack_a->join(op->stack_a, ", "));
 	}
-	move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
+//	move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
 }
 
 t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
 {
-	move_unordered_to_b(op);
-	move_b_to_a_ordered(op);
+	move_smallest_to_b(op, 5);
+//	move_unordered_to_b(op);
+//	move_b_to_a_ordered(op);
 	return (op);
 }
 
@@ -207,6 +230,7 @@ int main (int argc, char **argv)
 	t_list *stack_b_rev = op->stack_b->reverse(op->stack_b);
 	ft_printfl("%s{.free()}\n-----------\nstack_a\n", stack_a_rev->join(stack_a_rev, "\n"));
 	ft_printfl("%s{.free()}\n-----------\nstack_b\n", stack_b_rev->join(stack_b_rev, "\n"));
+	ft_printfl("commands\n-----------\n(%d)", op->operations->length);
 	//ft_printfl("commands\n-----------\n%s{.free()} (%d)", ft_commands_to_str(op->operations), op->operations->length);
 	if (op->stack_b->length > 0)
 		ft_printfl("stack b is not empty!!!!");

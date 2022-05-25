@@ -24,9 +24,11 @@ t_list	*new_list(void)
 	list->i = new_iterator(list);
 	list->length = 0;
 	list->clone = ft_list_clone;
+	list->contains = ft_list_contains;
 	list->find = ft_list_find;
 	list->find_max = ft_list_find_max;
 	list->find_min = ft_list_find_min;
+	list->find_mins = ft_list_find_mins;
 	list->free = &ft_list_free;
 	list->free_by_data = &ft_list_free_by_data;
 	list->from_str_arr = &ft_list_from_str_arr;
