@@ -37,6 +37,7 @@ typedef struct t_stacks_op
 	struct t_list       *operations;
 	struct t_list       *stack_a;
 	struct t_list       *stack_b;
+	size_t				stacks_length;
 	long long 			min;
 	long long 			min_a;
 	long long 			min_b;

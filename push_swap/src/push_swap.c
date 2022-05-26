@@ -167,79 +167,76 @@ long get_lowest_greater_than(long greater_than, t_list *numbers)
 	return (lowest);
 }
 
+long get_greatest_lower_than(long lower_than, t_list *numbers)
+{
+	if (numbers->length == 0)
+		return (LONG_MAX);
+
+	t_iterator *i = numbers->get_iterator(numbers);
+	long long greatest;
+
+	greatest = *numbers->find_min(numbers, T_TYPE_LONG)->as_long;
+	while (i->next(i))
+	{
+		if (*i->curr->as_long > greatest && *i->curr->as_long < lower_than)
+			greatest = *i->curr->as_long;
+	}
+	i->free(i);
+	return (greatest);
+}
+
 void move_biggest_to_b(t_stacks_op *op, long from, long to)
 {
-	t_list	*smallest;
-	t_link *small;
+	t_list	*biggest;
+	t_link *big;
 	t_typed_ptr *typed_ptr;
 	t_list	*sorted;
 	t_list	*d;
 
-//	smallest = op->stack_a->find_mins(op->stack_a, T_TYPE_LONG, count);
 	sorted = op->stack_a->sort(op->stack_a, T_TYPE_LONG);
 	d = sorted->reverse(sorted);
-	smallest = d->sub(d, from, to);
-	while (smallest->length > 0)
+	biggest = d->sub(d, from, to);
+	while (biggest->length > 0)
 	{
 		typed_ptr = new_typed_ptr_decimal(op->a_at(op, -1));
-		small = smallest->find(smallest, typed_ptr);
+		big = biggest->find(biggest, typed_ptr);
 		typed_ptr->free(typed_ptr);
-		if (small)
+		if (big)
 		{
-			long long lowest = get_lowest_greater_than(*small->as_long, op->stack_b);
-			typed_ptr = new_typed_ptr_decimal(lowest);
+			long long greatest = get_greatest_lower_than(*big->as_long, op->stack_b);
+			typed_ptr = new_typed_ptr_decimal(greatest);
 			long index = op->stack_b->find_index(op->stack_b, typed_ptr);
 			typed_ptr->free(typed_ptr);
 			if (index != INDEX_NOT_FOUND)
 				move_b_elem_to_top(op, index);
-			if (lowest < *small->as_long && op->stack_b->length > 1)
+			if (greatest > *big->as_long && op->stack_b->length > 1)
 			{
 				op->rb(op);
 			}
 			op->pb(op);
-			smallest->free_by_data(smallest, small->data);
+			biggest->free_by_data(biggest, big->data);
 		}
 		else
 			op->ra(op);
 	}
-	typed_ptr = new_typed_ptr_decimal(op->min_b);
+	typed_ptr = new_typed_ptr_decimal(op->max_b);
 	move_b_elem_to_top(op, op->stack_b->find_index(op->stack_b, typed_ptr));
 	typed_ptr->free(typed_ptr);
-	smallest->free(smallest);
+	biggest->free(biggest);
 	d->free(d);
-}
-
-void move_b_to_a_ordered(t_stacks_op *op)
-{
-	while (op->stack_b->length > 0)
-	{
-		move_b_elem_to_top(op, op->stack_b->index_of(op->stack_b, op->stack_b->find_max(op->stack_b, T_TYPE_LONG)));
-		op->pa(op);
-//		move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
-//		ft_printfl("== %s{.free()}", op->stack_a->join(op->stack_a, ", "));
-//		while (op->a_at(op, -1) < op->b_at(op, -1) && op->a_at(op, -1)!= op->max_a)
-//		{
-//			op->ra(op);
-//		}
-//		if (op->a_at(op, -1) == op->max_a)
-//			op->ra(op);
-//
-//		op->pa(op);
-//		ft_printfl("=> %s{.free()}", op->stack_a->join(op->stack_a, ", "));
-	}
-//	move_a_elem_to_top(op, op->stack_a->index_of(op->stack_a, op->stack_a->find_min(op->stack_a, T_TYPE_LONG)));
 }
 
 t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
 {
-	long steps = 10;
+	const float magic_ratio = 0.26;
+	long steps = op->stacks_length * magic_ratio;
 	size_t i = 0;
-	while (i < op->stack_a->length + op->stack_b->length - 1)
+	while (i < op->stacks_length - 1)
 	{
-		long to = ft_math_min(i + steps - 1, op->stack_a->length);
+		long to = ft_math_min(i + steps, op->stack_a->length);
 		move_biggest_to_b(op, i, to);
 		move_stack_b_to_stack_a(op);
-		i = to + 1;
+		i = to;
 	}
 
 //	move_biggest_to_b(op, 10, 19);
@@ -311,6 +308,17 @@ char *ft_commands_to_str(t_list *commands)
 
 int main (int argc, char **argv)
 {
+//	t_list *a = new_list();
+//	a->push_long(a, 23);
+//	a->push_long(a, 1);
+//	a->push_long(a, 4);
+//	ft_printfl("a: %s{.free()}", a->join(a, ", "));
+//	t_list *b = new_list();
+//	b->push_range(b, a, 0, -1);
+//	ft_printfl("b: %s{.free()}", b->join(b, ", "));
+//	t_list *c = b->clone(b);
+//	ft_printfl("c: %s{.free()}", c->join(c, ", "));
+//	return 0;
 	t_list *input = new_list();
 	input->from_str_arr(input, argv, 0, argc);
 	t_stacks_op *op = ft_sort_stack(ft_stack_from_input(input));

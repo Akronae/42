@@ -37,6 +37,7 @@ t_stacks_op *ft_stacks_op_compute_stats(t_stacks_op *self)
 		self->max = ft_if_int(b_sorted->length == 0 || self->max_a > self->max_b, self->max_a, self->max_b);
 	if (a_sorted->length > 0)
 		self->med = *a_sorted->get_elem(a_sorted, a_sorted->length / 2)->as_long;
+	self->stacks_length = self->stack_a->length + self->stack_b->length;
 	a_sorted->free(a_sorted);
 	b_sorted->free(b_sorted);
 	return (self);
