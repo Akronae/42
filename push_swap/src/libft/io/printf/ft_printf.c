@@ -35,12 +35,12 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 		{
 			type = ft_template_type_from_str(input, &i);
 			should_free_arg = ft_str_index_of(FLAG_FREE, input + i) == 1;
-			list->push_data(list, T_TYPE_UNKNOWN, ft_arg_to_formatted_elem(args, type, should_free_arg));
 			if (should_free_arg)
 				i += ft_strlen(FLAG_FREE);
+			list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN, ft_arg_to_formatted_elem(args, type, should_free_arg)));
 		}
 		else
-			list->push_data(list, T_TYPE_UNKNOWN, ft_char_to_formatted_elem(input[i]));
+			list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN, ft_char_to_formatted_elem(input[i])));
 		i++;
 	}
 	return (list);
@@ -58,7 +58,7 @@ int	ft_print(const char *input, va_list args)
 	i = 0;
 	while (i < list->length)
 	{
-		f = list->get_elem(list, i)->data;
+		f = list->get_elem(list, i)->data->value;
 		output_str_len += f->length;
 		write(1, f->value, f->length);
 		i++;

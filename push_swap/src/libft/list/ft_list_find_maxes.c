@@ -27,7 +27,7 @@ t_list	*ft_list_find_maxes(t_list *self, t_type of_type, size_t count)
 	i = 0;
 	while (i < count && self_cloned->length > 0)
 	{
-		maxes->push(maxes, self_cloned->remove_by_data(self_cloned, self_cloned->find_max(self_cloned, of_type)->data));
+		maxes->push(maxes, self_cloned->remove_by_data(self_cloned, self_cloned->find_max(self_cloned, of_type)->data->value));
 		i++;
 	}
 	self_cloned->free(self_cloned);

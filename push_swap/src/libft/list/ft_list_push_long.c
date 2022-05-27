@@ -17,5 +17,5 @@ void	ft_list_push_long(t_list *self, long long l)
 {
 	long long *alloc = ft_safe_malloc(sizeof(long long));
 	*alloc = l;
-	self->push_data(self, T_TYPE_LONG, alloc);
+	self->push_data(self, new_typed_ptr(T_TYPE_LONG, alloc));
 }

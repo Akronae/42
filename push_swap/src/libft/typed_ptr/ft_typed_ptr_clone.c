@@ -20,7 +20,7 @@ t_typed_ptr *ft_typed_ptr_clone(t_typed_ptr *self)
 {
 
 	if (self->type == T_TYPE_STRING)
-		return (new_typed_ptr_str(self->value));
+		return (new_typed_ptr_str(ft_strdup(self->value)));
 	if (self->type == T_TYPE_LONG)
 		return (new_typed_ptr_decimal(*self->as_long));
 	else

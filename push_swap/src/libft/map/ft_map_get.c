@@ -29,7 +29,7 @@ t_typed_ptr *ft_map_get(t_map *self, t_typed_ptr *key)
 	i = self->entries->get_iterator(self->entries);
 	while (i->next(i))
 	{
-		pair = i->curr->data;
+		pair = i->curr->data->value;
 		if (pair->key->type == key->type)
 		{
 			if (key->type == T_TYPE_STRING)
@@ -47,6 +47,5 @@ t_typed_ptr *ft_map_get(t_map *self, t_typed_ptr *key)
 		}
 	}
 	i->free(i);
-	key->free(key);
 	return (value);
 }

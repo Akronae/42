@@ -15,5 +15,5 @@
 
 void	ft_list_push_str(t_list *self, char *str)
 {
-	self->push_data(self, T_TYPE_STRING, str);
+	self->push_data(self, new_typed_ptr_str(str));
 }

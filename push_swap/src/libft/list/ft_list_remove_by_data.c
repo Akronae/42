@@ -13,7 +13,7 @@
 #include "ft_list.h"
 #include "../io/ft_io.h"
 
-t_link	*ft_list_remove_by_data(t_list *self, void *data)
+t_link	*ft_list_remove_by_data(t_list *self, t_typed_ptr *data)
 {
 	t_link	*removed;
 	t_iterator	*i;
@@ -22,7 +22,7 @@ t_link	*ft_list_remove_by_data(t_list *self, void *data)
 	i = self->get_iterator(self);
 	while (i->next(i))
 	{
-		if (i->curr->data == data)
+		if (i->curr->data->type == data->type && i->curr->data->value == data->value)
 		{
 			removed = self->remove_at(self, i->index);
 			break;

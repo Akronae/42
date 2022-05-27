@@ -23,7 +23,7 @@ static size_t	ft_compute_join_length(t_list *str_list)
 
 	total_length = 1;
 	while (str_list->i->next(str_list->i))
-		total_length += ft_strlen(str_list->i->curr->as_str);
+		total_length += ft_strlen(str_list->i->curr->data->as_str);
 	return (total_length);
 }
 
@@ -35,23 +35,23 @@ char	*ft_list_join(t_list *self, char *delimiter)
 	str_list = new_list();
 	while (self->i->next(self->i))
 	{
-		if (self->i->curr->data_type == T_TYPE_UNKNOWN)
+		if (self->i->curr->data->type == T_TYPE_UNKNOWN)
 			str_list->push_str(str_list, ft_strdup(T_TYPE_UNKNOWN_STR));
-		else if (self->i->curr->data_type == T_TYPE_STRING)
-			str_list->push_str(str_list, ft_strdup(self->i->curr->as_str));
-		else if (self->i->curr->data_type == T_TYPE_CHAR)
-			str_list->push_str(str_list, ft_char_to_str(*self->i->curr->as_str));
-		else if (self->i->curr->data_type == T_TYPE_LONG)
-			str_list->push_str(str_list, ft_number_to_str(*self->i->curr->as_long));
+		else if (self->i->curr->data->type == T_TYPE_STRING)
+			str_list->push_str(str_list, ft_strdup(self->i->curr->data->as_str));
+		else if (self->i->curr->data->type == T_TYPE_CHAR)
+			str_list->push_str(str_list, ft_char_to_str(*self->i->curr->data->as_str));
+		else if (self->i->curr->data->type == T_TYPE_LONG)
+			str_list->push_str(str_list, ft_number_to_str(*self->i->curr->data->as_long));
 		else
 			ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
-								   ft_number_to_str(self->i->curr->data_type)));
+								   ft_number_to_str(self->i->curr->data->type)));
 		if (self->i->curr->next)
 			str_list->push_str(str_list, ft_strdup(delimiter));
 	}
 	str = ft_safe_malloc(sizeof (char) * ft_compute_join_length(str_list));
 	while (str_list->i->next(str_list->i))
-		ft_str_append(str, str_list->i->curr->as_str);
+		ft_str_append(str, str_list->i->curr->data->as_str);
 	str_list->free(str_list);
 	return (str);
 }

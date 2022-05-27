@@ -1,25 +1,22 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sub.c                                      :+:      :+:    :+:   */
+/*   stacks_operations.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include "../math/ft_math.h"
-#include "../io/ft_io.h"
-#include <unistd.h>
+#ifndef STACKS_OPERATIONS_H
+# define STACKS_OPERATIONS_H
 
-t_list 	*ft_list_sub(t_list *self, long long from, long long to)
-{
-	t_list	*sub;
+void move_b_elem_to_top (t_stacks_op *op, size_t elem_index);
+int is_stack_ordered(t_list *stack);
+void move_stack_b_to_stack_a (t_stacks_op *op);
+long get_greatest_lower_than(long lower_than, t_list *numbers);
+void move_biggest_to_b(t_stacks_op *op, long from, long to);
 
-	sub = new_list();
-	return (sub->push_range(sub, self, from, to));
-}
+#endif

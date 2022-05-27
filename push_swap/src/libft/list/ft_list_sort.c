@@ -23,11 +23,11 @@ t_list	*ft_list_sort(t_list *self, t_type of_type)
 	i = sorted->get_iterator(sorted);
 	while (i->next(i))
 	{
-		if (i->curr->data_type != of_type)
+		if (i->curr->data->type != of_type)
 			continue;
 		if (of_type == T_TYPE_LONG)
 		{
-			if (i->curr->prev == NULL || *i->curr->as_long > *i->curr->prev->as_long)
+			if (i->curr->prev == NULL || *i->curr->data->as_long > *i->curr->prev->data->as_long)
 				continue;
 			sorted->swap(sorted, i->index, i->index - 1);
 			i->reset(i);

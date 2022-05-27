@@ -16,7 +16,7 @@
 
 long ft_stack_at(t_list *self, long index)
 {
-    return (*self->get_elem(self, index)->as_long);
+    return (*self->get_elem(self, index)->data->as_long);
 }
 
 long ft_stacks_op_a_at(t_stacks_op *self, long index)

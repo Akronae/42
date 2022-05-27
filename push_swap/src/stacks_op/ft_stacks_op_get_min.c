@@ -22,9 +22,9 @@ long long ft_stacks_op_get_min(t_stacks_op *self)
 	if (self->stack_a->length == 0 && self->stack_b->length == 0)
 		return (LLONG_MAX);
 	if (self->stack_a->length == 0)
-		return (*self->stack_b->find_min(self->stack_b, T_TYPE_LONG)->as_long);
+		return (*self->stack_b->find_min(self->stack_b, T_TYPE_LONG)->data->as_long);
 	if (self->stack_b->length == 0)
-		return (*self->stack_a->find_min(self->stack_a, T_TYPE_LONG)->as_long);
-	return ft_math_min(*self->stack_a->find_min(self->stack_a, T_TYPE_LONG)->as_long,
-					   *self->stack_b->find_min(self->stack_b, T_TYPE_LONG)->as_long);
+		return (*self->stack_a->find_min(self->stack_a, T_TYPE_LONG)->data->as_long);
+	return ft_math_min(*self->stack_a->find_min(self->stack_a, T_TYPE_LONG)->data->as_long,
+					   *self->stack_b->find_min(self->stack_b, T_TYPE_LONG)->data->as_long);
 }

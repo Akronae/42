@@ -24,7 +24,7 @@ t_link	*ft_list_find(t_list *self, t_typed_ptr *find_data)
 	i = self->get_iterator(self);
 	while (i->next(i))
 	{
-		if (find_data->value_equals(find_data, i->curr->typed_ptr))
+		if (find_data->value_equals(find_data, i->curr->data))
 		{
 			found =  (i->curr);
 			break ;

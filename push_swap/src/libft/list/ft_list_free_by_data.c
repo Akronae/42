@@ -13,7 +13,7 @@
 #include "ft_list.h"
 #include "../memory/ft_memory.h"
 
-void	ft_list_free_by_data(t_list *self, void *data)
+void	ft_list_free_by_data(t_list *self, t_typed_ptr *data)
 {
 	t_link	*elem;
 

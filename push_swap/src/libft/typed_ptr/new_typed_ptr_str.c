@@ -17,10 +17,10 @@
 
 t_typed_ptr	*new_typed_ptr_str(char *value)
 {
-	return (new_typed_ptr(T_TYPE_STRING, ft_strdup(value)));
+	return (new_typed_ptr(T_TYPE_STRING, value));
 }
 
 t_typed_ptr	*ft_s(char *str)
 {
-	return (new_typed_ptr_str(str));
+	return (new_typed_ptr_str(ft_strdup(str)));
 }

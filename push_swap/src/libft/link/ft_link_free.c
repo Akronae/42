@@ -26,8 +26,8 @@ void	ft_link_free(t_link *self)
 	{
 		temp = elem;
 		elem = elem->next;
-		if (temp->typed_ptr)
-			temp->typed_ptr->free(temp->typed_ptr);
+		if (temp->data)
+			temp->data->free(temp->data);
 		ft_safe_free(temp);
 	}
 }

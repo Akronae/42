@@ -25,6 +25,4 @@ typedef enum t_type
 	T_TYPE_LONG,
 }	t_type;
 
-void	*ft_type_clone_data(t_type data_type, void *data);
-
 #endif

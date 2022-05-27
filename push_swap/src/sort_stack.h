@@ -1,25 +1,18 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sub.c                                      :+:      :+:    :+:   */
+/*   sort_stack.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include "../math/ft_math.h"
-#include "../io/ft_io.h"
-#include <unistd.h>
+#ifndef STACKS_OPERATIONS_H
+# define STACKS_OPERATIONS_H
 
-t_list 	*ft_list_sub(t_list *self, long long from, long long to)
-{
-	t_list	*sub;
+t_stacks_op *ft_sort_stack(t_list *stack);
 
-	sub = new_list();
-	return (sub->push_range(sub, self, from, to));
-}
+#endif

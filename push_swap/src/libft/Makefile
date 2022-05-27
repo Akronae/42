@@ -57,7 +57,6 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c
 					number/ft_str_to_number.c string/ft_str_append.c \
 					ptr/ft_ptr_cast_ll.c \
 					string/ft_str_append_char.c string/ft_string_to_upper.c \
-					type/ft_type_clone_data.c \
 					typed_ptr/ft_typed_ptr_clone.c typed_ptr/ft_typed_ptr_free.c typed_ptr/ft_typed_ptr_set_value.c \
 					typed_ptr/ft_typed_ptr_value_equals.c typed_ptr/new_typed_ptr.c \
 					typed_ptr/new_typed_ptr_decimal.c typed_ptr/new_typed_ptr_str.c
