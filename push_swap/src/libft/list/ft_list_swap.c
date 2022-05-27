@@ -19,9 +19,9 @@
 
 void	ft_list_swap(t_list *self, long from_index, long to_index)
 {
-	t_link *a;
-	t_link *b;
-	long 	max_index;
+	t_link	*a;
+	t_link	*b;
+	long	max_index;
 
 	max_index = self->length - 1;
 	from_index = ft_math_clamp(from_index, -max_index - 1, max_index);
@@ -32,10 +32,10 @@ void	ft_list_swap(t_list *self, long from_index, long to_index)
 		to_index = self->length + to_index;
 	if (from_index == to_index)
 		return ;
-    if (from_index > to_index)
-        ft_swap_long(&from_index, &to_index);
-    a = self->remove_at(self, from_index);
+	if (from_index > to_index)
+		ft_swap_long(&from_index, &to_index);
+	a = self->remove_at(self, from_index);
 	self->insert_at(self, to_index - 1, a);
-    b = self->remove_at(self, to_index);
-    self->insert_at(self, from_index, b);
+	b = self->remove_at(self, to_index);
+	self->insert_at(self, from_index, b);
 }

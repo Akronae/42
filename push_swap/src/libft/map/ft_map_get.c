@@ -20,17 +20,17 @@
 t_typed_ptr	*ft_map_get(t_map *self, t_typed_ptr *key)
 {
 	t_iterator			*i;
-	t_key_value_pair	*pair;
+	t_key_value_pair	*curr_pair;
 	void				*value;
 
 	value = NULL;
 	i = self->entries->get_iterator(self->entries);
 	while (i->next(i))
 	{
-		pair = i->curr->data->value;
-		if (key->value_equals(key, pair->key))
+		curr_pair = i->curr->data->value;
+		if (key->value_equals(key, curr_pair->key))
 		{
-			value = pair->value;
+			value = curr_pair->value;
 			break ;
 		}
 	}

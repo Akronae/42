@@ -16,7 +16,7 @@
 
 t_list	*ft_list_sort(t_list *self, t_type of_type)
 {
-	t_list *sorted;
+	t_list		*sorted;
 	t_iterator	*i;
 
 	sorted = self->clone(self);
@@ -24,15 +24,16 @@ t_list	*ft_list_sort(t_list *self, t_type of_type)
 	while (i->next(i))
 	{
 		if (i->curr->data->type != of_type)
-			continue;
+			continue ;
 		if (of_type == T_TYPE_LONG)
 		{
-			if (i->curr->prev == NULL || *i->curr->data->as_long > *i->curr->prev->data->as_long)
-				continue;
+			if (i->curr->prev == NULL || *i->curr->data->as_long
+				> *i->curr->prev->data->as_long)
+				continue ;
 			sorted->swap(sorted, i->index, i->index - 1);
 			i->reset(i);
 		}
 	}
 	i->free(i);
-    return (sorted);
+	return (sorted);
 }

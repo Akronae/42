@@ -16,5 +16,6 @@
 
 void	ft_list_push_malloc(t_list *self, int malloc_size)
 {
-	self->push_data(self, new_typed_ptr(T_TYPE_UNKNOWN, ft_safe_malloc(malloc_size)));
+	self->push_data(self, new_typed_ptr(T_TYPE_UNKNOWN,
+			ft_safe_malloc(malloc_size)));
 }

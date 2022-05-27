@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_if_str (int condition, char *if_true, char *if_false)
+char	*ft_if_str(int condition, char *if_true, char *if_false)
 {
 	if (condition)
 		return (if_true);

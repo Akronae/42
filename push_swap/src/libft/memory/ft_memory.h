@@ -17,15 +17,17 @@
 # include "../list/ft_list.h"
 
 # define PERSISTENT_PTR_ARR_SIZE 10
+
 # define PERSISTENT_PTR_INITIATED (int *) 0x7fabc4108040
-typedef enum	t_persistent_ptr_op
+
+typedef enum t_persistent_ptr_op
 {
 	WRITE,
 	READ,
 }	t_persistent_ptr_op;
 
 void	*ft_memset(void *dst, int copied_char, size_t len);
-void	ft_init_persistent_ptr();
+void	ft_init_persistent_ptr(void);
 void	*ft_get_persistent_ptr(size_t index);
 void	*ft_set_persistent_ptr(size_t index, void *ptr);
 void	*ft_memmove(void *dest, const void *src, size_t n);

@@ -15,10 +15,13 @@
 #include "../io/ft_io.h"
 #include <stdlib.h>
 
-t_key_value_pair *ft_map_add(t_map *self, t_typed_ptr *key, t_typed_ptr *value)
+t_key_value_pair	*ft_map_add(t_map *self, t_typed_ptr *key,
+					t_typed_ptr *value)
 {
 	if (self->get(self, key))
-		return ft_exit_err("ft_map_add: key '%s' already exists in the map.", key->value);
-	self->entries->push_data(self->entries, new_typed_ptr(T_TYPE_UNKNOWN, new_key_value_pair(key, value)));
+		return (ft_exit_err("ft_map_add: "
+				"key '%s' already exists in the map.", key->value));
+	self->entries->push_data(self->entries,
+		new_typed_ptr(T_TYPE_UNKNOWN, new_key_value_pair(key, value)));
 	return (self->entries->last->data->value);
 }

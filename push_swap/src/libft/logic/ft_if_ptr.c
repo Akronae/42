@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_if_ptr (int condition, void *if_true, void *if_false)
+void	*ft_if_ptr(int condition, void *if_true, void *if_false)
 {
 	if (condition)
 		return (if_true);

@@ -14,6 +14,27 @@
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
+t_list	*new_list_2(t_list *list)
+{
+	list->push_malloc = &ft_list_push_malloc;
+	list->push_range = &ft_list_push_range;
+	list->push_str = &ft_list_push_str;
+	list->remove_at = &ft_list_remove_at;
+	list->remove_by_data = &ft_list_remove_by_data;
+	list->get_elem = &ft_list_get_elem;
+	list->reverse = &ft_list_reverse;
+	list->sort = &ft_list_sort;
+	list->sub = &ft_list_sub;
+	list->swap = &ft_list_swap;
+	list->get_iterator = &ft_list_get_iterator;
+	list->index_of = &ft_list_index_of;
+	list->insert_at = &ft_list_insert_at;
+	list->join = &ft_list_join;
+	list->map = &ft_list_map;
+	list->pop = &ft_list_pop;
+	list->for_each = &ft_list_for_each;
+}
+
 t_list	*new_list(void)
 {
 	t_list	*list;
@@ -39,22 +60,5 @@ t_list	*new_list(void)
 	list->push_char = &ft_list_push_char;
 	list->push_data = &ft_list_push_data;
 	list->push_long = &ft_list_push_long;
-	list->push_malloc = &ft_list_push_malloc;
-	list->push_range = &ft_list_push_range;
-	list->push_str = &ft_list_push_str;
-	list->remove_at = &ft_list_remove_at;
-	list->remove_by_data = &ft_list_remove_by_data;
-	list->get_elem = &ft_list_get_elem;
-	list->reverse = &ft_list_reverse;
-	list->sort = &ft_list_sort;
-	list->sub = &ft_list_sub;
-	list->swap = &ft_list_swap;
-	list->get_iterator = &ft_list_get_iterator;
-	list->index_of = &ft_list_index_of;
-	list->insert_at = &ft_list_insert_at;
-	list->join = &ft_list_join;
-    list->map = &ft_list_map;
-    list->pop = &ft_list_pop;
-	list->for_each = &ft_list_for_each;
-	return (list);
+	return (new_list_2(list));
 }

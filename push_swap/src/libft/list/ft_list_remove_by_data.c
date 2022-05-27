@@ -15,17 +15,18 @@
 
 t_link	*ft_list_remove_by_data(t_list *self, t_typed_ptr *data)
 {
-	t_link	*removed;
+	t_link		*removed;
 	t_iterator	*i;
 
 	removed = NULL;
 	i = self->get_iterator(self);
 	while (i->next(i))
 	{
-		if (i->curr->data->type == data->type && i->curr->data->value == data->value)
+		if (i->curr->data->type == data->type
+			&& i->curr->data->value == data->value)
 		{
 			removed = self->remove_at(self, i->index);
-			break;
+			break ;
 		}
 	}
 	i->free(i);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_if.h                                            :+:      :+:    :+:   */
+/*   ft_if_int.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	ft_if_int (int condition, long long if_true, long long if_false)
+long long	ft_if_int(int condition, long long if_true, long long if_false)
 {
 	if (condition)
 		return (if_true);
