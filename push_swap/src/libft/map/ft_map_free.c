@@ -21,6 +21,7 @@ void ft_map_free_entry(t_link *entry)
 	pair = entry->data;
 	pair->free(pair);
 	entry->data = NULL;
+	entry->typed_ptr->value = NULL;
 }
 
 void ft_map_free(t_map *self)

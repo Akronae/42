@@ -20,6 +20,7 @@
 #include "libft/number/ft_number.h"
 #include "libft/memory/ft_memory.h"
 #include "libft/math/ft_math.h"
+#include "libft/logic/ft_logic.h"
 #include "libft/map/ft_map.h"
 #include "stacks_op/ft_stacks_op.h"
 
@@ -39,7 +40,7 @@ t_list *ft_stack_from_input(t_list *input)
 			ft_exit_err("element %d is out of [INT_MIN, INT_MAX] boundaries (%s)", input->i->index, input->i->curr->as_str);
 		stack->push_long(stack, nbr);
 	}
-	return (stack);
+	return (stack->reverse(stack));
 }
 
 t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
@@ -51,9 +52,9 @@ t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
 
 t_stacks_op *ft_stack_sort_len_3 (t_stacks_op *op)
 {
-	if (op->a_at(op, -1) == op->max_a)
+	if (op->a_at(op, -1) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->as_long)
 		op->ra(op);
-	if (op->a_at(op, -2) == op->max_a)
+	if (op->a_at(op, -2) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->as_long)
 		op->rra(op);
 	if (op->a_at(op, -1) > op->a_at(op, -2))
 		op->sa(op);
@@ -64,7 +65,7 @@ t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
 {
 	while (op->stack_b->length < 2)
 	{
-		if (op->a_at(op, -1) == op->min || op->a_at(op, -1) == op->max)
+		if (op->a_at(op, -1) == op->get_min(op) || op->a_at(op, -1) == op->get_max(op))
 			op->pb(op);
 		else
 			op->ra(op);
@@ -72,25 +73,12 @@ t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
 	ft_stack_sort_len_3(op);
 	op->pa(op);
 	op->pa(op);
-	if (op->a_at(op, -1) != op->max)
+	if (op->a_at(op, -1) != op->get_max(op))
 		op->sa(op);
 	op->ra(op);
 	return (op);
 }
 
-void move_a_elem_to_top (t_stacks_op *op, size_t elem_index)
-{
-	int move_up = elem_index > op->stack_a->length / 2;
-	long elem_val = op->a_at(op, elem_index);
-
-	while (op->a_at(op, -1) != elem_val)
-	{
-		if (move_up)
-			op->ra(op);
-		else
-			op->rra(op);
-	}
-}
 void move_b_elem_to_top (t_stacks_op *op, size_t elem_index)
 {
 	int move_up = elem_index > op->stack_b->length / 2;
@@ -105,40 +93,21 @@ void move_b_elem_to_top (t_stacks_op *op, size_t elem_index)
 	}
 }
 
-void move_b_elem_to_bottom (t_stacks_op *op, size_t elem_index)
+int is_stack_ordered(t_list *stack)
 {
-	int move_up = elem_index < op->stack_b->length / 2;
-	long elem_val = op->b_at(op, elem_index);
+	t_iterator *i = stack->get_iterator(stack);
+	int is_ordered = TRUE;
 
-	while (op->b_at(op, 0) != elem_val)
-	{
-		if (move_up)
-			op->rb(op);
-		else
-			op->rrb(op);
-	}
-}
-
-void move_elem_to_b (t_stacks_op *op, size_t elem_index)
-{
-	move_a_elem_to_top(op, elem_index);
-	op->pb(op);
-}
-
-void move_unordered_to_b(t_stacks_op *op)
-{
-	t_iterator	*i;
-
-	i = op->stack_a->get_iterator(op->stack_a);
 	while (i->next(i))
 	{
-		if (i->index > 0 && op->a_at(op, i->index - 1) < op->a_at(op, i->index))
+		if (i->curr->next && *i->curr->as_long < *i->curr->next->as_long)
 		{
-			move_elem_to_b(op, i->index);
-			i->reset(i);
+			is_ordered = FALSE;
+			break ;
 		}
 	}
 	i->free(i);
+	return (is_ordered);
 }
 
 void move_stack_b_to_stack_a (t_stacks_op *op)
@@ -147,24 +116,6 @@ void move_stack_b_to_stack_a (t_stacks_op *op)
 	{
 		op->pa(op);
 	}
-}
-
-long get_lowest_greater_than(long greater_than, t_list *numbers)
-{
-	if (numbers->length == 0)
-		return (LONG_MIN);
-
-	t_iterator *i = numbers->get_iterator(numbers);
-	long long lowest;
-
-	lowest = *numbers->find_max(numbers, T_TYPE_LONG)->as_long;
-	while (i->next(i))
-	{
-		if (*i->curr->as_long < lowest && *i->curr->as_long > greater_than)
-			lowest = *i->curr->as_long;
-	}
-	i->free(i);
-	return (lowest);
 }
 
 long get_greatest_lower_than(long lower_than, t_list *numbers)
@@ -219,7 +170,7 @@ void move_biggest_to_b(t_stacks_op *op, long from, long to)
 		else
 			op->ra(op);
 	}
-	typed_ptr = new_typed_ptr_decimal(op->max_b);
+	typed_ptr = new_typed_ptr_decimal(*op->stack_b->find_max(op->stack_b, T_TYPE_LONG)->as_long);
 	move_b_elem_to_top(op, op->stack_b->find_index(op->stack_b, typed_ptr));
 	typed_ptr->free(typed_ptr);
 	biggest->free(biggest);
@@ -228,8 +179,11 @@ void move_biggest_to_b(t_stacks_op *op, long from, long to)
 
 t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
 {
-	const float magic_ratio = 0.26;
-	long steps = op->stacks_length * magic_ratio;
+	long steps;
+
+	steps = op->stacks_length * 0.26;
+	if (op->stacks_length >= 500)
+		steps = op->stacks_length * 0.10;
 	size_t i = 0;
 	while (i < op->stacks_length - 1)
 	{
@@ -238,34 +192,16 @@ t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
 		move_stack_b_to_stack_a(op);
 		i = to;
 	}
-
-//	move_biggest_to_b(op, 10, 19);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 20, 29);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 30, 39);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 40, 49);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 50, 59);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 60, 69);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 70, 79);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 80, 89);
-//	move_stack_b_to_stack_a(op);
-//	move_biggest_to_b(op, 90, 99);
-//	move_stack_b_to_stack_a(op);
-
 	return (op);
 }
 
 t_stacks_op *ft_sort_stack(t_list *stack)
 {
 	t_stacks_op *op = new_stacks_op();
-	op->set_stack_a(op, stack);
 
+	op->set_stack_a(op, stack);
+	if (is_stack_ordered(op->stack_a))
+		return (op);
 	if (op->stack_a->length <= 1)
 		return (op);
 	else if (op->stack_a->length <= 2)
@@ -327,7 +263,7 @@ int main (int argc, char **argv)
 	ft_printfl("%s{.free()}\n-----------\nstack_a\n", stack_a_rev->join(stack_a_rev, "\n"));
 	ft_printfl("%s{.free()}\n-----------\nstack_b\n", stack_b_rev->join(stack_b_rev, "\n"));
 	ft_printfl("commands\n-----------\n(%d)", op->operations->length);
-	//ft_printfl("commands\n-----------\n%s{.free()} (%d)", ft_commands_to_str(op->operations), op->operations->length);
+//	ft_printfl("commands\n-----------\n%s{.free()}", ft_commands_to_str(op->operations), op->operations->length);
 	if (op->stack_b->length > 0)
 		ft_printfl("stack b is not empty!!!!");
 	op->free(op);

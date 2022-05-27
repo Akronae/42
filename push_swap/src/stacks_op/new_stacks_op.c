@@ -22,6 +22,8 @@ t_stacks_op *new_stacks_op(void)
 	stack_op->operations = new_list();
 	stack_op->stack_a = new_list();
 	stack_op->stack_b = new_list();
+	stack_op->get_min = &ft_stacks_op_get_min;
+	stack_op->get_max = &ft_stacks_op_get_max;
 	stack_op->a_at = &ft_stacks_op_a_at;
 	stack_op->b_at = &ft_stacks_op_b_at;
 	stack_op->free = &ft_stacks_op_free;
