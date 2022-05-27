@@ -14,7 +14,8 @@
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_stacks_op *ft_stacks_op_set_stack(t_stacks_op *self, t_list **old_stack, t_list *new_stack)
+t_stacks_op	*ft_stacks_op_set_stack(t_stacks_op *self, t_list **old_stack,
+										t_list *new_stack)
 {
 	(*old_stack)->free(*old_stack);
 	*old_stack = new_stack;
@@ -22,12 +23,12 @@ t_stacks_op *ft_stacks_op_set_stack(t_stacks_op *self, t_list **old_stack, t_lis
 	return (self);
 }
 
-t_stacks_op *ft_stacks_op_set_stack_a(t_stacks_op *self, t_list *new_stack)
+t_stacks_op	*ft_stacks_op_set_stack_a(t_stacks_op *self, t_list *new_stack)
 {
 	return (ft_stacks_op_set_stack(self, &self->stack_a, new_stack));
 }
 
-t_stacks_op *ft_stacks_op_set_stack_b(t_stacks_op *self, t_list *new_stack)
+t_stacks_op	*ft_stacks_op_set_stack_b(t_stacks_op *self, t_list *new_stack)
 {
 	return (ft_stacks_op_set_stack(self, &self->stack_b, new_stack));
 }

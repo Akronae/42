@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ptr.h                                          :+:      :+:    :+:   */
+/*   ft_ptr.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,6 +13,6 @@
 #ifndef FT_PTR_H
 # define FT_PTR_H
 
-long long *ft_ptr_cast_ll(void *ptr);
+long long	*ft_ptr_cast_ll(void *ptr);
 
 #endif

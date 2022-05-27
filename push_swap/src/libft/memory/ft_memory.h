@@ -18,7 +18,7 @@
 
 # define PERSISTENT_PTR_ARR_SIZE 10
 # define PERSISTENT_PTR_INITIATED (int *) 0x7fabc4108040
-typedef enum t_persistent_ptr_op
+typedef enum	t_persistent_ptr_op
 {
 	WRITE,
 	READ,
@@ -37,6 +37,6 @@ void	ft_bzero(void *dst, size_t n);
 void	ft_safe_free(void *ptr);
 void	ft_safe_free_null(void **ptr);
 void	*ft_safe_malloc(size_t malloc_size);
-void    ft_swap_long(long *ptr1, long *ptr2);
+void	ft_swap_long(long *ptr1, long *ptr2);
 
 #endif

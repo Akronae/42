@@ -15,7 +15,7 @@
 #include "../io/ft_io.h"
 #include <stdlib.h>
 
-t_map *new_map(void)
+t_map	*new_map(void)
 {
 	t_map	*map;
 

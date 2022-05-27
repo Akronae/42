@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void ft_typed_ptr_free(t_typed_ptr *self)
+void	ft_typed_ptr_free(t_typed_ptr *self)
 {
 	ft_safe_free(self->value);
 	ft_safe_free(self);

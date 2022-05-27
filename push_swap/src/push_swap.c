@@ -50,7 +50,6 @@ char *ft_commands_to_str(t_list *commands)
 	t_iterator *i = commands->get_iterator(commands);
 	char		*str;
 	t_map	*map = new_map();
-	t_typed_ptr *t;
 
 	map->add(map, ft_d(SA), ft_s("sa"));
 	map->add(map, ft_d(SB), ft_s("sb"));
@@ -65,11 +64,7 @@ char *ft_commands_to_str(t_list *commands)
 	map->add(map, ft_d(RRB), ft_s("rrb"));
 	map->add(map, ft_d(RRR), ft_s("rrr"));
 	while (i->next(i))
-	{
-		t = ft_d(*i->curr->data->as_long);
-		to_str->push_str(to_str, ft_strdup(map->get(map, t)->as_str));
-		t->free(t);
-	}
+		to_str->push_str(to_str, ft_strdup(map->get(map, i->curr->data)->as_str));
 	i->free(i);
 	str = to_str->join(to_str, "\n");
 	to_str->free(to_str);

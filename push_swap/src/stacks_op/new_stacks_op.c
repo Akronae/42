@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stacks_op.c                                        :+:      :+:    :+:   */
+/*   new_stacks_op.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,9 +14,9 @@
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_stacks_op *new_stacks_op(void)
+t_stacks_op	*new_stacks_op(void)
 {
-	t_stacks_op *stack_op;
+	t_stacks_op	*stack_op;
 
 	stack_op = ft_safe_malloc(sizeof(t_stacks_op));
 	stack_op->operations = new_list();

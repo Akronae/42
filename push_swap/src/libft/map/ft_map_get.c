@@ -17,33 +17,21 @@
 #include "../logic/ft_logic.h"
 #include <stdlib.h>
 
-t_typed_ptr *ft_map_get(t_map *self, t_typed_ptr *key)
+t_typed_ptr	*ft_map_get(t_map *self, t_typed_ptr *key)
 {
 	t_iterator			*i;
 	t_key_value_pair	*pair;
-	void 				*value;
-	int					match;
+	void				*value;
 
-	match = FALSE;
 	value = NULL;
 	i = self->entries->get_iterator(self->entries);
 	while (i->next(i))
 	{
 		pair = i->curr->data->value;
-		if (pair->key->type == key->type)
+		if (key->value_equals(key, pair->key))
 		{
-			if (key->type == T_TYPE_STRING)
-				match = ft_str_equal(pair->key->value, key->value);
-			else if (key->type == T_TYPE_LONG)
-				match = *pair->key->as_long == *key->as_long;
-			else
-				return ft_exit_err("ft_map_get: cannot handle key of type '%d'.", key->type);
-
-			if (match)
-			{
-				value = pair->value;
-				break;
-			}
+			value = pair->value;
+			break ;
 		}
 	}
 	i->free(i);

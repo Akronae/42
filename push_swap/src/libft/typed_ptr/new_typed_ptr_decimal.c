@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_typed_ptr_decimal.c                                :+:      :+:    :+:   */
+/*   new_typed_ptr_decimal.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
 
 t_typed_ptr	*new_typed_ptr_decimal(long long decimal)
 {
-	long long *ptr;
+	long long	*ptr;
 
 	ptr = ft_safe_malloc(sizeof(long long));
 	*ptr = decimal;

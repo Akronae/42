@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long *ft_ptr_cast_ll(void *ptr)
+long long	*ft_ptr_cast_ll(void *ptr)
 {
-	return (long long *) ptr;
+	return ((long long *) ptr);
 }

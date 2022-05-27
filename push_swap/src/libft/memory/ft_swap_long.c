@@ -13,11 +13,11 @@
 #include "ft_memory.h"
 #include <unistd.h>
 
-void    ft_swap_long(long *ptr1, long *ptr2)
+void	ft_swap_long(long *ptr1, long *ptr2)
 {
-    long tmp;
+	long	tmp;
 
-    tmp = *ptr1;
-    *ptr1 = *ptr2;
-    *ptr2 = tmp;
+	tmp = *ptr1;
+	*ptr1 = *ptr2;
+	*ptr2 = tmp;
 }

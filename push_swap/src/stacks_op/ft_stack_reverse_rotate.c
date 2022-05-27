@@ -14,22 +14,22 @@
 #include "../libft/memory/ft_memory.h"
 #include <stdlib.h>
 
-t_list *ft_stack_reverse_rotate(t_list *self)
+t_list	*ft_stack_reverse_rotate(t_list *self)
 {
-    if (self->length <= 1)
-        return (self);
-    self->push(self, self->remove_at(self, 0));
-    return (self);
+	if (self->length <= 1)
+		return (self);
+	self->push(self, self->remove_at(self, 0));
+	return (self);
 }
 
-t_stacks_op *ft_stacks_op_rra(t_stacks_op *self)
+t_stacks_op	*ft_stacks_op_rra(t_stacks_op *self)
 {
 	ft_stack_reverse_rotate(self->stack_a);
 	self->operations->push_long(self->operations, RRA);
 	return (self);
 }
 
-t_stacks_op *ft_stacks_op_rrb(t_stacks_op *self)
+t_stacks_op	*ft_stacks_op_rrb(t_stacks_op *self)
 {
 	ft_stack_reverse_rotate(self->stack_b);
 	self->operations->push_long(self->operations, RRB);

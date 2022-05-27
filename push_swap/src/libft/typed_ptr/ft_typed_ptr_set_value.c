@@ -14,7 +14,7 @@
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-void ft_typed_ptr_set_value(t_typed_ptr *self, void *value)
+void	ft_typed_ptr_set_value(t_typed_ptr *self, void *value)
 {
 	self->value = value;
 	self->as_long = (long long *) value;
