@@ -45,7 +45,7 @@ t_list *ft_stack_from_input(t_list *input)
 
 t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
 {
-	if (op->a_at(op, 0) > op->a_at(op, 1))
+	if (op->a_at(op, 0) < op->a_at(op, 1))
 		op->sa(op);
 	return (op);
 }
