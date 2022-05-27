@@ -27,7 +27,7 @@ void	*ft_exit_err(char *msg, ...)
 	va_end(args);
 	ft_putstr_fd("\n", 1);
 #ifdef ENV_DEV
-	*((int *)0) = 0; // used to get the stack trace, dirty!
+	*((int *)1) = 0; // used to get the stack trace, dirty!
 #endif
 	exit(1);
 	return (NULL);
