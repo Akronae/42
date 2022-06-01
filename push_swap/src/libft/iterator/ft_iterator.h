@@ -20,15 +20,15 @@
 typedef struct t_iterator
 {
 	struct t_list	*list;
-	t_link	*curr;
-	long	index;
-	t_link	*(*next)(struct t_iterator *self);
-	char	*(*next_str)(struct t_iterator *self);
-	char	(*next_char)(struct t_iterator *self);
-	long	(*next_long)(struct t_iterator *self);
-	void	(*reset)(struct t_iterator *self);
-	void	(*skip)(struct t_iterator *self, size_t skip_count);
-	void	(*free)(struct t_iterator *self);
+	t_link			*curr;
+	long			index;
+	t_link			*(*next)(struct t_iterator *self);
+	char			*(*next_str)(struct t_iterator *self);
+	char			(*next_char)(struct t_iterator *self);
+	long			(*next_long)(struct t_iterator *self);
+	void			(*reset)(struct t_iterator *self);
+	void			(*skip)(struct t_iterator *self, size_t skip_count);
+	void			(*free)(struct t_iterator *self);
 }	t_iterator;
 
 t_link		*ft_iterator_next(struct t_iterator *self);

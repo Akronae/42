@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "./ft_io.h"
 #include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	*ft_exit_err(char *msg, ...)
 {
-	va_list				args;
-	char				*str;
+	va_list	args;
+	char	*str;
+	int		*a;
 
+	a = 1;
 	str = ft_strjoin("Error\n", msg);
 	va_start(args, msg);
 	ft_print(str, args);
 	va_end(args);
 	ft_putstr_fd("\n", 1);
-#ifdef ENV_DEV
-	*((int *)1) = 0; // used to get the stack trace, dirty!
-#endif
+	if (ENV_DEV)
+		*a = 0;
 	exit(1);
 	return (NULL);
 }

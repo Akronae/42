@@ -38,15 +38,13 @@ void	ft_formatted_list_free_elem(t_link *elem)
 }
 
 struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
-		enum t_template_type type, int free_arg)
+	enum t_template_type type, int free_arg)
 {
 	t_formatted_element	*elem;
-	void 				*ptr;
+	void				*ptr;
 
 	elem = new_formatted_element();
 	ptr = NULL;
-	if (!elem)
-		return (NULL);
 	if (type == CHAR)
 	{
 		elem->value = ft_char_to_str(va_arg(args, int));

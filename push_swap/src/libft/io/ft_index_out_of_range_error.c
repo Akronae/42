@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 
 #include "./ft_io.h"
-#include <stdlib.h>
 
-void	*ft_index_out_of_range_error(char *callee, size_t index, size_t arr_size)
+void	*ft_index_out_of_range_error(char *callee, size_t index,
+			size_t arr_size)
 {
-	return ft_exit_err("%s: index %d is outside the bounds of the array [0, %d].", callee, index, arr_size - 1);
+	return (ft_exit_err("%s: index %d is outside the bounds"
+			" of the array [0, %d].", callee, index, arr_size - 1));
 }
 
-void	*ft_check_index_out_of_range_error(char *callee, size_t index, size_t arr_size)
+void	*ft_check_index_out_of_range_error(char *callee, size_t index,
+			size_t arr_size)
 {
 	if (index > arr_size - 1)
-		return ft_index_out_of_range_error(callee, index, arr_size);
+		return (ft_index_out_of_range_error(callee, index, arr_size));
 	return (NULL);
 }

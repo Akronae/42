@@ -19,18 +19,21 @@
 
 t_link	*ft_map_formatted_to_str(t_link *elem)
 {
+	t_formatted_element	*curr;
+	t_link				*new;
+
 	if (!elem || !elem->data || !elem->data->value)
 		return (NULL);
-	t_formatted_element *curr = elem->data->value;
-	t_link *new = new_link();
+	curr = elem->data->value;
+	new = new_link();
 	new->set_data(new, new_typed_ptr_str(ft_strdup(curr->value)));
 	return (new);
 }
 
 char	*ft_str_format_handle_args(const char *input, va_list args)
 {
-	t_list				*list;
-	char				*str;
+	t_list	*list;
+	char	*str;
 
 	list = ft_printf_parse_args(args, (char *) input);
 	list = list->map(list, &ft_map_formatted_to_str);
@@ -41,8 +44,8 @@ char	*ft_str_format_handle_args(const char *input, va_list args)
 
 char	*ft_str_format(const char *input, ...)
 {
-	va_list				args;
-	char				*str;
+	va_list	args;
+	char	*str;
 
 	va_start(args, input);
 	str = ft_str_format_handle_args(input, args);

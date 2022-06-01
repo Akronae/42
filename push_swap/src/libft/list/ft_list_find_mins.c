@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find_mins.c                                 :+:      :+:    :+:   */
+/*   ft_list_find_mins.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,9 +27,10 @@ t_list	*ft_list_find_mins(t_list *self, t_type of_type, size_t count)
 	i = 0;
 	while (i < count && self_cloned->length > 0)
 	{
-		mins->push(mins, self_cloned->remove_by_data(self_cloned, self_cloned->find_min(self_cloned, of_type)->data->value));
+		mins->push(mins, self_cloned->remove_by_data(self_cloned,
+				self_cloned->find_min(self_cloned, of_type)->data->value));
 		i++;
 	}
 	self_cloned->free(self_cloned);
-    return (mins);
+	return (mins);
 }
