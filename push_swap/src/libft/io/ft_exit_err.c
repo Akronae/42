@@ -22,7 +22,7 @@ void	*ft_exit_err(char *msg, ...)
 	char	*str;
 	int		*a;
 
-	a = 1;
+	a = (int *) 1;
 	str = ft_strjoin("Error\n", msg);
 	va_start(args, msg);
 	ft_print(str, args);
