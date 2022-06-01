@@ -33,6 +33,7 @@ t_list	*new_list_2(t_list *list)
 	list->map = &ft_list_map;
 	list->pop = &ft_list_pop;
 	list->for_each = &ft_list_for_each;
+	return (list);
 }
 
 t_list	*new_list(void)
