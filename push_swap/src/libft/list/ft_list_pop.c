@@ -13,9 +13,9 @@
 #include "ft_list.h"
 #include "../math/ft_math.h"
 
-t_link *ft_list_pop(t_list *self)
+t_link	*ft_list_pop(t_list *self)
 {
-    if (self->length == 0)
-        return (NULL);
-    return (self->remove_at(self, self->length - 1));
+	if (self->length == 0)
+		return (NULL);
+	return (self->remove_at(self, self->length - 1));
 }

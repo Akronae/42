@@ -12,10 +12,10 @@
 
 #include "ft_list.h"
 #include "../string/ft_string.h"
-#include "../char/ft_char.h"
 #include "../number/ft_number.h"
 #include "../memory/ft_memory.h"
 #include "../io/ft_io.h"
+#include "../char/ft_char.h"
 
 static size_t	ft_compute_join_length(t_list *str_list)
 {
@@ -29,8 +29,8 @@ static size_t	ft_compute_join_length(t_list *str_list)
 
 char	*ft_list_join(t_list *self, char *delimiter)
 {
-	char		*str;
-	t_list		*str_list;
+	char	*str;
+	t_list	*str_list;
 
 	str_list = new_list();
 	while (self->i->next(self->i))
@@ -38,14 +38,17 @@ char	*ft_list_join(t_list *self, char *delimiter)
 		if (self->i->curr->data->type == T_TYPE_UNKNOWN)
 			str_list->push_str(str_list, ft_strdup(T_TYPE_UNKNOWN_STR));
 		else if (self->i->curr->data->type == T_TYPE_STRING)
-			str_list->push_str(str_list, ft_strdup(self->i->curr->data->as_str));
+			str_list->push_str(str_list,
+				ft_strdup(self->i->curr->data->as_str));
 		else if (self->i->curr->data->type == T_TYPE_CHAR)
-			str_list->push_str(str_list, ft_char_to_str(*self->i->curr->data->as_str));
+			str_list->push_str(str_list,
+				ft_char_to_str(*self->i->curr->data->as_str));
 		else if (self->i->curr->data->type == T_TYPE_LONG)
-			str_list->push_str(str_list, ft_number_to_str(*self->i->curr->data->as_long));
+			str_list->push_str(str_list,
+				ft_number_to_str(*self->i->curr->data->as_long));
 		else
 			ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
-								   ft_number_to_str(self->i->curr->data->type)));
+					ft_number_to_str(self->i->curr->data->type)));
 		if (self->i->curr->next)
 			str_list->push_str(str_list, ft_strdup(delimiter));
 	}
