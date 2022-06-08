@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_list.h"
 #include "../math/ft_math.h"
 #include "../io/ft_io.h"
-#include <unistd.h>
 
-t_list 	*ft_list_clone(t_list *self)
+t_list	*ft_list_clone(t_list *self)
 {
 	t_list	*cloned;
 

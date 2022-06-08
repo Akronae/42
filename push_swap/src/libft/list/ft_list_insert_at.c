@@ -13,7 +13,8 @@
 #include "ft_list.h"
 #include "../math/ft_math.h"
 
-t_link	*ft_list_insert_at(t_list *self, size_t insert_index, t_link *insert_elem)
+t_link	*ft_list_insert_at(t_list *self, size_t insert_index,
+	t_link *insert_elem)
 {
 	t_link	*elem;
 

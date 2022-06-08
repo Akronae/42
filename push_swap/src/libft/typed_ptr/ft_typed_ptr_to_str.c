@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_find_max.c                                 :+:      :+:    :+:   */
+/*   ft_typed_ptr_to_str.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include "../math/ft_math.h"
+#include <stdlib.h>
+#include "ft_typed_ptr.h"
+#include "../string/ft_string.h"
+#include "../number/ft_number.h"
+#include "../memory/ft_memory.h"
 #include "../io/ft_io.h"
+#include "../char/ft_char.h"
 
-t_link	*ft_list_find_max(t_list *self, t_type of_type)
+char	*ft_typed_ptr_to_str(t_typed_ptr *self)
 {
-	t_link		*max_elem;
-	t_iterator	*i;
-
-	max_elem = NULL;
-	if (self->length == 0)
-		return (NULL);
-	i = self->get_iterator(self);
-	while (i->next(i))
-	{
-		if (i->curr->data->type != of_type)
-			continue ;
-		if (!max_elem || (of_type == T_TYPE_LONG && *max_elem->data
-				->as_long < *i
-				->curr->data->as_long))
-			max_elem = i->curr;
-	}
-	i->free(i);
-	return (max_elem);
+	if (self->type == T_TYPE_UNKNOWN)
+		return (ft_strdup(T_TYPE_UNKNOWN_STR));
+	else if (self->type == T_TYPE_STRING)
+		return (ft_strdup(self->as_str));
+	else if (self->type == T_TYPE_CHAR)
+		return (ft_char_to_str(*self->as_str));
+	else if (self->type == T_TYPE_LONG)
+		return (ft_number_to_str(*self->as_long));
+	else
+		return (ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
+					ft_number_to_str(self->type))));
 }

@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
 #include "ft_list.h"
+#include "../libft.h"
 
 long	ft_list_index_of(t_list *self, t_link *elem)
 {
 	t_iterator	*i;
-	long 		index;
+	long		index;
 
 	index = INDEX_NOT_FOUND;
 	i = self->get_iterator(self);
@@ -29,5 +29,5 @@ long	ft_list_index_of(t_list *self, t_link *elem)
 		}
 	}
 	i->free(i);
-    return (index);
+	return (index);
 }

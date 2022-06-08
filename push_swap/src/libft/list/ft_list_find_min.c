@@ -16,7 +16,7 @@
 
 t_link	*ft_list_find_min(t_list *self, t_type of_type)
 {
-	t_link	*min_elem;
+	t_link		*min_elem;
 	t_iterator	*i;
 
 	min_elem = NULL;
@@ -26,10 +26,13 @@ t_link	*ft_list_find_min(t_list *self, t_type of_type)
 	while (i->next(i))
 	{
 		if (i->curr->data->type != of_type)
-			continue;
-		if (!min_elem || (of_type == T_TYPE_LONG && *min_elem->data->as_long > *i->curr->data->as_long))
+			continue ;
+		if (!min_elem || (of_type == T_TYPE_LONG && *min_elem
+				->data
+				->as_long > *i
+				->curr->data->as_long))
 			min_elem = i->curr;
 	}
 	i->free(i);
-    return (min_elem);
+	return (min_elem);
 }

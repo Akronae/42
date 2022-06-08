@@ -26,7 +26,7 @@ t_link	*ft_list_find(t_list *self, t_typed_ptr *find_data)
 	{
 		if (find_data->value_equals(find_data, i->curr->data))
 		{
-			found =  (i->curr);
+			found = (i->curr);
 			break ;
 		}
 	}
