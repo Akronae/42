@@ -38,6 +38,20 @@ void move_b_elem_to_top (t_stacks_op *op, size_t elem_index)
 	}
 }
 
+void move_a_elem_to_bottom (t_stacks_op *op, size_t elem_index)
+{
+	int move_up = elem_index < op->stack_b->length / 2;
+	long elem_val = op->a_at(op, elem_index);
+
+	while (op->a_at(op, 0) != elem_val)
+	{
+		if (move_up)
+			op->ra(op);
+		else
+			op->rra(op);
+	}
+}
+
 int is_stack_ordered(t_list *stack)
 {
 	t_iterator *i = stack->get_iterator(stack);
