@@ -18,7 +18,8 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c
 					memory/ft_memcmp.c memory/ft_swap_long.c \
 					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
-					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c string/ft_str_equal.c \
+					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c string/ft_split_list.c \
+					string/ft_str_equal.c \
 					string/ft_str_index_of.c string/ft_str_index_of_char.c \
 					string/ft_str_is_numeric.c string/ft_str_starts_with.c \
 					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_formatted_element2.c \

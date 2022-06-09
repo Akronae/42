@@ -82,8 +82,6 @@ t_stacks_op	*ft_stack_sort_len_any(t_stacks_op *op)
 		move_stack_b_to_stack_a(op);
 		i = to;
 	}
-	//move_a_elem_to_bottom(op, op->stack_a->find_index(op->stack_a,
-	//		op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->data));
 	return (op);
 }
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stacks_operations_2.c                                :+:      :+:    :+:   */
+/*   stacks_operations_2.c                                :+:      :+:    :+: */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -39,27 +39,26 @@ long	get_greatest_lower_than(long lower_than, t_list *numbers)
 void	move_range_to_b(t_stacks_op *op, t_list *range)
 {
 	t_typed_ptr	*typed_ptr;
-	t_link		*to_move;
+	t_link		*e;
 	long long	greatest;
 	long		index;
 
 	while (range->length > 0)
 	{
-		to_move = range->find(range, op->stack_a->get_elem(op->stack_a, -1)
-			->data);
-		if (to_move)
+		e = range->find(range, op->stack_a->get_elem(op->stack_a, -1)->data);
+		if (e)
 		{
-			greatest = get_greatest_lower_than(*to_move->data->as_long,
+			greatest = get_greatest_lower_than(*e->data->as_long,
 					op->stack_b);
 			typed_ptr = new_typed_ptr_decimal(greatest);
 			index = op->stack_b->find_index(op->stack_b, typed_ptr);
 			typed_ptr->free(typed_ptr);
 			if (index != INDEX_NOT_FOUND)
 				move_b_elem_to_top(op, index);
-			if (greatest > *to_move->data->as_long && op->stack_b->length > 1)
+			if (greatest > *e->data->as_long && op->stack_b->length > 1)
 				op->rb(op);
 			op->pb(op);
-			range->free_by_data(range, to_move->data);
+			range->free_by_data(range, e->data);
 		}
 		else
 			op->ra(op);

@@ -16,11 +16,13 @@
 # define STRING_EMPTY ""
 
 # include <unistd.h>
+# include "../list/ft_list.h"
 
 void	ft_str_append(char *dst, char *src);
 void	ft_str_append_char(char *dst, char src);
 void	ft_string_to_upper(char *str);
 char	**ft_split(char const *s, char c);
+t_list	*ft_split_list(char const *s, char c);
 int		ft_str_index_of(char *to_find, char *in_str);
 int		ft_str_index_of_char(char to_find, char *in_str);
 int		ft_str_is_numeric(const char *s);
