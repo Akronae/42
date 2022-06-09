@@ -26,6 +26,7 @@ void	*ft_exit_err(char *msg, ...)
 	str = ft_strjoin("Error\n", msg);
 	va_start(args, msg);
 	ft_print(str, args);
+	ft_safe_free(str);
 	va_end(args);
 	ft_putstr_fd("\n", 1);
 	if (ENV_DEV)

@@ -47,6 +47,7 @@ t_list	*new_list(void)
 	list->length = 0;
 	list->clone = ft_list_clone;
 	list->contains = ft_list_contains;
+	list->count = ft_list_count;
 	list->find = ft_list_find;
 	list->find_index = ft_list_find_index;
 	list->find_max = ft_list_find_max;

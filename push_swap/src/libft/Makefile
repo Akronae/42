@@ -35,7 +35,8 @@ SRCS			=	memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_remove.c link/ft_link_reverse.c \
 					link/ft_link_set_data.c \
 					link/new_link.c \
-					list/ft_list_clone.c list/ft_list_contains.c list/ft_list_find.c list/ft_list_find_index.c \
+					list/ft_list_clone.c list/ft_list_contains.c list/ft_list_count.c list/ft_list_find.c \
+					list/ft_list_find_index.c \
 					list/ft_list_find_max.c list/ft_list_find_min.c list/ft_list_find_mins.c list/ft_list_for_each.c \
 					list/ft_list_free.c \
 					list/ft_list_free_by_data.c \

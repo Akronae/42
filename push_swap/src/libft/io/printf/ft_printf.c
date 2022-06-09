@@ -26,6 +26,8 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 
 	list = new_list();
 	list->on_elem_free = &ft_formatted_list_free_elem;
+	if (!input)
+		return (list);
 	i = 0;
 	while (input[i])
 	{

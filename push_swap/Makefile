@@ -28,7 +28,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=1
+CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=0
 
 NAME			= push_swap
 

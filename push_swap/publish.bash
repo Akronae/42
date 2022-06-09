@@ -10,5 +10,5 @@ fi;
 rm -rf $PUBLISH_DIR
 mkdir $PUBLISH_DIR
 
-cp -r src/** $PUBLISH_DIR/
+cp -r src $PUBLISH_DIR/
 cp -r Makefile $PUBLISH_DIR/
