@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACKS_OPERATIONS_H
-# define STACKS_OPERATIONS_H
+#ifndef SORT_STACK_H
+# define SORT_STACK_H
 
-t_stacks_op *ft_sort_stack(t_list *stack);
+t_stacks_op	*ft_sort_stack(t_list *stack);
 
 #endif

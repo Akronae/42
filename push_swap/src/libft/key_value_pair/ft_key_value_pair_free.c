@@ -14,7 +14,7 @@
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-void ft_key_value_pair_free(t_key_value_pair *self)
+void	ft_key_value_pair_free(t_key_value_pair *self)
 {
 	self->key->free(self->key);
 	self->value->free(self->value);

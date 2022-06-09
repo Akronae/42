@@ -25,29 +25,32 @@
 #include "stacks_op/ft_stacks_op.h"
 #include "stacks_operations.h"
 
-t_stacks_op *ft_stack_sort_len_2 (t_stacks_op *op)
+t_stacks_op	*ft_stack_sort_len_2(t_stacks_op *op)
 {
 	if (op->a_at(op, 0) < op->a_at(op, 1))
 		op->sa(op);
 	return (op);
 }
 
-t_stacks_op *ft_stack_sort_len_3 (t_stacks_op *op)
+t_stacks_op	*ft_stack_sort_len_3(t_stacks_op *op)
 {
-	if (op->a_at(op, -1) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->data->as_long)
+	if (op->a_at(op, -1) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)
+		->data->as_long)
 		op->ra(op);
-	if (op->a_at(op, -2) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->data->as_long)
+	if (op->a_at(op, -2) == *op->stack_a->find_max(op->stack_a, T_TYPE_LONG)
+		->data->as_long)
 		op->rra(op);
 	if (op->a_at(op, -1) > op->a_at(op, -2))
 		op->sa(op);
 	return (op);
 }
 
-t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
+t_stacks_op	*ft_stack_sort_len_5(t_stacks_op *op)
 {
 	while (op->stack_b->length < 2)
 	{
-		if (op->a_at(op, -1) == op->get_min(op) || op->a_at(op, -1) == op->get_max(op))
+		if (op->a_at(op, -1) == op->get_min(op)
+			|| op->a_at(op, -1) == op->get_max(op))
 			op->pb(op);
 		else
 			op->ra(op);
@@ -61,37 +64,41 @@ t_stacks_op *ft_stack_sort_len_5 (t_stacks_op *op)
 	return (op);
 }
 
-t_stacks_op *ft_stack_sort_len_any (t_stacks_op *op)
+t_stacks_op	*ft_stack_sort_len_any(t_stacks_op *op)
 {
-	long steps;
+	long	steps;
+	size_t	i;
+	long	to;
 
+	i = 0;
 	steps = op->stacks_length * 0.26;
 	if (op->stacks_length >= 500)
 		steps = op->stacks_length * 0.10;
 	steps = ft_math_max(5, steps);
-	size_t i = 0;
 	while (i < op->stacks_length - 1)
 	{
-		long to = ft_math_min(i + steps, op->stack_a->length);
-		move_biggest_to_b(op, i, to);
+		to = ft_math_min(i + steps, op->stack_a->length);
+		move_biggest_range_to_b(op, i, to);
 		move_stack_b_to_stack_a(op);
 		i = to;
 	}
-	move_a_elem_to_bottom(op, op->stack_a->find_index(op->stack_a, op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->data));
+	move_a_elem_to_bottom(op, op->stack_a->find_index(op->stack_a,
+			op->stack_a->find_max(op->stack_a, T_TYPE_LONG)->data));
 	return (op);
 }
 
-t_stacks_op *ft_sort_stack(t_list *stack)
+t_stacks_op	*ft_sort_stack(t_list *stack)
 {
-	t_stacks_op *op = new_stacks_op();
+	t_stacks_op	*op;
 
+	op = new_stacks_op();
 	op->set_stack_a(op, stack);
 	if (is_stack_ordered(op->stack_a))
 		return (op);
 	if (op->stack_a->length <= 1)
 		return (op);
 	else if (op->stack_a->length <= 2)
-		return ft_stack_sort_len_2(op);
+		return (ft_stack_sort_len_2(op));
 	else if (op->stack_a->length <= 3)
 		return (ft_stack_sort_len_3(op));
 	else if (op->stack_a->length <= 5)
