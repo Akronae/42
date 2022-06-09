@@ -20,7 +20,7 @@ SRCS			=	src/stacks_op/ft_stack_at.c src/stacks_op/ft_stacks_op_get_min.c \
 					src/stacks_op/ft_stack_reverse_rotate.c \
 					src/stacks_op/ft_stack_rotate.c src/stacks_op/ft_stack_swap.c \
 					src/stacks_op/ft_stacks_op_compute_stats.c src/stacks_op/new_stacks_op.c \
-					src/push_swap.c src/sort_stack.c src/stacks_operations.c
+					src/push_swap.c src/sort_stack.c src/stacks_operations.c src/stacks_operations_2.c
 
 HEADERS			=	src/push_swap.h src/sort_stack.h src/stacks_operations.h
 
