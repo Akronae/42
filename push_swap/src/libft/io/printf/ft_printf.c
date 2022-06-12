@@ -17,12 +17,30 @@
 #include "../../string/ft_string.h"
 #include "../../memory/ft_memory.h"
 
+void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
+	char *input, size_t *index)
+{
+	t_template_type	type;
+	int				should_free_arg;
+
+	if (input[*index] == '%')
+	{
+		type = ft_template_type_from_str(input, index);
+		should_free_arg = ft_str_index_of(FLAG_FREE, input + *index) == 1;
+		if (should_free_arg)
+			*index += ft_strlen(FLAG_FREE);
+		list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN,
+				ft_arg_to_formatted_elem(args, type, should_free_arg)));
+	}
+	else
+		list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN,
+				ft_char_to_formatted_elem(input[*index])));
+}
+
 struct t_list	*ft_printf_parse_args(va_list args, char *input)
 {
 	t_list			*list;
 	size_t			i;
-	t_template_type	type;
-	int				should_free_arg;
 
 	list = new_list();
 	list->on_elem_free = &ft_formatted_list_free_elem;
@@ -31,18 +49,7 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 	i = 0;
 	while (input[i])
 	{
-		if (input[i] == '%')
-		{
-			type = ft_template_type_from_str(input, &i);
-			should_free_arg = ft_str_index_of(FLAG_FREE, input + i) == 1;
-			if (should_free_arg)
-				i += ft_strlen(FLAG_FREE);
-			list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN,
-					ft_arg_to_formatted_elem(args, type, should_free_arg)));
-		}
-		else
-			list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN,
-					ft_char_to_formatted_elem(input[i])));
+		ft_printf_parse_args_handle_char(args, list, input, &i);
 		i++;
 	}
 	return (list);

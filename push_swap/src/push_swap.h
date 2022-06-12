@@ -13,4 +13,6 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+t_list	*ft_stack_from_input(t_list *input);
+
 #endif
