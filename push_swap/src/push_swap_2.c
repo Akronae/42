@@ -22,10 +22,12 @@ void	f(t_list *free_1, t_list *free_2, char *err, ...)
 {
 	va_list	args;
 
-	ft_printfl("Error");
 	va_start(args, err);
 	if (err)
+	{
+		ft_printfl("Error");
 		ft_print(err, args);
+	}
 	va_end(args);
 	if (free_1)
 		free_1->free(free_1);
