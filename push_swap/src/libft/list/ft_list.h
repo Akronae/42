@@ -26,7 +26,7 @@ typedef struct t_list
 	size_t				length;
 	struct t_list		*(*clone)(struct t_list *self);
 	int					(*contains)(struct t_list *self, t_typed_ptr *data);
-	size_t				(*count)(struct t_list *self, t_typed_ptr *data);
+	unsigned long		(*count)(struct t_list *self, t_typed_ptr *data);
 	t_link				*(*find)(struct t_list *self, t_typed_ptr *data);
 	long				(*find_index)(struct t_list *self, t_typed_ptr *data);
 	t_link				*(*find_max)(struct t_list *self, t_type of_type);
