@@ -27,10 +27,10 @@ t_link	*ft_list_find_min(t_list *self, t_type of_type)
 	{
 		if (i->curr->data->type != of_type)
 			continue ;
-		if (!min_elem || (of_type == T_TYPE_LONG && *min_elem
+		if (!min_elem || (of_type == T_TYPE_LLONG && *min_elem
 				->data
-				->as_long > *i
-				->curr->data->as_long))
+				->as_llong > *i
+				->curr->data->as_llong))
 			min_elem = i->curr;
 	}
 	i->free(i);

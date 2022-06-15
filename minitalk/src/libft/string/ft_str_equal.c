@@ -13,17 +13,17 @@
 #include "../logic/ft_logic.h"
 #include <stdlib.h>
 
-int	ft_str_equal(char *s1, char *s2)
+int	ft_str_equal(t_string s1, t_string s2)
 {
 	if (s1 == NULL)
 		return (s2 == NULL);
-	while (TRUE)
+	while (true)
 	{
 		if (*s1 != *s2)
-			return (FALSE);
+			return (false );
 		s1++;
 		s2++;
 		if (!*s1)
-			return (TRUE);
+			return (true);
 	}
 }

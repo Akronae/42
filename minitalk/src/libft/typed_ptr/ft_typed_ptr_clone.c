@@ -20,8 +20,8 @@ t_typed_ptr	*ft_typed_ptr_clone(t_typed_ptr *self)
 {
 	if (self->type == T_TYPE_STRING)
 		return (new_typed_ptr_str(ft_strdup(self->value)));
-	if (self->type == T_TYPE_LONG)
-		return (new_typed_ptr_decimal(*self->as_long));
+	if (self->type == T_TYPE_LLONG)
+		return (new_typed_ptr_llong(*self->as_llong));
 	else
 		return (ft_exit_err("ft_typed_ptr_clone: "
 				"could not clone data type '%d'.", self->type));

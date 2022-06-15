@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_if_str(int condition, char *if_true, char *if_false)
+#include "../string/ft_string.h"
+
+t_string 	ft_if_str(int condition, t_string if_true, t_string if_false)
 {
 	if (condition)
 		return (if_true);

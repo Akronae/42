@@ -16,31 +16,32 @@
 # define STRING_EMPTY ""
 
 # include <unistd.h>
-# include "../list/ft_list.h"
 
-void	ft_str_append(char *dst, char *src);
-void	ft_str_append_char(char *dst, char src);
-void	ft_string_to_upper(char *str);
-char	**ft_split(char const *s, char c);
-t_list	*ft_split_list(char const *s, char c);
-int		ft_str_index_of(char *to_find, char *in_str);
-int		ft_str_index_of_char(char to_find, char *in_str);
-int		ft_str_is_numeric(const char *s);
-int		ft_str_starts_with(char *str, char *with);
-int		ft_str_equal(char *s1, char *s2);
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-char	*ft_strchr(const char *s, int c);
-char	*ft_strrchr(const char *s, int c);
-int		ft_strncmp(const char *s1, const char *s2, int n);
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(char *s, long start, long len);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strtrim(char const *s1, char const *set);
-char	**ft_split(char const *s, char c);
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+typedef char*	t_string;
+
+t_string 	ft_char_to_str(char c);
+void	ft_str_append(t_string dst, t_string src);
+void	ft_str_append_char(t_string dst, char src);
+void	ft_string_to_upper(t_string str);
+t_string 	*ft_split(t_string s, char c);
+int		ft_str_index_of(t_string to_find, t_string in_str);
+int		ft_str_index_of_char(char to_find, t_string in_str);
+int		ft_str_is_numeric(t_string s);
+int		ft_str_starts_with(t_string str, t_string with);
+int		ft_str_equal(t_string s1, t_string s2);
+size_t	ft_strlen(t_string s);
+size_t	ft_strlcpy(t_string dst, t_string src, size_t size);
+size_t	ft_strlcat(t_string dst, t_string src, size_t size);
+t_string 	ft_strchr(t_string s, int c);
+t_string 	ft_strrchr(t_string s, int c);
+int		ft_strncmp(t_string s1, t_string s2, int n);
+t_string 	ft_strnstr(t_string haystack, t_string needle, size_t len);
+t_string 	ft_strdup(t_string s1);
+t_string 	ft_substr(t_string s, long start, long len);
+t_string 	ft_strjoin(t_string s1, t_string s2);
+t_string 	ft_strtrim(t_string s1, t_string set);
+t_string 	*ft_split(t_string s, char c);
+t_string 	ft_strmapi(t_string s, char (*f)(unsigned int, char));
+void	ft_striteri(t_string s, void (*f)(unsigned int, t_string ));
 
 #endif

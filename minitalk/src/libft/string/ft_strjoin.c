@@ -15,16 +15,16 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_string 	ft_strjoin(t_string s1, t_string s2)
 {
-	char	*str;
+	t_string 	str;
 	int		i;
 	int		j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = (char *)ft_safe_malloc(
-			sizeof(*s1) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = ft_safe_malloc(
+			sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;
@@ -40,6 +40,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[j++] = s2[i];
 		i++;
 	}
-	str[j] = 0;
+
 	return (str);
 }

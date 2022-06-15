@@ -15,9 +15,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-char	*ft_substr(char *s, long from, long to)
+t_string 	ft_substr(t_string s, long from, long to)
 {
-	char	*new;
+	t_string 	new;
 	long	i;
 
 	if (to < 0)

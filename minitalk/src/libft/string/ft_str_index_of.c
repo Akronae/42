@@ -14,7 +14,7 @@
 #include "../logic/ft_logic.h"
 #include <unistd.h>
 
-int	ft_str_index_of(char *to_find, char *in_str)
+int	ft_str_index_of(t_string to_find, t_string in_str)
 {
 	size_t	in_str_i;
 	size_t	to_find_i;
@@ -22,7 +22,7 @@ int	ft_str_index_of(char *to_find, char *in_str)
 	in_str_i = 0;
 	if (in_str == NULL || to_find == NULL)
 		return (INDEX_NOT_FOUND);
-	while (TRUE)
+	while (true)
 	{
 		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
 			return (in_str_i);

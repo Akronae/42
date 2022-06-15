@@ -16,9 +16,10 @@
 #include "ft_printf.h"
 #include "../../string/ft_string.h"
 #include "../../memory/ft_memory.h"
+#include "../ft_io.h"
 
 void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
-	char *input, size_t *index)
+	t_string input, size_t *index)
 {
 	t_template_type	type;
 	int				should_free_arg;
@@ -37,7 +38,7 @@ void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
 				ft_char_to_formatted_elem(input[*index])));
 }
 
-struct t_list	*ft_printf_parse_args(va_list args, char *input)
+struct t_list	*ft_printf_parse_args(va_list args, t_string input)
 {
 	t_list			*list;
 	size_t			i;
@@ -55,14 +56,14 @@ struct t_list	*ft_printf_parse_args(va_list args, char *input)
 	return (list);
 }
 
-int	ft_print(const char *input, va_list args)
+int	ft_print(t_string input, va_list args)
 {
 	t_list				*list;
 	size_t				output_str_len;
 	size_t				i;
 	t_formatted_element	*f;
 
-	list = ft_printf_parse_args(args, (char *) input);
+	list = ft_printf_parse_args(args, input);
 	output_str_len = 0;
 	i = 0;
 	while (i < list->length)
@@ -76,7 +77,7 @@ int	ft_print(const char *input, va_list args)
 	return (output_str_len);
 }
 
-int	ft_printf(const char *input, ...)
+int	ft_printf(t_string input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
@@ -87,11 +88,11 @@ int	ft_printf(const char *input, ...)
 	return (output_str_len);
 }
 
-int	ft_printfl(const char *input, ...)
+int	ft_printfl(t_string input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
-	char	*final_str;
+	t_string 	final_str;
 
 	va_start(args, input);
 	final_str = ft_strjoin(input, "\n");

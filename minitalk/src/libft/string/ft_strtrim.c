@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static int	str_include(char c, char const *str)
+static int	str_include(char c, t_string str)
 {
 	int	i;
 
@@ -28,9 +28,9 @@ static int	str_include(char c, char const *str)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+t_string 	ft_strtrim(t_string s1, t_string set)
 {
-	char	*str;
+	t_string 	str;
 	int		i;
 	int		start;
 	int		end;
@@ -43,7 +43,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1);
 	while (end > start && str_include(s1[end - 1], set))
 		end--;
-	str = (char *) ft_safe_malloc(sizeof(*s1) * (end - start + 1));
+	str = (t_string ) ft_safe_malloc(sizeof(*s1) * (end - start + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

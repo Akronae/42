@@ -22,7 +22,10 @@ typedef enum t_type
 	T_TYPE_STRING,
 	T_TYPE_POINTER,
 	T_TYPE_INT,
-	T_TYPE_LONG,
+	T_TYPE_LLONG,
+	T_TYPE_TYPED_PTR,
+	T_TYPE_LIST,
+	T_TYPE_DICTIONARY,
 }	t_type;
 
 #endif

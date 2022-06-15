@@ -14,7 +14,7 @@
 #include "../char/ft_char.h"
 #include "../string/ft_string.h"
 
-long long	ft_str_to_number_base(char *s, char *base)
+long long	ft_str_to_number_base(t_string s, t_string base)
 {
 	size_t		i;
 	long long	nbr;

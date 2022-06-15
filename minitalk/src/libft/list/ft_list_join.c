@@ -27,9 +27,9 @@ static size_t	ft_compute_join_length(t_list *str_list)
 	return (total_length);
 }
 
-char	*ft_list_join(t_list *self, char *delimiter)
+t_string 	ft_list_join(t_list *self, t_string delimiter)
 {
-	char		*str;
+	t_string 		str;
 	t_list		*str_list;
 	t_typed_ptr	*ptr;
 

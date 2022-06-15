@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_err.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_array.h"
-#include <stdlib.h>
+#include "../string/ft_string.h"
+#include "../number/ft_number.h"
+#include "../memory/ft_memory.h"
+#include "ft_io.h"
+#include <unistd.h>
 
-void	*ft_exit_err(char *msg)
+void	ft_putnbr_fd(long long nbr, int fd)
 {
-	ft_printfl("Error\n%s", msg);
-	exit(1);
-	return (NULL);
+	t_string str = ft_number_to_str(nbr);
+	ft_putstr_fd(str, fd);
+	ft_safe_free(str);
 }

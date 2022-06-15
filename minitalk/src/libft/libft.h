@@ -14,5 +14,6 @@
 # define LIBFT_H
 
 # define INDEX_NOT_FOUND -1
+# define ENV_DEV 0
 
 #endif //LIBFT_H

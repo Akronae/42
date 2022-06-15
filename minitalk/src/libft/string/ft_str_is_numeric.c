@@ -14,13 +14,13 @@
 #include "../char/ft_char.h"
 #include "../logic/ft_logic.h"
 
-int	ft_str_is_numeric(const char *s)
+int	ft_str_is_numeric(t_string s)
 {
 	while (*s)
 	{
 		if (!ft_isdigit(*s) && *s != '+' && *s != '-')
-			return (FALSE);
+			return (false );
 		s++;
 	}
-	return (TRUE);
+	return (true);
 }

@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "ft_string.h"
 
-char	*ft_strchr(const char *s, int c)
+t_string 	ft_strchr(t_string s, int c)
 {
 	int	i;
 
@@ -20,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[++i] || c == '\0')
 	{
 		if (s[i] == (char)c)
-			return ((char *)(s + i));
+			return ((t_string )(s + i));
 	}
 	return (NULL);
 }

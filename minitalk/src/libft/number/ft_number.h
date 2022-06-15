@@ -16,8 +16,10 @@
 # define BASE_10 "0123456789"
 # define BASE_HEX "0123456789abcdef"
 
-char		*ft_number_to_str(long long ll);
-long long	ft_str_to_number_base(char *s, char *base);
-long long	ft_str_to_number(char *s);
+# include "../string/ft_string.h"
+
+t_string 		ft_number_to_str(long long ll);
+long long	ft_str_to_number_base(t_string s, t_string base);
+long long	ft_str_to_number(t_string s);
 
 #endif

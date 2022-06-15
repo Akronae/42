@@ -13,4 +13,8 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
+# include "libft/list/ft_list.h"
+
+
+
 #endif

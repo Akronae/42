@@ -13,7 +13,7 @@
 #include "../string/ft_string.h"
 #include <unistd.h>
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(t_string s, int fd)
 {
 	const char	nl = '\n';
 

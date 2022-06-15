@@ -15,7 +15,7 @@
 #include "../memory/ft_memory.h"
 #include <unistd.h>
 
-void	ft_str_append(char *dst, char *src)
+void	ft_str_append(t_string dst, t_string src)
 {
 	size_t	dst_i;
 	size_t	src_i;

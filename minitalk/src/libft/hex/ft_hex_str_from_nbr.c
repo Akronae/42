@@ -16,13 +16,13 @@
 #include "../number/ft_number.h"
 #include "../string/ft_string.h"
 
-char	*ft_hex_str_from_nbr(unsigned long long ull)
+t_string 	ft_hex_str_from_nbr(unsigned long long ull)
 {
 	t_list	*list;
-	char	*str;
+	t_string 	str;
 
 	list = new_list();
-	while (TRUE)
+	while (true)
 	{
 		list->push_str(list, ft_char_to_str(BASE_HEX[ull % 16]));
 		ull /= 16;

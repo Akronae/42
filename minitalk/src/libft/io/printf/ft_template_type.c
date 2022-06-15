@@ -13,9 +13,10 @@
 #include "ft_printf.h"
 #include "../../string/ft_string.h"
 #include "../../memory/ft_memory.h"
+#include "../ft_io.h"
 #include <stdio.h>
 
-enum t_template_type	ft_template_type_from_char(char *s)
+enum t_template_type	ft_template_type_from_char(t_string s)
 {
 	if (ft_str_equal(s, "lld"))
 		return (LONGLONG);
@@ -40,7 +41,7 @@ enum t_template_type	ft_template_type_from_char(char *s)
 	return (-1);
 }
 
-enum t_template_type	ft_template_type_from_str(char *s, size_t *i)
+enum t_template_type	ft_template_type_from_str(t_string s, size_t *i)
 {
 	t_template_type	type;
 	int				a;
@@ -48,6 +49,7 @@ enum t_template_type	ft_template_type_from_str(char *s, size_t *i)
 
 	*i += 1;
 	a = ft_strlen(s + *i) - 1;
+	type = -1;
 	while (a-- && a >= 0)
 	{
 		sub = ft_substr(s, *i, *i + a);

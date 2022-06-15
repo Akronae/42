@@ -14,9 +14,9 @@
 #include "ft_string.h"
 #include <stdlib.h>
 
-int	ft_str_index_of_char(char to_find, char *in_str)
+int	ft_str_index_of_char(char to_find, t_string in_str)
 {
-	char	*to_str;
+	t_string 	to_str;
 	int		index;
 
 	to_str = ft_char_to_str(to_find);

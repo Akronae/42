@@ -12,7 +12,7 @@
 
 #include "ft_string.h"
 
-int	ft_str_starts_with(char *str, char *with)
+int	ft_str_starts_with(t_string str, t_string with)
 {
 	return (ft_str_index_of(with, str) == 0);
 }

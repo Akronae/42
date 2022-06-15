@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "../string/ft_string.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(t_string s, void (*f)(unsigned int, t_string))
 {
 	unsigned int	i;
 

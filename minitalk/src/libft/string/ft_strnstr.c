@@ -10,21 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../string/ft_string.h"
 #include <unistd.h>
+#include "ft_string.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t blen)
+t_string 	ft_strnstr(t_string big, t_string little, size_t blen)
 {
 	size_t	llen;
 
 	if (*little == '\0')
-		return ((char *)big);
+		return ((t_string )big);
 	llen = ft_strlen(little);
 	while (*big && blen-- >= llen)
 	{
 		if (*big == *little && ft_strncmp(big, little, llen) == 0)
-			return ((char *)big);
+			return ((t_string )big);
 		big++;
 	}
 	return (0);
 }
+
+#include "ft_string.h"

@@ -16,17 +16,18 @@
 #include "../list/ft_list.h"
 #include "../math/ft_math.h"
 #include "../string/ft_string.h"
+#include "../string/ft_string.h"
 
-char	*ft_number_to_str(long long ll)
+t_string 	ft_number_to_str(long long ll)
 {
 	t_list	*list;
 	int		is_neg;
-	char	*str;
+	t_string 	str;
 
 	list = new_list();
 	is_neg = ll < 0;
 	ll = ft_math_abs(ll);
-	while (TRUE)
+	while (true)
 	{
 		list->push_str(list, ft_char_to_str(ll % 10 + '0'));
 		ll /= 10;

@@ -22,7 +22,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		*((char *)dst + i) = *((char *)src + i);
+		*((t_string )dst + i) = *((t_string )src + i);
 		i++;
 	}
 	return (dst);

@@ -61,6 +61,6 @@ t_list	*new_list(void)
 	list->push = &ft_list_push;
 	list->push_char = &ft_list_push_char;
 	list->push_data = &ft_list_push_data;
-	list->push_long = &ft_list_push_long;
+	list->push_llong = &ft_list_push_llong;
 	return (new_list_2(list));
 }

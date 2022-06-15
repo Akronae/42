@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_typed_ptr_decimal.c                            :+:      :+:    :+:   */
+/*   new_buffer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_typed_ptr.h"
+#include "ft_buffer.h"
 #include "../memory/ft_memory.h"
-#include "../string/ft_string.h"
-#include <stdlib.h>
 
-t_typed_ptr	*new_typed_ptr_decimal(long long decimal)
+t_buffer	*new_buffer()
 {
-	long long	*ptr;
+	t_buffer *buff = ft_safe_malloc(sizeof(t_buffer));
 
-	ptr = ft_safe_malloc(sizeof(long long));
-	*ptr = decimal;
-	return (new_typed_ptr(T_TYPE_LONG, ptr));
-}
-
-t_typed_ptr	*ft_d(long long decimal)
-{
-	return (new_typed_ptr_decimal(decimal));
+	buff->data = new_list();
+	buff->size_bits = 0;
+	buff->index = 0;
+	buff->free = ft_buffer_free;
+	buff->get_bit = ft_buffer_get_bit;
+	buff->read = ft_buffer_read;
+	buff->read_bit = ft_buffer_read_bit;
+	buff->read_byte = ft_buffer_read_byte;
+	buff->set_bit = ft_buffer_set_bit;
+	buff->to_str = ft_buffer_to_str;
+	buff->write = ft_buffer_write;
+	buff->write_bit = ft_buffer_write_bit;
+	buff->write_byte = ft_buffer_write_byte;
+	return (buff);
 }

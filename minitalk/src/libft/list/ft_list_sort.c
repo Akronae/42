@@ -25,10 +25,10 @@ t_list	*ft_list_sort(t_list *self, t_type of_type)
 	{
 		if (i->curr->data->type != of_type)
 			continue ;
-		if (of_type == T_TYPE_LONG)
+		if (of_type == T_TYPE_LLONG)
 		{
-			if (i->curr->prev == NULL || *i->curr->data->as_long
-				> *i->curr->prev->data->as_long)
+			if (i->curr->prev == NULL || *i->curr->data->as_llong
+				> *i->curr->prev->data->as_llong)
 				continue ;
 			sorted->swap(sorted, i->index, i->index - 1);
 			i->reset(i);

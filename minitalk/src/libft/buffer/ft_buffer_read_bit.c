@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
+/*   ft_buffer_read_bit.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_char.h"
+#include "ft_buffer.h"
 #include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
 
-char	*ft_char_to_str(char c)
+t_bit	ft_buffer_read_bit(t_buffer *self)
 {
-	char	*str;
-
-	str = ft_safe_malloc(sizeof(char) * 2);
-	if (!str)
-		return (NULL);
-	str[0] = c;
-	str[1] = '\0';
-	return (str);
+	t_bit bit = self->get_bit(self, self->index);
+	self->index += 1;
+	return (bit);
 }

@@ -15,14 +15,14 @@
 
 # include "printf/ft_printf.h"
 
-void	*ft_exit_err(char *msg, ...);
-void	*ft_check_index_out_of_range_error(char *callee, size_t index,
+void	*ft_exit_err(t_string msg, ...);
+void	*ft_check_index_out_of_range_error(t_string callee, size_t index,
 			size_t arr_size);
-void	*ft_index_out_of_range_error(char *callee, size_t index,
+void	*ft_index_out_of_range_error(t_string callee, size_t index,
 			size_t arr_size);
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(t_string s, int fd);
+void	ft_putendl_fd(t_string s, int fd);
+void	ft_putnbr_fd(long long n, int fd);
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_long.c                                :+:      :+:    :+:   */
+/*   ft_buffer_to_str.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "ft_buffer.h"
 #include "../memory/ft_memory.h"
 
-void	ft_list_push_long(t_list *self, long long l)
+t_string ft_buffer_to_str(t_buffer *buff)
 {
-	long long	*alloc;
+	t_string str = ft_safe_malloc(buff->size_bits + 1);
+	size_t	bit_index = 0;
 
-	alloc = ft_safe_malloc(sizeof(long long));
-	*alloc = l;
-	self->push_data(self, new_typed_ptr(T_TYPE_LONG, alloc));
+	while (bit_index < buff->size_bits)
+	{
+		str[bit_index] = buff->get_bit(buff, bit_index) + '0';
+		bit_index++;
+	}
+	return (str);
 }

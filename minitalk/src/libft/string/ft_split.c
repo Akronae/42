@@ -14,12 +14,12 @@
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-char	*ft_strndup(const char *s, size_t n)
+t_string 	ft_strndup(t_string s, size_t n)
 {
 	size_t	i;
-	char	*result;
+	t_string 	result;
 
-	result = (char *) ft_safe_malloc(sizeof(char) * (n + 1));
+	result = (t_string ) ft_safe_malloc(sizeof(char) * (n + 1));
 	if (!result)
 		return (0);
 	i = 0;
@@ -32,7 +32,7 @@ char	*ft_strndup(const char *s, size_t n)
 	return (result);
 }
 
-static size_t	ft_wordlen(char const *s, char c)
+static size_t	ft_wordlen(t_string s, char c)
 {
 	size_t	len;
 
@@ -42,7 +42,7 @@ static size_t	ft_wordlen(char const *s, char c)
 	return (len);
 }
 
-static size_t	ft_count_word(char const *s, char c)
+static size_t	ft_count_word(t_string s, char c)
 {
 	size_t	count;
 
@@ -60,7 +60,7 @@ static size_t	ft_count_word(char const *s, char c)
 	return (count);
 }
 
-void	*ft_free_split(char **s, int cnt)
+void	*ft_free_split(t_string *s, int cnt)
 {
 	while (cnt--)
 		free(s[cnt]);
@@ -68,17 +68,17 @@ void	*ft_free_split(char **s, int cnt)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+t_string 	*ft_split(t_string s, char c)
 {
-	char	**result;
+	t_string 	*result;
 	size_t	count;
 	size_t	wordlen;
 	size_t	i;
 
 	if (!s || !c)
-		return (ft_calloc(sizeof(char *)));
+		return (ft_calloc(sizeof(t_string )));
 	count = ft_count_word(s, c);
-	result = (char **)ft_safe_malloc(sizeof(char *) * (count + 1));
+	result = (t_string *)ft_safe_malloc(sizeof(t_string ) * (count + 1));
 	if (!result)
 		return (0);
 	i = 0;

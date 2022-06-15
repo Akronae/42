@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array.h                                         :+:      :+:    :+:   */
+/*   ft_char_to_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 11:26:11 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ARRAY_H
-# define FT_ARRAY_H
+#include "../memory/ft_memory.h"
 
-tlis	*ft_exit_err(char *msg);
+t_string 	ft_char_to_str(char c)
+{
+	t_string 	str;
 
-#endif
+	str = ft_safe_malloc(sizeof(char) * 2);
+	if (!str)
+		return (NULL);
+	str[0] = c;
+	str[1] = '\0';
+	return (str);
+}

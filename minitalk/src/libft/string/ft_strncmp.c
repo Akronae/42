@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include "ft_string.h"
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	ft_strncmp(t_string s1, t_string s2, int n)
 {
 	int	i;
 

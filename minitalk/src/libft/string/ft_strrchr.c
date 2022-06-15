@@ -13,7 +13,7 @@
 #include "../string/ft_string.h"
 #include <unistd.h>
 
-char	*ft_strrchr(const char *s, int c)
+t_string 	ft_strrchr(t_string s, int c)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	while (i >= 0)
 	{
 		if (s[i] == (char) c)
-			return ((char *)(s + i));
+			return ((t_string )(s + i));
 		i--;
 	}
 	return (NULL);

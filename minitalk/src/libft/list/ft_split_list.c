@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-t_list	*ft_split_list(char const *s, char c)
+t_list	*ft_split_list(t_string s, char c)
 {
 	t_list	*list;
-	char	**split;
+	t_string 	*split;
 
 	split = ft_split(s, c);
 	list = new_list();

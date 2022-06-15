@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "../char/ft_char.h"
 
-void	ft_string_to_upper(char *str)
+void	ft_string_to_upper(t_string str)
 {
 	size_t	i;
 

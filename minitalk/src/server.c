@@ -20,7 +20,7 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 	ft_printfl("received signal signum: %d, from pid: %, context: %p", signum, info->si_pid, context);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, t_string *argv)
 {
 	struct sigaction	sa_signal;
 	sigset_t			block_mask;

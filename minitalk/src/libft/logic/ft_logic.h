@@ -13,13 +13,12 @@
 #ifndef FT_LOGIC_H
 # define FT_LOGIC_H
 
-# define FALSE 0
-# define TRUE 1
+# include "../string/ft_string.h"
 
 typedef enum bool { false = 0, true = !false }	t_bool;
 
 long long	ft_if_int(t_bool condition, long long if_true, long long if_false);
 void		*ft_if_ptr(t_bool condition, void *if_true, void *if_false);
-char		*ft_if_str(t_bool condition, char *if_true, char *if_false);
+t_string 	ft_if_str(t_bool condition, t_string if_true, t_string if_false);
 
 #endif

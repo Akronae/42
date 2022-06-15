@@ -16,14 +16,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-char	*ft_strdup(const char *s1)
+t_string 	ft_strdup(t_string s1)
 {
-	char	*str;
+	t_string 	str;
 	int		i;
 
 	if (!s1)
 		return (NULL);
-	str = (char *) ft_safe_malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	str = (t_string ) ft_safe_malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

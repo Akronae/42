@@ -15,6 +15,7 @@
 #include "../../char/ft_char.h"
 #include "../../number/ft_number.h"
 #include "../../memory/ft_memory.h"
+#include "../ft_io.h"
 #include <stdlib.h>
 #include <stdarg.h>
 
@@ -54,7 +55,7 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 		elem->value = ft_number_to_str(va_arg(args, int));
 	else if (type == STRING)
 	{
-		ptr = va_arg(args, char *);
+		ptr = va_arg(args, t_string );
 		elem->value = ft_arg_str_to_str(ptr);
 	}
 	else
