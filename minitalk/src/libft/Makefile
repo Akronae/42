@@ -68,7 +68,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					typed_ptr/ft_typed_ptr_clone.c typed_ptr/ft_typed_ptr_free.c typed_ptr/ft_typed_ptr_set_value.c \
 					typed_ptr/ft_typed_ptr_to_str.c \
 					typed_ptr/ft_typed_ptr_value_equals.c typed_ptr/new_typed_ptr.c \
-					typed_ptr/new_typed_ptr_llong.c typed_ptr/new_typed_ptr_str.c
+					typed_ptr/new_typed_ptr_char.c typed_ptr/new_typed_ptr_llong.c typed_ptr/new_typed_ptr_long.c \
+					typed_ptr/new_typed_ptr_str.c
 
 HEADERS			=	libft.h binary/ft_binary.h buffer/ft_buffer.h char/ft_char.h hex/ft_hex.h io/ft_io.h io/printf/ft_printf.h \
 					iterator/ft_iterator.h key_value_pair/ft_key_value_pair.h link/ft_link.h \

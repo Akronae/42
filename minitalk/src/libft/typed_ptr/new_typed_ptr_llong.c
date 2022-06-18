@@ -24,7 +24,7 @@ t_typed_ptr	*new_typed_ptr_llong(long long decimal)
 	return (new_typed_ptr(T_TYPE_LLONG, ptr));
 }
 
-t_typed_ptr	*ft_ll(long long decimal)
+t_typed_ptr	*ft_lld(long long decimal)
 {
 	return (new_typed_ptr_llong(decimal));
 }

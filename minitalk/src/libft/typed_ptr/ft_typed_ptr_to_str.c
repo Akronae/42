@@ -17,6 +17,17 @@
 #include "../memory/ft_memory.h"
 #include "../io/ft_io.h"
 #include "../char/ft_char.h"
+#include "../map/ft_map.h"
+
+t_string	ft_key_value_pair_to_str(t_key_value_pair *pair)
+{
+	return (ft_str_format("{%s{.free()}: %s{.free()}}", pair->key->to_str(pair->key), pair->value->to_str(pair->value)));
+}
+
+t_string	ft_list_to_str(t_list *list)
+{
+	return (ft_str_format("[%s{.free()}]", list->join(list, ", ")));
+}
 
 t_string 	ft_typed_ptr_to_str(t_typed_ptr *self)
 {
@@ -28,7 +39,13 @@ t_string 	ft_typed_ptr_to_str(t_typed_ptr *self)
 		return (ft_char_to_str(*self->as_str));
 	else if (self->type == T_TYPE_LLONG)
 		return (ft_number_to_str(*self->as_llong));
+	else if (self->type == T_TYPE_KEY_VALUE_PAIR)
+		return (ft_key_value_pair_to_str(self->value));
+	else if (self->type == T_TYPE_LIST)
+		return (ft_list_to_str(self->value));
+	else if (self->type == T_TYPE_MAP)
+		return (ft_list_to_str(((t_map *)self->value)->entries));
 	else
-		return (ft_exit_err(ft_strjoin("ft_list_join: cannot parse type ",
-					ft_number_to_str(self->type))));
+		return (ft_exit_err("ft_typed_ptr_to_str: cannot parse type %d",
+					self->type));
 }

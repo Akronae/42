@@ -48,7 +48,7 @@ enum t_template_type	ft_template_type_from_str(t_string s, size_t *i)
 	char			*sub;
 
 	*i += 1;
-	a = ft_strlen(s + *i) - 1;
+	a = ft_strlen(s + *i);
 	type = -1;
 	while (a-- && a >= 0)
 	{
