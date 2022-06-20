@@ -38,6 +38,7 @@ t_map	*clients;
 
 void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 {
+	//ft_printfl("%d => %d, %d", signum, signum == SIGUSR1 ? false : true, info->si_pid, context);
 	t_bit received_bit = signum == SIGUSR1 ? false : true;
 	t_typed_ptr *ptr = ft_lld(info->si_pid);
 	if (!clients->get(clients, ptr))
@@ -46,7 +47,7 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 	}
 	t_network_message *msg = clients->get(clients, ptr)->value;
 	msg->data->write_bit(msg->data, received_bit);
-//	ft_printfl("buff: %s{.free()} (%d)", msg->data->to_str(msg->data), msg->data->index);
+	//ft_printfl("buff: %s{.free()} (%d)", msg->data->to_str(msg->data), msg->data->index);
 	if (msg->expected_size_bit == 0 && msg->data->index == sizeof(long) * 8)
 	{
 		msg->data->index = 0;
@@ -63,7 +64,8 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 		t_typed_ptr *p = msg->data->read(msg->data, T_TYPE_MAP);
 		ft_printfl("%s{.free()}", p->to_str(p));
 	}
-	kill(info->si_pid, SIGUSR2);
+	usleep(200);
+	if (info->si_pid) kill(info->si_pid, SIGUSR2);
 //
 //
 //	ptr->free(ptr);

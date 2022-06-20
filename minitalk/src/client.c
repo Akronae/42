@@ -24,7 +24,8 @@
 
 void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 {
-	ft_printf("", signum, info, context);
+	usleep(200);
+	ft_printf("", signum, info->si_pid, info, context);
 }
 void send_to_process(int pid, t_buffer *data)
 {
@@ -68,12 +69,10 @@ int	main(int argc, t_string *argv)
 //	ft_printfl("sa: %s", sb->read(sb, T_TYPE_STRING)->as_str);
 //	t_typed_ptr *pp = sb->read(sb, T_TYPE_MAP);
 //	ft_printfl("sl: %s", pp->to_str(pp));
-	t_string aa = "à";
-	ft_printfl("======> %x,%x,%d, => %s", (unsigned char) aa[0], (unsigned char) aa[1], aa[2], aa);
-	return 0;
 	if (argc <= 2)
 		ft_exit_err("usage:\n\t%s <SERVER PID> <MESSAGE>", argv[0]);
 	int pid = ft_str_to_number(argv[1]);
+	ft_printfl("client PID: %d", getpid());
 	t_buffer *buff = new_buffer();
 	t_map *message = new_map();
 	message->add(message, ft_s("message"), ft_s(argv[2]));
