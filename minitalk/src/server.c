@@ -47,7 +47,7 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 	}
 	t_network_message *msg = clients->get(clients, ptr)->value;
 	msg->data->write_bit(msg->data, received_bit);
-	//ft_printfl("buff: %s{.free()} (%d)", msg->data->to_str(msg->data), msg->data->index);
+//	ft_printfl("buff: %s{.free()} (%d)", msg->data->to_str(msg->data), msg->data->index);
 	if (msg->expected_size_bit == 0 && msg->data->index == sizeof(long) * 8)
 	{
 		msg->data->index = 0;

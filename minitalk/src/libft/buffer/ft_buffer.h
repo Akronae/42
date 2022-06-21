@@ -20,8 +20,10 @@
 
 typedef struct t_buffer
 {
-	t_list	*data;
+//	t_list	*data;
+	t_string	data_s;
 	size_t	size_bits;
+	size_t	used_bits;
 	size_t	index;
 	void 	(*free)(struct t_buffer *self);
 	t_bit 	(*get_bit)(struct t_buffer *self, size_t bit_index);

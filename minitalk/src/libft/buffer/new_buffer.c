@@ -17,7 +17,8 @@ t_buffer	*new_buffer()
 {
 	t_buffer *buff = ft_safe_malloc(sizeof(t_buffer));
 
-	buff->data = new_list();
+//	buff->data = new_list();
+	buff->data_s = NULL;
 	buff->size_bits = 0;
 	buff->index = 0;
 	buff->free = ft_buffer_free;

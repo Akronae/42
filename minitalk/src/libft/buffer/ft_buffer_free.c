@@ -15,6 +15,7 @@
 
 void ft_buffer_free(t_buffer *buff)
 {
-	buff->data->free(buff->data);
+//	buff->data->free(buff->data);
+	ft_safe_free(buff->data_s);
 	ft_safe_free(buff);
 }
