@@ -12,9 +12,18 @@
 
 SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_binary_set_bit.c \
 					buffer/ft_buffer_free.c buffer/ft_buffer_get_bit.c buffer/ft_buffer_read.c \
-					buffer/ft_buffer_read_bit.c buffer/ft_buffer_read_byte.c \
+					buffer/ft_buffer_read_bit.c buffer/ft_buffer_read_byte.c buffer/ft_buffer_read_bytes.c \
+					buffer/ft_buffer_read_char.c \
+					buffer/ft_buffer_read_int.c buffer/ft_buffer_read_key_value_pair.c buffer/ft_buffer_read_list.c \
+					buffer/ft_buffer_read_llong.c buffer/ft_buffer_read_long.c buffer/ft_buffer_read_map.c \
+					buffer/ft_buffer_read_number.c buffer/ft_buffer_read_str.c buffer/ft_buffer_read_typed_ptr.c \
+					buffer/ft_buffer_write_char.c \
+					buffer/ft_buffer_write_int.c buffer/ft_buffer_write_key_value_pair.c buffer/ft_buffer_write_list.c \
+					buffer/ft_buffer_write_llong.c buffer/ft_buffer_write_long.c buffer/ft_buffer_write_map.c \
+					buffer/ft_buffer_write_str.c buffer/ft_buffer_write_typed_ptr.c \
 					buffer/ft_buffer_set_bit.c buffer/ft_buffer_to_str.c \
 					buffer/ft_buffer_write.c buffer/ft_buffer_write_bit.c buffer/ft_buffer_write_byte.c \
+					buffer/ft_buffer_write_bytes.c \
 					buffer/new_buffer.c \
 					memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c \
 					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_persistent_ptr.c \
@@ -22,6 +31,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
 					memory/ft_memcmp.c memory/ft_swap_long.c \
+					message/ft_message_receive_bit.c message/ft_message_serialize.c message/new_message.c \
+					message/ft_message_free.c \
 					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
 					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c list/ft_split_list.c \
@@ -31,7 +42,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_formatted_element2.c \
 					io/printf/ft_printf.c io/printf/ft_str_format.c \
 					io/printf/ft_template_type.c io/ft_exit_err.c io/ft_index_out_of_range_error.c io/ft_putchar_fd.c \
-					io/ft_putstr_fd.c io/ft_putnbr_fd.c io/ft_putendl_fd.c string/ft_striteri.c char/ft_char_to_lower.c \
+					io/ft_putstr_fd.c io/ft_putnbr_fd.c io/ft_putendl_fd.c ipc_socket/ft_ipc_socket_send.c \
+					ipc_socket/ft_ipc_socket_free.c ipc_socket/new_ipc_socket.c string/ft_striteri.c char/ft_char_to_lower.c \
 					string/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
@@ -59,7 +71,7 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					list/ft_list_reverse.c list/ft_list_sort.c list/ft_list_sub.c \
 					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c \
 					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/new_map.c \
-					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c math/ft_math_min.c \
+					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c math/ft_math_min.c math/ft_math_pow.c \
 					number/ft_number_to_str.c \
 					number/ft_str_to_number_base.c \
 					number/ft_str_to_number.c string/ft_str_append.c \
@@ -71,10 +83,11 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					typed_ptr/new_typed_ptr_char.c typed_ptr/new_typed_ptr_llong.c typed_ptr/new_typed_ptr_long.c \
 					typed_ptr/new_typed_ptr_str.c
 
-HEADERS			=	libft.h binary/ft_binary.h buffer/ft_buffer.h char/ft_char.h hex/ft_hex.h io/ft_io.h io/printf/ft_printf.h \
+HEADERS			=	libft.h binary/ft_binary.h buffer/ft_buffer.h char/ft_char.h hex/ft_hex.h io/ft_io.h \
+					io/printf/ft_printf.h ipc_socket/ft_ipc_socket.h \
 					iterator/ft_iterator.h key_value_pair/ft_key_value_pair.h link/ft_link.h \
  					list/ft_list.h logic/ft_logic.h map/ft_map.h key_value_pair/ft_key_value_pair.h math/ft_math.h \
- 					memory/ft_memory.h number/ft_number.h ptr/ft_ptr.h string/ft_string.h \
+ 					memory/ft_memory.h message/ft_message.h number/ft_number.h ptr/ft_ptr.h string/ft_string.h \
  					type/ft_type.h typed_ptr/ft_typed_ptr.h
 
 OBJS			= $(SRCS:.c=.o)

@@ -16,6 +16,6 @@
 
 void	ft_buffer_write_bit(t_buffer *self, t_bit data)
 {
-	self->set_bit(self, self->index, data);
-	self->index += 1;
+	self->set_bit(self, self->index_write, data);
+	self->index_write += 1;
 }

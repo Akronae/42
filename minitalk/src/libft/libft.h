@@ -18,4 +18,6 @@
 #  define ENV_DEV 0
 # endif
 
+typedef long long int	llong;
+
 #endif //LIBFT_H

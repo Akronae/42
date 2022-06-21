@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_buffer_read_key_value_pair.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
 #include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include "../map/ft_map.h"
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+t_key_value_pair	*ft_buffer_read_key_value_pair(t_buffer *self)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	t_typed_ptr *key = self->read_typed_ptr(self);
+	t_typed_ptr *value = self->read_typed_ptr(self);
+	return (new_key_value_pair(key, value));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_buffer_write_bytes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
 #include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include "../map/ft_map.h"
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+void	ft_buffer_write_bytes(t_buffer *self, void *bytes, size_t len_bytes)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	size_t i = 0;
+	t_byte	*bytes_data = (t_byte*) bytes;
+
+	while (i < len_bytes)
+	{
+		self->write_byte(self, bytes_data[i]);
+		i++;
+	}
 }

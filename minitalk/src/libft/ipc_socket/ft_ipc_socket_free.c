@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_ipc_socket_free.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
-#include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "ft_ipc_socket.h"
+#include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+void	ft_ipc_socket_free(t_ipc_socket *self)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	ft_safe_free(self);
 }

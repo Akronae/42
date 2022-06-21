@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_message_serialize.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
-#include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "ft_message.h"
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+void	ft_message_serialize(t_message *self)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	t_buffer *buff = new_buffer();
+	buff->write_map(buff, self->fields);
+
+	self->data->write_llong(self->data, buff->used_bits + sizeof(self->expected_size_bit) * 8);
+	while (buff->index_read < buff->used_bits)
+		self->data->write_bit(self->data, buff->read_bit(buff));
+	buff->free(buff);
 }

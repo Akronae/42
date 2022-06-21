@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_message_receive_bit.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
-#include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "ft_message.h"
+#include <stdlib.h>
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+void	ft_message_receive_bit(t_message *self, t_bit bit)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	self->data->write_bit(self->data, bit);
+	if (self->expected_size_bit == -1 && self->data->index_write >= sizeof(self->expected_size_bit) * 8)
+	{
+		self->expected_size_bit = *self->data->read(self->data, T_TYPE_LONG)->as_long;
+	}
+	if (self->expected_size_bit > 0 && self->data->index_write >= (size_t) self->expected_size_bit)
+	{
+		self->fields = self->data->read_map(self->data);
+		self->is_complete = true;
+	}
 }

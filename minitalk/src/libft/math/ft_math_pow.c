@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffer_get_bit.c                         :+:      :+:    :+:   */
+/*   ft_math_pow.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../logic/ft_logic.h"
-#include "ft_buffer.h"
-#include "../binary/ft_binary.h"
+#include "../libft.h"
 
-t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
+llong	ft_math_pow(llong nb, int pow)
 {
-	size_t	byte_index = bit_index / 8;
-	if (buff->size_bits < byte_index + 1)
-		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	llong	res;
+
+	if (pow == 0)
+		return (1);
+	res = nb;
+	while (--pow)
+		res *= nb;
+	return (res);
 }

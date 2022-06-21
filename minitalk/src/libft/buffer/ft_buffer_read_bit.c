@@ -16,7 +16,7 @@
 
 t_bit	ft_buffer_read_bit(t_buffer *self)
 {
-	t_bit bit = self->get_bit(self, self->index);
-	self->index += 1;
+	t_bit bit = self->get_bit(self, self->index_read);
+	self->index_read += 1;
 	return (bit);
 }
