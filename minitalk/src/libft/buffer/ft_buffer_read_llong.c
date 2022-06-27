@@ -15,7 +15,7 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-long long	ft_buffer_read_llong(t_buffer *self)
+llong	ft_buffer_read_llong(t_buffer *self)
 {
-	return (self->read_number(self, sizeof (long long)));
+	return (self->read_number(self, sizeof (llong)));
 }

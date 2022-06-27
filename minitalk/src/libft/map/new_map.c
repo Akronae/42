@@ -24,5 +24,6 @@ t_map	*new_map(void)
 	map->add = ft_map_add;
 	map->free = ft_map_free;
 	map->get = ft_map_get;
+	map->get_str = ft_map_get_str;
 	return (map);
 }

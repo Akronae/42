@@ -32,7 +32,7 @@ typedef struct t_iterator
 }	t_iterator;
 
 t_link		*ft_iterator_next(struct t_iterator *self);
-t_string 		ft_iterator_next_str(struct t_iterator *self);
+t_str 		ft_iterator_next_str(struct t_iterator *self);
 char		ft_iterator_next_char(struct t_iterator *self);
 long		ft_iterator_next_long(t_iterator *self);
 void		ft_iterator_reset(struct t_iterator *self);

@@ -12,7 +12,7 @@
 
 #include "ft_iterator.h"
 
-t_string 	ft_iterator_next_str(t_iterator *self)
+t_str 	ft_iterator_next_str(t_iterator *self)
 {
-	return ((t_string ) self->next(self));
+	return ((t_str ) self->next(self));
 }

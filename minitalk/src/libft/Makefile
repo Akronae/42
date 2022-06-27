@@ -30,20 +30,24 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					memory/ft_safe_free.c \
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
-					memory/ft_memcmp.c memory/ft_swap_long.c \
+					memory/ft_memcmp.c memory/ft_swap_long.c memory/ft_unused.c \
 					message/ft_message_receive_bit.c message/ft_message_serialize.c message/new_message.c \
 					message/ft_message_free.c \
 					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
 					string/ft_substr.c string/ft_strjoin.c string/ft_strtrim.c string/ft_split.c list/ft_split_list.c \
 					string/ft_str_equal.c \
-					string/ft_str_index_of.c string/ft_str_index_of_char.c \
-					string/ft_str_is_numeric.c string/ft_str_starts_with.c \
+					string/ft_str_index_of.c string/ft_str_index_of_char.c string/ft_str_index_past.c \
+					string/ft_str_is_numeric.c string/ft_str_replace.c string/ft_str_starts_with.c \
 					io/printf/ft_arg_conversion.c io/printf/ft_formatted_element.c io/printf/ft_formatted_element2.c \
 					io/printf/ft_printf.c io/printf/ft_str_format.c \
-					io/printf/ft_template_type.c io/ft_exit_err.c io/ft_index_out_of_range_error.c io/ft_putchar_fd.c \
+					io/printf/ft_template_type.c io/ft_ansi_color_format.c io/ft_exit_err.c io/ft_index_out_of_range_error.c \
+					io/ft_putchar_fd.c \
 					io/ft_putstr_fd.c io/ft_putnbr_fd.c io/ft_putendl_fd.c ipc_socket/ft_ipc_socket_send.c \
-					ipc_socket/ft_ipc_socket_free.c ipc_socket/new_ipc_socket.c string/ft_striteri.c char/ft_char_to_lower.c \
+					ipc_socket/ft_ipc_socket_set_signal_handler.c \
+					ipc_socket/ft_ipc_socket_free.c ipc_socket/ft_ipc_socket_listen.c \
+					ipc_socket/new_ipc_socket.c \
+					string/ft_striteri.c char/ft_char_to_lower.c \
 					string/ft_char_to_str.c char/ft_char_to_upper.c hex/ft_hex_str_from_nbr.c \
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
@@ -60,7 +64,7 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					list/ft_list_free_by_data.c \
 					list/ft_list_free_by_data.c list/ft_list_from_str_arr.c \
 					list/ft_list_get_elem.c \
-					list/ft_list_get_iterator.c list/ft_list_index_of.c list/ft_list_insert_at.c \
+					list/ft_list_get_iterator.c list/ft_list_index_of.c list/ft_list_insert_at.c list/ft_list_insert_data_at.c \
 					list/ft_list_join.c list/ft_list_map.c list/ft_list_find_max.c list/ft_list_find_maxes.c \
 					list/ft_list_pop.c \
 					list/ft_list_swap.c \
@@ -70,13 +74,13 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					list/ft_list_push_str.c list/ft_list_remove_at.c list/ft_list_remove_by_data.c \
 					list/ft_list_reverse.c list/ft_list_sort.c list/ft_list_sub.c \
 					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c \
-					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/new_map.c \
+					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/ft_map_get_str.c map/new_map.c \
 					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c math/ft_math_min.c math/ft_math_pow.c \
 					number/ft_number_to_str.c \
 					number/ft_str_to_number_base.c \
 					number/ft_str_to_number.c string/ft_str_append.c \
 					ptr/ft_ptr_cast_ll.c \
-					string/ft_str_append_char.c string/ft_string_to_upper.c \
+					string/ft_str_append_char.c string/ft_str_ends_with.c string/ft_string_to_upper.c \
 					typed_ptr/ft_typed_ptr_clone.c typed_ptr/ft_typed_ptr_free.c typed_ptr/ft_typed_ptr_set_value.c \
 					typed_ptr/ft_typed_ptr_to_str.c \
 					typed_ptr/ft_typed_ptr_value_equals.c typed_ptr/new_typed_ptr.c \

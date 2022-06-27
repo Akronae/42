@@ -16,5 +16,6 @@
 
 void	ft_ipc_socket_free(t_ipc_socket *self)
 {
+	ft_safe_free(self->sigaction);
 	ft_safe_free(self);
 }

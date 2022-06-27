@@ -14,7 +14,7 @@
 #include "../char/ft_char.h"
 #include "../logic/ft_logic.h"
 
-int	ft_str_is_numeric(t_string s)
+int	ft_str_is_numeric(t_str s)
 {
 	while (*s)
 	{

@@ -14,28 +14,28 @@
 #include "../logic/ft_logic.h"
 #include <unistd.h>
 
-int	ft_str_index_of(t_string to_find, t_string in_str)
+llong	ft_str_index_of(t_str str, t_str to_find)
 {
-	size_t	in_str_i;
+	size_t	str_i;
 	size_t	to_find_i;
 
-	in_str_i = 0;
-	if (in_str == NULL || to_find == NULL)
+	str_i = 0;
+	if (str == NULL || to_find == NULL)
 		return (INDEX_NOT_FOUND);
 	while (true)
 	{
-		if (to_find[0] == '\0' && in_str[in_str_i] == '\0')
-			return (in_str_i);
-		if (!in_str[in_str_i])
+		if (to_find[0] == '\0' && str[str_i] == '\0')
+			return (str_i);
+		if (!str[str_i])
 			break ;
 		to_find_i = 0;
-		while (in_str[in_str_i + to_find_i] == to_find[to_find_i])
+		while (str[str_i + to_find_i] == to_find[to_find_i])
 		{
 			to_find_i++;
 			if (!to_find[to_find_i])
-				return (in_str_i);
+				return (str_i);
 		}
-		in_str_i++;
+		str_i++;
 	}
 	return (INDEX_NOT_FOUND);
 }

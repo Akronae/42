@@ -13,7 +13,7 @@
 #include "../logic/ft_logic.h"
 #include <stdlib.h>
 
-int	ft_str_equal(t_string s1, t_string s2)
+int	ft_str_equal(t_str s1, t_str s2)
 {
 	if (s1 == NULL)
 		return (s2 == NULL);

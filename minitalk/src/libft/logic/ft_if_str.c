@@ -12,7 +12,7 @@
 
 #include "../string/ft_string.h"
 
-t_string 	ft_if_str(int condition, t_string if_true, t_string if_false)
+t_str 	ft_if_str(int condition, t_str if_true, t_str if_false)
 {
 	if (condition)
 		return (if_true);

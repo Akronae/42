@@ -13,11 +13,11 @@
 #include "ft_list.h"
 #include "../memory/ft_memory.h"
 
-void	ft_list_push_llong(t_list *self, long long l)
+void	ft_list_push_llong(t_list *self, llong l)
 {
-	long long	*alloc;
+	llong	*alloc;
 
-	alloc = ft_safe_malloc(sizeof(long long));
+	alloc = ft_safe_malloc(sizeof(llong));
 	*alloc = l;
 	self->push_data(self, new_typed_ptr(T_TYPE_LLONG, alloc));
 }

@@ -12,7 +12,7 @@
 
 #include "ft_math.h"
 
-long long	ft_math_abs(long long nb)
+llong	ft_math_abs(llong nb)
 {
 	if (nb < 0)
 		return (-nb);

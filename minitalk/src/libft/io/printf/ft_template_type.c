@@ -16,7 +16,7 @@
 #include "../ft_io.h"
 #include <stdio.h>
 
-enum t_template_type	ft_template_type_from_char(t_string s)
+enum t_template_type	ft_template_type_from_char(t_str s)
 {
 	if (ft_str_equal(s, "lld"))
 		return (LONGLONG);
@@ -41,7 +41,7 @@ enum t_template_type	ft_template_type_from_char(t_string s)
 	return (-1);
 }
 
-enum t_template_type	ft_template_type_from_str(t_string s, size_t *i)
+enum t_template_type	ft_template_type_from_str(t_str s, size_t *i)
 {
 	t_template_type	type;
 	int				a;

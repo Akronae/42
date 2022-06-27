@@ -14,10 +14,10 @@
 #include "../char/ft_char.h"
 #include "../string/ft_string.h"
 
-long long	ft_str_to_number_base(t_string s, t_string base)
+llong	ft_str_to_number_base(t_str s, t_str base)
 {
 	size_t		i;
-	long long	nbr;
+	llong	nbr;
 	int			sign;
 
 	i = 0;
@@ -26,7 +26,7 @@ long long	ft_str_to_number_base(t_string s, t_string base)
 	while (s[i])
 	{
 		if (ft_isdigit(s[i]))
-			nbr = nbr * ft_strlen(base) + ft_str_index_of_char(s[i], base);
+			nbr = nbr * ft_strlen(base) + ft_str_index_of_char(base, s[i]);
 		else if (nbr > 0)
 			break ;
 		else if (s[i] == '+')

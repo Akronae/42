@@ -23,7 +23,7 @@ void	ft_buffer_set_bit(t_buffer *buff, size_t bit_index, t_bool value)
 	while (buff->size_bits / 8 < byte_index + 1)
 	{
 		size_t new_size = ft_math_max(buff->size_bits / 8 * 2, 50);
-		t_string new = ft_safe_malloc(new_size);
+		t_str new = ft_safe_malloc(new_size);
 		ft_memcpy(new, buff->data, buff->size_bits / 8);
 		ft_safe_free(buff->data);
 		buff->data = new;

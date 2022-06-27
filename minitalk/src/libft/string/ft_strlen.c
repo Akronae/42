@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include "ft_string.h"
 
-size_t	ft_strlen(t_string s)
+size_t	ft_strlen(t_str s)
 {
 	size_t	i;
 

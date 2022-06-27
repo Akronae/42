@@ -13,6 +13,8 @@
 #ifndef FT_PTR_H
 # define FT_PTR_H
 
-long long	*ft_ptr_cast_ll(void *ptr);
+# include "../libft.h"
+
+llong	*ft_ptr_cast_ll(void *ptr);
 
 #endif

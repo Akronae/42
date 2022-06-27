@@ -23,7 +23,7 @@ int	ft_typed_ptr_value_equals(t_typed_ptr *self, t_typed_ptr *to)
 	if (self->type != to->type)
 		return (false);
 	if (self->type == T_TYPE_STRING)
-		return (ft_str_equal((t_string) self->value, (t_string) to->value));
+		return (ft_str_equal((t_str) self->value, (t_str) to->value));
 	if (self->type == T_TYPE_LLONG)
 		return (*ft_ptr_cast_ll(self->value) == *ft_ptr_cast_ll(to->value));
 	else

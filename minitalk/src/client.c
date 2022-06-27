@@ -17,25 +17,28 @@
 #include "libft/memory/ft_memory.h"
 #include "libft/binary/ft_binary.h"
 #include "libft/buffer/ft_buffer.h"
-#include "libft/map/ft_map.h"
 #include "libft/message/ft_message.h"
 #include "libft/ipc_socket/ft_ipc_socket.h"
 
+void	fta(int signum, siginfo_t *info, void *context)
+{
+	usleep(200);
+	ft_unused("", signum, info, context);
+}
 
-int	main(int argc, t_string *argv)
+int	main(int argc, t_str *argv)
 {
 	if (argc <= 2)
 		ft_exit_err("usage:\n\t%s <SERVER PID> <MESSAGE>", argv[0]);
 	int pid = ft_str_to_number(argv[1]);
 	ft_printfl("client PID: %d", getpid());
 
-	t_ipc_socket *sock = new_ipc_socket(pid, NULL);
+	t_ipc_socket *sock = new_ipc_socket(pid);
 	t_message *msg = new_message();
 	t_typed_ptr *p;
 	p = ft_s("message");
 	msg->fields->add(msg->fields, p, ft_s(argv[2]));
 	sock->send(sock, msg);
-
 	msg->free(msg);
 	sock->free(sock);
 }

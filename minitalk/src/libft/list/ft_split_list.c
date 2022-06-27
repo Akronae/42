@@ -12,21 +12,33 @@
 
 #include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include "../libft.h"
 #include <stdlib.h>
 
-t_list	*ft_split_list(t_string s, char c)
+t_list	*ft_split_list(t_str s, t_str separator)
 {
 	t_list	*list;
-	t_string 	*split;
+	size_t	index;
+	size_t	separator_len;
 
-	split = ft_split(s, c);
 	list = new_list();
-	while (*split)
+	separator_len = ft_strlen(separator);
+	while (*s)
 	{
-		list->push_str(list, ft_strdup(*split));
-		ft_safe_free(*split);
-		split++;
+		index = ft_str_index_of(s, separator);
+		if (index == 0)
+			s += separator_len;
+		else if ((int) index == INDEX_NOT_FOUND)
+		{
+			list->push_str(list, ft_strdup(s));
+			break ;
+		}
+		else
+		{
+			list->push_str(list, ft_substr(s, 0, index - 1));
+			s += index + separator_len;
+		}
 	}
-	ft_safe_free(split - list->length);
 	return (list);
 }

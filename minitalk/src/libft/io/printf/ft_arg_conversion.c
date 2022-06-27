@@ -14,31 +14,31 @@
 #include <stdio.h>
 #include "ft_printf.h"
 #include "../../hex/ft_hex.h"
-#include "../../string/ft_string.h"
+#include "../../memory/ft_memory.h"
 
-t_string 	ft_arg_str_to_str(t_string str)
+t_str 	ft_arg_str_to_str(t_str str)
 {
 	if (!str)
 		str = "(null)";
 	return (ft_strdup(str));
 }
 
-t_string 	ft_arg_ptr_to_str(unsigned long long ptr)
+t_str 	ft_arg_ptr_to_str(ullong ptr)
 {
-	t_string 	hex;
-	t_string 	str;
+	t_str 	hex;
+	t_str 	str;
 
 	if (!ptr)
 		return (ft_strdup(NULL_PTR_DISPLAY));
 	hex = ft_hex_str_from_nbr(ptr);
 	str = ft_strjoin("0x", hex);
-	free(hex);
+	ft_safe_free(hex);
 	return (str);
 }
 
-t_string 	ft_arg_hex_to_str(unsigned int val, t_template_type type)
+t_str 	ft_arg_hex_to_str(uint val, t_template_type type)
 {
-	t_string 	str;
+	t_str 	str;
 
 	str = ft_hex_str_from_nbr(val);
 	if (type == UPPER_HEXADECIMAL)

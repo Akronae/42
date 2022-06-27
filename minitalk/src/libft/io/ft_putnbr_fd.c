@@ -16,9 +16,9 @@
 #include "ft_io.h"
 #include <unistd.h>
 
-void	ft_putnbr_fd(long long nbr, int fd)
+void	ft_putnbr_fd(llong nbr, int fd)
 {
-	t_string str = ft_number_to_str(nbr);
+	t_str str = ft_number_to_str(nbr);
 	ft_putstr_fd(str, fd);
 	ft_safe_free(str);
 }

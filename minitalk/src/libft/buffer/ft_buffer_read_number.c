@@ -15,9 +15,9 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-long long	ft_buffer_read_number(t_buffer *self, int bytes_len)
+llong	ft_buffer_read_number(t_buffer *self, int bytes_len)
 {
-	long long data = 0;
+	llong data = 0;
 	t_byte *buff = self->read_bytes(self, bytes_len);
 	ft_memcpy(&data, buff, bytes_len);
 	ft_safe_free(buff);

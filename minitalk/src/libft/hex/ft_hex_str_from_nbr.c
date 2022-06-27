@@ -16,10 +16,10 @@
 #include "../number/ft_number.h"
 #include "../string/ft_string.h"
 
-t_string 	ft_hex_str_from_nbr(unsigned long long ull)
+t_str 	ft_hex_str_from_nbr(ullong ull)
 {
 	t_list	*list;
-	t_string 	str;
+	t_str 	str;
 
 	list = new_list();
 	while (true)

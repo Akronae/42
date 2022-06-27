@@ -15,16 +15,16 @@
 #include "../string/ft_string.h"
 #include <stdlib.h>
 
-t_typed_ptr	*new_typed_ptr_llong(long long decimal)
+t_typed_ptr	*new_typed_ptr_llong(llong decimal)
 {
-	long long	*ptr;
+	llong	*ptr;
 
-	ptr = ft_safe_malloc(sizeof(long long));
+	ptr = ft_safe_malloc(sizeof(llong));
 	*ptr = decimal;
 	return (new_typed_ptr(T_TYPE_LLONG, ptr));
 }
 
-t_typed_ptr	*ft_lld(long long decimal)
+t_typed_ptr	*ft_lld(llong decimal)
 {
 	return (new_typed_ptr_llong(decimal));
 }

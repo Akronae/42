@@ -12,7 +12,7 @@
 
 #include "ft_math.h"
 
-long long	ft_math_min(long long a, long long b)
+llong	ft_math_min(llong a, llong b)
 {
 	if (a < b)
 		return (a);

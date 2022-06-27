@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	ft_if_int(int condition, long long if_true, long long if_false)
+#include "ft_logic.h"
+
+llong	ft_if_int(t_bool condition, llong if_true, llong if_false)
 {
 	if (condition)
 		return (if_true);

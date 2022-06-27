@@ -15,7 +15,7 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-void	ft_buffer_write_str(t_buffer *self, t_string str)
+void	ft_buffer_write_str(t_buffer *self, t_str str)
 {
 	self->write_long(self, ft_strlen(str));
 	self->write_bytes(self, str, sizeof(char) * ft_strlen(str));

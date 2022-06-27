@@ -40,5 +40,6 @@ void	ft_safe_free(void *ptr);
 void	ft_safe_free_null(void **ptr);
 void	*ft_safe_malloc(size_t malloc_size);
 void	ft_swap_long(long *ptr1, long *ptr2);
+void	ft_unused(void *i, ...);
 
 #endif

@@ -13,7 +13,7 @@
 #include "ft_string.h"
 #include <unistd.h>
 
-void	ft_str_append_char(t_string dst, char src)
+void	ft_str_append_char(t_str dst, char src)
 {
 	size_t	dst_i;
 

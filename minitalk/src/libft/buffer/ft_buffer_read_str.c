@@ -15,11 +15,11 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-t_string ft_buffer_read_str(t_buffer *self)
+t_str ft_buffer_read_str(t_buffer *self)
 {
 	long len = self->read_long(self);
-	t_string data = self->read_bytes(self, len);
-	t_string str = ft_safe_malloc(len + 1);
+	t_str data = self->read_bytes(self, len);
+	t_str str = ft_safe_malloc(len + 1);
 	ft_memcpy(str, data, len);
 	ft_safe_free(data);
 	return str;

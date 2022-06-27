@@ -15,7 +15,7 @@
 
 void	ft_list_push_char(t_list *self, char c)
 {
-	t_string 	alloc;
+	t_str 	alloc;
 
 	alloc = ft_safe_malloc(sizeof(int));
 	*alloc = c;

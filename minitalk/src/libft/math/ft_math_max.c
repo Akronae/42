@@ -12,7 +12,7 @@
 
 #include "ft_math.h"
 
-long long	ft_math_max(long long a, long long b)
+llong	ft_math_max(llong a, llong b)
 {
 	if (a > b)
 		return (a);

@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include "ft_string.h"
 
-size_t	ft_strlcpy(t_string dst, t_string src, size_t size)
+size_t	ft_strlcpy(t_str dst, t_str src, size_t size)
 {
 	size_t	i;
 

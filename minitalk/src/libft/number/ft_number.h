@@ -18,8 +18,8 @@
 
 # include "../string/ft_string.h"
 
-t_string 		ft_number_to_str(long long ll);
-long long	ft_str_to_number_base(t_string s, t_string base);
-long long	ft_str_to_number(t_string s);
+t_str 		ft_number_to_str(llong ll);
+llong	ft_str_to_number_base(t_str s, t_str base);
+llong	ft_str_to_number(t_str s);
 
 #endif

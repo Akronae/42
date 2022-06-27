@@ -18,7 +18,7 @@
 typedef t_bool	t_bit;
 typedef char	t_byte;
 
-t_string ft_binary_byte_to_str(t_byte byte);
+t_str ft_binary_byte_to_str(t_byte byte);
 t_bit	ft_binary_get_bit(t_byte byte, int index);
 t_byte ft_binary_set_bit(t_byte byte, int index, t_bool value);
 

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long	*ft_ptr_cast_ll(void *ptr)
+#include "ft_ptr.h"
+
+llong	*ft_ptr_cast_ll(void *ptr)
 {
-	return ((long long *) ptr);
+	return ((llong *) ptr);
 }

@@ -28,6 +28,8 @@ typedef enum t_type
 	T_TYPE_LIST,
 	T_TYPE_KEY_VALUE_PAIR,
 	T_TYPE_MAP,
+	T_TYPE_MESSAGE,
+	T_TYPE_IPC_SOCKET,
 }	t_type;
 
 #endif

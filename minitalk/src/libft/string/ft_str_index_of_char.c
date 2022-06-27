@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 
 #include "../char/ft_char.h"
+#include "../memory/ft_memory.h"
 #include "ft_string.h"
 #include <stdlib.h>
+#include "../libft.h"
 
-int	ft_str_index_of_char(char to_find, t_string in_str)
+llong	ft_str_index_of_char(t_str str, char to_find)
 {
-	t_string 	to_str;
-	int		index;
+	t_str 	to_str;
+	llong		index;
 
 	to_str = ft_char_to_str(to_find);
-	index = ft_str_index_of(to_str, in_str);
-	free(to_str);
+	index = ft_str_index_of(str, to_str);
+	ft_safe_free(to_str);
 	return (index);
 }

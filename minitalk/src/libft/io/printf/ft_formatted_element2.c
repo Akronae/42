@@ -19,13 +19,13 @@ void	ft_arg_to_formatted_elem2(va_list args,
 		enum t_template_type type, t_formatted_element *elem)
 {
 	if (type == POINTER)
-		elem->value = ft_arg_ptr_to_str(va_arg(args, unsigned long long));
+		elem->value = ft_arg_ptr_to_str(va_arg(args, ullong));
 	else if (type == U_DECIMAL)
-		elem->value = ft_number_to_str(va_arg(args, unsigned int));
+		elem->value = ft_number_to_str(va_arg(args, uint));
 	else if (type == PERCENT)
 		elem->value = ft_strdup("%");
 	else if (type == LONGLONG)
-		elem->value = ft_number_to_str(va_arg(args, long long));
+		elem->value = ft_number_to_str(va_arg(args, llong));
 	else if (type == HEXADECIMAL || type == UPPER_HEXADECIMAL)
-		elem->value = ft_arg_hex_to_str(va_arg(args, unsigned int), type);
+		elem->value = ft_arg_hex_to_str(va_arg(args, uint), type);
 }

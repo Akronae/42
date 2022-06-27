@@ -13,34 +13,20 @@
 #include "ft_ipc_socket.h"
 #include "../memory/ft_memory.h"
 #include "../io/ft_io.h"
+#include "../map/ft_map.h"
+#include <signal.h>
 
-void	ft_signal_handler(int signum, siginfo_t *info, void *context)
+
+t_ipc_socket *new_ipc_socket(int pid)
 {
-	usleep(200);
-	ft_printf("", signum, info->si_pid, info, context);
-}
-
-t_ipc_socket *new_ipc_socket(int pid, void (*signal_handler)(int signum, siginfo_t *info, void *context))
-{
-	struct sigaction	sa_signal;
-	sigset_t			block_mask;
-
-	sigemptyset(&block_mask);
-	sigaddset(&block_mask, SIGINT);
-	sigaddset(&block_mask, SIGQUIT);
-	sa_signal.sa_handler = 0;
-	sa_signal.sa_flags = SA_SIGINFO;
-	sa_signal.sa_mask = block_mask;
-	sa_signal.sa_sigaction = ft_signal_handler;
-	if (signal_handler)
-		sa_signal.sa_sigaction = signal_handler;
-	sigaction(SIGUSR1, &sa_signal, NULL);
-	sigaction(SIGUSR2, &sa_signal, NULL);
-
 	t_ipc_socket *sock = ft_safe_malloc(sizeof(t_ipc_socket));
 	sock->pid = pid;
 	sock->send = ft_ipc_socket_send;
+	sock->set_signal_handler = ft_ipc_socket_set_signal_handler;
 	sock->free = ft_ipc_socket_free;
+	sock->listen = ft_ipc_socket_listen;
+	sock->on_message_received = NULL;
+	sock->sigaction = NULL;
 
 	return (sock);
 }

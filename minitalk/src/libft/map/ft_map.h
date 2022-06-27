@@ -23,11 +23,13 @@ typedef struct t_map
 			t_typed_ptr *value);
 	void				(*free)(struct t_map *self);
 	t_typed_ptr			*(*get)(struct t_map *self, t_typed_ptr *key);
+	t_typed_ptr			*(*get_str)(struct t_map *self, t_str key_str);
 }	t_map;
 
 t_key_value_pair	*ft_map_add(t_map *self, t_typed_ptr *key,
 						t_typed_ptr *value);
 void				ft_map_free(t_map *self);
 t_typed_ptr			*ft_map_get(t_map *self, t_typed_ptr *key);
+t_typed_ptr			*ft_map_get_str(t_map *self, t_str key_str);
 t_map				*new_map(void);
 #endif

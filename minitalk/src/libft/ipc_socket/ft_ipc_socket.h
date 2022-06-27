@@ -24,12 +24,20 @@
 typedef struct t_ipc_socket
 {
 	int pid;
+	struct sigaction *sigaction;
+	t_bool	 is_listening;
 	void	(*send)(struct t_ipc_socket *self, t_message *message);
 	void	(*free)(struct t_ipc_socket *self);
+	void	(*listen)(struct t_ipc_socket *self);
+	void	(*on_message_received)(struct t_ipc_socket *self, struct t_ipc_socket *from, t_message *message);
+	void	(*set_signal_handler)(struct t_ipc_socket *self, void (*handler)(int signum, siginfo_t *info, void *context));
 } t_ipc_socket;
 
-t_ipc_socket *new_ipc_socket(int pid, void (*signal_handler)(int signum, siginfo_t *info, void *context));
+t_ipc_socket *new_ipc_socket(int pid);
 void	ft_ipc_socket_send(t_ipc_socket *self, t_message *message);
+void	ft_ipc_socket_set_signal_handler(t_ipc_socket *self, void (*handler)(int signum, siginfo_t *info, void *context));
 void	ft_ipc_socket_free(t_ipc_socket *self);
+void	ft_ipc_socket_listen(t_ipc_socket *self);
+void	ft_signal_handler(int signum, siginfo_t *info, void *context);
 
 #endif

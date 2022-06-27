@@ -13,6 +13,6 @@
 #ifndef FT_HEX_H
 # define FT_HEX_H
 
-t_string 		ft_hex_str_from_nbr(unsigned long long ull);
+t_str 		ft_hex_str_from_nbr(ullong ull);
 
 #endif

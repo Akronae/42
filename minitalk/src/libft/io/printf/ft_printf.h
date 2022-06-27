@@ -28,7 +28,7 @@
 
 typedef struct t_formatted_element {
 	size_t	length;
-	t_string 	value;
+	t_str 	value;
 	int		should_be_freed;
 }	t_formatted_element;
 
@@ -45,16 +45,16 @@ typedef enum t_template_type {
 	PERCENT
 }	t_template_type;
 
-struct t_list				*ft_printf_parse_args(va_list args, t_string input);
-int							ft_print(t_string input, va_list args);
-int							ft_printf(t_string input, ...);
-int							ft_printfl(t_string input, ...);
-char						*ft_str_format(t_string input, ...);
-char						*ft_str_format_handle_args(t_string input,
+struct t_list				*ft_printf_parse_args(va_list args, t_str input);
+int							ft_print(t_str input, va_list args);
+int							ft_printf(t_str input, ...);
+int							ft_printfl(t_str input, ...);
+char						*ft_str_format(t_str input, ...);
+char						*ft_str_format_handle_args(t_str input,
 								va_list args);
-char						*ft_arg_str_to_str(t_string str);
-char						*ft_arg_ptr_to_str(unsigned long long ptr);
-char						*ft_arg_hex_to_str(unsigned int val,
+char						*ft_arg_str_to_str(t_str str);
+char						*ft_arg_ptr_to_str(ullong ptr);
+char						*ft_arg_hex_to_str(uint val,
 								t_template_type type);
 struct t_formatted_element	*new_formatted_element(void);
 void						ft_formatted_list_free_elem(t_link *elem);
@@ -65,7 +65,7 @@ void						ft_arg_to_formatted_elem2(
 								va_list args, enum t_template_type type,
 								t_formatted_element *elem);
 struct t_formatted_element	*ft_char_to_formatted_elem(char c);
-enum t_template_type		ft_template_type_from_char(t_string s);
-enum t_template_type		ft_template_type_from_str(t_string s, size_t *i);
+enum t_template_type		ft_template_type_from_char(t_str s);
+enum t_template_type		ft_template_type_from_str(t_str s, size_t *i);
 
 #endif

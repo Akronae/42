@@ -17,11 +17,11 @@
 #include "../string/ft_string.h"
 #include "../memory/ft_memory.h"
 
-void	*ft_exit_err(t_string msg, ...)
+void	*ft_exit_err(t_str msg, ...)
 {
 	va_list	args;
 	int		*a;
-	t_string str;
+	t_str str;
 
 	a = (int *) 1;
 	ft_putstr_fd("Error\n", 1);

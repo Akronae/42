@@ -15,12 +15,12 @@
 #include "../string/ft_string.h"
 #include <stdlib.h>
 
-t_typed_ptr	*new_typed_ptr_str(t_string value)
+t_typed_ptr	*new_typed_ptr_str(t_str value)
 {
 	return (new_typed_ptr(T_TYPE_STRING, value));
 }
 
-t_typed_ptr	*ft_s(t_string str)
+t_typed_ptr	*ft_s(t_str str)
 {
 	return (new_typed_ptr_str(ft_strdup(str)));
 }

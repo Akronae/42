@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
 #include "minitalk.h"
 #include "libft/libft.h"
 #include "libft/io/ft_io.h"
@@ -21,37 +20,17 @@
 #include "libft/message/ft_message.h"
 #include "libft/ipc_socket/ft_ipc_socket.h"
 
-t_map	*clients;
-
-void	ft_on_message_received(int from_pid, t_message *message)
+void	ft_on_message_received(t_ipc_socket *self, t_ipc_socket *from, t_message *message)
 {
-	ft_printfl("[%d]: %s", from_pid, message->fields->get(message->fields, ft_s("message"))->as_str);
+	ft_printfl("[<yellow>%d</yellow>] %s", from->pid, message->fields->get_str(message->fields, "message")->as_str);
+	ft_unused("", self);
 }
 
-void	ft_server_signal_handler(int signum, siginfo_t *info, void *context)
+int	main(int argc, t_str *argv)
 {
-	t_bit received_bit = signum == SIGUSR1 ? false : true;
-	t_typed_ptr *ptr = ft_lld(info->si_pid);
-	if (!clients->get(clients, ptr))
-	{
-		clients->add(clients, ptr->clone(ptr), new_typed_ptr(T_TYPE_UNKNOWN, new_message()));
-	}
-	t_message *msg = clients->get(clients, ptr)->value;
-	ft_message_receive_bit(msg, received_bit);
-	if (msg->is_complete)
-		ft_on_message_received(info->si_pid, msg);
-
-	usleep(200);
-	if (info->si_pid) kill(info->si_pid, SIGUSR2);
-	ft_printf("", received_bit, info, context);
-}
-
-int	main(int argc, t_string *argv)
-{
-	clients = new_map();
-	t_ipc_socket *sock = new_ipc_socket(-1, ft_server_signal_handler);
-	ft_printfl("server PID: %d", getpid());
-	while (true)
-		pause();
-	ft_printfl("", argv, argc, sock);
+	t_ipc_socket *sock = new_ipc_socket(-1);
+	sock->on_message_received = ft_on_message_received;
+	ft_printfl("server PID: <green>%d</green>", getpid());
+	sock->listen(sock);
+	ft_unused("", argv, argc, sock);
 }

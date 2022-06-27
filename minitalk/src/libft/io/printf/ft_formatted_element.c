@@ -55,7 +55,7 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 		elem->value = ft_number_to_str(va_arg(args, int));
 	else if (type == STRING)
 	{
-		ptr = va_arg(args, t_string );
+		ptr = va_arg(args, t_str );
 		elem->value = ft_arg_str_to_str(ptr);
 	}
 	else

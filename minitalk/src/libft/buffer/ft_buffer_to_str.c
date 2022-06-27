@@ -13,9 +13,9 @@
 #include "ft_buffer.h"
 #include "../memory/ft_memory.h"
 
-t_string ft_buffer_to_str(t_buffer *buff)
+t_str ft_buffer_to_str(t_buffer *buff)
 {
-	t_string str = ft_safe_malloc(buff->size_bits + 1);
+	t_str str = ft_safe_malloc(buff->size_bits + 1);
 	size_t	bit_index = 0;
 
 	while (bit_index < buff->used_bits)

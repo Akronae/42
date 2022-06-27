@@ -13,7 +13,7 @@
 #include "../libft.h"
 #include "ft_string.h"
 
-int	ft_strncmp(t_string s1, t_string s2, int n)
+int	ft_strncmp(t_str s1, t_str s2, int n)
 {
 	int	i;
 

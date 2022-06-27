@@ -11,9 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_iterator.h"
+#include "../memory/ft_memory.h"
 #include <stdlib.h>
 
 void	ft_iterator_free(t_iterator *self)
 {
-	free(self);
+	ft_safe_free(self);
 }

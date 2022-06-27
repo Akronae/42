@@ -18,6 +18,7 @@ void	ft_message_serialize(t_message *self)
 	buff->write_map(buff, self->fields);
 
 	self->data->write_llong(self->data, buff->used_bits + sizeof(self->expected_size_bit) * 8);
+	// TODO: Move in write_buffer method.
 	while (buff->index_read < buff->used_bits)
 		self->data->write_bit(self->data, buff->read_bit(buff));
 	buff->free(buff);

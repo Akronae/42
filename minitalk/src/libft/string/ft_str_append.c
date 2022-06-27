@@ -15,11 +15,13 @@
 #include "../memory/ft_memory.h"
 #include <unistd.h>
 
-void	ft_str_append(t_string dst, t_string src)
+void	ft_str_append(t_str dst, t_str src)
 {
 	size_t	dst_i;
 	size_t	src_i;
 
+	if (!dst || !src)
+		return;
 	dst_i = ft_strlen(dst);
 	src_i = 0;
 	while (src[src_i])

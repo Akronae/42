@@ -19,7 +19,7 @@
 #include "../ft_io.h"
 
 void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
-	t_string input, size_t *index)
+	t_str input, size_t *index)
 {
 	t_template_type	type;
 	int				should_free_arg;
@@ -27,7 +27,7 @@ void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
 	if (input[*index] == '%')
 	{
 		type = ft_template_type_from_str(input, index);
-		should_free_arg = ft_str_index_of(FLAG_FREE, input + *index) == 1;
+		should_free_arg = ft_str_index_of(input + *index, FLAG_FREE) == 1;
 		if (should_free_arg)
 			*index += ft_strlen(FLAG_FREE);
 		list->push_data(list, new_typed_ptr(T_TYPE_UNKNOWN,
@@ -38,7 +38,7 @@ void	ft_printf_parse_args_handle_char(va_list args, t_list *list,
 				ft_char_to_formatted_elem(input[*index])));
 }
 
-struct t_list	*ft_printf_parse_args(va_list args, t_string input)
+struct t_list	*ft_printf_parse_args(va_list args, t_str input)
 {
 	t_list			*list;
 	size_t			i;
@@ -47,16 +47,18 @@ struct t_list	*ft_printf_parse_args(va_list args, t_string input)
 	list->on_elem_free = &ft_formatted_list_free_elem;
 	if (!input)
 		return (list);
+	input = ft_ansi_color_format(input);
 	i = 0;
 	while (input[i])
 	{
 		ft_printf_parse_args_handle_char(args, list, input, &i);
 		i++;
 	}
+	ft_safe_free(input);
 	return (list);
 }
 
-int	ft_print(t_string input, va_list args)
+int	ft_print(t_str input, va_list args)
 {
 	t_list				*list;
 	size_t				output_str_len;
@@ -77,7 +79,7 @@ int	ft_print(t_string input, va_list args)
 	return (output_str_len);
 }
 
-int	ft_printf(t_string input, ...)
+int	ft_printf(t_str input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
@@ -88,11 +90,11 @@ int	ft_printf(t_string input, ...)
 	return (output_str_len);
 }
 
-int	ft_printfl(t_string input, ...)
+int	ft_printfl(t_str input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
-	t_string 	final_str;
+	t_str 	final_str;
 
 	va_start(args, input);
 	final_str = ft_strjoin(input, "\n");

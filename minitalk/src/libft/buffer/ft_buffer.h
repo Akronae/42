@@ -23,7 +23,7 @@
 
 typedef struct t_buffer
 {
-	t_string	data;
+	t_str	data;
 	size_t	size_bits;
 	size_t	used_bits;
 	size_t	index_read;
@@ -42,7 +42,7 @@ typedef struct t_buffer
 	long	(*read_long)(struct t_buffer *self);
 	t_map	*(*read_map)(struct t_buffer *self);
 	llong	(*read_number)(struct t_buffer *self, int bytes_len);
-	t_string 	(*read_str)(struct t_buffer *self);
+	t_str 	(*read_str)(struct t_buffer *self);
 	t_typed_ptr 	*(*read_typed_ptr)(struct t_buffer *self);
 	void	(*write_char)(struct t_buffer *self, char data);
 	void	(*write_int)(struct t_buffer *self, int data);
@@ -53,7 +53,7 @@ typedef struct t_buffer
 	void	(*write_map)(struct t_buffer *self, t_map *data);
 	void	(*write_byte)(struct t_buffer *self, t_byte data);
 	void	(*write_bytes)(struct t_buffer *self, void *data, size_t len_bytes);
-	void 	(*write_str)(struct t_buffer *self, t_string data);
+	void 	(*write_str)(struct t_buffer *self, t_str data);
 	void 	(*write_typed_ptr)(struct t_buffer *self, t_typed_ptr *data);
 	void 	(*set_bit)(struct t_buffer *self, size_t bit_index, t_bit value);
 	char 	*(*to_str)(struct t_buffer *self);
@@ -81,7 +81,7 @@ long	ft_buffer_read_long(struct t_buffer *self);
 t_map	*ft_buffer_read_map(struct t_buffer *self);
 llong	ft_buffer_read_number(struct t_buffer *self, int bytes_len);
 t_byte	ft_buffer_read_byte(struct t_buffer *self);
-t_string 	ft_buffer_read_str(struct t_buffer *self);
+t_str 	ft_buffer_read_str(struct t_buffer *self);
 t_typed_ptr 	*ft_buffer_read_typed_ptr(struct t_buffer *self);
 void	ft_buffer_write_char(struct t_buffer *self, char data);
 void	ft_buffer_write_int(struct t_buffer *self, int data);
@@ -92,7 +92,7 @@ void	ft_buffer_write_long(struct t_buffer *self, long data);
 void	ft_buffer_write_map(struct t_buffer *self, t_map *data);
 void	ft_buffer_write_byte(struct t_buffer *self, t_byte data);
 void	ft_buffer_write_bytes(struct t_buffer *self, void *data, size_t len_bytes);
-void 	ft_buffer_write_str(struct t_buffer *self, t_string data);
+void 	ft_buffer_write_str(struct t_buffer *self, t_str data);
 void 	ft_buffer_write_typed_ptr(struct t_buffer *self, t_typed_ptr *data);
 t_buffer	*new_buffer();
 

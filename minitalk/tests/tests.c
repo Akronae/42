@@ -20,7 +20,7 @@ int main() {
 	TEST("%c%c", 0, '\a')
 	TEST("%X", -42)
 	TEST("%p", NULL)
-	TEST("%s", ((t_string )NULL))
+	TEST("%s", ((t_str )NULL))
 
     return 0;
 }

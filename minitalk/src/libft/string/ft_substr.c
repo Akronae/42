@@ -15,17 +15,17 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-t_string 	ft_substr(t_string s, long from, long to)
+t_str 	ft_substr(t_str s, long from, long to)
 {
-	t_string 	new;
+	t_str 	new;
 	long	i;
 
 	if (to < 0)
-		to = ft_str_index_of("\0", s) + to;
+		to = ft_str_index_of(s, "\0") + to;
 	if (to < 0)
 		to = 0;
-	if (to > ft_str_index_of("\0", s) - 1)
-		to = ft_str_index_of("\0", s) - 1;
+	if (to > ft_str_index_of(s, "\0") - 1)
+		to = ft_str_index_of(s, "\0") - 1;
 	if (from > to)
 		return (NULL);
 	new = ft_safe_malloc(to - from + 2);

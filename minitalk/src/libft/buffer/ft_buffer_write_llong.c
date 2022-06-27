@@ -15,7 +15,7 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-void	ft_buffer_write_llong(t_buffer *self, long long data)
+void	ft_buffer_write_llong(t_buffer *self, llong data)
 {
-	self->write_bytes(self, &data, sizeof(long long));
+	self->write_bytes(self, &data, sizeof(llong));
 }

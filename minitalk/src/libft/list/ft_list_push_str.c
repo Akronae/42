@@ -13,7 +13,7 @@
 #include "ft_list.h"
 #include "../io/ft_io.h"
 
-void	ft_list_push_str(t_list *self, t_string str)
+void	ft_list_push_str(t_list *self, t_str str)
 {
 	self->push_data(self, new_typed_ptr_str(str));
 }
