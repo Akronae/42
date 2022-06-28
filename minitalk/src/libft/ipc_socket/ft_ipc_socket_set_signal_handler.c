@@ -23,7 +23,7 @@ void	ft_ipc_socket_set_signal_handler(t_ipc_socket *self, void (*handler)(int si
 
 		sigemptyset(&block_mask);
 //		sigaddset(&block_mask, SIGINT);
-//		sigaddset(&block_mask, SIGQUIT);
+		sigaddset(&block_mask, SIGQUIT);
 		sa_signal->sa_handler = 0;
 		sa_signal->sa_flags = SA_SIGINFO;
 		sa_signal->sa_mask = block_mask;
@@ -31,7 +31,7 @@ void	ft_ipc_socket_set_signal_handler(t_ipc_socket *self, void (*handler)(int si
 	}
 
 	self->sigaction->sa_sigaction = handler;
-//	sigaction(SIGINT, self->sigaction, NULL);
+	sigaction(SIGINT, self->sigaction, NULL);
 //	sigaction(SIGSEGV, self->sigaction, NULL);
 	sigaction(SIGTERM, self->sigaction, NULL);
 //	sigaction(SIGQUIT, self->sigaction, NULL);
