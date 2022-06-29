@@ -12,8 +12,6 @@
 
 #include "ft_map.h"
 #include "../memory/ft_memory.h"
-#include "../io/ft_io.h"
-#include <stdlib.h>
 
 t_map	*new_map(void)
 {
@@ -24,6 +22,7 @@ t_map	*new_map(void)
 	map->add = ft_map_add;
 	map->free = ft_map_free;
 	map->get = ft_map_get;
+	map->get_lld = ft_map_get_lld;
 	map->get_str = ft_map_get_str;
 	return (map);
 }

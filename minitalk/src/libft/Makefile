@@ -74,7 +74,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					list/ft_list_push_str.c list/ft_list_remove_at.c list/ft_list_remove_by_data.c \
 					list/ft_list_reverse.c list/ft_list_sort.c list/ft_list_sub.c \
 					list/new_list.c logic/ft_if_int.c logic/ft_if_ptr.c logic/ft_if_str.c \
-					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/ft_map_get_str.c map/new_map.c \
+					map/ft_map_add.c map/ft_map_free.c map/ft_map_get.c map/ft_map_get_str.c map/ft_map_get_lld.c \
+					map/new_map.c \
 					math/ft_math_abs.c math/ft_math_clamp.c math/ft_math_max.c math/ft_math_min.c math/ft_math_pow.c \
 					number/ft_number_to_str.c \
 					number/ft_str_to_number_base.c \

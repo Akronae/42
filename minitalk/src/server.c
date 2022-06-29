@@ -30,7 +30,7 @@ int	main(int argc, t_str *argv)
 {
 	t_ipc_socket *sock = new_ipc_socket(-1);
 	sock->on_message_received = ft_on_message_received;
-	ft_printfl("server PID: <green>%d</green>", getpid());
+	ft_printfl("[server] PID: <green>%d</green>", getpid());
 	sock->listen(sock);
 	ft_unused("", argv, argc, sock);
 }

@@ -5,5 +5,5 @@ valgrind --leak-check=full \
          --track-origins=yes \
          --quiet \
           ./$1 "${@:2}"| cat -ve
-kill -USR2 784607
+#kill -USR2 784607
 echo ===========================

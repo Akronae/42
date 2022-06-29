@@ -81,9 +81,9 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 	if (signum != SIGUSR1 && signum != SIGUSR2)
 	{
 		if (signum == SIGTERM || signum == SIGINT)
-			ft_printfl("received exit signal, quitting...");
+			ft_printfl("[server] received exit signal, quitting...");
 		else
-			ft_printfl("received forbidden signal %d, quitting...", signum);
+			ft_printfl("[server] received forbidden signal %d, quitting...", signum);
 		ft_clients_stop_listening();
 		return ;
 	}
