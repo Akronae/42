@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_message_receive_bit.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
@@ -22,9 +22,6 @@ void	ft_message_receive_bit(t_message *self, t_bit bit)
 	}
 	if (self->expected_size_bit > 0 && self->data->index_write >= (size_t) self->expected_size_bit)
 	{
-		// TODO: Move in deserialize method
-		self->fields->free(self->fields);
-		self->fields = self->data->read_map(self->data);
-		self->is_complete = true;
+		self->deserialize(self);
 	}
 }

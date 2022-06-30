@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ipc_socket_listen.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
@@ -52,18 +52,15 @@ void ft_broadcast_received_message(t_message *message, int from_pid)
 
 void ft_receive_bit(t_bit received_bit, int from_pid)
 {
-	// TODO: map->get_lld
-	t_typed_ptr	*ptr;
 	t_map	*messages_by_pid;
 	t_message	*msg;
 	t_list	*messages;
 
-	ptr = ft_lld(from_pid);
 	messages_by_pid = Clients->get_str(Clients, "messages")->value;
-	if (!messages_by_pid->get(messages_by_pid, ptr))
+	if (!messages_by_pid->get_lld(messages_by_pid, from_pid))
 		messages_by_pid->add(messages_by_pid, ft_lld(from_pid),
 			new_typed_ptr(T_TYPE_LIST, new_list()));
-	messages = messages_by_pid->get(messages_by_pid, ptr)->value;
+	messages = messages_by_pid->get_lld(messages_by_pid, from_pid)->value;
 	if (messages->length == 0)
 		messages->push_data(messages, new_typed_ptr(T_TYPE_MESSAGE,
 					new_message()));
@@ -71,7 +68,6 @@ void ft_receive_bit(t_bit received_bit, int from_pid)
 	ft_message_receive_bit(msg, received_bit);
 	if (msg->is_complete)
 		ft_broadcast_received_message(msg, from_pid);
-	ptr->free(ptr);
 }
 
 void	ft_signal_handler(int signum, siginfo_t *info, void *context)
@@ -83,7 +79,8 @@ void	ft_signal_handler(int signum, siginfo_t *info, void *context)
 		if (signum == SIGTERM || signum == SIGINT)
 			ft_printfl("[server] received exit signal, quitting...");
 		else
-			ft_printfl("[server] received forbidden signal %d, quitting...", signum);
+			ft_printfl("[server] received forbidden signal %d, quitting...",
+				signum);
 		ft_clients_stop_listening();
 		return ;
 	}

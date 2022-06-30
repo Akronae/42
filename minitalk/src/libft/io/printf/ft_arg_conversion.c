@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arg_conversion.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/21 20:02:57 by adaubric         ###   ########.fr       */

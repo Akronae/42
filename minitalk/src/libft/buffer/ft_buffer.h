@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffer.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
@@ -51,6 +51,7 @@ typedef struct t_buffer
 	void	(*write_llong)(struct t_buffer *self, llong data);
 	void	(*write_long)(struct t_buffer *self, long data);
 	void	(*write_map)(struct t_buffer *self, t_map *data);
+	void	(*write_buffer)(struct t_buffer *self, struct t_buffer *buff);
 	void	(*write_byte)(struct t_buffer *self, t_byte data);
 	void	(*write_bytes)(struct t_buffer *self, void *data, size_t len_bytes);
 	void 	(*write_str)(struct t_buffer *self, t_str data);
@@ -90,6 +91,7 @@ void	ft_buffer_write_list(struct t_buffer *self, t_list *data);
 void	ft_buffer_write_llong(struct t_buffer *self, llong data);
 void	ft_buffer_write_long(struct t_buffer *self, long data);
 void	ft_buffer_write_map(struct t_buffer *self, t_map *data);
+void	ft_buffer_write_buffer(t_buffer *self, t_buffer *buff);
 void	ft_buffer_write_byte(struct t_buffer *self, t_byte data);
 void	ft_buffer_write_bytes(struct t_buffer *self, void *data, size_t len_bytes);
 void 	ft_buffer_write_str(struct t_buffer *self, t_str data);

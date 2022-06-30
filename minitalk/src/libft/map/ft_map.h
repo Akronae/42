@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
@@ -23,7 +23,7 @@ typedef struct t_map
 			t_typed_ptr *value);
 	void				(*free)(struct t_map *self);
 	t_typed_ptr			*(*get)(struct t_map *self, t_typed_ptr *key);
-	t_typed_ptr			*(*get_lld)(t_map *self, llong key_lld);
+	t_typed_ptr			*(*get_lld)(struct t_map *self, llong key_lld);
 	t_typed_ptr			*(*get_str)(struct t_map *self, t_str key_str);
 }	t_map;
 

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   new_buffer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -50,6 +50,7 @@ t_buffer	*new_buffer()
 	buff->to_str = ft_buffer_to_str;
 	buff->write = ft_buffer_write;
 	buff->write_bit = ft_buffer_write_bit;
+	buff->write_buffer = ft_buffer_write_buffer;
 	buff->write_byte = ft_buffer_write_byte;
 	buff->write_bytes = ft_buffer_write_bytes;
 	return (buff);

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_get_str.c                                   :+:      :+:    :+:   */
+/*   ft_buffer_write_buffer.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map.h"
-#include "../memory/ft_memory.h"
-#include "../string/ft_string.h"
-#include "../io/ft_io.h"
-#include "../logic/ft_logic.h"
-#include <stdlib.h>
+#include "ft_buffer.h"
 
-t_typed_ptr	*ft_map_get_str(t_map *self, t_str key_str)
+void	ft_buffer_write_buffer(t_buffer *self, t_buffer *buff)
 {
-	t_typed_ptr	*key;
-	t_typed_ptr	*value;
-
-	key = ft_s(key_str);
-	value = self->get(self, key);
-	key->free(key);
-	return (value);
+	while (buff->index_read < buff->used_bits)
+		self->write_bit(self, buff->read_bit(buff));
 }

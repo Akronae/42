@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map_get_str.c                                   :+:      :+:    :+:   */
+/*   ft_message_deserialize.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:24:08 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map.h"
-#include "../memory/ft_memory.h"
-#include "../string/ft_string.h"
-#include "../io/ft_io.h"
-#include "../logic/ft_logic.h"
-#include <stdlib.h>
+#include "ft_message.h"
 
-t_typed_ptr	*ft_map_get_str(t_map *self, t_str key_str)
+void	ft_message_deserialize(t_message *self)
 {
-	t_typed_ptr	*key;
-	t_typed_ptr	*value;
-
-	key = ft_s(key_str);
-	value = self->get(self, key);
-	key->free(key);
-	return (value);
+	self->fields->free(self->fields);
+	self->fields = self->data->read_map(self->data);
+	self->is_complete = true;
 }

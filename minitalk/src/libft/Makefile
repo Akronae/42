@@ -23,7 +23,7 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					buffer/ft_buffer_write_str.c buffer/ft_buffer_write_typed_ptr.c \
 					buffer/ft_buffer_set_bit.c buffer/ft_buffer_to_str.c \
 					buffer/ft_buffer_write.c buffer/ft_buffer_write_bit.c buffer/ft_buffer_write_byte.c \
-					buffer/ft_buffer_write_bytes.c \
+					buffer/ft_buffer_write_buffer.c buffer/ft_buffer_write_bytes.c \
 					buffer/new_buffer.c \
 					memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c \
 					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_persistent_ptr.c \
@@ -31,7 +31,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
 					memory/ft_memcmp.c memory/ft_swap_long.c memory/ft_unused.c \
-					message/ft_message_receive_bit.c message/ft_message_serialize.c message/new_message.c \
+					message/ft_message_receive_bit.c message/ft_message_serialize.c message/ft_message_deserialize.c \
+					message/new_message.c \
 					message/ft_message_free.c \
 					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
