@@ -17,8 +17,10 @@
 
 void	ft_buffer_write_list(t_buffer *self, t_list *list)
 {
+	t_iterator	*i;
+
 	self->write_long(self, list->length);
-	t_iterator *i = list->get_iterator(list);
+	i = list->get_iterator(list);
 	while (i->next(i))
 	{
 		self->write_typed_ptr(self, i->curr->data);

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_past.c                                :+:      :+:    :+:   */
+/*   ft_buffer_write_kv_pair.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_buffer.h"
 #include "../memory/ft_memory.h"
+#include "../io/ft_io.h"
+#include "../map/ft_map.h"
 
-t_llong	ft_str_index_past(t_str str, t_str to_find)
+void	ft_buffer_write_kv_pair(t_buffer *self, t_kv_pair *pair)
 {
-	t_llong	index;
-
-	index = ft_str_index_of(str, to_find);
-	if (index == INDEX_NOT_FOUND)
-		return (index);
-	return (index + ft_strlen(to_find));
+	self->write_typed_ptr(self, pair->key);
+	self->write_typed_ptr(self, pair->value);
 }

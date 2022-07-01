@@ -15,7 +15,7 @@
 #include "../io/ft_io.h"
 #include <unistd.h>
 
-t_list	*ft_list_sub(t_list *self, llong from, llong to)
+t_list	*ft_list_sub(t_list *self, t_llong from, t_llong to)
 {
 	t_list	*sub;
 

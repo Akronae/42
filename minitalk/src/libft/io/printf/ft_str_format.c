@@ -30,22 +30,22 @@ t_link	*ft_map_formatted_to_str(t_link *elem)
 	return (new);
 }
 
-t_str 	ft_str_format_handle_args(t_str input, va_list args)
+t_str	ft_str_format_handle_args(t_str input, va_list args)
 {
 	t_list	*list;
-	t_str 	str;
+	t_str	str;
 
-	list = ft_printf_parse_args(args, (t_str ) input);
+	list = ft_printf_parse_args(args, (t_str) input);
 	list = list->map(list, &ft_map_formatted_to_str);
 	str = list->join(list, STRING_EMPTY);
 	list->free(list);
 	return (str);
 }
 
-t_str 	ft_str_format(t_str input, ...)
+t_str	ft_str_format(t_str input, ...)
 {
 	va_list	args;
-	t_str 	str;
+	t_str	str;
 
 	va_start(args, input);
 	str = ft_str_format_handle_args(input, args);

@@ -13,9 +13,8 @@
 #include "ft_buffer.h"
 #include "../memory/ft_memory.h"
 
-void ft_buffer_free(t_buffer *buff)
+void	ft_buffer_free(t_buffer *buff)
 {
-//	buff->data->free(buff->data);
 	ft_safe_free(buff->data);
 	ft_safe_free(buff);
 }

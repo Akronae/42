@@ -12,9 +12,9 @@
 
 #include "../libft.h"
 
-llong	ft_math_pow(llong nb, int pow)
+t_llong	ft_math_pow(t_llong nb, int pow)
 {
-	llong	res;
+	t_llong	res;
 
 	if (pow == 0)
 		return (1);

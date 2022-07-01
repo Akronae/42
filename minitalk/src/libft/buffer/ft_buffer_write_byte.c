@@ -16,8 +16,10 @@
 
 void	ft_buffer_write_byte(t_buffer *self, t_byte data)
 {
-	size_t	i = 0;
-	while (i < 8)
+	size_t	i;
+
+	i = 0;
+	while (i < BITS_IN_BYTE)
 	{
 		self->write_bit(self, ft_binary_get_bit(data, i));
 		i++;

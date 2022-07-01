@@ -13,7 +13,7 @@
 #include "ft_message.h"
 #include "../memory/ft_memory.h"
 
-void ft_message_free(t_message *self)
+void	ft_message_free(t_message *self)
 {
 	self->fields->free(self->fields);
 	self->data->free(self->data);

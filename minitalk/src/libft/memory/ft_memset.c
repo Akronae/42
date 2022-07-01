@@ -15,10 +15,10 @@
 
 void	*ft_memset(void *dst, int copied_char, size_t len)
 {
-	t_str 	p;
+	t_str	p;
 	size_t	i;
 
-	p = (t_str )dst;
+	p = (t_str)dst;
 	i = 0;
 	while (i < len)
 	{

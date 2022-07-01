@@ -15,6 +15,6 @@
 
 # include "../libft.h"
 
-llong	*ft_ptr_cast_ll(void *ptr);
+t_llong	*ft_ptr_cast_ll(void *ptr);
 
 #endif

@@ -20,7 +20,7 @@ int	ft_str_equal(t_str s1, t_str s2)
 	while (true)
 	{
 		if (*s1 != *s2)
-			return (false );
+			return (false);
 		s1++;
 		s2++;
 		if (!*s1)

@@ -15,8 +15,8 @@
 
 # include "../libft.h"
 
-llong	ft_if_int(t_bool condition, llong if_true, llong if_false);
+t_llong	ft_if_int(t_bool condition, t_llong if_true, t_llong if_false);
 void	*ft_if_ptr(t_bool condition, void *if_true, void *if_false);
-t_str 	ft_if_str(t_bool condition, t_str if_true, t_str if_false);
+t_str	ft_if_str(t_bool condition, t_str if_true, t_str if_false);
 
 #endif

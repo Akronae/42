@@ -12,7 +12,7 @@
 
 #include "ft_logic.h"
 
-llong	ft_if_int(t_bool condition, llong if_true, llong if_false)
+t_llong	ft_if_int(t_bool condition, t_llong if_true, t_llong if_false)
 {
 	if (condition)
 		return (if_true);

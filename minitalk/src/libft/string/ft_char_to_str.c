@@ -12,9 +12,9 @@
 
 #include "../memory/ft_memory.h"
 
-t_str 	ft_char_to_str(char c)
+t_str	ft_char_to_str(char c)
 {
-	t_str 	str;
+	t_str	str;
 
 	str = ft_safe_malloc(sizeof(char) * 2);
 	if (!str)

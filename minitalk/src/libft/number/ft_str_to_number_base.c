@@ -14,10 +14,10 @@
 #include "../char/ft_char.h"
 #include "../string/ft_string.h"
 
-llong	ft_str_to_number_base(t_str s, t_str base)
+t_llong	ft_str_to_number_base(t_str s, t_str base)
 {
 	size_t		i;
-	llong	nbr;
+	t_llong		nbr;
 	int			sign;
 
 	i = 0;

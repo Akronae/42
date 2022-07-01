@@ -16,17 +16,17 @@
 #include "../../hex/ft_hex.h"
 #include "../../memory/ft_memory.h"
 
-t_str 	ft_arg_str_to_str(t_str str)
+t_str	ft_arg_str_to_str(t_str str)
 {
 	if (!str)
 		str = "(null)";
 	return (ft_strdup(str));
 }
 
-t_str 	ft_arg_ptr_to_str(ullong ptr)
+t_str	ft_arg_ptr_to_str(t_ullong ptr)
 {
-	t_str 	hex;
-	t_str 	str;
+	t_str	hex;
+	t_str	str;
 
 	if (!ptr)
 		return (ft_strdup(NULL_PTR_DISPLAY));
@@ -36,9 +36,9 @@ t_str 	ft_arg_ptr_to_str(ullong ptr)
 	return (str);
 }
 
-t_str 	ft_arg_hex_to_str(uint val, t_template_type type)
+t_str	ft_arg_hex_to_str(t_uint val, t_template_type type)
 {
-	t_str 	str;
+	t_str	str;
 
 	str = ft_hex_str_from_nbr(val);
 	if (type == UPPER_HEXADECIMAL)

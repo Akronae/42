@@ -19,9 +19,9 @@
 
 t_typed_ptr	*ft_map_get(t_map *self, t_typed_ptr *key)
 {
-	t_iterator			*i;
-	t_key_value_pair	*curr_pair;
-	void				*value;
+	t_iterator	*i;
+	t_kv_pair	*curr_pair;
+	void		*value;
 
 	value = NULL;
 	i = self->entries->get_iterator(self->entries);

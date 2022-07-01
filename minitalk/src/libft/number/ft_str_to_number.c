@@ -12,7 +12,7 @@
 
 #include "ft_number.h"
 
-llong	ft_str_to_number(t_str s)
+t_llong	ft_str_to_number(t_str s)
 {
 	return (ft_str_to_number_base(s, BASE_10));
 }

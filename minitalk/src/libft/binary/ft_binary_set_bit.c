@@ -14,5 +14,5 @@
 
 char	ft_binary_set_bit(char byte, int index, t_bool value)
 {
-	return (byte & ~(1 << index)) | (value << index);
+	return ((byte & ~(1 << index)) | (value << index));
 }

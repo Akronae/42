@@ -17,6 +17,8 @@
 
 t_typed_ptr	*ft_buffer_read_typed_ptr(t_buffer *self)
 {
-	t_type type = (t_type) self->read_char(self);
-	return ft_buffer_read(self, type);
+	t_type	type;
+
+	type = (t_type) self->read_char(self);
+	return (ft_buffer_read(self, type));
 }

@@ -15,10 +15,13 @@
 #include "../io/ft_io.h"
 #include "../map/ft_map.h"
 
-llong	ft_buffer_read_number(t_buffer *self, int bytes_len)
+t_llong	ft_buffer_read_number(t_buffer *self, int bytes_len)
 {
-	llong data = 0;
-	t_byte *buff = self->read_bytes(self, bytes_len);
+	t_llong	data;
+	t_byte	*buff;
+
+	data = 0;
+	buff = self->read_bytes(self, bytes_len);
 	ft_memcpy(&data, buff, bytes_len);
 	ft_safe_free(buff);
 	return (data);

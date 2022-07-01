@@ -19,4 +19,3 @@ void	ft_buffer_write_int(t_buffer *self, int data)
 {
 	self->write_bytes(self, &data, sizeof(int));
 }
-

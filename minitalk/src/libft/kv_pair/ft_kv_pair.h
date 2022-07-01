@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_past.c                                :+:      :+:    :+:   */
+/*   ft_kv_pair.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Created: 2022/02/16 18:34:59 by adaubric          #+#    #+#             */
+/*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef FT_KV_PAIR_H
+# define FT_KV_PAIR_H
 
-#include "../memory/ft_memory.h"
+# include "unistd.h"
+# include "../typed_ptr/ft_typed_ptr.h"
+# include "../type/ft_type.h"
 
-t_llong	ft_str_index_past(t_str str, t_str to_find)
+typedef struct t_kv_pair
 {
-	t_llong	index;
+	t_typed_ptr	*key;
+	t_typed_ptr	*value;
+	void		(*free)(struct t_kv_pair *self);
+}	t_kv_pair;
 
-	index = ft_str_index_of(str, to_find);
-	if (index == INDEX_NOT_FOUND)
-		return (index);
-	return (index + ft_strlen(to_find));
-}
+void		ft_kv_pair_free(t_kv_pair *self);
+t_kv_pair	*new_kv_pair(t_typed_ptr *key, t_typed_ptr *value);
+
+#endif

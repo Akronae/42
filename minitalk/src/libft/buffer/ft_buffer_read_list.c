@@ -17,8 +17,11 @@
 
 t_list	*ft_buffer_read_list(t_buffer *self)
 {
-	long len = self->read_long(self);
-	t_list *list = new_list();
+	long	len;
+	t_list	*list;
+
+	len = self->read_long(self);
+	list = new_list();
 	while (len)
 	{
 		list->push_data(list, self->read_typed_ptr(self));

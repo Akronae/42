@@ -17,9 +17,11 @@
 
 void	ft_buffer_write_bytes(t_buffer *self, void *bytes, size_t len_bytes)
 {
-	size_t i = 0;
-	t_byte	*bytes_data = (t_byte*) bytes;
+	size_t	i;
+	t_byte	*bytes_data;
 
+	bytes_data = (t_byte *) bytes;
+	i = 0;
 	while (i < len_bytes)
 	{
 		self->write_byte(self, bytes_data[i]);

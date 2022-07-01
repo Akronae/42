@@ -18,7 +18,8 @@ void	ft_message_serialize(t_message *self)
 
 	buff = new_buffer();
 	buff->write_map(buff, self->fields);
-	self->data->write_llong(self->data, buff->used_bits + sizeof(self->expected_size_bit) * 8);
+	self->data->write_llong(self->data, buff->used_bits
+		+ sizeof(self->expected_size_bit) * BITS_IN_BYTE);
 	self->data->write_buffer(self->data, buff);
 	buff->free(buff);
 }

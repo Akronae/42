@@ -12,7 +12,7 @@
 
 #include "ft_ptr.h"
 
-llong	*ft_ptr_cast_ll(void *ptr)
+t_llong	*ft_ptr_cast_ll(void *ptr)
 {
-	return ((llong *) ptr);
+	return ((t_llong *) ptr);
 }

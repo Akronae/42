@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../string/ft_string.h"
-#include "../logic/ft_logic.h"
+#include "ft_binary.h"
 #include "../memory/ft_memory.h"
 
-t_str ft_binary_byte_to_str(char byte)
+t_str	ft_binary_byte_to_str(char byte)
 {
-	size_t i = 0;
-	t_str binary = ft_safe_malloc(sizeof(char) * 8 + 1);
-	while (i < 8)
+	size_t	i;
+	t_str	binary;
+
+	i = 0;
+	binary = ft_safe_malloc(sizeof(char) * BITS_IN_BYTE + 1);
+	while (i < BITS_IN_BYTE)
 	{
-		binary[i] = ((byte & (1 << i)) != false) + '0';
+		binary[i] = ft_binary_get_bit(byte, i) + '0';
 		i++;
 	}
 	binary[i] = '\0';

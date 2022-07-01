@@ -13,10 +13,11 @@
 #include "ft_message.h"
 #include "../memory/ft_memory.h"
 
-t_message *new_message()
+t_message	*new_message(void)
 {
-	t_message *msg = ft_safe_malloc(sizeof(t_message));
+	t_message	*msg;
 
+	msg = ft_safe_malloc(sizeof(t_message));
 	msg->expected_size_bit = -1;
 	msg->data = new_buffer();
 	msg->fields = new_map();

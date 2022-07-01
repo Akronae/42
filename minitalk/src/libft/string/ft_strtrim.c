@@ -28,9 +28,9 @@ static int	str_include(char c, t_str str)
 	return (0);
 }
 
-t_str 	ft_strtrim(t_str s1, t_str set)
+t_str	ft_strtrim(t_str s1, t_str set)
 {
-	t_str 	str;
+	t_str	str;
 	int		i;
 	int		start;
 	int		end;
@@ -43,7 +43,7 @@ t_str 	ft_strtrim(t_str s1, t_str set)
 	end = ft_strlen(s1);
 	while (end > start && str_include(s1[end - 1], set))
 		end--;
-	str = (t_str ) ft_safe_malloc(sizeof(*s1) * (end - start + 1));
+	str = (t_str) ft_safe_malloc(sizeof(*s1) * (end - start + 1));
 	if (!str)
 		return (NULL);
 	i = 0;

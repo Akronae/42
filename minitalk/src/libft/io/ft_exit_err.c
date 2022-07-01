@@ -21,7 +21,7 @@ void	*ft_exit_err(t_str msg, ...)
 {
 	va_list	args;
 	int		*a;
-	t_str str;
+	t_str	str;
 
 	a = (int *) 1;
 	ft_putstr_fd("Error\n", 1);

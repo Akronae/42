@@ -12,7 +12,7 @@
 
 #include "ft_math.h"
 
-llong	ft_math_clamp(llong nb, llong min, llong max)
+t_llong	ft_math_clamp(t_llong nb, t_llong min, t_llong max)
 {
 	if (nb < min)
 		return (min);

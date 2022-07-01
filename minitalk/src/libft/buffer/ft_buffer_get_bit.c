@@ -16,8 +16,11 @@
 
 t_bool	ft_buffer_get_bit(t_buffer *buff, size_t bit_index)
 {
-	size_t	byte_index = bit_index / 8;
+	size_t	byte_index;
+
+	byte_index = bit_index / BITS_IN_BYTE;
 	if (buff->size_bits < byte_index + 1)
 		return (false);
-	return ft_binary_get_bit(buff->data[byte_index], bit_index % 8);
+	return (ft_binary_get_bit(buff->data[byte_index],
+			bit_index % BITS_IN_BYTE));
 }

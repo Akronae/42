@@ -18,6 +18,6 @@ void	ft_typed_ptr_set_value(t_typed_ptr *self, void *value)
 {
 	self->value = value;
 	self->as_long = (long *) value;
-	self->as_llong = (llong *) value;
-	self->as_str = (t_str ) value;
+	self->as_llong = (t_llong *) value;
+	self->as_str = (t_str) value;
 }

@@ -17,13 +17,15 @@
 
 void	*ft_buffer_read_bytes(t_buffer *self, size_t len_bytes)
 {
-	size_t i = 0;
-	t_byte *data = ft_safe_malloc(len_bytes);
+	size_t	i;
+	t_byte	*data;
 
+	i = 0;
+	data = ft_safe_malloc(len_bytes);
 	while (i < len_bytes)
 	{
 		*(data + i) = self->read_byte(self);
 		i++;
 	}
-	return data;
+	return (data);
 }

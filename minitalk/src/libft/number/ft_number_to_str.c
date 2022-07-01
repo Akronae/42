@@ -18,11 +18,11 @@
 #include "../string/ft_string.h"
 #include "../string/ft_string.h"
 
-t_str 	ft_number_to_str(llong ll)
+t_str	ft_number_to_str(t_llong ll)
 {
 	t_list	*list;
 	int		is_neg;
-	t_str 	str;
+	t_str	str;
 
 	list = new_list();
 	is_neg = ll < 0;

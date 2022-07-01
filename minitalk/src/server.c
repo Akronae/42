@@ -20,15 +20,19 @@
 #include "libft/message/ft_message.h"
 #include "libft/ipc_socket/ft_ipc_socket.h"
 
-void	ft_on_message_received(t_ipc_socket *self, t_ipc_socket *from, t_message *message)
+void	ft_on_message_received(t_ipc_socket *self, t_ipc_socket *from,
+			t_message *message)
 {
-	ft_printfl("[<yellow>%d</yellow>] %s", from->pid, message->fields->get_str(message->fields, "message")->as_str);
+	ft_printfl("[<yellow>%d</yellow>] %s", from->pid,
+		message->fields->get_str(message->fields, "content")->as_str);
 	ft_unused("", self);
 }
 
 int	main(int argc, t_str *argv)
 {
-	t_ipc_socket *sock = new_ipc_socket(-1);
+	t_ipc_socket	*sock;
+
+	sock = new_ipc_socket(-1);
 	sock->on_message_received = ft_on_message_received;
 	ft_printfl("[server] PID: <green>%d</green>", getpid());
 	sock->listen(sock);

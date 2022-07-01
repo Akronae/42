@@ -19,7 +19,7 @@ int	ft_str_is_numeric(t_str s)
 	while (*s)
 	{
 		if (!ft_isdigit(*s) && *s != '+' && *s != '-')
-			return (false );
+			return (false);
 		s++;
 	}
 	return (true);

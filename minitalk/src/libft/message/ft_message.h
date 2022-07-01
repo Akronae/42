@@ -22,16 +22,16 @@
 typedef struct t_message
 {
 	t_bool		is_complete;
-	llong		expected_size_bit;
+	t_llong		expected_size_bit;
 	t_buffer	*data;
 	t_map		*fields;
 	void		(*receive_bit)(struct t_message *self, t_bit bit);
 	void		(*serialize)(struct t_message *self);
 	void		(*deserialize)(struct t_message *self);
 	void		(*free)(struct t_message *self);
-} t_message;
+}	t_message;
 
-t_message	*new_message();
+t_message	*new_message(void);
 void		ft_message_receive_bit(t_message *self, t_bit bit);
 void		ft_message_serialize(t_message *self);
 void		ft_message_deserialize(t_message *self);

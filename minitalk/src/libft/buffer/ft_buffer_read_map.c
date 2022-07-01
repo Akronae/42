@@ -17,7 +17,9 @@
 
 t_map	*ft_buffer_read_map(t_buffer *self)
 {
-	t_map *map = new_map();
+	t_map	*map;
+
+	map = new_map();
 	map->entries->free(map->entries);
 	map->entries = self->read_list(self);
 	return (map);

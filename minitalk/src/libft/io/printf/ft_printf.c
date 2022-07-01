@@ -94,7 +94,7 @@ int	ft_printfl(t_str input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
-	t_str 	final_str;
+	t_str	final_str;
 
 	va_start(args, input);
 	final_str = ft_strjoin(input, "\n");

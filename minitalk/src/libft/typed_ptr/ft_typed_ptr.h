@@ -23,7 +23,7 @@ typedef struct t_typed_ptr
 	void				*value;
 	char				*as_str;
 	long				*as_long;
-	llong			*as_llong;
+	t_llong				*as_llong;
 	t_type				type;
 	struct t_typed_ptr	*(*clone)(struct t_typed_ptr *self);
 	void				(*free)(struct t_typed_ptr *self);
@@ -36,11 +36,11 @@ typedef struct t_typed_ptr
 t_typed_ptr	*ft_typed_ptr_clone(t_typed_ptr *self);
 void		ft_typed_ptr_free(t_typed_ptr *self);
 void		ft_typed_ptr_set_value(t_typed_ptr *self, void *value);
-t_str 	ft_typed_ptr_to_str(t_typed_ptr *self);
+t_str		ft_typed_ptr_to_str(t_typed_ptr *self);
 int			ft_typed_ptr_value_equals(t_typed_ptr *self, t_typed_ptr *to);
 t_typed_ptr	*new_typed_ptr(t_type type, void *data);
-t_typed_ptr	*new_typed_ptr_llong(llong decimal);
-t_typed_ptr	*ft_lld(llong decimal);
+t_typed_ptr	*new_typed_ptr_llong(t_llong decimal);
+t_typed_ptr	*ft_lld(t_llong decimal);
 t_typed_ptr	*new_typed_ptr_long(long decimal);
 t_typed_ptr	*ft_ld(long decimal);
 t_typed_ptr	*new_typed_ptr_char(char c);

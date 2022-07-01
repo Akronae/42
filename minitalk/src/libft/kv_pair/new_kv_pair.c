@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_index_past.c                                :+:      :+:    :+:   */
+/*   new_kv_pair.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
-/*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
+/*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_kv_pair.h"
 #include "../memory/ft_memory.h"
+#include <stdlib.h>
 
-t_llong	ft_str_index_past(t_str str, t_str to_find)
+t_kv_pair	*new_kv_pair(t_typed_ptr *key, t_typed_ptr *value)
 {
-	t_llong	index;
+	t_kv_pair	*pair;
 
-	index = ft_str_index_of(str, to_find);
-	if (index == INDEX_NOT_FOUND)
-		return (index);
-	return (index + ft_strlen(to_find));
+	pair = ft_safe_malloc(sizeof(t_kv_pair));
+	pair->key = key;
+	pair->value = value;
+	pair->free = ft_kv_pair_free;
+	return (pair);
 }

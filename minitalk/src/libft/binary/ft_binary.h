@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BINARY_H
-# define BINARY_H
+#ifndef FT_BINARY_H
+# define FT_BINARY_H
+
+# define BITS_IN_BYTE 8
 
 # include "../string/ft_string.h"
 
 typedef t_bool	t_bit;
 typedef char	t_byte;
 
-t_str ft_binary_byte_to_str(t_byte byte);
+t_str	ft_binary_byte_to_str(t_byte byte);
 t_bit	ft_binary_get_bit(t_byte byte, int index);
-t_byte ft_binary_set_bit(t_byte byte, int index, t_bool value);
+t_byte	ft_binary_set_bit(t_byte byte, int index, t_bool value);
 
 #endif
