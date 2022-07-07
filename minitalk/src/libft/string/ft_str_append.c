@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_append.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -21,7 +21,7 @@ void	ft_str_append(t_str dst, t_str src)
 	size_t	src_i;
 
 	if (!dst || !src)
-		return;
+		return ;
 	dst_i = ft_strlen(dst);
 	src_i = 0;
 	while (src[src_i])

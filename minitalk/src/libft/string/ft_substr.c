@@ -15,9 +15,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-t_str 	ft_substr(t_str s, long from, long to)
+t_str	ft_substr(t_str s, long from, long to)
 {
-	t_str 	new;
+	t_str	new;
 	long	i;
 
 	if (to < 0)

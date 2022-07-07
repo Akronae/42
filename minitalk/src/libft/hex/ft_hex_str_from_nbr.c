@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hex_str_from_nbr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:12:23 by adaubric         ###   ########.fr       */
@@ -16,10 +16,10 @@
 #include "../number/ft_number.h"
 #include "../string/ft_string.h"
 
-t_str 	ft_hex_str_from_nbr(ullong ull)
+t_str	ft_hex_str_from_nbr(t_ullong ull)
 {
 	t_list	*list;
-	t_str 	str;
+	t_str	str;
 
 	list = new_list();
 	while (true)

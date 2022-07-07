@@ -13,9 +13,9 @@
 #include "../libft.h"
 #include "../string/ft_string.h"
 
-void	ft_striteri(t_str s, void (*f)(uint, t_str))
+void	ft_striteri(t_str s, void (*f)(t_uint, t_str))
 {
-	uint	i;
+	t_uint	i;
 
 	if (!s || !f)
 		return ;

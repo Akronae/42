@@ -29,11 +29,11 @@ t_str	ft_replace_free(t_str str, t_str to_find, t_str replacement)
 	return (replaced);
 }
 
-t_str	ft_ansi_color_format(t_str str)
+t_map	*ft_get_color_map(void)
 {
-	if (ft_str_index_of(str, "<") == INDEX_NOT_FOUND)
-		return (ft_strdup(str));
-	t_map *colors = new_map();
+	t_map	*colors;
+
+	colors = new_map();
 	colors->add(colors, ft_s("<red>"), ft_s(ANSI_COLOR_RED));
 	colors->add(colors, ft_s("</red>"), ft_s(ANSI_COLOR_RESET));
 	colors->add(colors, ft_s("<yellow>"), ft_s(ANSI_COLOR_YELLOW));
@@ -48,13 +48,25 @@ t_str	ft_ansi_color_format(t_str str)
 	colors->add(colors, ft_s("</cyan>"), ft_s(ANSI_COLOR_RESET));
 	colors->add(colors, ft_s("<white>"), ft_s(ANSI_COLOR_WHITE));
 	colors->add(colors, ft_s("</white>"), ft_s(ANSI_COLOR_RESET));
-	t_key_value_pair *pair;
+	return (colors);
+}
+
+t_str	ft_ansi_color_format(t_str str)
+{
+	t_map		*colors;
+	t_kv_pair	*pair;
+	t_iterator	*i;
+
+	if (ft_str_index_of(str, "<") == INDEX_NOT_FOUND)
+		return (ft_strdup(str));
+	colors = ft_get_color_map();
 	str = ft_strdup(str);
-	t_iterator *i = colors->entries->get_iterator(colors->entries);
+	i = colors->entries->get_iterator(colors->entries);
 	while (i->next(i))
 	{
 		pair = i->curr->data->value;
-		str = ft_replace_free(str, pair->key->as_str, ft_if_str(USE_COLOR_OUTPUT, pair->value->as_str, ""));
+		str = ft_replace_free(str, pair->key->as_str,
+				ft_if_str(USE_COLOR_OUTPUT, pair->value->as_str, ""));
 	}
 	i->free(i);
 	colors->free(colors);

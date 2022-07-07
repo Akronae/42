@@ -14,16 +14,16 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					buffer/ft_buffer_free.c buffer/ft_buffer_get_bit.c buffer/ft_buffer_read.c \
 					buffer/ft_buffer_read_bit.c buffer/ft_buffer_read_byte.c buffer/ft_buffer_read_bytes.c \
 					buffer/ft_buffer_read_char.c \
-					buffer/ft_buffer_read_int.c buffer/ft_buffer_read_key_value_pair.c buffer/ft_buffer_read_list.c \
+					buffer/ft_buffer_read_int.c buffer/ft_buffer_read_kv_pair.c buffer/ft_buffer_read_list.c \
 					buffer/ft_buffer_read_llong.c buffer/ft_buffer_read_long.c buffer/ft_buffer_read_map.c \
 					buffer/ft_buffer_read_number.c buffer/ft_buffer_read_str.c buffer/ft_buffer_read_typed_ptr.c \
 					buffer/ft_buffer_write_char.c \
-					buffer/ft_buffer_write_int.c buffer/ft_buffer_write_key_value_pair.c buffer/ft_buffer_write_list.c \
+					buffer/ft_buffer_write_int.c buffer/ft_buffer_write_kv_pair.c buffer/ft_buffer_write_list.c \
 					buffer/ft_buffer_write_llong.c buffer/ft_buffer_write_long.c buffer/ft_buffer_write_map.c \
 					buffer/ft_buffer_write_str.c buffer/ft_buffer_write_typed_ptr.c \
 					buffer/ft_buffer_set_bit.c buffer/ft_buffer_to_str.c \
 					buffer/ft_buffer_write.c buffer/ft_buffer_write_bit.c buffer/ft_buffer_write_byte.c \
-					buffer/ft_buffer_write_bytes.c \
+					buffer/ft_buffer_write_buffer.c buffer/ft_buffer_write_bytes.c \
 					buffer/new_buffer.c \
 					memory/ft_bzero.c char/ft_isalnum.c char/ft_isdigit.c char/ft_isprint.c \
 					memory/ft_memcpy.c memory/ft_memmove.c memory/ft_memset.c memory/ft_persistent_ptr.c \
@@ -31,7 +31,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					memory/ft_safe_malloc.c string/ft_strlen.c \
 					memory/ft_memchr.c \
 					memory/ft_memcmp.c memory/ft_swap_long.c memory/ft_unused.c \
-					message/ft_message_receive_bit.c message/ft_message_serialize.c message/new_message.c \
+					message/ft_message_receive_bit.c message/ft_message_serialize.c message/ft_message_deserialize.c \
+					message/new_message.c \
 					message/ft_message_free.c \
 					string/ft_strchr.c string/ft_strncmp.c string/ft_strrchr.c \
 					string/ft_strlcpy.c string/ft_strlcat.c string/ft_strnstr.c memory/ft_calloc.c string/ft_strdup.c \
@@ -52,7 +53,7 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 					iterator/ft_iterator_free.c iterator/ft_iterator_next.c iterator/ft_iterator_next_str.c \
 					iterator/ft_iterator_next_char.c iterator/ft_iterator_next_long.c iterator/ft_iterator_reset.c \
 					iterator/ft_iterator_skip.c iterator/new_iterator.c \
-					key_value_pair/ft_key_value_pair_free.c key_value_pair/new_key_value_pair.c \
+					kv_pair/ft_kv_pair_free.c kv_pair/new_kv_pair.c \
 					link/ft_link_for_each.c link/ft_link_clone.c link/ft_link_free.c link/ft_link_get_first.c \
 					link/ft_link_get_last.c link/ft_link_insert.c link/ft_link_remove.c link/ft_link_reverse.c \
 					link/ft_link_set_data.c \
@@ -90,8 +91,8 @@ SRCS			=	binary/ft_binary_byte_to_str.c binary/ft_binary_get_bit.c binary/ft_bin
 
 HEADERS			=	libft.h binary/ft_binary.h buffer/ft_buffer.h char/ft_char.h hex/ft_hex.h io/ft_io.h \
 					io/printf/ft_printf.h ipc_socket/ft_ipc_socket.h \
-					iterator/ft_iterator.h key_value_pair/ft_key_value_pair.h link/ft_link.h \
- 					list/ft_list.h logic/ft_logic.h map/ft_map.h key_value_pair/ft_key_value_pair.h math/ft_math.h \
+					iterator/ft_iterator.h kv_pair/ft_kv_pair.h link/ft_link.h \
+ 					list/ft_list.h logic/ft_logic.h map/ft_map.h kv_pair/ft_kv_pair.h math/ft_math.h \
  					memory/ft_memory.h message/ft_message.h number/ft_number.h ptr/ft_ptr.h string/ft_string.h \
  					type/ft_type.h typed_ptr/ft_typed_ptr.h
 

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
@@ -94,7 +94,7 @@ int	ft_printfl(t_str input, ...)
 {
 	va_list	args;
 	size_t	output_str_len;
-	t_str 	final_str;
+	t_str	final_str;
 
 	va_start(args, input);
 	final_str = ft_strjoin(input, "\n");

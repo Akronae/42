@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_push_char.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -15,7 +15,7 @@
 
 void	ft_list_push_char(t_list *self, char c)
 {
-	t_str 	alloc;
+	t_str	alloc;
 
 	alloc = ft_safe_malloc(sizeof(int));
 	*alloc = c;

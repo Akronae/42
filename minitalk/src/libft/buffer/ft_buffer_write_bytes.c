@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffer_write_bytes.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -17,9 +17,11 @@
 
 void	ft_buffer_write_bytes(t_buffer *self, void *bytes, size_t len_bytes)
 {
-	size_t i = 0;
-	t_byte	*bytes_data = (t_byte*) bytes;
+	size_t	i;
+	t_byte	*bytes_data;
 
+	bytes_data = (t_byte *) bytes;
+	i = 0;
 	while (i < len_bytes)
 	{
 		self->write_byte(self, bytes_data[i]);

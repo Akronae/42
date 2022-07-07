@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
@@ -28,7 +28,7 @@
 
 typedef struct t_formatted_element {
 	size_t	length;
-	t_str 	value;
+	t_str	value;
 	int		should_be_freed;
 }	t_formatted_element;
 
@@ -53,8 +53,8 @@ char						*ft_str_format(t_str input, ...);
 char						*ft_str_format_handle_args(t_str input,
 								va_list args);
 char						*ft_arg_str_to_str(t_str str);
-char						*ft_arg_ptr_to_str(ullong ptr);
-char						*ft_arg_hex_to_str(uint val,
+char						*ft_arg_ptr_to_str(t_ullong ptr);
+char						*ft_arg_hex_to_str(t_uint val,
 								t_template_type type);
 struct t_formatted_element	*new_formatted_element(void);
 void						ft_formatted_list_free_elem(t_link *elem);

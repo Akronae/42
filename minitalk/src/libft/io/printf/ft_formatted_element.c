@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_formatted_element.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:09:59 by adaubric          #+#    #+#       	  */
 /*   Updated: 2022/02/23 14:59:10 by adaubric         ###   ########.fr       */
@@ -55,7 +55,7 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 		elem->value = ft_number_to_str(va_arg(args, int));
 	else if (type == STRING)
 	{
-		ptr = va_arg(args, t_str );
+		ptr = va_arg(args, t_str);
 		elem->value = ft_arg_str_to_str(ptr);
 	}
 	else

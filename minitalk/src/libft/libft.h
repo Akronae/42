@@ -23,11 +23,11 @@
 #  define USE_COLOR_OUTPUT 1
 # endif
 
-typedef unsigned int	uint;
-typedef unsigned long int	ulong;
-typedef long long int	llong;
-typedef unsigned long long int	ullong;
+typedef unsigned int							t_uint;
+typedef unsigned long int						t_ulong;
+typedef long long int							t_llong;
+typedef unsigned long long int					t_ullong;
 typedef enum bool { false = 0, true = !false }	t_bool;
-typedef char*	t_str;
+typedef char*									t_str;
 
 #endif //LIBFT_H

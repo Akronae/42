@@ -15,9 +15,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-t_str 	ft_strjoin(t_str s1, t_str s2)
+t_str	ft_strjoin(t_str s1, t_str s2)
 {
-	t_str 	str;
+	t_str	str;
 	int		i;
 	int		j;
 
@@ -40,6 +40,5 @@ t_str 	ft_strjoin(t_str s1, t_str s2)
 		str[j++] = s2[i];
 		i++;
 	}
-
 	return (str);
 }

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffer_write.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -31,8 +31,8 @@ void	ft_buffer_write(t_buffer *self, t_typed_ptr *data)
 		self->write_list(self, data->value);
 	else if (data->type == T_TYPE_MAP)
 		self->write_map(self, data->value);
-	else if (data->type == T_TYPE_KEY_VALUE_PAIR)
-		self->write_key_value_pair(self, data->value);
+	else if (data->type == T_TYPE_KV_PAIR)
+		self->write_kv_pair(self, data->value);
 	else
 		ft_exit_err("ft_buffer_write: cannot write type %d", data->type);
 }

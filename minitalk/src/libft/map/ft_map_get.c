@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map_get.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -19,9 +19,9 @@
 
 t_typed_ptr	*ft_map_get(t_map *self, t_typed_ptr *key)
 {
-	t_iterator			*i;
-	t_key_value_pair	*curr_pair;
-	void				*value;
+	t_iterator	*i;
+	t_kv_pair	*curr_pair;
+	void		*value;
 
 	value = NULL;
 	i = self->entries->get_iterator(self->entries);

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_number_to_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -18,11 +18,11 @@
 #include "../string/ft_string.h"
 #include "../string/ft_string.h"
 
-t_str 	ft_number_to_str(llong ll)
+t_str	ft_number_to_str(t_llong ll)
 {
 	t_list	*list;
 	int		is_neg;
-	t_str 	str;
+	t_str	str;
 
 	list = new_list();
 	is_neg = ll < 0;

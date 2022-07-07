@@ -32,7 +32,7 @@ void	*ft_index_out_of_range_error(t_str callee, size_t index,
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(t_str s, int fd);
 void	ft_putendl_fd(t_str s, int fd);
-void	ft_putnbr_fd(llong n, int fd);
+void	ft_putnbr_fd(t_llong n, int fd);
 t_str	ft_ansi_color_format(t_str str);
 
 #endif

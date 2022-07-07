@@ -13,12 +13,12 @@
 #ifndef FT_MATH_H
 # define FT_MATH_H
 
-#include "../libft.h"
+# include "../libft.h"
 
-llong	ft_math_abs(llong nb);
-llong	ft_math_clamp(llong nb, llong min, llong max);
-llong	ft_math_max(llong a, llong b);
-llong	ft_math_min(llong a, llong b);
-llong	ft_math_pow(llong nb, int pow);
+t_llong	ft_math_abs(t_llong nb);
+t_llong	ft_math_clamp(t_llong nb, t_llong min, t_llong max);
+t_llong	ft_math_max(t_llong a, t_llong b);
+t_llong	ft_math_min(t_llong a, t_llong b);
+t_llong	ft_math_pow(t_llong nb, int pow);
 
 #endif

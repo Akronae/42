@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_join.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -27,9 +27,9 @@ static size_t	ft_compute_join_length(t_list *str_list)
 	return (total_length);
 }
 
-t_str 	ft_list_join(t_list *self, t_str delimiter)
+t_str	ft_list_join(t_list *self, t_str delimiter)
 {
-	t_str 		str;
+	t_str		str;
 	t_list		*str_list;
 	t_typed_ptr	*ptr;
 

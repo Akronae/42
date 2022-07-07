@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 15:09:47 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:02:10 by adaubric         ###   ########.fr       */
@@ -12,9 +12,5 @@
 
 #ifndef MINITALK_H
 # define MINITALK_H
-
-# include "libft/list/ft_list.h"
-
-
 
 #endif

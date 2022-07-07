@@ -14,12 +14,12 @@
 #include "../memory/ft_memory.h"
 #include <stdlib.h>
 
-t_str 	ft_strndup(t_str s, size_t n)
+t_str	ft_strndup(t_str s, size_t n)
 {
 	size_t	i;
-	t_str 	result;
+	t_str	result;
 
-	result = (t_str ) ft_safe_malloc(sizeof(char) * (n + 1));
+	result = (t_str) ft_safe_malloc(sizeof(char) * (n + 1));
 	if (!result)
 		return (0);
 	i = 0;
@@ -68,17 +68,17 @@ void	*ft_free_split(t_str *s, int cnt)
 	return (NULL);
 }
 
-t_str 	*ft_split(t_str s, char c)
+t_str	*ft_split(t_str s, char c)
 {
-	t_str 	*result;
+	t_str	*result;
 	size_t	count;
 	size_t	wordlen;
 	size_t	i;
 
 	if (!s || !c)
-		return (ft_calloc(sizeof(t_str )));
+		return (ft_calloc(sizeof(t_str)));
 	count = ft_count_word(s, c);
-	result = (t_str *)ft_safe_malloc(sizeof(t_str ) * (count + 1));
+	result = (t_str *)ft_safe_malloc(sizeof(t_str) * (count + 1));
 	if (!result)
 		return (0);
 	i = 0;

@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffer_read_typed_ptr.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adaubric <adaubric@42.fr>                  +#+  +:+       +#+        */
+/*   By: adaubric <adaubric@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 12:44:06 by adaubric          #+#    #+#             */
 /*   Updated: 2022/02/23 14:22:17 by adaubric         ###   ########.fr       */
@@ -17,6 +17,8 @@
 
 t_typed_ptr	*ft_buffer_read_typed_ptr(t_buffer *self)
 {
-	t_type type = (t_type) self->read_char(self);
-	return ft_buffer_read(self, type);
+	t_type	type;
+
+	type = (t_type) self->read_char(self);
+	return (ft_buffer_read(self, type));
 }
