@@ -23,7 +23,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=1 -D USE_COLOR_OUTPUT=0 #-fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=0 -D USE_COLOR_OUTPUT=0 #-fsanitize=address -g3
 
 NAME			= push_swap
 NAME_CLIENT		= client

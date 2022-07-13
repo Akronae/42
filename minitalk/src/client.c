@@ -35,7 +35,7 @@ int	main(int argc, t_str *argv)
 	if (argc <= 2)
 		ft_exit_err("usage:\n\t%s <SERVER PID> <MESSAGE>", argv[0]);
 	pid = ft_str_to_number(argv[1]);
-	ft_printfl("client PID: %d", getpid());
+	ft_printfl("[client] PID: %d", getpid());
 	sock = new_ipc_socket(pid);
 	msg = new_message();
 	msg->fields->add(msg->fields, ft_s("content"), ft_s(argv[2]));
