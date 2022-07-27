@@ -19,9 +19,13 @@
 #include "libft/memory/ft_memory.h"
 #include "libft/message/ft_message.h"
 #include "libft/ipc_socket/ft_ipc_socket.h"
+#include "minilibx-linux/mlx.h"
 
 int	main(int argc, t_str *argv)
 {
+	void *mlx_id = mlx_init();
+	mlx_new_window(mlx_id, 100, 100, "lalalal!");
 	ft_printfl("heeeeey!");
 	ft_unused("", argc, argv);
+	while (true) {}
 }

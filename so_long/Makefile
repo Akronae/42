@@ -15,25 +15,23 @@ LIBFT_NAME		= libft.a
 LIBX_DIR		= ./src/minilibx-linux
 LIBX_NAME		= libmlx.a
 
+SRCS			= src/so_long.c
 
-SRCS			=	src/so_long.c
-
-HEADERS			=	src/so_long.h
+HEADERS			= src/so_long.h
 
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=1 -D USE_COLOR_OUTPUT=0 #-fsanitize=address -g3
+CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=1 -D USE_COLOR_OUTPUT=0  #-fsanitize=address -g3
+LFLAGS			= -L$(LIBX_DIR) -l:$(LIBX_NAME) -L$(LIBFT_DIR) -l:$(LIBFT_NAME) -lXext -lX11 -lm -lbsd
 
 NAME			= so_long
-NAME_CLIENT		= client
-NAME_SERVER		= server
 
 $(NAME):		$(OBJS) $(HEADERS)
 				make all CFLAGS="$(CFLAGS)" CC="$(CC)" -C $(LIBFT_DIR)/
 				make all CFLAGS="$(CFLAGS)" CC="$(CC)" -C $(LIBX_DIR)/
-				$(CC) $(CFLAGS) $(SRCS) $(LIBFT_DIR)/$(LIBFT_NAME) $(LIBX_DIR)/$(LIBX_NAME) -o $(NAME)
+				$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
 
 all:			$(NAME)
 
