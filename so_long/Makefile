@@ -23,7 +23,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -r -f
-CFLAGS			= -Wall -Wextra -Werror -g -D ENV_DEV=1 -D USE_COLOR_OUTPUT=0  #-fsanitize=address -g3
+CFLAGS			= -g -D ENV_DEV=1 -D USE_COLOR_OUTPUT=0  #-Wall -Wextra -Werror  #-fsanitize=address -g3
 LFLAGS			= -L$(LIBX_DIR) -l:$(LIBX_NAME) -L$(LIBFT_DIR) -l:$(LIBFT_NAME) -lXext -lX11 -lm -lbsd
 
 NAME			= so_long
@@ -31,7 +31,7 @@ NAME			= so_long
 $(NAME):		$(OBJS) $(HEADERS)
 				make all CFLAGS="$(CFLAGS)" CC="$(CC)" -C $(LIBFT_DIR)/
 				make all CFLAGS="$(CFLAGS)" CC="$(CC)" -C $(LIBX_DIR)/
-				$(CC) -o $(NAME) $(OBJS) $(LFLAGS)
+				$(CC) -o $(NAME) $(OBJS) $(CFLAGS) $(LFLAGS)
 
 all:			$(NAME)
 

@@ -19,6 +19,7 @@
 # include "../string/ft_string.h"
 
 t_str	ft_number_to_str(t_llong ll);
+t_str	ft_double_to_str(double ll);
 t_llong	ft_str_to_number_base(t_str s, t_str base);
 t_llong	ft_str_to_number(t_str s);
 

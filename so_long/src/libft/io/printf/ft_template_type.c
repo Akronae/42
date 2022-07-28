@@ -28,6 +28,8 @@ enum t_template_type	ft_template_type_from_char(t_str s)
 		return (POINTER);
 	if (ft_str_equal(s, "d"))
 		return (DECIMAL);
+	if (ft_str_equal(s, "f"))
+		return (FLOAT);
 	if (ft_str_equal(s, "i"))
 		return (INT);
 	if (ft_str_equal(s, "u"))

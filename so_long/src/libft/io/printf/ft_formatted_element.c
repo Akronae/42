@@ -53,6 +53,8 @@ struct t_formatted_element	*ft_arg_to_formatted_elem(va_list args,
 	}
 	else if (type == INT || type == DECIMAL)
 		elem->value = ft_number_to_str(va_arg(args, int));
+	else if (type == FLOAT)
+		elem->value = ft_double_to_str(va_arg(args, double));
 	else if (type == STRING)
 	{
 		ptr = va_arg(args, t_str);

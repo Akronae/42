@@ -38,6 +38,7 @@ typedef enum t_template_type {
 	POINTER,
 	DECIMAL,
 	INT,
+	FLOAT,
 	LONGLONG,
 	U_DECIMAL,
 	HEXADECIMAL,

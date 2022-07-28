@@ -23,6 +23,7 @@
 #  define USE_COLOR_OUTPUT 1
 # endif
 
+typedef unsigned char							t_uchar;
 typedef unsigned int							t_uint;
 typedef unsigned long int						t_ulong;
 typedef long long int							t_llong;
