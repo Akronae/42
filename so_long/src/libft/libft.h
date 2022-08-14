@@ -28,6 +28,7 @@ typedef unsigned int							t_uint;
 typedef unsigned long int						t_ulong;
 typedef long long int							t_llong;
 typedef unsigned long long int					t_ullong;
+typedef long double         					t_ldouble;
 typedef enum bool { false = 0, true = !false }	t_bool;
 typedef char*									t_str;
 

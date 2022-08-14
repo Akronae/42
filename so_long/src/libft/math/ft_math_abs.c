@@ -18,3 +18,10 @@ t_llong	ft_math_abs(t_llong nb)
 		return (-nb);
 	return (nb);
 }
+
+t_ldouble	ft_math_abs_double(t_ldouble nb)
+{
+	if (nb < 0)
+		return (-nb);
+	return (nb);
+}

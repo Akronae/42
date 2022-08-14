@@ -15,9 +15,11 @@ LIBFT_NAME		= libft.a
 LIBX_DIR		= ./src/minilibx-linux
 LIBX_NAME		= libmlx.a
 
-SRCS			= src/so_long.c
+SRCS			= 	src/so_long.c src/mlx/color.c src/mlx/game.c src/mlx/game_object.c src/mlx/mlx_client.c src/mlx/mlx_img.c src/mlx/mlx_window.c \
+					src/mlx/scene.c src/mlx/vector.c src/brigitte.c
 
-HEADERS			= src/so_long.h
+HEADERS			= 	src/so_long.h src/mlx/color.h src/mlx/game.h src/mlx/game_object.h src/mlx/mlx_client.h src/mlx/mlx_img.h src/mlx/mlx_window.h \
+					src/mlx/scene.h src/mlx/vector.h src/brigitte.h
 
 OBJS			= $(SRCS:.c=.o)
 
